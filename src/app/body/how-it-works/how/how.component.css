@@ -1,0 +1,37 @@
+.back{
+    background:rgba(0, 0, 0, 0.8)  url('../../../../assets/our-conference-bg.jpg');
+    
+    background-attachment: fixed;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-blend-mode: darken;
+    
+}
+@media (min-width: 576px){
+
+    .container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px){
+
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px){
+
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px){
+
+    .container {
+        max-width: 1140px;
+    }
+}

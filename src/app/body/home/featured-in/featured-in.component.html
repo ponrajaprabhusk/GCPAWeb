@@ -1,0 +1,18 @@
+<div class="col-md-12 text-center container mb-4 ">
+    <h1 class="mt-5">Featured In</h1>
+    <a href="#">
+       <p class="mainp"> Our Newsroom</p>
+    </a>
+  
+        
+    <div class="row text-center container-fluid mx-0">
+        <owl-carousel-o class="col col-md-11 container-fluid text-centre " [options]="customOptions" (translated)="getPassedData($event)">
+
+            <ng-container class="col col-md-3" *ngFor="let slide of dynamicSlides">
+              <ng-template carouselSlide [id]="slide.id">
+                <img class="px-4 container-fluid" [src]="slide.src" [alt]="slide.alt" [title]="slide.title">
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+</div>

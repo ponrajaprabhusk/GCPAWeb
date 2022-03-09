@@ -1,0 +1,45 @@
+@media (min-width: 576px){
+
+    .container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px){
+
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px){
+
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px){
+
+    .container {
+        max-width: 1140px;
+    }
+}
+
+.catp {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.cat {
+    font-size: 14px;
+    text-align: justify;
+    line-height: 25px;
+}
+
+.notshow{
+    display: none;
+}
+
+
+
+

@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
+h1 {
+    color: #ef3789!important;
+    font-size: 44px!important;
+    font-weight: 700!important;
+    font-family: 'Amaranth', sans-serif!important;
+}
+
+.mainp {
+    color: #222222;
+    text-decoration: underline;
+    margin-top: 6px;
+    font-weight: 600!important;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    max-width: 280px;
+}
