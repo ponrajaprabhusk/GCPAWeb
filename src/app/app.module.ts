@@ -32,19 +32,19 @@ import { NewsroomComponent } from './body/newsroom/newsroom.component';
 import { TermsCondiComponent } from './body/terms-condi/terms-condi.component';
 import { TestimonialComponent } from './body/testimonial/testimonial.component';
 import { ContactComponent } from './body/contact/contact.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFunctions,getFunctions } from '@angular/fire/functions';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
-const appRoutes: Routes=[
-  {path:'',component:HomeComponent},
-  {path:'about',component:AboutComponent},
-  {path:'how-it-works',component:HowItWorksComponent},
-  {path:'partners',component:PartnersComponent},
-  {path:'gallery',component:GalleryComponent},
-  {path:'newsroom',component:NewsroomComponent},
-  {path:'terms_condi',component:TermsCondiComponent},
-  {path:'testimonial',component:TestimonialComponent},
-  {path:'contact',component:ContactComponent}
-
-]
+import { USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
+import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/compat/firestore';
+import { AngularFireFunctionsModule, USE_EMULATOR as USE_FUNCTIONS_EMULATOR } from '@angular/fire/compat/functions';
+import { LoginPageComponent } from './body/login-page/login-page.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +75,7 @@ const appRoutes: Routes=[
     TermsCondiComponent,
     TestimonialComponent,
     ContactComponent,
+    LoginPageComponent,
    
     
   ],
@@ -83,9 +84,20 @@ const appRoutes: Routes=[
     CarouselModule,
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireFunctionsModule,
+    AngularFireStorageModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions()),
+    provideStorage(() => getStorage())
   ],
-  providers: [],
+  providers: [
+    { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['http://localhost:9099'] : undefined },
+    { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ? ['localhost', 8080] : undefined },
+    { provide: USE_FUNCTIONS_EMULATOR, useValue: environment.useEmulators ? ['localhost', 5001] : undefined },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
