@@ -1,0 +1,12 @@
+<div class="back">
+    <div class="container mt-5 pt-3 px-1 text-center">
+        <h1 class="mt-5">Media Coverage</h1>
+        <div class="row text-center">
+            <ng-container *ngFor="let con of content" >
+                <div class="col-md-3 px-3 py-3 my-auto">
+                    <a [href]="con.link"><img [src]="con.src" class="img-fluid rounded bg-white" alt=""></a>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

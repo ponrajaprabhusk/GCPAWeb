@@ -1,0 +1,30 @@
+<div class="row text-center container-fluid mt-4">
+  <owl-carousel-o class="col col-md-11 container-fluid text-centre " [options]="customOptions" (translated)="getPassedData($event)">
+
+    <ng-template carouselSlide class="col">
+      <div class="slide mx-2 ">
+        <app-sections></app-sections>
+      </div>
+    </ng-template>
+    <ng-template carouselSlide class="col">
+      <div class="slide mx-2 ">
+        <app-sections3></app-sections3>
+      </div>
+    </ng-template>
+    <ng-template carouselSlide class="col">
+      <div class="slide mx-2 ">
+        <app-sections2></app-sections2>
+      </div>
+    </ng-template>
+    <ng-template carouselSlide class="col">
+      <div class="slide mx-2 ">
+        <app-sections3></app-sections3>
+      </div>
+    </ng-template>
+    <ng-template carouselSlide class="col">
+      <div class="slide mx-2 ">
+        <app-sections></app-sections>
+      </div>
+    </ng-template>
+    </owl-carousel-o>
+  </div>

@@ -1,0 +1,36 @@
+h6 {
+    font-size: 18px!important;
+    color: #555555!important;
+    font-family: 'Amaranth', sans-serif!important;
+}
+.testheadp {
+    font-weight: 500;
+    font-size: 13px;
+    color: #969393;
+}
+
+.testp {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+}
+.back{
+    background-color: #f5f5f7!important;
+}
+.testimonial_img img {
+    max-width: 100%;
+    border-radius: 50%;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.col-md-4{
+    background-color: #f5f5f7!important;
+}
+.testimonial_info_m{
+    box-shadow: 0 8px 6px -6px black;
+    min-height: 300px;
+}
+

@@ -1,0 +1,21 @@
+h6 {
+    font-size: 18px!important;
+    color: #555555!important;
+    text-align: justify!important;
+    font-family: 'Amaranth', sans-serif!important;
+}
+.vertical_list {
+    position: relative;
+    padding-left: 80px;
+    margin: 0 auto 40px;
+}
+.list_icon {
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgb(0 0 0 / 20%);
+    height: 65px;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 2px;
+    width: 65px;
+}

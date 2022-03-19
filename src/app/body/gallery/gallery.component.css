@@ -1,0 +1,48 @@
+h1 {
+    color: #ef3789!important;
+    font-size: 44px!important;
+    font-weight: 700!important;
+    font-family: 'Amaranth', sans-serif!important;
+}
+
+.mainp {
+    color: #222222;
+    text-decoration: underline;
+    margin-top: 6px;
+    font-weight: 600!important;
+}
+
+@media (min-width: 576px){
+
+    .container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px){
+
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px){
+
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px){
+
+    .container {
+        max-width: 1140px;
+    }
+}
+
+.darken {
+    filter: brightness(50%);
+  }
+
+img{
+    max-height: 260px;
+}
