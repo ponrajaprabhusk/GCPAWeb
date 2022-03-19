@@ -1,7 +1,18 @@
 <div class="container mt-5 pt-3 px-1 text-center">
     <h1 class="mt-5">Gallery</h1>
-    <a href="#">
+    <a>
         <p class="mainp">The journey so far in pictures</p>
     </a>
+    <div class="container mt-3 py-3 px-2 back">
+        
+        <div class="row text-center">
+            <ng-container *ngFor="let con of content" >
+                <a [ngClass]="{'col-md-3 px-3 py-3 my-auto':true}" [href]="con.src" (mouseenter)="con.hovering=true" (mouseleave)="con.hovering=false">
+                    <img [src]="con.src" src="../../../assets/gallery/"  [ngClass]="{'img-fluid rounded':true,'darken shadow':con.hovering}" alt="">
+                </a>
+            </ng-container>
+        </div>
+        
+    </div>
 </div>
     

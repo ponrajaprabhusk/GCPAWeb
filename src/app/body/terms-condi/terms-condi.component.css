@@ -5,13 +5,6 @@ h1 {
     font-family: 'Amaranth', sans-serif!important;
 }
 
-.mainp {
-    color: #222222;
-    text-decoration: underline;
-    margin-top: 6px;
-    font-weight: 600!important;
-}
-
 @media (min-width: 576px){
 
     .container {
@@ -39,10 +32,16 @@ h1 {
     }
 }
 
-.darken {
-    filter: brightness(50%);
-  }
+h6 {
+    font-size: 18px!important;
+    color: #555555!important;
+    text-align: justify!important;
+    font-family: 'Amaranth', sans-serif!important;
+}
 
-img{
-    max-height: 260px;
+.terms {
+    color: #555555!important;
+    text-align: justify;
+    font-weight: 400;
+    font-size: 15px;
 }

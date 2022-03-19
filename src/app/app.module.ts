@@ -28,12 +28,21 @@ import { HowComponent } from './body/how-it-works/how/how.component';
 import { CategoriesComponent } from './body/how-it-works/categories/categories.component';
 import { PartnersComponent } from './body/partners/partners.component';
 import { GalleryComponent } from './body/gallery/gallery.component';
+import { NewsroomComponent } from './body/newsroom/newsroom.component';
+import { TermsCondiComponent } from './body/terms-condi/terms-condi.component';
+import { TestimonialComponent } from './body/testimonial/testimonial.component';
+import { ContactComponent } from './body/contact/contact.component';
+
 const appRoutes: Routes=[
   {path:'',component:HomeComponent},
   {path:'about',component:AboutComponent},
   {path:'how-it-works',component:HowItWorksComponent},
   {path:'partners',component:PartnersComponent},
-  {path:'gallery',component:GalleryComponent}
+  {path:'gallery',component:GalleryComponent},
+  {path:'newsroom',component:NewsroomComponent},
+  {path:'terms_condi',component:TermsCondiComponent},
+  {path:'testimonial',component:TestimonialComponent},
+  {path:'contact',component:ContactComponent}
 
 ]
 @NgModule({
@@ -61,7 +70,12 @@ const appRoutes: Routes=[
     HowComponent,
     CategoriesComponent,
     PartnersComponent,
-    GalleryComponent
+    GalleryComponent,
+    NewsroomComponent,
+    TermsCondiComponent,
+    TestimonialComponent,
+    ContactComponent,
+   
     
   ],
   imports: [

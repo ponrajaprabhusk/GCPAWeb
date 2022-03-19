@@ -1,12 +1,3 @@
-.back{
-    background:rgba(0, 0, 0, 0.8)  url('../../../../assets/our-conference-bg.jpg');
-    background-attachment: fixed;
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    background-blend-mode: darken;
-}
 @media (min-width: 576px){
 
     .container {
@@ -32,4 +23,21 @@
     .container {
         max-width: 1140px;
     }
+}
+h3 {
+    color: #ef3789!important;
+    font-family: 'Amaranth', sans-serif!important;
+    font-weight: bold!important;
+}
+.fa{
+    list-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px;
+    color:#8a8686;
+    font-size: 20px;
+}
+p {
+    font-size: 18px;
+    line-height: 32px;
 }
