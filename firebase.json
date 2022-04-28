@@ -28,6 +28,12 @@
     "ui": {
       "enabled": true,
       "port": 7000
+    },
+    "database": {
+      "port": 9000
+    },
+    "hosting": {
+      "port": 5000
     }
   },
   "hosting": [

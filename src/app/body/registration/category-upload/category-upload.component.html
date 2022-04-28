@@ -1,0 +1,66 @@
+<div>
+    <h4><span><div class="badge bg-primary text-wrap">3</div></span> Category and Upload </h4>
+    <div class="pb-4">
+        <h4 class="fw-bold">Category Selection<span class="text-danger">*</span></h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control bg-light" [(ngModel)]="category">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pb-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="fw-bold">
+                            Achievement Description
+                        </h4>
+                        <textarea class="form-control bg-light" rows="3" placeholder=" Please provide child's major achievements here and upload a detailed document in the child Profile Section (PDF/DOC/TXT) " [(ngModel)]="achievement"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row pb-4">
+                    <div class="col-md-6">
+                        <h4 class="fw-bold">Child's Photograph (Optional)</h4>
+                        <input type="file" class="form-control bg-light" (change)="photoUpload($event)">
+                        <ng-container *ngIf="uploadService.fileUploadStatus && photoStatus">
+                            <div class="progress" style="height: 10px; margin-top: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': progressPhoto + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            Uploading {{fileName}} ...
+                        </ng-container>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="fw-bold">Child's Profile (Optional)</h4>
+                        <input type="file" class="form-control bg-light" (change)="profileUpload($event)">
+                        <ng-container *ngIf="uploadService.fileUploadStatus && profileStatus">
+                            <div class="progress" style="height: 10px; margin-top: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': progressProfile + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            Uploading {{fileName}} ...
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-12">
+                        <h4 class="fw-bold">
+                            Social media (Optional)
+
+                        </h4>
+                        <textarea class="form-control bg-light" rows="3" [(ngModel)]="social"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

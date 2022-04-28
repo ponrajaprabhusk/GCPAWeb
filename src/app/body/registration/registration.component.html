@@ -1,0 +1,41 @@
+<head>
+    <script src="https://kit.fontawesome.com/02860b733b.js" crossorigin="anonymous"></script>
+</head>
+<app-popup></app-popup>
+<form class="mt-5 pt-5">
+    <div class="mb-3 col-4 ">
+        <label for="exampleInputEmail1 " class="form-label ">Full Name</label>
+        <input type="text " class="form-control " [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <button type=" submit " class="btn btn-primary ">Submit </button>
+</form>
+<p>{{name}}</p>
+<div class="back mt-5 pt-5 pb-5">
+    <h1 class="text-center mb-5">Registration Form</h1>
+    <div class="row px-5 mx-5 ">
+        <div class="col-md-5 mx-5">
+            <form class="container" #form="ngForm">
+                <app-personal-details></app-personal-details>
+                <app-address-contact></app-address-contact>
+                <app-category-upload></app-category-upload>
+
+                <div class=" pt-3 ">
+                    <input type="radio"> I agree to the
+                    <a>Terms & Conditions</a> of Global Child Prodigy Awards.
+                </div>
+                <!--  -->
+                <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+                <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
+                    <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
+                </div>
+                <!--  -->
+                <button type="submit" class="btn btn-primary mt-3 " (click)="send(form,$event)">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-5 ">
+            <img src="../../../assets/happy.png " alt=" ">
+        </div>
+
+    </div>
+</div>
