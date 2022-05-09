@@ -12,6 +12,10 @@ admin.initializeApp();
 
 const { users } = require('./model/user/user');
 const { registrations } = require('./model/applicant-register/register')
+const { readData } = require('./model/read-user-data/read-user-data')
+const { rawDatas } = require('./model/raw-data/raw-data')
 
 exports.users = users;
 exports.registrations = registrations;
+exports.readData = readData;
+exports.rawDatas = rawDatas;

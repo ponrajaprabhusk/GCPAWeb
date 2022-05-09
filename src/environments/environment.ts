@@ -5,6 +5,7 @@
 export const environment = {
   firebase: {
     
+
   },
   useEmulators: true,
   production: false,

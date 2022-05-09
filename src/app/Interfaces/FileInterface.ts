@@ -10,8 +10,10 @@ export class FileUpload {
   }
 
   export interface FileData {
-    ApplicantName:string
+    Uid:string;
+    ApplicantName:string;
     FileUrl: string;
     Date: string;
     Time: string;
+    File: string;
   }

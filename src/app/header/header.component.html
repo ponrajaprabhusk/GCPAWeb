@@ -1,33 +1,59 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white  fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-white  fixed-top">
     <div class="container px-auto">
         <a routerLink="" class="navbar-brand"><img src="../../assets/GCPA_WEBSITE_LOGO-111.jpg" width="200"></a>
 
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav">
-                <a routerLink="/about" class="nav-item nav-link  mx-1">About</a>
-                <a routerLink="/how-it-works" class="nav-item nav-link mx-1">How it works?</a>
-                <a routerLink="/partners" class="nav-item nav-link mx-1">Partners</a>
-                <a routerLink="/testimonial" class="nav-item nav-link mx-1">Testimonials</a>
-                <a routerLink="/newsroom" class="nav-item nav-link mx-1">Newsroom</a>
-                <a routerLink="/gallery" class="nav-item nav-link mx-1">Gallery</a>
-                <a href="https://gcpawards.com/blog/" class="nav-item nav-link mx-1">Blog</a>
-                <a routerLink="/contact" class="nav-item nav-link mx-1">Contact Us</a>
-            </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a routerLink="/about" class="nav-item nav-link  mx-1">About</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/partners" class="nav-item nav-link mx-1">Partners</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/testimonial" class="nav-item nav-link mx-1">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/how-it-works" class="nav-item nav-link mx-1">How it works?</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/newsroom" class="nav-item nav-link mx-1">Newsroom</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/gallery" class="nav-item nav-link mx-1">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://gcpawards.com/blog/" class="nav-item nav-link mx-1">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/contact" class="nav-item nav-link mx-1">Contact Us</a>
+                </li>
+            </ul>
         </div>
-        <div class="navbar-nav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
             <!-- <a href="#" class="nav-item nav-link ">
                 <button type="submit" class="btn btn-outline-dark ms-5 ">Enquire Now</button>
             </a> -->
             <a class="nav-item nav-link ">
-                <button type="submit" class="btn btn-outline-dark ms-5 " (click)="loadRegistration()">Resgister</button>
+                <button type="submit" class="btn btn-outline-dark ms-5" (click)="loadRegistration()">Resgister</button>
             </a>
-            <a class="nav-item nav-link " *ngIf="loggedIn">
-                <button class="btn  btn-outline-dark ms-5 "><i class="fa-solid fa-user"></i></button>
+            <a class="nav-item nav-link ">
+                <button type="submit" class="btn btn-outline-dark" (click)="loadyourRegistrations()">Your Registrations</button>
             </a>
-
-
+            <a class="nav-item nav-link ">
+                <button type="submit" class="btn btn-outline-dark" (click)="setRawData()">Raw Data</button>
+            </a>
+            <a class="nav-item nav-link text-end" *ngIf="loggedIn">
+                <button class="btn  btn-outline-dark rounded-circle"><i class="fa-solid fa-user"></i></button>
+            </a>
             <a class="nav-item nav-link " *ngIf="!loggedIn">
-                <button type="submit" class="btn btn-outline-dark ms-5 " (click)="loadLoginPage()">Login/Signup</button>
+                <button type="submit" class="btn btn-outline-dark" (click)="loadLoginPage()">Login/Signup</button>
             </a>
         </div>
     </div>

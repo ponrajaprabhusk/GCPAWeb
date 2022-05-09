@@ -6,7 +6,10 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="text" class="form-control bg-light" [(ngModel)]="category">
+                        <select class="form-select" aria-label="Default select example" [(ngModel)]="category">
+                            <option selected="Category"></option>
+                            <option value="0" >Acting &amp; Directing</option><option value="1" >Art &amp; Drawing</option><option value="2" >Cooking</option><option value="3" >Comedian</option><option value="4" >Dance</option><option value="5" >Education</option><option value="6" >Fashion</option><option value="7" >Fitness</option><option value="8" >Innovation</option><option value="9" >Intelligence</option><option value="10" >Music</option><option value="11" >Mathematics</option><option value="12" >Magician</option><option value="13" >Photography</option><option value="14" >Singing</option><option value="15" >Sports</option><option value="16" >Social</option><option value="17" >Science</option><option value="18" >Technology</option><option value="19" >Writing &amp; Poetry</option><option value="20">Others</option>
+                        </select>
                     </div>
                 </div>
             </div>

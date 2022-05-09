@@ -44,6 +44,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
+
 import { USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
 import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/compat/firestore';
 import { AngularFireFunctionsModule, USE_EMULATOR as USE_FUNCTIONS_EMULATOR } from '@angular/fire/compat/functions';
@@ -56,6 +62,9 @@ import { PersonalDetailsComponent } from './body/registration/personal-details/p
 import { AddressContactComponent } from './body/registration/address-contact/address-contact.component';
 import { CategoryUploadComponent } from './body/registration/category-upload/category-upload.component';
 import { CountryComponent } from './body/registration/address-contact/country/country.component';
+import { NumberOfRegistrationsComponent } from './body/number-of-registrations/number-of-registrations.component';
+import { DataTableComponent } from './body/common-tools/data-table/data-table.component';
+
 
 @NgModule({
   declarations: [
@@ -94,12 +103,21 @@ import { CountryComponent } from './body/registration/address-contact/country/co
     AddressContactComponent,
     CategoryUploadComponent,
     CountryComponent,
+    NumberOfRegistrationsComponent,
+    DataTableComponent,
+    // DataTableComponent,
     
   ],
   imports: [
     MatDialogModule,
     FormsModule,
+    BrowserModule,
     BrowserAnimationsModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
     CarouselModule,
     BrowserModule,
     AppRoutingModule,
@@ -122,6 +140,6 @@ import { CountryComponent } from './body/registration/address-contact/country/co
     { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ? ['localhost', 8080] : undefined },
     { provide: USE_FUNCTIONS_EMULATOR, useValue: environment.useEmulators ? ['localhost', 5001] : undefined },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -80,6 +80,7 @@ export class CategoryUploadComponent implements OnInit {
       },
       complete: () => {
         console.log("Getting Percentage Data Complete")
+        this.photoStatus=false;
       }
       }
     );
@@ -106,6 +107,7 @@ export class CategoryUploadComponent implements OnInit {
       },
       complete: () => {
         console.log("Getting Percentage Data Complete")
+        this.profileStatus=false
       }
       }
     );

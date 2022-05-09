@@ -1,0 +1,71 @@
+<head>
+    <script src="https://kit.fontawesome.com/02860b733b.js" crossorigin="anonymous"></script>
+</head>
+
+<div class="back mt-5 pt-5 pb-5">
+    <h1 class="text-center pt-3">Your Registrations</h1>
+    <ng-container *ngIf="registerService.registrations.length>0">
+        <ng-container *ngFor="let registration of registerService.registrations">
+            <div class="row px-5 mx-5 pt-5">
+                <h4><span><div class="badge bg-primary text-wrap"> 1</div></span> Personal Details</h4>
+                <div class="col-md-5 mx-5 text-start">
+                    Applicant's First Name: <span [innerText]="registration.FirstName"></span>
+                </div>
+                <div class="col-md-5 mx-5 text-start">
+                    Applicant's Last Name: <span [innerText]="registration.LastName"></span>
+                </div>
+            </div>
+            <div class="row px-5 mx-5 pt-3">
+                <div class="col-md-5 mx-5 text-start">
+                    Gaurdian's Name: <span [innerText]="registration.GaurdFirst"></span> &nbsp; <span [innerText]="registration.GaurdLast"></span>
+                </div>
+                <div class="col-md-5 mx-5 text-start">
+                    Date Of Birth: <span [innerText]="registration.Dob"></span>
+                </div>
+            </div>
+            <div class="row px-5 mx-5 pt-5">
+                <h4><span><div class="badge bg-primary text-wrap">2</div></span> Address and contact Detail </h4>
+                <div class="col-md-5 mx-5 text-start">
+                    Address: <span [innerText]="registration.Address"></span>
+                </div>
+                <div class="col-md-5 mx-5 text-start">
+                    Country: <span [innerText]="registration.Country"></span>
+                </div>
+            </div>
+            <div class="row px-5 mx-5 pt-3">
+                <div class="col-md-5 mx-5 text-start">
+                    Postal/Zip Code: <span [innerText]="registration.Zip"></span>
+                </div>
+                <div class="col-md-5 mx-5 text-start">
+                    Phone Number: <span [innerText]="registration.Number"></span>
+                </div>
+            </div>
+            <div class="row px-5 mx-5 pt-3">
+                <div class="col-md-5 mx-5 text-start">
+                    Email: <span [innerText]="registration.Email"></span>
+                </div>
+                <div class="col-md-5 mx-5 text-start">
+                    School/Academy: <span [innerText]="registration.School"></span>
+                </div>
+            </div>
+            <div class="row px-5 mx-5 pt-5">
+                <h4><span><div class="badge bg-primary text-wrap">3</div></span> Category and Upload </h4>
+                <div class="col-md-5 mx-5 text-start">
+                    Category: <span [innerText]="registration.Category"></span>
+                </div>
+                <div class="col-md-5 mx-5 text-start">
+                    Social Media: <span [innerText]="registration.Social"></span>
+                </div>
+            </div>
+            <div class="row px-5 mx-5 py-3">
+                <div class="col mx-5 text-start">
+                    Achievement Description: <span [innerText]="registration.Achievement"></span>
+                    <hr class="dark fs-1">
+                </div>
+            </div>
+        </ng-container>
+        <ng-container>
+            <app-data-table [dataForTable]="registrationsData" [displayColoumns]="displayColoumns" [pageSize]="5"> </app-data-table>
+        </ng-container>
+    </ng-container>
+</div>

@@ -18,7 +18,7 @@ export class AuthServiceService {
   createUserData(user: User) {
     const callable = this.functions.httpsCallable('users/createNewUser');
         console.log("create new user from ui");
-        callable({ uid: user.uid, photoURL: user.photoURL, displayName: user.displayName, email: user.email, phoneNumber: user.phoneNumber, providerId: user.providerId }).subscribe({
+        callable({ uid: user.uid, photoURL: user.photoURL, displayName: user.displayName, email: user.email, phoneNumber: user.phoneNumber, providerId: user.providerId, numberOfRegistrations:0 }).subscribe({
           next: (data) => {
             console.log("Successful ");
           },
