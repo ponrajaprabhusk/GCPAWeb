@@ -4,7 +4,7 @@
 
 <div class="back mt-5 pt-5 pb-5">
     <h1 class="text-center pt-3">Your Registrations</h1>
-    <ng-container *ngIf="registerService.registrations.length>0">
+    <ng-container *ngIf="!showLoader">
         <ng-container *ngFor="let registration of registerService.registrations">
             <div class="row px-5 mx-5 pt-5">
                 <h4><span><div class="badge bg-primary text-wrap"> 1</div></span> Personal Details</h4>
@@ -65,7 +65,7 @@
             </div>
         </ng-container>
         <ng-container>
-            <app-data-table [dataForTable]="registrationsData" [displayColoumns]="displayColoumns" [pageSize]="5"> </app-data-table>
+            <app-data-table [dataForTable]="registrationsData" [displayColoumns]="displayColoumns" [pageSize]="'5'"> </app-data-table>
         </ng-container>
     </ng-container>
 </div>

@@ -16,12 +16,17 @@ export class NumberOfRegistrationsComponent implements OnInit {
 
   registrationsData:Register[];
   displayColoumns:string[]=[];
-  showLoader: boolean = false;
+  showLoader: boolean = true;
   noData: boolean = false;
 
   
   ngOnInit(){
-    console.log(this.authService.user.uid)
+    this.authService.afauth.user.subscribe((data) => {
+      this.getRegistrationData();
+    });
+  }
+
+  getRegistrationData() {
     this.dataTableService.getRegistrations().subscribe((data) => {
       if(data.length) {
         this.registrationsData = data;

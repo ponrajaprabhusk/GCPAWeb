@@ -32,6 +32,7 @@ export class DataTableDataSource extends DataSource<Register> {
         .pipe(map(() => {
           if(this.data != undefined)
             return this.getPagedData(this.getSortedData([...this.data ]));
+          return [];
         }));
     } else {
       throw Error('Please set the paginator and sort on the data source before connecting.');
@@ -61,7 +62,7 @@ export class DataTableDataSource extends DataSource<Register> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Register[]): Register[] {
+  private getSortedData(data: Register[]) {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -69,16 +70,16 @@ export class DataTableDataSource extends DataSource<Register> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'FirstName': return compare(a.FirstName, b.FirstName, isAsc);
-        case 'Uid': return compare(a.Uid, b.Uid, isAsc);
-        case 'Dob': return compare(a.Dob, b.Dob, isAsc);
+        case 'FirstName': return this.compare(a.FirstName, b.FirstName, isAsc);
+        case 'Uid': return this.compare(a.Uid, b.Uid, isAsc);
+        case 'Dob': return this.compare(a.Dob, b.Dob, isAsc);
         default: return 0;
       }
     });
   }
-}
 
-/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a: string | number, b: string | number, isAsc: boolean): number {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
+  compare(a: string | number, b: string | number, isAsc: boolean): number {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
 }

@@ -16,6 +16,5 @@ export interface Register {
     Photo:string;
     Profile:string;
     Social:string;
-     UserUid:string
-
+    UserUid:string;
 }

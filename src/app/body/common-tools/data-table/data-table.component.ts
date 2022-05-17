@@ -15,7 +15,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   @Input('dataForTable') dataForTable: Register[];
   @Input('displayColoumns') displayColoumns: string[];
-  @Input('pageSize') pageSize: number[];
+  @Input('pageSize') pageSize: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
