@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AppRoutingModule } from './app-routing.module';
@@ -38,6 +39,16 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
 
 import { USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
 import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/compat/firestore';
@@ -45,6 +56,16 @@ import { AngularFireFunctionsModule, USE_EMULATOR as USE_FUNCTIONS_EMULATOR } fr
 import { LoginPageComponent } from './body/login-page/login-page.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { RegistrationComponent } from './body/registration/registration.component';
+import { PopupComponent } from './body/registration/popup/popup.component';
+import { PersonalDetailsComponent } from './body/registration/personal-details/personal-details.component';
+import { AddressContactComponent } from './body/registration/address-contact/address-contact.component';
+import { CategoryUploadComponent } from './body/registration/category-upload/category-upload.component';
+import { CountryComponent } from './body/registration/address-contact/country/country.component';
+import { NumberOfRegistrationsComponent } from './body/number-of-registrations/number-of-registrations.component';
+import { DataTableComponent } from './body/common-tools/data-table/data-table.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,17 +97,37 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     TestimonialComponent,
     ContactComponent,
     LoginPageComponent,
-   
+    RegistrationComponent,
+    PopupComponent,
+    PersonalDetailsComponent,
+    AddressContactComponent,
+    CategoryUploadComponent,
+    CountryComponent,
+    NumberOfRegistrationsComponent,
+    DataTableComponent,
+    // DataTableComponent,
     
   ],
   imports: [
+    MatDialogModule,
+    FormsModule,
+    BrowserModule,
     BrowserAnimationsModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
     CarouselModule,
     BrowserModule,
     AppRoutingModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireFunctionsModule,
     AngularFireStorageModule,
+    ReactiveFormsModule,
+    NgxCaptchaModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -94,10 +135,11 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     provideStorage(() => getStorage())
   ],
   providers: [
+    { provide: RECAPTCHA_SETTINGS, useValue: {siteKey: environment.recaptcha.siteKey,} as RecaptchaSettings,},
     { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['http://localhost:9099'] : undefined },
     { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ? ['localhost', 8080] : undefined },
     { provide: USE_FUNCTIONS_EMULATOR, useValue: environment.useEmulators ? ['localhost', 5001] : undefined },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

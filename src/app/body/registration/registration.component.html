@@ -1,0 +1,33 @@
+<head>
+    <script src="https://kit.fontawesome.com/02860b733b.js" crossorigin="anonymous"></script>
+</head>
+<app-popup></app-popup>
+<div class="back mt-5 pt-5 pb-5">
+    <h1 class="text-center mb-5">Registration Form</h1>
+    <div class="row px-5">
+        <div class="col-md-1"></div>
+        <div class="container col-md-5 px-5">
+            <form #form="ngForm">
+                <app-personal-details></app-personal-details>
+                <app-address-contact></app-address-contact>
+                <app-category-upload></app-category-upload>
+
+                <input type="radio" class="my-5" required> <span> I agree to the <a>Terms & Conditions</a> of Global Child Prodigy Awards.
+                </span>
+
+                <!--  -->
+                <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+                <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
+                    <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
+                </div>
+                <!--  -->
+                <button type="submit" class="btn btn-primary mt-3 " (click)="send(form,$event)">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-5 container-fluid">
+            <img class="img-fluid" src="../../../assets/happy.png " alt=" ">
+        </div>
+        <div class="col-md-1"></div>
+
+    </div>
+</div>

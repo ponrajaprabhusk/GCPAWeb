@@ -1,0 +1,54 @@
+<div>
+    <h4><span><div class="badge bg-primary text-wrap">2</div></span> Address and contact Detail </h4>
+    <div class="pb-4">
+        <h4 class="fw-bold">Address <span class="text-danger">*</span></h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <textarea class="form-control bg-light" rows="3" [(ngModel)]="address"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pb-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <h4 class="fw-bold">Country <span class="text-danger">*</span></h4>
+                        <app-country (newItemEvent)="addCountry($event)"></app-country>
+                    </div>
+                    <div class=" col-md-6 ">
+                        <h4 class="fw-bold ">postal/zip code <span class="text-danger ">*</span></h4>
+                        <input type="text " class="form-control bg-light " [(ngModel)]="zip ">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row pb-4 ">
+            <div class="col-md-12 ">
+                <div class="row ">
+                    <div class="col-md-6 ">
+                        <h4 class="fw-bold ">Phone Number<span class="text-danger ">*</span></h4>
+                        <input type="text " class="form-control bg-light " [(ngModel)]="number ">
+                    </div>
+                    <div class="col-md-6 ">
+                        <h4 class="fw-bold ">Email Adress<span class="text-danger ">*</span></h4>
+                        <input type="text " class="form-control bg-light " [(ngModel)]="email ">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="fw-bold ">School / Academy<span class="text-danger ">*</span></h4>
+        <div class="row ">
+            <div class="col-md-12 ">
+                <input type="text " class="form-control bg-light " [(ngModel)]="school ">
+            </div>
+        </div>
+    </div>
+</div>

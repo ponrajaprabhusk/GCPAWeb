@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "gcpawards-f3c5a"
+    "default": "gcpaweb"
   },
   "targets": {
-    "gcpawards-f3c5a": {
+    "gcpaweb": {
       "hosting": {
         "GCPAweb": [
-          "gcpawards-f3c5a"
+          "gcpaweb"
         ]
       }
     }

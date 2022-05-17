@@ -1,0 +1,69 @@
+<div>
+    <h4><span><div class="badge bg-primary text-wrap">3</div></span> Category and Upload </h4>
+    <div class="pb-4">
+        <h4 class="fw-bold">Category Selection<span class="text-danger">*</span></h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <select class="form-select" aria-label="Default select example" [(ngModel)]="category">
+                            <option selected="Category"></option>
+                            <option value="0" >Acting &amp; Directing</option><option value="1" >Art &amp; Drawing</option><option value="2" >Cooking</option><option value="3" >Comedian</option><option value="4" >Dance</option><option value="5" >Education</option><option value="6" >Fashion</option><option value="7" >Fitness</option><option value="8" >Innovation</option><option value="9" >Intelligence</option><option value="10" >Music</option><option value="11" >Mathematics</option><option value="12" >Magician</option><option value="13" >Photography</option><option value="14" >Singing</option><option value="15" >Sports</option><option value="16" >Social</option><option value="17" >Science</option><option value="18" >Technology</option><option value="19" >Writing &amp; Poetry</option><option value="20">Others</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pb-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="fw-bold">
+                            Achievement Description
+                        </h4>
+                        <textarea class="form-control bg-light" rows="3" placeholder=" Please provide child's major achievements here and upload a detailed document in the child Profile Section (PDF/DOC/TXT) " [(ngModel)]="achievement"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row pb-4">
+                    <div class="col-md-6">
+                        <h4 class="fw-bold">Child's Photograph (Optional)</h4>
+                        <input type="file" class="form-control bg-light" (change)="photoUpload($event)">
+                        <ng-container *ngIf="uploadService.fileUploadStatus && photoStatus">
+                            <div class="progress" style="height: 10px; margin-top: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': progressPhoto + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            Uploading {{fileName}} ...
+                        </ng-container>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="fw-bold">Child's Profile (Optional)</h4>
+                        <input type="file" class="form-control bg-light" (change)="profileUpload($event)">
+                        <ng-container *ngIf="uploadService.fileUploadStatus && profileStatus">
+                            <div class="progress" style="height: 10px; margin-top: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': progressProfile + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            Uploading {{fileName}} ...
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-12">
+                        <h4 class="fw-bold">
+                            Social media (Optional)
+
+                        </h4>
+                        <textarea class="form-control bg-light" rows="3" [(ngModel)]="social"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

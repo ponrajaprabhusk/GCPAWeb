@@ -10,6 +10,8 @@ import { NewsroomComponent } from './body/newsroom/newsroom.component';
 import { PartnersComponent } from './body/partners/partners.component';
 import { TermsCondiComponent } from './body/terms-condi/terms-condi.component';
 import { TestimonialComponent } from './body/testimonial/testimonial.component';
+import { RegistrationComponent } from './body/registration/registration.component';
+import { NumberOfRegistrationsComponent } from './body/number-of-registrations/number-of-registrations.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path:'terms_condi',component:TermsCondiComponent},
   {path:'testimonial',component:TestimonialComponent},
   {path:'contact',component:ContactComponent},
-  {path:'LoginPage', component: LoginPageComponent}
+  {path:'LoginPage', component: LoginPageComponent},
+  {path:'Registration', component: RegistrationComponent},
+  {path:'yourRegistrations', component: NumberOfRegistrationsComponent}
 ];
 
 @NgModule({
