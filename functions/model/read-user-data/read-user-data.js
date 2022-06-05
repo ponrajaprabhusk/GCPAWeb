@@ -1,14 +1,19 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable eol-last */
+/* eslint-disable indent */
+/* eslint-disable max-len */
 const { getData } = require("./tark/read-data");
-const { getRegistrations } = require("./tark/getRegistrations")
+const { getRegistrations } = require("./tark/getRegistrations");
 const { fastify, functions, cors, requestHandler } = require("../application/lib");
 
 fastify.post("/readUserData", (req, res) => {
-    console.log('o');
+    console.log("o");
     getData(req, res);
 });
 
 fastify.post("/getUsersRegistrations", (req, res) => {
-    console.log('fetching Users Registrations');
+    console.log("fetching Users Registrations");
     getRegistrations(req, res);
 });
 

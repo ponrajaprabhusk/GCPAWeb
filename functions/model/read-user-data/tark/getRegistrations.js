@@ -1,4 +1,9 @@
-const { getUsersRegistrations } = require("../lib")
+/* eslint-disable linebreak-style */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable eol-last */
+/* eslint-disable indent */
+/* eslint-disable max-len */
+const { getUsersRegistrations } = require("../lib");
 
 exports.getRegistrations = function(request, response) {
     const useruid = request.body.data.UserUid;
@@ -7,7 +12,7 @@ exports.getRegistrations = function(request, response) {
 
     getUsersRegistrations(useruid).then((registerData) => {
         if (registerData) {
-            result = { data: { status: "OK", data: registerData } };
+           const result = { data: { status: "OK", data: registerData } };
             return response.status(status).send(result);
         }
     }).catch((err) => {

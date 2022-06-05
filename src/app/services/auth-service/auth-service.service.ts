@@ -12,6 +12,7 @@ export class AuthServiceService {
 
   user!: User;
   userReady:boolean=false;
+  currentReceipt:string = ""
 
   constructor(public afauth: AngularFireAuth,public functions: AngularFireFunctions) { }
   
