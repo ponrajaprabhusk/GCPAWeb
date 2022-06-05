@@ -5,11 +5,9 @@
 /* eslint-disable max-len */
 
 const RazorPay = require("razorpay");
-const cors = require("cors")({ origin: true });
 
-const admin = require("firebase-admin");
 const { getApplicant } = require("../../applicant-register/lib");
-const db = admin.firestore();
+const { setRazorDetails } = require("../lib");
 
 /* Generate the base-62 key*/
 const base62 = {
@@ -36,9 +34,10 @@ function generateBase62Constant() {
 }
 
 exports.addPayment = function(request, response) {
-        const Uid = request.body.data.UserUid;
+        const Uid = request.body.data.RegistrationId;
         const amount = request.body.data.Amount;
-
+        console.log("UID :::", Uid);
+        console.log("Amount :::", amount);
         getApplicant(Uid).then((doc) => {
             console.log(doc);
             if (doc != undefined) {
@@ -70,9 +69,11 @@ exports.addPayment = function(request, response) {
                         return response.status(500).send(result);
                     }
 
-                    db.collection("Registrations").doc(Uid).update({
-                        RazorPayOrderDetails: order,
-                    });
+                    // db.collection("Registrations").doc(Uid).update({
+                    //     RazorPayOrderDetails: order,
+                    // });
+
+                    setRazorDetails(Uid, order);
                     // Test credentials
                     order.key = "rzp_test_jWOofTDBbQGPFa";
 

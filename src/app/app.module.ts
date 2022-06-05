@@ -65,6 +65,7 @@ import { CountryComponent } from './body/registration/address-contact/country/co
 import { NumberOfRegistrationsComponent } from './body/number-of-registrations/number-of-registrations.component';
 import { DataTableComponent } from './body/common-tools/data-table/data-table.component';
 import { PaymentComponent } from './body/payment/payment.component';
+import { PaymentStatusComponent } from './body/payment-status/payment-status.component';
 
 
 @NgModule({
@@ -107,6 +108,7 @@ import { PaymentComponent } from './body/payment/payment.component';
     NumberOfRegistrationsComponent,
     DataTableComponent,
     PaymentComponent,
+    PaymentStatusComponent,
     // DataTableComponent,
     
   ],
