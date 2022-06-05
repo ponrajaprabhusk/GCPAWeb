@@ -1,12 +1,16 @@
-const { createRawData, updateRawData } = require("./tark/createRawData");
+/* eslint-disable linebreak-style */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable eol-last */
+/* eslint-disable indent */
+/* eslint-disable max-len */
+const { createRawData } = require("./tark/createRawData");
+const { updateData } = require("./tark/updateRawData");
 const { fastify, functions, cors, requestHandler } = require("../application/lib");
 
 fastify.post("/createRawData", (req, res) => {
-    console.log('oierg');
     createRawData(req, res);
 });
 fastify.post("/updateRawData", (req, res) => {
-    console.log('oierg');
     updateData(req, res);
 });
 
