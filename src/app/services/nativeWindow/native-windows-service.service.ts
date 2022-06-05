@@ -1,9 +1,5 @@
 import {Injectable} from '@angular/core';
 
-export interface ICustomWindow extends Window {
-  __custom_global_stuff: string;
-}
-
 function getWindow(): any {
   return window;
 }
@@ -13,7 +9,9 @@ function getWindow(): any {
 })
 export class NativeWindowsService {
 
-  get nativeWindow(): ICustomWindow {
+  constructor() { }
+
+  get nativeWindow(): any {
     return getWindow();
   }
 

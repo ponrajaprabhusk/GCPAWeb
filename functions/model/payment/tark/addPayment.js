@@ -36,12 +36,12 @@ function generateBase62Constant() {
 }
 
 exports.addPayment = function(request, response) {
-    cors(request, response, () => {
         const Uid = request.body.data.UserUid;
         const amount = request.body.data.Amount;
 
         getApplicant(Uid).then((doc) => {
-            if (doc.exists) {
+            console.log(doc);
+            if (doc != undefined) {
                 // Test Credentials
                 const razorpay = new RazorPay({
                     key_id: "rzp_test_jWOofTDBbQGPFa",
@@ -84,5 +84,4 @@ exports.addPayment = function(request, response) {
                 });
             }
         });
-    });
 };

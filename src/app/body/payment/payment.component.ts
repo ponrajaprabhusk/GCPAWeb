@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { Register } from 'src/app/Interfaces/RegistrationInterface';
 import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
-import { ICustomWindow, NativeWindowsService } from 'src/app/services/nativeWindow/native-windows-service.service';
+import { NativeWindowsService } from 'src/app/services/nativeWindow/native-windows-service.service';
 import { RegisterServiceService } from 'src/app/services/register-service/register-service.service';
 
 @Component({
@@ -24,8 +24,6 @@ export class PaymentComponent implements OnInit {
   loader: boolean = false
 
   paymentStatus: string
-
-  private _window: ICustomWindow;
   public rzp: any;
 
   public options: any = {
@@ -64,8 +62,6 @@ export class PaymentComponent implements OnInit {
     }
   };
 
-
-
   constructor(
     public route: ActivatedRoute, 
     public registrationService: RegisterServiceService,
@@ -74,7 +70,7 @@ export class PaymentComponent implements OnInit {
     private router: Router,
     public authService: AuthServiceService,
     private winRef: NativeWindowsService,
-    ) { }
+    ) {}
 
   ngOnInit(): void {
 this.registrationId = this.route.snapshot.params['registrationId'];
@@ -103,10 +99,10 @@ getRegistrationDetails(registrationId: string){
 }
 
 initPay(): void {
-  this.rzp = new this.winRef.nativeWindow["Razorpay"](this.options);
+  this.rzp = new this.winRef.nativeWindow.Razorpay(this.options);
   this.rzp.open();
 }
-async setOrderWithRazor() {
+setOrderWithRazor() {
   this.loader = true;
   const callable = this.functions.httpsCallable('payment/addPayment');
   callable({UserUid: this.authService.user.uid, Amount: "100"}).subscribe({ 
