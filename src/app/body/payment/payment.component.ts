@@ -16,6 +16,8 @@ export class PaymentComponent implements OnInit {
 
   registrationId:string
   applicant:Register
+  paymentComplete: boolean = false;
+  showLoader:boolean = true;
 
   date: string
   infoPacket: any
@@ -30,9 +32,9 @@ export class PaymentComponent implements OnInit {
     key: '',
     name: 'Global Child Prodigy Awards',
     description: 'Apply for Global Child Prodigy Awards',
-    image: "https://vintagehome.in/assets/logo.png",
+    image: "",
     order_id: "",
-    amount: 0,
+    amount: 100,
     prefill: {
       name: '',
       contact: '',
@@ -41,21 +43,25 @@ export class PaymentComponent implements OnInit {
     // callback_url: "",
     notes: {},
     theme: {
-      color: '#977552'
+      color: '#5194CF'
     },
     handler: (res: any) => {
       const paymentId = res.razorpay_payment_id;
       const orderId = res.razorpay_order_id;
       const signature = res.razorpay_signature;
       this.zone.run(() => {
-        this.router.navigate(["OrderStatus", orderId, paymentId, signature]);
+        console.log(orderId);
+        console.log(paymentId);
+        console.log(signature)
+        this.router.navigate(["paymentStatus", orderId, paymentId, signature, this.registrationId ]);
       })
     },
     modal: {
       ondismiss: (() => {
         this.zone.run(() => {
           // add current page routing if payment fails
-          this.router.navigate(["OrderStatus", "f", "f", "f"]);
+          console.log("sign");
+          this.router.navigate(["paymentStatus", "f", "f", "f", this.registrationId ]);
         })
       }),
 
@@ -87,6 +93,10 @@ getRegistrationDetails(registrationId: string){
   })).subscribe({ 
     next:(data)=>{
       this.applicant = data
+      console.log(this.applicant.PaymentStatus);
+      if(this.applicant.PaymentStatus == "Complete"){
+          this.paymentComplete = true;
+      }
       console.log(data);
     },
     error:(error)=>{
@@ -94,6 +104,8 @@ getRegistrationDetails(registrationId: string){
     },
     complete:()=>{
       console.log("Fetched Applicant Data Successfully")
+      console.log(this.paymentComplete);
+      this.showLoader = false;
     }
   })
 }
@@ -105,7 +117,7 @@ initPay(): void {
 setOrderWithRazor() {
   this.loader = true;
   const callable = this.functions.httpsCallable('payment/addPayment');
-  callable({UserUid: this.authService.user.uid, Amount: "100"}).subscribe({ 
+  callable({RegistrationId: this.applicant.Uid, Amount: "100"}).subscribe({ 
     next:(result)=>{
       console.log(result);
     this.authService.currentReceipt = result.receipt;
@@ -114,6 +126,7 @@ setOrderWithRazor() {
     this.options.amount = result.amount;
     this.options.key = result.key;
     this.options.prefill.name = this.applicant.FirstName;
+    console.log(this.applicant);
     this.options.prefill.contact = this.applicant.Number;
     this.options.prefill.email = this.authService.user.email;
     },

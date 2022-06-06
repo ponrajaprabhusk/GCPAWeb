@@ -13,6 +13,7 @@ import { TestimonialComponent } from './body/testimonial/testimonial.component';
 import { RegistrationComponent } from './body/registration/registration.component';
 import { NumberOfRegistrationsComponent } from './body/number-of-registrations/number-of-registrations.component';
 import { PaymentComponent } from './body/payment/payment.component';
+import { PaymentStatusComponent } from './body/payment-status/payment-status.component'
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path:'LoginPage', component: LoginPageComponent},
   {path:'Registration', component: RegistrationComponent},
   {path:'yourRegistrations', component: NumberOfRegistrationsComponent},
-  {path:'payment/:registrationId', component: PaymentComponent}
+  {path:'payment/:registrationId', component: PaymentComponent},
+  {path:'paymentStatus/:orderId/:paymentId/:signature/:id', component: PaymentStatusComponent}
 ];
 
 @NgModule({
