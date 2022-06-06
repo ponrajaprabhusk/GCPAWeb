@@ -1,3 +1,5 @@
+// eslint-disable-next-line linebreak-style
+// eslint linebreak-style: ["error", "windows"]
 module.exports = {
   root: true,
   env: {
@@ -9,6 +11,7 @@ module.exports = {
     "google",
   ],
   rules: {
-    quotes: ["error", "double"],
+    "quotes": ["error", "double"],
+    "linebreak-style": 0,
   },
 };

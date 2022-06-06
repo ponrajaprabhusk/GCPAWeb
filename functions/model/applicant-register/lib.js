@@ -1,3 +1,9 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable eol-last */
+/* eslint-disable indent */
+/* eslint-disable max-len */
+
 const { db } = require("../application/lib");
 
 exports.registerUser = function(uid, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo, profile, social, userUid, numberOfFiles) {
@@ -20,7 +26,7 @@ exports.registerUser = function(uid, dob, firstName, lastName, gaurdFirst, gaurd
         Profile: profile,
         Social: social,
         UserUid: userUid,
-        NumberOfFiles: numberOfFiles
+        NumberOfFiles: numberOfFiles,
 
     });
     return Promise.resolve(registerData);
@@ -52,8 +58,6 @@ exports.updateApplicant = function(inputJson, uid) {
 };
 
 exports.addFile = function(uid, file, fileUid) {
-    console.log("sibcub")
-    const addfile = db.collection("Registrations").doc(uid).collection('FilesUploaded').doc(fileUid).set(file);
+    const addfile = db.collection("Registrations").doc(uid).collection("FilesUploaded").doc(fileUid).set(file);
     return Promise.resolve(addfile);
-
-}
+};

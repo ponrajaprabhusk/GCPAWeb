@@ -1,12 +1,16 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable eol-last */
+/* eslint-disable indent */
+/* eslint-disable max-len */
 const { db } = require("../application/lib");
 
-exports.update_registration = function(inputJson, uid) {
+exports.updateRegistration = function(inputJson, uid) {
     const editRegistrationPromise = db.collection("Users").doc(uid).update(inputJson);
     return Promise.resolve(editRegistrationPromise);
 };
 
 exports.getUsersRegistrations = function(UserUid) {
-
     let query = db.collection("Registrations");
 
     query = query.where("UserUid", "==", UserUid);
@@ -22,5 +26,4 @@ exports.getUsersRegistrations = function(UserUid) {
     });
 
     return Promise.resolve(promise);
-
-}
+};

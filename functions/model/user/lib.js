@@ -1,3 +1,8 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable eol-last */
+/* eslint-disable indent */
+/* eslint-disable max-len */
 const { db } = require("../application/lib");
 
 exports.setUser = function(uid, photoURL, displayName, email, phoneNumber, providerId, numberOfRegistrations) {

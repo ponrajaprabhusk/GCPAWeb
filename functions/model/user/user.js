@@ -1,8 +1,12 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable eol-last */
+/* eslint-disable indent */
+/* eslint-disable max-len */
 const { createNewUser } = require("./tark/createNewUser");
 const { fastify, functions, cors, requestHandler } = require("../application/lib");
 
 fastify.post("/createNewUser", (req, res) => {
-    console.log('oierg');
     createNewUser(req, res);
 });
 

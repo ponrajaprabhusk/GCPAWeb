@@ -1,0 +1,46 @@
+<div class="p-5"></div>
+<div class="center">
+    <div class="row p-2 border">
+        <table>
+            <tr>
+                <td>
+                    <p><b>Registraion Id:</b></p>
+                </td>
+                <td>
+                    <p>{{applicant.Uid}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td> <p><b>Name:</b></p></td>
+                <td> <p>{{applicant.FirstName}} {{applicant.LastName}}</p></td>
+            </tr>
+            <tr>
+                <td><p><b>Email:</b></p></td>
+                <td>  <p>{{applicant.Email}}</p></td>
+            </tr>
+            <tr>
+                <td>  <p><b>Phone:</b></p></td>
+                <td><p>{{applicant.Number}}</p></td>
+            </tr>
+        </table>
+      
+    </div>
+
+</div>
+<div class="row p-2" *ngIf="!paymentComplete" style="text-align: center;">
+    <div class="col">
+        <button class="btn btn-success" (click)="setOrderWithRazor()">Pay Now</button>
+    </div>
+</div>
+<div class="row p-2" *ngIf="paymentComplete" style="text-align: center;">
+    <div class="col">
+        <h1>Payment Already Done!</h1>
+    </div>
+</div>
+<ng-template *ngIf="showLoader">
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+</ng-template>

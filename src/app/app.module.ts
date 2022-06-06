@@ -64,6 +64,8 @@ import { CategoryUploadComponent } from './body/registration/category-upload/cat
 import { CountryComponent } from './body/registration/address-contact/country/country.component';
 import { NumberOfRegistrationsComponent } from './body/number-of-registrations/number-of-registrations.component';
 import { DataTableComponent } from './body/common-tools/data-table/data-table.component';
+import { PaymentComponent } from './body/payment/payment.component';
+import { PaymentStatusComponent } from './body/payment-status/payment-status.component';
 
 
 @NgModule({
@@ -105,6 +107,8 @@ import { DataTableComponent } from './body/common-tools/data-table/data-table.co
     CountryComponent,
     NumberOfRegistrationsComponent,
     DataTableComponent,
+    PaymentComponent,
+    PaymentStatusComponent,
     // DataTableComponent,
     
   ],

@@ -3,18 +3,21 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { createRawData } = require("./tark/createRawData");
-const { updateData } = require("./tark/updateRawData");
+
 const { fastify, functions, cors, requestHandler } = require("../application/lib");
+// eslint-disable linebreak-style
+const { addPayment } = require("./tark/addPayment");
+const { paymentVerification } = require("./tark/paymentVerification");
 
-fastify.post("/createRawData", (req, res) => {
-    createRawData(req, res);
-});
-fastify.post("/updateRawData", (req, res) => {
-    updateData(req, res);
+fastify.post("/paymentVerification", (req, res) => {
+    paymentVerification(req, res);
 });
 
-exports.rawDatas = functions.https.onRequest((req, res) => {
+fastify.post("/addPayment", (req, res) => {
+    addPayment(req, res);
+});
+
+exports.payment = functions.https.onRequest((req, res) => {
     cors(req, res, () => {
         fastify.ready((err) => {
             if (err) throw err;
