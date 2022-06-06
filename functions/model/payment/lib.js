@@ -4,6 +4,7 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 const { db } = require("../application/lib");
+const { mailer } = require("../Mailer/lib");
  /**
   * Description
   * @param {any} Uid
@@ -30,9 +31,10 @@ exports.setPaymentStatus = function(orderId, id) {
     });
     Promise.resolve(p1).then(()=>{
         const promise = db.collection("Registrations").doc(id).update({
-            paymentStatus: "Complete",
+            PaymentStatus: "Complete",
             RazorPayOrderDetails: data.RazorPayOrderDetails,
         });
+        mailer(data.UserUid, "Payment_Complete", id);
         return Promise.resolve(promise);
     });
 };

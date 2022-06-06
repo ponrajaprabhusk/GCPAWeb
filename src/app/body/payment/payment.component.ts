@@ -16,6 +16,8 @@ export class PaymentComponent implements OnInit {
 
   registrationId:string
   applicant:Register
+  paymentComplete: boolean = false;
+  showLoader:boolean = true;
 
   date: string
   infoPacket: any
@@ -91,6 +93,10 @@ getRegistrationDetails(registrationId: string){
   })).subscribe({ 
     next:(data)=>{
       this.applicant = data
+      console.log(this.applicant.PaymentStatus);
+      if(this.applicant.PaymentStatus == "Complete"){
+          this.paymentComplete = true;
+      }
       console.log(data);
     },
     error:(error)=>{
@@ -98,6 +104,8 @@ getRegistrationDetails(registrationId: string){
     },
     complete:()=>{
       console.log("Fetched Applicant Data Successfully")
+      console.log(this.paymentComplete);
+      this.showLoader = false;
     }
   })
 }

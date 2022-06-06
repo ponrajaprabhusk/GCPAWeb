@@ -17,4 +17,5 @@ export interface Register {
     Profile:string;
     Social:string;
     UserUid:string;
+    PaymentStatus:string;
 }

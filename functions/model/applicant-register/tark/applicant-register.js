@@ -6,6 +6,7 @@
 const { registerUser, getApplicant, updateApplicant, addFile } = require("../lib");
 const { getRawData } = require("../../raw-data/lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
+const { mailer } = require("../../Mailer/lib");
 
 exports.addFiles = function(uid, file) {
     const promise = getApplicant(uid).then((doc) => {
@@ -68,6 +69,7 @@ this.addFiles(uid, profile);
 
             // end
             updateData("registration").then(() => console.log("Registration Raw Data Updated"));
+            mailer(userUid, "Registration_Complete", uid);
             return response.status(status).send(result);
         }).catch((error) => {
             result = { data: error };

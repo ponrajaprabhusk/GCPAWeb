@@ -1,8 +1,12 @@
 <div class="row text-center" style="padding-top:100px;">
-    <div *ngIf="paymentDone">
+    <div *ngIf="paymentStatus == 'Complete'">
         <h1>Payment Success</h1>
     </div>
+    <div *ngIf="paymentStatus == 'Failed'" class="p-5">
+        <h1 >Payment Failed</h1>
+        <button (click)="retry()" class="btn btn-primary">Retry</button>
+    </div>
     <div>
-        <h1 *ngIf="!paymentDone">Payment Failed</h1>
+        <h1 *ngIf="paymentStatus == 'Waiting'">Please Wait</h1>
     </div>
 </div>

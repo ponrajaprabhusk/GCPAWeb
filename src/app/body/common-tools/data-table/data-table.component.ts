@@ -42,4 +42,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     this.table.dataSource = this.dataSource;
   }
 
+  pay(Uid: any){
+    this.router.navigate(['payment/', Uid]);
+  }
+
 }

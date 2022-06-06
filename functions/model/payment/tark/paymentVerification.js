@@ -9,6 +9,7 @@ const functions = require("firebase-functions");
 const cors = require("cors")({ origin: true });
 const { setPaymentStatus } = require("../lib");
 const crypto = require("crypto");
+const { mailer } = require("../../Mailer/lib");
 
 exports.paymentVerification = function(request, response) {
     const orderId = request.body.data.OrderId;

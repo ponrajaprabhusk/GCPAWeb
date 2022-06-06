@@ -30,7 +30,7 @@ export class NumberOfRegistrationsComponent implements OnInit {
     this.dataTableService.getRegistrations().subscribe((data) => {
       if(data.length) {
         this.registrationsData = data;
-        this.displayColoumns = ['Uid', 'FirstName', 'Dob', 'LastName'];
+        this.displayColoumns = ['Uid', 'FirstName', 'Dob', 'LastName', 'Payment'];
         this.showLoader = false;
         this.noData = false;
       } else {

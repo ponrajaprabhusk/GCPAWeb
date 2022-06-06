@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-payment-status',
@@ -12,11 +14,12 @@ export class PaymentStatusComponent implements OnInit {
   orderId : string;
   paymentId : string;
   signature: string;
-  paymentDone: boolean;
+  paymentStatus: string = "Waiting";
   registrationId: string;
   constructor(
     public route: ActivatedRoute,
     public functions: AngularFireFunctions,
+    private location: Location,
     ) { }
 
   ngOnInit(): void {
@@ -31,18 +34,22 @@ export class PaymentStatusComponent implements OnInit {
     const callable = this.functions.httpsCallable("payment/paymentVerification");
     callable({OrderId: this.orderId, PaymentId: this.paymentId, Signature: this.signature, Id: this.registrationId}).subscribe({ 
       next:(data)=>{
-        this.paymentDone = true;
-        console.log("PaymentStatus ", this.paymentDone);
+        this.paymentStatus = "Complete";
+        console.log("PaymentStatus ", this.paymentStatus);
       },
       error:(error)=>{
-        this.paymentDone = false;
+        this.paymentStatus = "Failed";
         console.log(error);
-        console.log("PaymentStatus ", this.paymentDone);
+        console.log("PaymentStatus ", this.paymentStatus);
       },
       complete:()=>{
         console.log("PaymentSuccess")
       }
     })
+  }
+
+  retry(){
+    this.location.back()
   }
 
 }
