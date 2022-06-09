@@ -6,9 +6,10 @@
 
 const { db } = require("../application/lib");
 
-exports.registerUser = function(uid, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo, profile, social, userUid, numberOfFiles) {
+exports.registerUser = function(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo, profile, social, userUid, numberOfFiles) {
     const registerData = db.collection("Registrations").doc(uid).set({
         Uid: uid,
+        Prefix: prefix,
         Dob: dob,
         FirstName: firstName,
         LastName: lastName,
@@ -27,6 +28,7 @@ exports.registerUser = function(uid, dob, firstName, lastName, gaurdFirst, gaurd
         Social: social,
         UserUid: userUid,
         NumberOfFiles: numberOfFiles,
+        PaymentStatus: "false",
 
     });
     return Promise.resolve(registerData);
@@ -61,3 +63,17 @@ exports.addFile = function(uid, file, fileUid) {
     const addfile = db.collection("Registrations").doc(uid).collection("FilesUploaded").doc(fileUid).set(file);
     return Promise.resolve(addfile);
 };
+
+exports.getAllRegistrations = function() {
+    const query = db.collection("Registrations");
+    const promise = query.get().then((doc) => {
+      const data = [];
+      doc.forEach((element) => {
+        if (element.exists) {
+          data.push(element.data());
+        }
+      });
+      return data;
+    });
+    return Promise.resolve(promise);
+  };

@@ -5,14 +5,19 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyA66XuMU78LPw0xRxxBv1WtNaGvB7HPMfc",
-  authDomain: "gcpawards-f3c5a.firebaseapp.com",
-  databaseURL: "https://gcpawards-f3c5a.firebaseio.com",
-  projectId: "gcpawards-f3c5a",
-  storageBucket: "gcpawards-f3c5a.appspot.com",
-  messagingSenderId: "830042320115",
-  appId: "1:830042320115:web:f21d7cf73004e989fc1b86",
-  measurementId: "G-27H3SDGBGJ"
+    apiKey: "AIzaSyArJwOw-uXdCnEA-kvJpV1tmcPQU9mSB6g",
+
+  authDomain: "gcpaweb.firebaseapp.com",
+
+  projectId: "gcpaweb",
+
+  storageBucket: "gcpaweb.appspot.com",
+
+  messagingSenderId: "899563581116",
+
+  appId: "1:899563581116:web:cd9e50532c2a142e772ab9"
+    
+
   },
   useEmulators: true,
   recaptcha: {

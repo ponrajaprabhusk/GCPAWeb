@@ -4,6 +4,8 @@ import { AuthServiceService } from 'src/app/services/auth-service/auth-service.s
 import { Register } from 'src/app/Interfaces/RegistrationInterface';
 import { RegisterServiceService } from 'src/app/services/register-service/register-service.service';
 import { DataTableServiceService } from 'src/app/services/dataTable/data-table-service.service';
+import { Router } from '@angular/router';
+import { PopupHandlerService } from 'src/app/services/popup-handler-service/popup-handler.service';
 
 @Component({
   selector: 'app-number-of-registrations',
@@ -12,7 +14,7 @@ import { DataTableServiceService } from 'src/app/services/dataTable/data-table-s
 })
 export class NumberOfRegistrationsComponent implements OnInit {
 
-  constructor(public authService: AuthServiceService, public functions: AngularFireFunctions, public registerService:RegisterServiceService, public dataTableService:DataTableServiceService) { }
+  constructor(private router: Router,public authService: AuthServiceService, public functions: AngularFireFunctions, public registerService:RegisterServiceService, public dataTableService:DataTableServiceService, public popupService:PopupHandlerService) { }
 
   registrationsData:Register[];
   displayColoumns:string[]=[];
@@ -21,6 +23,10 @@ export class NumberOfRegistrationsComponent implements OnInit {
 
   
   ngOnInit(){
+    if (!this.authService.user) {
+      this.popupService.loginPopup=true
+      this.router.navigate([''])
+    }
     this.authService.afauth.user.subscribe((data) => {
       this.getRegistrationData();
     });

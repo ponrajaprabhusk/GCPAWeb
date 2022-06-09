@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PartnerServiceService } from 'src/app/services/partners/partner-service.service';
 
 @Component({
   selector: 'app-partners',
@@ -45,9 +46,11 @@ export class PartnersComponent implements OnInit {
       src:'../../../assets/dots.png'
     },
   ]
-  constructor() { }
+  constructor(public partnerService:PartnerServiceService) { }
 
   ngOnInit(): void {
+    this.partnerService.getPartners()
+    this.partnerService.partners
   }
 
 }

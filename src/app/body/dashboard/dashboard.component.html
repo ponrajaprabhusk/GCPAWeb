@@ -1,0 +1,49 @@
+<head>
+    <script src="https://kit.fontawesome.com/02860b733b.js" crossorigin="anonymous"></script>
+</head>
+
+<app-support-popup></app-support-popup>
+
+<div class="back mt-5 pt-5 pb-5">
+    <h1 class="text-center pt-3">Admin Dashboard</h1>
+    <div class="container">
+        <div class="row text-center pt-5">
+            <!-- <div class="col-4">
+                <button class="btn btn-outline-dar" (click)="displayrawData()">Raw Data</button>
+            </div> -->
+            <div class="col-4">
+                <button class="btn btn-outline-dar" (click)="displayUserData()">Users</button>
+            </div>
+            <div class=" col-4 ">
+                <button class="btn btn-outline-dar " (click)="displayRegistrationData()">Registrations</button>
+            </div>
+            <div class=" col-4 pt-4">
+                <button class="btn btn-outline-dar " (click)="partnersSponsors()">Partners And Sponsers</button>
+            </div>
+            <div class=" col-4 pt-4">
+                <button class="btn btn-outline-dar " (click)="testimonials()">Testimonials</button>
+            </div>
+            <div class=" col-4 pt-4">
+                <button class="btn btn-outline-dar " (click)="newsroom()">Media Coverage</button>
+            </div>
+            <div class=" col-4 pt-4">
+                <button class="btn btn-outline-dar " (click)="gallery()">Gallery</button>
+            </div>
+        </div>
+        <!-- <ng-container>
+            <div class="container " *ngIf="showRawData ">
+                <app-raw-data-table [dataForTable]="rawData " [displayColoumns]="displayColoumns " [pageSize]=" '5' "> </app-raw-data-table>
+            </div>
+        </ng-container> -->
+        <ng-container>
+            <div class="container " *ngIf="showUserData ">
+                <app-user-data-table [dataForTable]="userData " [displayColoumns]="displayColoumnsUser " [pageSize]=" '5' "> </app-user-data-table>
+            </div>
+        </ng-container>
+        <ng-container>
+            <div class="container " *ngIf="showRegistrationData ">
+                <app-registration-data-table [dataForTable]="registrationData " [displayColoumns]="displayColoumnsRegistration " [pageSize]=" '5' "> </app-registration-data-table>
+            </div>
+        </ng-container>
+    </div>
+</div>

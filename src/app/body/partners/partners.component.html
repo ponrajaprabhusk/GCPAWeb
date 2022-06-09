@@ -4,12 +4,12 @@
     </div>
     <div class="container mt-3 py-3 px-2">
         <div class="row text-center">
-            <ng-container *ngFor="let con of content" >
+            <ng-container *ngFor="let partner of partnerService.partners">
                 <div class="col-md-3 px-3 py-3 my-auto">
-                    <img [src]="con.src" class="img-fluid rounded" alt="">
+                    <img [src]="partner.ImageUrl" class="img-fluid rounded" alt="">
                 </div>
             </ng-container>
         </div>
-        
+
     </div>
 </div>

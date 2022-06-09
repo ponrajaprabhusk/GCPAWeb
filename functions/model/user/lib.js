@@ -14,6 +14,7 @@ exports.setUser = function(uid, photoURL, displayName, email, phoneNumber, provi
         PhoneNumber: phoneNumber,
         ProviderId: providerId,
         NumberOfRegistrations: numberOfRegistrations,
+        Admin: false,
     });
     return Promise.resolve(userData);
 };
@@ -34,6 +35,21 @@ exports.getUser = function(Uid, username) {
         doc.forEach((element) => {
             if (element.exists) {
                 data = element.data();
+            }
+        });
+        return data;
+    });
+
+    return Promise.resolve(promise);
+};
+exports.getUsersData = function() {
+    const query = db.collection("Users");
+
+    const promise = query.get().then((doc) => {
+        const data = [];
+        doc.forEach((element) => {
+            if (element.exists) {
+                data.push(element.data());
             }
         });
         return data;

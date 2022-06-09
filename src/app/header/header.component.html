@@ -43,18 +43,38 @@
             <a class="nav-item nav-link ">
                 <button type="submit" class="btn btn-outline-dark ms-5" (click)="loadRegistration()">Resgister</button>
             </a>
-            <a class="nav-item nav-link ">
-                <button type="submit" class="btn btn-outline-dark" (click)="loadyourRegistrations()">Your Registrations</button>
+            <a class="nav-item nav-link " *ngIf="loggedIn">
+                <button type="submit" class="btn btn-outline-dark" (click)="loadyourRegistrations()">My Registrations</button>
             </a>
             <a class="nav-item nav-link ">
                 <button type="submit" class="btn btn-outline-dark" (click)="setRawData()">Raw Data</button>
             </a>
-            <a class="nav-item nav-link text-end" *ngIf="loggedIn">
+            <!-- <a class="nav-item nav-link text-end" *ngIf="loggedIn">
                 <button class="btn  btn-outline-dark rounded-circle"><i class="fa-solid fa-user"></i></button>
-            </a>
+            </a> -->
             <a class="nav-item nav-link " *ngIf="!loggedIn">
                 <button type="submit" class="btn btn-outline-dark" (click)="loadLoginPage()">Login/Signup</button>
             </a>
+            <!-- <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown button
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div> -->
+            <!-- <a class="nav-item nav-link ">
+                <app-user-card></app-user-card>
+            </a> -->
+            <ng-container *ngIf="loggedIn">
+                <a class="nav-item nav-link " *ngIf="authService.loggedInUser.Admin">
+                    <button type="submit" class="btn btn-outline-dark" (click)="loadDashboardPage()">Dashboard</button>
+                </a>
+            </ng-container>
         </div>
     </div>
 </nav>
+
+<app-login-page></app-login-page>

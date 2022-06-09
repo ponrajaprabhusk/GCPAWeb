@@ -1,30 +1,40 @@
-const { db } = require("../application/lib");
+/* eslint-disable linebreak-style */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable eol-last */
+/* eslint-disable indent */
+/* eslint-disable max-len */
+const {db} = require("../application/lib");
 
-exports.setRawData = function(numberOfUsers, numberOfRegistrations) {
-    const rawData = db.collection("RawData").doc("RawData").set({
-        NumberOfUsers: numberOfUsers,
-        NumberOfRegistrations: numberOfRegistrations,
-    });
-    return Promise.resolve(rawData);
+exports.setRawData = function(numberOfUsers, numberOfRegistrations, numberOfSupport) {
+  const rawData = db.collection("RawData").doc("RawData").set({
+    NumberOfUsers: numberOfUsers,
+    NumberOfRegistrations: numberOfRegistrations,
+    NumberOfSupport: numberOfSupport,
+    NumberOfPartners: 0,
+    NumberOfTestimonials: 0,
+    NumberOfNews: 0,
+    NumberOfGalleryPics: 0,
+  });
+  return Promise.resolve(rawData);
 };
 
 exports.updateRawData = function(inputJson) {
-    const editRawDataPromise = db.collection("RawData").doc("RawData").update(inputJson);
-    return Promise.resolve(editRawDataPromise);
+  const editRawDataPromise = db.collection("RawData").doc("RawData").update(inputJson);
+  return Promise.resolve(editRawDataPromise);
 };
 
 exports.getRawData = function() {
-    let query = db.collection("RawData");
+  const query = db.collection("RawData");
 
-    const promise = query.get().then((doc) => {
-        let data;
-        doc.forEach((element) => {
-            if (element.exists) {
-                data = element.data();
-            }
-        });
-        return data;
+  const promise = query.get().then((doc) => {
+    const data = [];
+    doc.forEach((element) => {
+      if (element.exists) {
+        data.push(element.data());
+      }
     });
+    return data;
+  });
 
-    return Promise.resolve(promise);
+  return Promise.resolve(promise);
 };

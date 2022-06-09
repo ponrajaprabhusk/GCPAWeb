@@ -7,17 +7,9 @@ import { AuthServiceService } from '../auth-service/auth-service.service';
 export class PopupHandlerService {
 
   registerNewApplicantEnables:boolean=false;
+  loginPopup:boolean=false;
 
-  constructor(public authService:AuthServiceService) { }
+  constructor() { }
   
-  popupEnable()
-  {
-    console.log(this.authService.userReady);
-    if (this.authService.user) {
-      this.registerNewApplicantEnables=false;
-    }
-    else
-    this.registerNewApplicantEnables=true;
-    console.log(this.registerNewApplicantEnables)
-  }
+  
 }

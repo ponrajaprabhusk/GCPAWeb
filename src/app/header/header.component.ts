@@ -14,8 +14,9 @@ import { PopupHandlerService } from '../services/popup-handler-service/popup-han
 })
 export class HeaderComponent implements OnInit {
   loggedIn:boolean=false;
+  admin:boolean=false;
 
-  constructor(private router: Router, private authService:AuthServiceService, private popup:PopupHandlerService, public functions: AngularFireFunctions) { }
+  constructor(private router: Router, public authService:AuthServiceService, private popup:PopupHandlerService, public functions: AngularFireFunctions) { }
 
   ngOnInit(): void {
     console.log(this.authService.afauth.user)
@@ -23,9 +24,10 @@ export class HeaderComponent implements OnInit {
       next:(user)=>{
         this.authService.setCurrentUser(user as User);
         if (user) {
+          this.authService.getUser(user.uid)
           this.loggedIn=true;
         }
-        this.popup.popupEnable()
+        // this.popup.popupEnable()
       },
       error:(error)=>{
         console.error(error);
@@ -37,7 +39,8 @@ export class HeaderComponent implements OnInit {
   }
 
   loadLoginPage() {
-    this.router.navigate(['/LoginPage']);
+    // this.router.navigate(['/LoginPage']);
+    this.popup.loginPopup=true
   }
 
   loadRegistration(){
@@ -48,12 +51,17 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/yourRegistrations']);
   }
 
+  loadDashboardPage(){
+    this.router.navigate(['/dashboard']);
+  }
+
   setRawData(){
     const numberOfUsers=0;
     const numberOfRegistrations=0;
+    const numberOfSupport=0;
     const callable = this.functions.httpsCallable('rawDatas/createRawData');
         console.log("create raw Data");
-        callable({ numberOfUsers:numberOfUsers,numberOfRegistrations:numberOfRegistrations}).subscribe({
+        callable({ numberOfUsers:numberOfUsers,numberOfRegistrations:numberOfRegistrations, numberOfSupport:numberOfSupport}).subscribe({
           next: (data) => {
             console.log("Raw Data created");
           },

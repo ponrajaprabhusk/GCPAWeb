@@ -1,0 +1,25 @@
+<head>
+    <script src="https://kit.fontawesome.com/02860b733b.js" crossorigin="anonymous"></script>
+</head>
+
+<app-support-popup></app-support-popup>
+
+<div class="back mt-5 pt-5 pb-5">
+    <h1 class="text-center pt-3">Newsroom</h1>
+    <div class="container">
+        <div class="text-center">
+            <button class="btn btn-outline-dar" (click)="showNewNews()">Add new News</button>
+            <app-new-news *ngIf="newNews"></app-new-news>
+        </div>
+        <div class="container mt-3 py-3 px-2">
+            <div class="row text-center">
+                <ng-container *ngFor="let news of newsService.newsroom">
+                    <div class="col-md-3 px-3 py-3 my-auto">
+                        <a [href]="news.Link"><img [src]="news.ImageUrl" class="img-fluid rounded bg-white" alt=""></a>
+                    </div>
+                </ng-container>
+            </div>
+
+        </div>
+    </div>
+</div>
