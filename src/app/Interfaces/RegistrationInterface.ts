@@ -1,5 +1,6 @@
 export interface Register {
     Uid:string ;
+    Prefix:string;
     Dob:string;
     FirstName:string;
     LastName:string;

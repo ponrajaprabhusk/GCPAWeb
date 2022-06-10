@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestimonialsServiceService } from 'src/app/services/testimonials/testimonials-service.service';
 
 @Component({
   selector: 'app-testimonial',
@@ -52,9 +53,10 @@ export class TestimonialComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(public testimonialService:TestimonialsServiceService) { }
 
   ngOnInit(): void {
+ this.testimonialService.getTestimonial()
   }
 
 }

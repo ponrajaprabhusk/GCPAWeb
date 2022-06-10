@@ -25,7 +25,11 @@ export class FileUploadService {
   profileTime:string="";
   profileLastModified:number;
 
-
+  partnerUrl:string="";
+  testimonialUrl:string="";
+  newsUrl:string="";
+  galleryUrl:string="";
+  
 
   filesData: FileData[]
 
@@ -70,7 +74,19 @@ export class FileUploadService {
      this.profileDate=todayDate
      this.profileTime=time
      this.profileLastModified=lastModified
-    } 
+    } else if(folderName=="Partners"){
+      this.partnerUrl=fileUpload.url
+      
+    }else if(folderName=="Testimonial"){
+      this.testimonialUrl=fileUpload.url
+      
+    }else if(folderName=="Newsroom"){
+      this.newsUrl=fileUpload.url
+      
+    }else if(folderName=="Gallery"){
+      this.galleryUrl=fileUpload.url
+      
+    }
     
     this.fileUploadStatus = false;
   }

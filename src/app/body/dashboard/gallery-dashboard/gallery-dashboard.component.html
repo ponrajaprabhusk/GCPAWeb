@@ -1,0 +1,22 @@
+<head>
+    <script src="https://kit.fontawesome.com/02860b733b.js" crossorigin="anonymous"></script>
+</head>
+<div class="back mt-5 pt-5 pb-5">
+    <h1 class="text-center pt-3">Gallery</h1>
+    <div class="container">
+        <div class="text-center">
+            <button class="btn btn-outline-dar" (click)="showNewPhoto()">Add new Photo</button>
+            <app-new-pic *ngIf="newPhoto"></app-new-pic>
+        </div>
+        <div class="container mt-3 py-3 px-2">
+            <div class="row text-center">
+                <ng-container *ngFor="let photo of galleryService.gallery">
+                    <a [ngClass]="{'col-md-3 px-3 py-3 my-auto':true}" [href]="photo.ImageUrl" (mouseenter)="photo.Hovering=true" (mouseleave)="photo.Hovering=false">
+                        <img [src]="photo.ImageUrl" src="../../../assets/gallery/" [ngClass]="{'img-fluid rounded':true,'darken shadow':photo.Hovering}" alt="">
+                    </a>
+                </ng-container>
+            </div>
+
+        </div>
+    </div>
+</div>

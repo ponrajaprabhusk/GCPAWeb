@@ -63,9 +63,34 @@ import { AddressContactComponent } from './body/registration/address-contact/add
 import { CategoryUploadComponent } from './body/registration/category-upload/category-upload.component';
 import { CountryComponent } from './body/registration/address-contact/country/country.component';
 import { NumberOfRegistrationsComponent } from './body/number-of-registrations/number-of-registrations.component';
+import { ChatSupportComponent } from './body/contact/chat-support/chat-support.component';
+import { SupportComponent } from './body/support/support.component';
 import { DataTableComponent } from './body/common-tools/data-table/data-table.component';
 import { PaymentComponent } from './body/payment/payment.component';
 import { PaymentStatusComponent } from './body/payment-status/payment-status.component';
+import { Section4Component } from './body/home/testimonials/section4/section4.component';
+import { SupportPopupComponent } from './body/support/support-popup/support-popup.component';
+import { SupportDetailsComponent } from './body/support/support-details/support-details.component';
+import { DashboardComponent } from './body/dashboard/dashboard.component';
+import { RawDataTableComponent } from './body/common-tools/raw-data-table/raw-data-table.component';
+import { UserDataTableComponent } from './body/common-tools/user-data-table/user-data-table.component';
+import { RegistrationDetailComponent } from './body/number-of-registrations/registration-detail/registration-detail.component';
+import { RegistrationDataTableComponent } from './body/common-tools/registration-data-table/registration-data-table.component';
+import { RegistrationDetailsAdminComponent } from './body/dashboard/registration-details-admin/registration-details-admin.component';
+import { EditRegistrationComponent } from './body/dashboard/edit-registration/edit-registration.component';
+import { LoaderComponent } from './body/loader/loader.component';
+import { SponsorsPartnersComponent } from './body/dashboard/sponsors-partners/sponsors-partners.component';
+import { NewPartnerComponent } from './body/dashboard/sponsors-partners/new-partner/new-partner.component';
+import { TestimonialsDashboardComponent } from './body/dashboard/testimonials-dashboard/testimonials-dashboard.component';
+import { NewTestimonialComponent } from './body/dashboard/testimonials-dashboard/new-testimonial/new-testimonial.component';
+import { NewsroomDashboardComponent } from './body/dashboard/newsroom-dashboard/newsroom-dashboard.component';
+import { NewNewsComponent } from './body/dashboard/newsroom-dashboard/new-news/new-news.component';
+import { UserCardComponent } from './header/user-card/user-card.component';
+import { GalleryDashboardComponent } from './body/dashboard/gallery-dashboard/gallery-dashboard.component';
+import { NewPicComponent } from './body/dashboard/gallery-dashboard/new-pic/new-pic.component';
+import { RegistrationDashboardComponent } from './body/dashboard/registration-dashboard/registration-dashboard.component';
+import { UsersDashboardComponent } from './body/dashboard/users-dashboard/users-dashboard.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -106,11 +131,36 @@ import { PaymentStatusComponent } from './body/payment-status/payment-status.com
     CategoryUploadComponent,
     CountryComponent,
     NumberOfRegistrationsComponent,
+    ChatSupportComponent,
+    SupportComponent,
     DataTableComponent,
     PaymentComponent,
     PaymentStatusComponent,
     // DataTableComponent,
     
+    DataTableComponent,
+    Section4Component,
+    SupportPopupComponent,
+    SupportDetailsComponent,
+    DashboardComponent,
+    RawDataTableComponent,
+    UserDataTableComponent,
+    RegistrationDetailComponent,
+    RegistrationDataTableComponent,
+    RegistrationDetailsAdminComponent,
+    EditRegistrationComponent,
+    LoaderComponent,
+    SponsorsPartnersComponent,
+    NewPartnerComponent,
+    TestimonialsDashboardComponent,
+    NewTestimonialComponent,
+    NewsroomDashboardComponent,
+    NewNewsComponent,
+    UserCardComponent,
+    GalleryDashboardComponent,
+    NewPicComponent,
+    RegistrationDashboardComponent,
+    UsersDashboardComponent,  
   ],
   imports: [
     MatDialogModule,
@@ -139,6 +189,7 @@ import { PaymentStatusComponent } from './body/payment-status/payment-status.com
     provideStorage(() => getStorage())
   ],
   providers: [
+    CookieService,
     { provide: RECAPTCHA_SETTINGS, useValue: {siteKey: environment.recaptcha.siteKey,} as RecaptchaSettings,},
     { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['http://localhost:9099'] : undefined },
     { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ? ['localhost', 8080] : undefined },

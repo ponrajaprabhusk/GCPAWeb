@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { map, Observable } from 'rxjs';
+import { RawData } from 'src/app/Interfaces/RawData';
 import { Register } from 'src/app/Interfaces/RegistrationInterface';
+import { UserFetched } from 'src/app/Interfaces/UserInterface';
 import { AuthServiceService } from '../auth-service/auth-service.service';
 
 @Injectable({
@@ -10,6 +12,9 @@ import { AuthServiceService } from '../auth-service/auth-service.service';
 export class DataTableServiceService {
 
   public registrationsDataObservable: Observable<Register[]>;
+  public rawDataObservable: Observable<RawData[]>;
+  public userDataObservable: Observable<UserFetched[]>;
+  public registrationDataObservable: Observable<Register[]>;
 
 
 
@@ -23,5 +28,34 @@ export class DataTableServiceService {
       return data;
     }));
     return this.registrationsDataObservable
+  }
+
+  getRawData(){
+    
+    const callable = this.functions.httpsCallable("rawDatas/getRawData");
+    this.rawDataObservable=callable({}).pipe(map(res=>{
+      const data = res.data as RawData[];
+      return data;
+    }));
+    return this.rawDataObservable
+  }
+  getUserData(){
+    
+    const callable = this.functions.httpsCallable("users/getUsers");
+    this.userDataObservable=callable({}).pipe(map(res=>{
+      const data = res.data as UserFetched[];
+      return data;
+    }));
+    return this.userDataObservable
+  }
+
+  getRegistrationsData(){
+    
+    const callable = this.functions.httpsCallable("registrations/getAllRegistrations");
+    this.registrationDataObservable=callable({}).pipe(map(res=>{
+      const data = res.data as Register[];
+      return data;
+    }));
+    return this.registrationDataObservable
   }
 }

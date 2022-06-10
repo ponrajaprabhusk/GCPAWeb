@@ -45,5 +45,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   pay(Uid: any){
     this.router.navigate(['payment/', Uid]);
   }
+  openRegistrationDetail(Uid:string){
+this.router.navigate(['/registrationDetail',Uid])
+  }
 
 }

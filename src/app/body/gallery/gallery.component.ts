@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GalleryDashboardService } from 'src/app/services/gallery/gallery-dashboard.service';
 
 @Component({
   selector: 'app-gallery',
@@ -91,9 +92,10 @@ export class GalleryComponent implements OnInit {
     
   ]
 
-  constructor() { }
+  constructor(public galleryService:GalleryDashboardService) { }
 
   ngOnInit(): void {
+this.galleryService.getphoto();
   }
-
+  
 }

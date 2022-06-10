@@ -8,7 +8,7 @@ const { getRawData } = require("../../raw-data/lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
 const { mailer } = require("../../Mailer/lib");
 
-exports.addFiles = function(uid, file) {
+const addFiles = function(uid, file) {
     const promise = getApplicant(uid).then((doc) => {
         if (doc == undefined) {
             console.log("Document does not exist");
@@ -17,7 +17,6 @@ exports.addFiles = function(uid, file) {
             const inputJson = {
                 NumberOfFiles: numberOfFiles,
             };
-            console.log(numberOfFiles);
             updateApplicant(inputJson, uid).then(() => {
                 const fileUid = "F" + numberOfFiles;
                 file.Uid = fileUid;
@@ -32,6 +31,7 @@ exports.addFiles = function(uid, file) {
 exports.registerNewUser = function(request, response) {
     const user = request.body.data;
 
+    const prefix=user.Prefix;
     const dob = user.Dob;
     const firstName = user.FirstName;
     const lastName = user.LastName;
@@ -54,16 +54,16 @@ exports.registerNewUser = function(request, response) {
     const status = 200;
 
     getRawData().then((doc) => {
-        const uid = "R" + (doc.NumberOfRegistrations + 1);
-        registerUser(uid, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles).then(() => {
+        const uid = "R" + (doc[0].NumberOfRegistrations + 1);
+        registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles).then(() => {
             result = { data: uid };
             console.log("Applicant Registered Successfully");
             // adding file code
             if (photo.FileUrl) {
-                this.addFiles(uid, photo).then(() => {
+                addFiles(uid, photo).then(() => {
                     if (profile.FileUrl) {
-this.addFiles(uid, profile);
-}
+             addFiles(uid, profile);
+                      }
                 });
             }
 

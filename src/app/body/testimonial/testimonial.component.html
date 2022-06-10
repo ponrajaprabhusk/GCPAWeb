@@ -5,20 +5,23 @@
             <p class="mainp">Who said what about GCPA</p>
         </a>
         <div class="row mt-5 pt-3">
-            <ng-container *ngFor="let con of content">
+            <ng-container *ngFor="let testimonial of testimonialService.testimonials">
                 <div class="col-md-4 pb-5 mb-5 ">
                     <div class="position-relative testimonial_info_m mx-3 bg-white pt-1 ">
                         <div class="testimonial_head ">
-                            <div class="testimonial_img position-absolute top-0 start-50 translate-middle "><a target="_blank" [href]="con.link"> <img [src]="con.img" class="" alt="kailashSathyarthi"></a> </div>
-                            <div class="">
-                                <h6 class="text-center mt-5 pt-3" [innerText]="con.head"><br> 
-                                    <span class="testheadp" [innerText]="con.subhead"></span> </h6>
+                            <div class="testimonial_img position-absolute top-0 start-50 translate-middle ">
+                                <a target="_blank"> <img [src]="testimonial.ImageUrl" class="" alt="kailashSathyarthi"></a>
                             </div>
-                       </div>
-                            <p class="testp px-3" [innerText]="con.para"></p>
+                            <div class="">
+                                <h6 class="text-center mt-4 pt-3" [innerText]="testimonial.Name">
+                                </h6>
+                                <span class="testheadp" [innerText]="testimonial.Achievement"></span>
+                            </div>
                         </div>
+                        <p class="testp px-3 pt-2" [innerText]="testimonial.Testimonial"></p>
+                    </div>
                 </div>
-             </ng-container>
+            </ng-container>
+        </div>
     </div>
-</div>
 </div>

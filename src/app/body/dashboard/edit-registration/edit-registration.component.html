@@ -1,0 +1,165 @@
+<head>
+    <script src="https://kit.fontawesome.com/02860b733b.js" crossorigin="anonymous"></script>
+</head>
+
+<div class="back mt-5 pt-5 pb-5">
+    <h1 class="text-center mb-5">Registration Form</h1>
+    <div class="row px-5">
+        <div class="col-md-3"></div>
+        <div class="container col-md-6 px-5">
+            <form #form="ngForm">
+                <div class="mb-5">
+                    <h4><span><div class="badge bg-primary text-wrap"> 1</div></span> Personal Details</h4>
+                    <div class="pb-4">
+                        <h4 class="fw-bold">Child's Name <span class="text-danger">*</span></h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4 ">
+                                        <input type="text" class="form-control bg-light" placeholder="Prefix" [(ngModel)]="registerService.registration.Prefix" [ngModelOptions]="{standalone: true}" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control bg-light" placeholder="First Name" [(ngModel)]="registerService.registration.FirstName" [ngModelOptions]="{standalone: true}" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control bg-light" placeholder="Last Name" [(ngModel)]="registerService.registration.LastName" [ngModelOptions]="{standalone: true}" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pb-4">
+                        <h4 class="fw-bold">Guardian's Name </h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control bg-light" placeholder="First Name" [(ngModel)]="registerService.registration.GaurdFirst" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control bg-light" placeholder="Last Name" [(ngModel)]="registerService.registration.GaurdLast" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold">Date of Birth<span class="text-danger">*</span></h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4 ">
+                                        <input type="date" class=" form-control bg-light" [(ngModel)]="registerService.registration.Dob" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4><span><div class="badge bg-primary text-wrap">2</div></span> Address and contact Detail </h4>
+                    <div class="pb-4">
+                        <h4 class="fw-bold">Address <span class="text-danger">*</span></h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control bg-light" rows="3" [(ngModel)]="registerService.registration.Address" [ngModelOptions]="{standalone: true}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pb-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class=" col-md-6 ">
+                                        <h4 class="fw-bold ">postal/zip code <span class="text-danger ">*</span></h4>
+                                        <input type="text " class="form-control bg-light " [(ngModel)]="registerService.registration.Zip" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row pb-4 ">
+                            <div class="col-md-12 ">
+                                <div class="row ">
+                                    <div class="col-md-6 ">
+                                        <h4 class="fw-bold ">Phone Number<span class="text-danger ">*</span></h4>
+                                        <input type="text " class="form-control bg-light " [(ngModel)]="registerService.registration.Number" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <h4 class="fw-bold ">Email Adress<span class="text-danger ">*</span></h4>
+                                        <input type="text " class="form-control bg-light " [(ngModel)]="registerService.registration.Email" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="fw-bold ">School / Academy<span class="text-danger ">*</span></h4>
+                        <div class="row ">
+                            <div class="col-md-12 ">
+                                <input type="text " class="form-control bg-light " [(ngModel)]="registerService.registration.School" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4><span><div class="badge bg-primary text-wrap">3</div></span> Category and Upload </h4>
+                    <div class="pb-4">
+                        <h4 class="fw-bold">Category Selection<span class="text-danger">*</span></h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <select class="form-select" aria-label="Default select example" [(ngModel)]="registerService.registration.Category" [ngModelOptions]="{standalone: true}">  
+                                            <option selected="Category"></option>
+                                            <option value="0" >Acting &amp; Directing</option><option value="1" >Art &amp; Drawing</option><option value="2" >Cooking</option><option value="3" >Comedian</option><option value="4" >Dance</option><option value="5" >Education</option><option value="6" >Fashion</option><option value="7" >Fitness</option><option value="8" >Innovation</option><option value="9" >Intelligence</option><option value="10" >Music</option><option value="11" >Mathematics</option><option value="12" >Magician</option><option value="13" >Photography</option><option value="14" >Singing</option><option value="15" >Sports</option><option value="16" >Social</option><option value="17" >Science</option><option value="18" >Technology</option><option value="19" >Writing &amp; Poetry</option><option value="20">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pb-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="fw-bold">
+                                            Achievement Description
+                                        </h4>
+                                        <textarea class="form-control bg-light" rows="3" placeholder=" Please provide child's major achievements here and upload a detailed document in the child Profile Section (PDF/DOC/TXT) " [(ngModel)]="registerService.registration.Achievement" [ngModelOptions]="{standalone: true}"></  textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row ">
+                                    <div class="col-md-12">
+                                        <h4 class="fw-bold">
+                                            Social media (Optional)
+
+                                        </h4>
+                                        <textarea class="form-control bg-light" rows="3" [(ngModel)]="registerService.registration.Social" [ngModelOptions]="{standalone: true}" ></  textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary mt-3 " (click)="edit()">Submit</button>
+            </form>
+        </div>
+
+        <div class="col-md-3"></div>
+
+    </div>
+</div>

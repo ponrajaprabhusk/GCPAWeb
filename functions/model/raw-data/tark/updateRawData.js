@@ -15,13 +15,43 @@ exports.updateData = function(updateType) {
             console.log(status, " || ", result);
         } else {
             if (updateType == "user") {
-                const numberOfUsers = doc.NumberOfUsers + 1;
+                const numberOfUsers = doc[0].NumberOfUsers + 1;
                 const inputJson = {
                     NumberOfUsers: numberOfUsers,
                 };
                 updateRawData(inputJson);
             } else if (updateType == "registration") {
-                const numberOfRegistrations = doc.NumberOfRegistrations + 1;
+                const numberOfRegistrations = doc[0].NumberOfRegistrations + 1;
+                const inputJson = {
+                    NumberOfRegistrations: numberOfRegistrations,
+                };
+                updateRawData(inputJson);
+            } else if (updateType == "gallery") {
+                const numberOfGalleryPics = doc[0].NumberOfGalleryPics + 1;
+                const inputJson = {
+                    NumberOfGalleryPics: numberOfGalleryPics,
+                };
+                updateRawData(inputJson);
+            } else if (updateType == "newsroom") {
+                const numberOfNews = doc[0].NumberOfNews + 1;
+                const inputJson = {
+                    NumberOfNews: numberOfNews,
+                };
+                updateRawData(inputJson);
+            } else if (updateType == "partner") {
+                const numberOfPartners = doc[0].NumberOfPartners + 1;
+                const inputJson = {
+                    NumberOfPartners: numberOfPartners,
+                };
+                updateRawData(inputJson);
+            } else if (updateType == "testimonial") {
+                const numberOfTestimonials = doc[0].NumberOfTestimonials + 1;
+                const inputJson = {
+                    NumberOfTestimonials: numberOfTestimonials,
+                };
+                updateRawData(inputJson);
+            } else if (updateType == "support") {
+                const numberOfRegistrations = doc[0].NumberOfRegistrations + 1;
                 const inputJson = {
                     NumberOfRegistrations: numberOfRegistrations,
                 };

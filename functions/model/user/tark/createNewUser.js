@@ -16,7 +16,6 @@ exports.createNewUser = function(request, response) {
     const ProviderId = user.providerId;
     const NumberOfRegistrations = user.numberOfRegistrations;
 
-
     let status = 200;
     let result;
     setUser(Uid, PhotoURL, DisplayName, Email, PhoneNumber, ProviderId, NumberOfRegistrations).then(() => {

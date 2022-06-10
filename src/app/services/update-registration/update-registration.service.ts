@@ -20,7 +20,9 @@ export class UpdateRegistrationService {
           error: (error) => {
             console.error("Error", error);
           },
-        complete: () => console.info('Successful ')
+          complete: (() =>{ 
+            console.info('Successful')
+        })
     });
   }
 
