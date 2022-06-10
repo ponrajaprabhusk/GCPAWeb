@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'firebase/auth';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 
 @Component({
   selector: 'app-user-card',
@@ -6,10 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-card.component.css']
 })
 export class UserCardComponent implements OnInit {
-
-  constructor() { }
+  user: User;
+  constructor(public authService: AuthServiceService, public router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.authService.user);
+  }
+
+  onLogout() {
+    this.authService.logout().then(()=>{
+      this.router.navigate(['/']);
+    });
+  }
+
+  myRegistrations(){
+    this.router.navigate(['/yourRegistrations']);
+  }
+  loadDashboardPage(){
+    this.router.navigate(['/dashboard']);
   }
 
 }

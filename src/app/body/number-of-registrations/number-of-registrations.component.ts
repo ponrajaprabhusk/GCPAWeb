@@ -24,12 +24,14 @@ export class NumberOfRegistrationsComponent implements OnInit {
   
   ngOnInit(){
     if (!this.authService.user) {
-      this.popupService.loginPopup=true
       this.router.navigate([''])
     }
+    else
+    {
     this.authService.afauth.user.subscribe((data) => {
       this.getRegistrationData();
     });
+  }
   }
 
   getRegistrationData() {
