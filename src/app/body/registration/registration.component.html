@@ -4,16 +4,16 @@
 <app-login-page></app-login-page>
 <div class="back mt-5 pt-5 pb-5">
     <h1 class="text-center mb-5">Registration Form</h1>
-    <div class="row px-5">
-        <div class="col-md-1"></div>
-        <div class="container col-md-5 px-5">
+    <div class="row container mx-auto">
+        <div class="container col-md-6 px-5">
             <form #form="ngForm">
                 <app-personal-details></app-personal-details>
                 <app-address-contact></app-address-contact>
                 <app-category-upload></app-category-upload>
 
-                <input type="radio" class="my-5" required> <span> I agree to the <a>Terms & Conditions</a> of Global Child Prodigy Awards.
-                </span>
+                <div class="my-5">
+                    <input type="radio" required (onclick)="accepted()"> <span> I agree to the <a routerLink="terms_condi">Terms & Conditions</a> of Global Child Prodigy Awards.</span>
+                </div>
 
                 <!--  -->
                 <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
@@ -24,10 +24,9 @@
                 <button type="submit" class="btn btn-primary mt-3 " (click)="send(form,$event)">Submit</button>
             </form>
         </div>
-        <div class="col-md-5 container-fluid">
+        <div class="col-md-6 container-fluid">
             <img class="img-fluid" src="../../../assets/happy.png " alt=" ">
         </div>
-        <div class="col-md-1"></div>
 
     </div>
 </div>

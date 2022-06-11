@@ -5,7 +5,7 @@ import { user } from 'rxfire/auth';
 import { User } from '../Interfaces/UserInterface';
 import { AuthServiceService } from '../services/auth-service/auth-service.service';
 import { PopupHandlerService } from '../services/popup-handler-service/popup-handler.service';
-
+import { environment } from '../../environments/environment'
 
 @Component({
   selector: 'app-header',
