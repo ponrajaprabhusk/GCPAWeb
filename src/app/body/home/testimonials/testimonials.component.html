@@ -1,25 +1,26 @@
-<div class="row text-center container-fluid mt-4 ms-2">
-    <owl-carousel-o class="container-fluid text-centre " [options]="customOptions" (translated)="getPassedData($event)">
-
-        <ng-template carouselSlide class="col">
-            <div class="slide mx-2">
-                <app-sections></app-sections>
-            </div>
-        </ng-template>
-        <ng-template carouselSlide class="col">
-            <div class="slide mx-2">
+<div class="text-center mt-4 ">
+       
+    <owl-carousel-o class="text-centre"  [options]="customOptions" (translated)="getPassedData($event)">
+    <ng-template carouselSlide  style="max-width: fit-content;">
+        <div class="slide mx-auto" style="max-width: fit-content;">
+            <app-sections></app-sections>
+        </div>
+    </ng-template>
+    <ng-template carouselSlide  style="max-width: fit-content;">
+        <div class="slide mx-auto" style="max-width: fit-content;">
                 <app-sections2></app-sections2>
             </div>
-        </ng-template>
-        <ng-template carouselSlide class="col">
-            <div class="slide mx-2">
+    </ng-template>
+        <ng-template carouselSlide  style="max-width: fit-content;">
+            <div class="slide mx-auto" style="max-width: fit-content;">
                 <app-sections3></app-sections3>
             </div>
-        </ng-template>
-        <ng-template carouselSlide class="col">
-            <div class="slide mx-2">
+    </ng-template>
+    <ng-template carouselSlide  style="max-width: fit-content;">
+            <div class="slide mx-auto" style="max-width: fit-content;">
                 <app-section4></app-section4>
             </div>
-        </ng-template>
+     </ng-template>
     </owl-carousel-o>
+
 </div>

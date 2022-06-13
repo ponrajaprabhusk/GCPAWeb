@@ -10,7 +10,6 @@ export class TestimonialsComponent implements OnInit {
   activeSlides?: SlidesOutputData;
   getPassedData(data: SlidesOutputData) {
     this.activeSlides = data;
-    console.log(this.activeSlides);
   }
 
   constructor() { }

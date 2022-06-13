@@ -27,6 +27,7 @@ export class RegistrationComponent implements OnInit {
   photoUpload:FileData={FileUrl:'',ApplicantName:'',Date:'',Time:'',Uid:'',File:'Photo'};
   profileUpload:FileData={FileUrl:'',ApplicantName:'',Date:'',Time:'',Uid:'',File:'Profile'};
   userUid='';
+  termsAndCond=false;
   
   constructor( public registerService:RegisterServiceService, public router:Router, public authService:AuthServiceService, public popupService:PopupHandlerService, public fileUploadService:FileUploadService, public updateRegistration:UpdateRegistrationService) { 
     this.token = undefined;
@@ -78,6 +79,10 @@ export class RegistrationComponent implements OnInit {
   }
 
   public send(form: NgForm,event: Event): void {
+    if ((this.personalDetails.prefix==''||this.personalDetails.dob==''||this.personalDetails.firstName==''||this.personalDetails.lastName==''||this.adressComponent.address==''||this.adressComponent.zip==''||this.adressComponent.number==''||this.adressComponent.email==''||this.adressComponent.school==''||this.adressComponent.country==''||this.categoryComponent.category=='')&&!this.termsAndCond) {
+      alert('Please fill all the Required Fields');
+    }
+    else{
     if (form.invalid) {
       for (const control of Object.keys(form.controls)) {
         form.controls[control].markAsTouched();
@@ -87,7 +92,10 @@ export class RegistrationComponent implements OnInit {
     this.onSubmit(event);
     console.debug(`Token [${this.token}] generated`);
   }
+  }
   
-  
+  accepted(){
+this.termsAndCond=!this.termsAndCond;
+  }
   
 }

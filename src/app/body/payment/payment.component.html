@@ -1,7 +1,10 @@
 <div class="p-5"></div>
-<div class="center">
-    <div class="row p-2 border">
-        <table>
+<div class="center pb-5">
+    <div class="row pt-2 px-0 border bg-light text-center">
+        <div>
+            <h1>Payment Details</h1> 
+        </div>
+        <table class="mt-3">
             <tr>
                 <td>
                     <p><b>Registraion Id:</b></p>
@@ -16,7 +19,7 @@
             </tr>
             <tr>
                 <td><p><b>Email:</b></p></td>
-                <td>  <p>{{applicant.Email}}</p></td>
+                <td>  <p>{{authService.user.email}}</p></td>
             </tr>
             <tr>
                 <td>  <p><b>Phone:</b></p></td>
@@ -24,13 +27,13 @@
             </tr>
         </table>
       
+        <div class="row p-2" *ngIf="!paymentComplete" style="text-align: center;">
+            <div class="col">
+                <button class="btn btn-success" (click)="setOrderWithRazor()">Pay Now</button>
+            </div>
+        </div>
     </div>
 
-</div>
-<div class="row p-2" *ngIf="!paymentComplete" style="text-align: center;">
-    <div class="col">
-        <button class="btn btn-success" (click)="setOrderWithRazor()">Pay Now</button>
-    </div>
 </div>
 <div class="row p-2" *ngIf="paymentComplete" style="text-align: center;">
     <div class="col">

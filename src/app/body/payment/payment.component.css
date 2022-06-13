@@ -4,3 +4,15 @@ justify-content: center;
 left: 40%;
 top: 40%;
 }
+
+.btn {
+    color: #fff!important;
+    background-color: #5095cf!important;
+    background-image: none;
+    border-color: #5095cf!important;
+    display: inline-block;
+    font-weight: 400;
+    user-select: none;
+    border: 1px solid transparent;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
