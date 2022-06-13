@@ -35,7 +35,6 @@ export class ActivityServiceService {
     })).subscribe({
       next: (data) => {
         this.activities = data;
-        console.log(data)
       },
       error: (error) => {
         console.error(error);

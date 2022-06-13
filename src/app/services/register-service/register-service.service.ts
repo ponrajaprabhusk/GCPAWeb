@@ -55,7 +55,6 @@ let registrationId: any;
     })).subscribe({
       next: (data) => {
         this.registrations = data;
-        console.log(data)
       },
       error: (error) => {
         console.error(error);

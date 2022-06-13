@@ -24,7 +24,7 @@ export class EditRegistrationComponent implements OnInit {
     this.router.navigate([''])
     }
     this.uid = this.route.snapshot.params[ 'uid' ]
-    console.log(this.uid)
+    
     this.registerService.getRegistrationById(this.uid)
   }
 

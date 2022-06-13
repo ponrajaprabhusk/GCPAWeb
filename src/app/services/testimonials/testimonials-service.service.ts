@@ -36,7 +36,6 @@ export class TestimonialsServiceService {
   })).subscribe({
     next: (data) => {
       this.testimonials = data;
-      console.log(data)
     },
     error: (error) => {
       console.error(error);

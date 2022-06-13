@@ -43,7 +43,6 @@ export class SupportServiceService {
     })).subscribe({
       next: (data) => {
         this.supports = data;
-        console.log(data)
       },
       error: (error) => {
         console.error(error);
@@ -72,7 +71,6 @@ export class SupportServiceService {
     })).subscribe({
       next: (data) => {
         this.support = data;
-        console.log(data)
       },
       error: (error) => {
         console.error(error);

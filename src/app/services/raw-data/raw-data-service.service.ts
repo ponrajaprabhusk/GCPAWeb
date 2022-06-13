@@ -24,7 +24,6 @@ export class RawDataServiceService {
     })).subscribe({
       next: (data) => {
         this.rawData = data;
-        console.log(data)
       },
       error: (error) => {
         console.error(error);

@@ -32,11 +32,9 @@ export class RegistrationDashboardComponent implements OnInit {
     this.getRegistrationsData()
   }
   getRegistrationsData() {
-    console.log("oconsi")
     this.dataTableService.getRegistrationsData().subscribe((data) => {
       if(data.length) {
         this.registrationData = data;
-        console.log(data)
         this.displayColoumnsRegistration = ['Uid', 'FirstName', 'LastName','Dob', 'PaymentStatus'];
         this.showRegistrations=true;
       } 

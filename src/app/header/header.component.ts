@@ -15,10 +15,12 @@ import { environment } from '../../environments/environment'
 export class HeaderComponent implements OnInit {
   loggedIn:boolean=false;
   admin:boolean=false;
+  useEmulator=false;
 
   constructor(private router: Router, public authService:AuthServiceService, private popup:PopupHandlerService, public functions: AngularFireFunctions) { }
 
   ngOnInit(): void {
+    this.useEmulator=environment.useEmulators;
     console.log(this.authService.afauth.user)
     this.authService.afauth.user.subscribe({
       next:(user)=>{

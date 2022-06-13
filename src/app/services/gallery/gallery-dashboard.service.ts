@@ -36,7 +36,6 @@ export class GalleryDashboardService {
   })).subscribe({
     next: (data) => {
       this.gallery = data;
-      console.log(data)
     },
     error: (error) => {
       console.error(error);
