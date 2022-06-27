@@ -91,6 +91,12 @@ import { NewPicComponent } from './body/dashboard/gallery-dashboard/new-pic/new-
 import { RegistrationDashboardComponent } from './body/dashboard/registration-dashboard/registration-dashboard.component';
 import { UsersDashboardComponent } from './body/dashboard/users-dashboard/users-dashboard.component';
 import { CookieService } from 'ngx-cookie-service';
+import { EcommerceDashboardComponent } from './body/dashboard/ecommerce-dashboard/ecommerce-dashboard.component';
+import { NewProductComponent } from './body/dashboard/ecommerce-dashboard/new-product/new-product.component';
+import { NewImageComponent } from './body/dashboard/ecommerce-dashboard/new-product/new-image/new-image.component';
+import { ProductDataTableComponent } from './body/common-tools/product-data-table/product-data-table.component';
+import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
+import { ProductsComponent } from './body/e-commerce/products/products.component';
 
 
 @NgModule({
@@ -160,7 +166,13 @@ import { CookieService } from 'ngx-cookie-service';
     GalleryDashboardComponent,
     NewPicComponent,
     RegistrationDashboardComponent,
-    UsersDashboardComponent,  
+    UsersDashboardComponent,
+    EcommerceDashboardComponent,
+    NewProductComponent,
+    NewImageComponent,
+    ProductDataTableComponent,
+    ECommerceComponent,
+    ProductsComponent,  
   ],
   imports: [
     MatDialogModule,

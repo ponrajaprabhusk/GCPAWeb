@@ -56,6 +56,18 @@ exports.updateData = function(updateType) {
                     NumberOfRegistrations: numberOfRegistrations,
                 };
                 updateRawData(inputJson);
+            } else if (updateType == "product") {
+                const numberOfProducts = doc[0].NumberOfProducts + 1;
+                const inputJson = {
+                    NumberOfProducts: numberOfProducts,
+                };
+                updateRawData(inputJson);
+            } else if (updateType == "order") {
+                const numberOfOrders = doc[0].NumberOfOrders + 1;
+                const inputJson = {
+                    NumberOfOrders: numberOfOrders,
+                };
+                updateRawData(inputJson);
             } else {
                 status = 500;
                 console.error("updateType not specified");

@@ -1,0 +1,15 @@
+<div class="back mt-5 pt-5 pb-5">
+    <h1 class="text-center pt-3">E-Commerce</h1>
+
+    <div class="container pt-5">
+        <ng-container *ngIf="showProducts">
+            <app-product-data-table [dataForTable]="productData " [displayColoumns]="displayColoumnsProduct " [pageSize]=" '5' "> </app-product-data-table>
+        </ng-container>
+    </div>
+    <div class="container pt-5">
+        <div class="text-center">
+            <button class="btn btn-outline-dar" (click)="showNewProduct()">Add new Product</button>
+            <app-new-product *ngIf="newProduct"></app-new-product>
+        </div>
+    </div>
+</div>

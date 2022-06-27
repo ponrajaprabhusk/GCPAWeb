@@ -1,0 +1,10 @@
+<div class="pb-3">
+    <h4 class="fw-bold">Upload Image</h4>
+    <input type="file" class="form-control bg-light" (change)="photoUpload($event)">
+    <ng-container *ngIf="uploadService.fileUploadStatus && photoStatus">
+        <div class="progress" style="height: 10px; margin-top: 10px;">
+            <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': progressPhoto + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        Uploading {{fileName}} ...
+    </ng-container>
+</div>

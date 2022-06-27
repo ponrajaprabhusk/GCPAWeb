@@ -73,5 +73,8 @@ export class DashboardComponent implements OnInit {
   gallery(){
     this.router.navigate(['galleryDashboard']);
   }
+  ecommerce(){
+    this.router.navigate(['ecommerceDashboard']);
+  }
 }
 

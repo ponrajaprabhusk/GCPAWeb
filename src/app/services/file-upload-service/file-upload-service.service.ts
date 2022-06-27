@@ -29,7 +29,7 @@ export class FileUploadService {
   testimonialUrl:string="";
   newsUrl:string="";
   galleryUrl:string="";
-  
+  ecommerceUrl:string[]=[];
 
   filesData: FileData[]
 
@@ -86,6 +86,9 @@ export class FileUploadService {
     }else if(folderName=="Gallery"){
       this.galleryUrl=fileUpload.url
       
+    }else if(folderName=="Ecommerce"){
+      this.ecommerceUrl.push(fileUpload.url)
+      console.log(this.ecommerceUrl)
     }
     
     this.fileUploadStatus = false;

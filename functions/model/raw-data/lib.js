@@ -14,6 +14,8 @@ exports.setRawData = function(numberOfUsers, numberOfRegistrations, numberOfSupp
     NumberOfTestimonials: 0,
     NumberOfNews: 0,
     NumberOfGalleryPics: 0,
+    NumberOfProducts: 0,
+    NumberOfOrders: 0,
   });
   return Promise.resolve(rawData);
 };

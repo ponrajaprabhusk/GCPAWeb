@@ -27,6 +27,9 @@ import { NewsroomDashboardComponent } from './body/dashboard/newsroom-dashboard/
 import { GalleryDashboardComponent } from './body/dashboard/gallery-dashboard/gallery-dashboard.component';
 import { RegistrationDashboardComponent } from './body/dashboard/registration-dashboard/registration-dashboard.component';
 import { UsersDashboardComponent } from './body/dashboard/users-dashboard/users-dashboard.component';
+import { EcommerceDashboardComponent } from './body/dashboard/ecommerce-dashboard/ecommerce-dashboard.component';
+import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
+import { ProductsComponent } from './body/e-commerce/products/products.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -55,6 +58,9 @@ const routes: Routes = [
   {path:'galleryDashboard', component:GalleryDashboardComponent},
   {path:'registrationDashboard', component:RegistrationDashboardComponent},
   {path:'usersDashboard', component:UsersDashboardComponent},
+  {path:'ecommerceDashboard', component:EcommerceDashboardComponent },
+  {path:'ecommerce', component:ECommerceComponent },
+  {path:'products/:productId/:productName', component:ProductsComponent, canActivate: [AngularFireAuthGuard] },
 ];
 
 @NgModule({

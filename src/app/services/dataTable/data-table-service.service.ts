@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { map, Observable } from 'rxjs';
+import { Ecommerce } from 'src/app/Interfaces/Ecommerce';
 import { RawData } from 'src/app/Interfaces/RawData';
 import { Register } from 'src/app/Interfaces/RegistrationInterface';
 import { UserFetched } from 'src/app/Interfaces/UserInterface';
@@ -15,6 +16,7 @@ export class DataTableServiceService {
   public rawDataObservable: Observable<RawData[]>;
   public userDataObservable: Observable<UserFetched[]>;
   public registrationDataObservable: Observable<Register[]>;
+  public productDataObservable: Observable<Ecommerce[]>;
 
 
 
@@ -57,5 +59,15 @@ export class DataTableServiceService {
       return data;
     }));
     return this.registrationDataObservable
+  }
+
+  getProductData(){
+    
+    const callable = this.functions.httpsCallable("ecommerce/getProducts");
+    this.productDataObservable=callable({}).pipe(map(res=>{
+      const data = res.data as Ecommerce[];
+      return data;
+    }));
+    return this.productDataObservable
   }
 }
