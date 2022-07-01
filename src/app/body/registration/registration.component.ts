@@ -62,8 +62,6 @@ export class RegistrationComponent implements OnInit {
     }
     else
     {
-       console.log(this.personalDetails.firstName)
-       console.log(this.adressComponent.country)
        this.photoUpload.FileUrl=this.fileUploadService.photoUrl
        this.photoUpload.ApplicantName=this.personalDetails.firstName+' '+this.personalDetails.lastName
        this.photoUpload.Date=this.fileUploadService.photoDate

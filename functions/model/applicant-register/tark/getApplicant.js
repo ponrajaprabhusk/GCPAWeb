@@ -11,7 +11,6 @@ exports.getApplicant = function(request, response) {
     const uid = request.body.data.RegistrationId;
     let result;
     let status = 200;
-    console.log( "uid", uid);
     const p1 = getApplicant(uid).then((res)=>{
         result = { data: res };
         console.log(res);

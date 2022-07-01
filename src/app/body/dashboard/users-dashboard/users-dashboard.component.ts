@@ -37,7 +37,6 @@ export class UsersDashboardComponent implements OnInit {
     this.dataTableService.getUserData().subscribe((data) => {
       if(data.length) {
         this.userData = data;
-        console.log(data)
         this.displayColoumnsUser = ['Uid', 'DisplayName', 'NumberOfRegistrations'];
         this.showUserData=true;
       } 

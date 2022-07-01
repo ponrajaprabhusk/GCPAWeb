@@ -36,8 +36,8 @@
                         <button type="submit" class="btn btn-outline-dark " (click)="loadRegistration()">Resgister</button>
                     </a>  
                 </li>
-                <li>
-                    <a class="nav-item nav-link ">
+                <li *ngIf="useEmulator">
+                    <a class="nav-item nav-link " >
                         <button type="submit" class="btn btn-outline-dark" (click)="setRawData()">Raw Data</button>
                     </a> 
                 </li>
@@ -46,13 +46,13 @@
                         <button type="submit" class="btn btn-outline-dark" (click)="loadLoginPage()">Login/Signup</button>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <ng-container *ngIf="loggedIn">
                         <a class="nav-item nav-link " *ngIf="authService.loggedInUser.Admin">
                             <button type="submit" class="btn btn-outline-dark" (click)="loadDashboardPage()">Dashboard</button>
                         </a>
                     </ng-container>
-                </li>
+                </li> -->
             </ul>
         </div>
          <!-- <a class="nav-item nav-link text-end" *ngIf="loggedIn">

@@ -35,7 +35,6 @@ export class NewsServiceService {
   })).subscribe({
     next: (data) => {
       this.newsroom = data;
-      console.log(data)
     },
     error: (error) => {
       console.error(error);

@@ -25,6 +25,9 @@ export class UserCardComponent implements OnInit {
   myRegistrations(){
     this.router.navigate(['/yourRegistrations']);
   }
+  ecommerce(){
+    this.router.navigate(['/ecommerce']);
+  }
   loadDashboardPage(){
     this.router.navigate(['/dashboard']);
   }

@@ -32,7 +32,6 @@ export class RegistrationDataTableComponent implements OnInit,AfterViewInit {
 
   ngOnInit(): void {
     if(this.dataForTable != undefined) {
-      console.log(this.dataForTable)
       this.dataSource.data = this.dataForTable;
       this.displayedColumns = this.displayColoumns;
     }

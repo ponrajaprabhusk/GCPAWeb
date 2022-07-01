@@ -1,0 +1,115 @@
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
+    <script src="https://kit.fontawesome.com/02860b733b.js" crossorigin="anonymous"></script>
+  </head>
+  <div class="back mt-5 pt-5 pb-5">
+      <h1 class="text-center mb-5">E-Commerce</h1>
+      <div class="row container text-center mx-auto">
+  <div class="col-9" *ngIf="!checkout">
+      <div class="row">
+          <div class="card mb-3 col mx-auto" style="max-width: 750px;"  >
+              <div class="row ">
+                <div class="col-md-4 tr">
+                    <div>
+                        <owl-carousel-o class="text-centre"  [options]="customOptions" (translated)="getPassedData($event)">
+                            <ng-container *ngFor="let image of ecommerceService.product.Images">
+                        <ng-template carouselSlide class="px-2 ">
+                            <div class="slide py-2 my-auto px-2 " >
+                                <img [src]="image" alt="" >
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+                </div>
+              </div>
+              <div class="col-md-1"></div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h2 class="card-title fw-bolder">{{ecommerceService.product.ProductName}}</h2>
+                        <p class="card-text fw-bold pt-3"><small class="text-muted">Price:₹ </small> {{ecommerceService.product.Price}}</p>
+                        <hr>
+                        <p class="card-text">{{ecommerceService.product.Disc}}</p>
+                        <hr>
+                        <p>Quantity</p>
+                      <div class="text-center" style="display: inline-block;">
+                        <button class=" rounded-circle btn-outline-dark" style="display: inline-block;" (click)="minus()"><i class="fa fa-minus"></i></button>
+                           <div class="border-dark px-4 border-3 mx-3" style="display: inline-block; border: solid black ">{{quantity}}</div>
+                         <button class=" rounded-circle btn-outline-dark"style="display: inline-block;" (click)="add()"><i class="fa fa-plus"></i></button>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>    
+    </div> 
+   </div>
+   <div class="col-9" *ngIf="checkout">
+     <div class="row">
+       <div class="card mb-3 col mx-auto" style="max-width: 750px;"  >
+         <div class="card-body">
+               <h3>SHIPPING & BILLING DETAILS</h3>
+                <form>
+                    <div class="mb-3 row">
+                        <div class="col-2 pt-2"  >
+                            <label class="form-label fs-6" style="float: left;" >Name</label>
+                        </div>
+                      <div class="col-10">
+                          <input [ngModelOptions]="{standalone: true}" type="text" class="form-control col-8" placeholder="Enter your Name" [(ngModel)]="order.Name">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                      <div class="col-2 pt-2"  >
+                          <label class="form-label fs-6 text-start" style="float: left;" >Mobile Number</label>
+                      </div>
+                    <div class="col-10">
+                        <input [ngModelOptions]="{standalone: true}" type="text" class="form-control col-8" placeholder="Enter your Mobile Number" [(ngModel)]="order.MobileNum">
+                      </div>
+                  </div><div class="mb-3 row">
+                    <div class="col-2 pt-2"  >
+                        <label class="form-label fs-6" style="float: left;" >Pincode</label>
+                    </div>
+                  <div class="col-10">
+                      <input [ngModelOptions]="{standalone: true}" type="text" class="form-control col-8" placeholder="Enter your Pincode" [(ngModel)]="order.Pincode">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                  <div class="col-2 pt-2"  >
+                      <label class="form-label fs-6" style="float: left;" >Address</label>
+                  </div>
+                <div class="col-10 pb-3">
+                    <input [ngModelOptions]="{standalone: true}" type="text" class="form-control col-8" placeholder="House Number, Building Name, Society, Area, Road, Landmark" [(ngModel)]="order.Address">
+                  </div>
+                  <div class="col-2"></div>             
+                  <div class="col-5 pb-3">
+                    <input [ngModelOptions]="{standalone: true}" type="text" class="form-control col-8" placeholder="City" [(ngModel)]="order.City">
+                  </div>
+                  <div class="col-5 pb-3">
+                    <input [ngModelOptions]="{standalone: true}" type="text" class="form-control col-8" placeholder="State" [(ngModel)]="order.State">
+                  </div>
+                  <div class="col-2"></div>
+                  <div class="col-10">
+                    <input [ngModelOptions]="{standalone: true}" type="text" class="form-control col-8" placeholder="Country" [(ngModel)]="order.Country">
+                  </div>
+              </div>
+                  </form>
+             </div>
+        </div>    
+  </div> 
+ </div>
+        <div class="col-3">
+            <div class="card mb-3 col mx-auto" style="max-width: 750px;"  >
+                    <div class="card-body">
+                      <p class="card-text fw-bold pt-3"><small class="text-muted" style="float: left;">Price:₹ </small> {{ecommerceService.product.Price}}</p>
+                      <p class="fw-bold"> <small class="text-muted" style="float: left;">Quantity: </small> {{quantity}}</p>
+                      <hr>
+                      <p class="fw-bold" ><small  style="float: left;">Price to Pay:₹ </small>{{ecommerceService.product.Price*quantity}}</p>
+                      <hr>
+                      <button class="btn btn-outline-dark" (click)="proceedToCheckout()" *ngIf="!checkout">Proceed To Checkout</button>
+                      <button class="btn btn-outline-dark" (click)="proceedToPayment()" *ngIf="checkout">Proceed To Payment</button>
+                    </div>
+              </div>
+        </div>
+        <!-- <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-outline-dar mx-auto">Buy Now</button>
+        </div> -->
+    </div>
+  </div>

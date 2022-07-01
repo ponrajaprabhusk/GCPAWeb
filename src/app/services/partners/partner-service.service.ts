@@ -37,7 +37,6 @@ export class PartnerServiceService {
   })).subscribe({
     next: (data) => {
       this.partners = data;
-      console.log(data)
     },
     error: (error) => {
       console.error(error);

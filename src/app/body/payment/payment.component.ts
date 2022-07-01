@@ -34,7 +34,7 @@ export class PaymentComponent implements OnInit {
     description: 'Apply for Global Child Prodigy Awards',
     image: "",
     order_id: "",
-    amount: 100,
+    amount: 799,
     prefill: {
       name: '',
       contact: '',
@@ -80,7 +80,6 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
 this.registrationId = this.route.snapshot.params['registrationId'];
-console.log(this.registrationId);
 this.getRegistrationDetails(this.registrationId);
 }
 
@@ -97,7 +96,6 @@ getRegistrationDetails(registrationId: string){
       if(this.applicant.PaymentStatus == "Complete"){
           this.paymentComplete = true;
       }
-      console.log(data);
     },
     error:(error)=>{
       console.log(error);
@@ -117,7 +115,7 @@ initPay(): void {
 setOrderWithRazor() {
   this.loader = true;
   const callable = this.functions.httpsCallable('payment/addPayment');
-  callable({RegistrationId: this.applicant.Uid, Amount: "100"}).subscribe({ 
+  callable({RegistrationId: this.applicant.Uid, Amount: "799"}).subscribe({ 
     next:(result)=>{
       console.log(result);
     this.authService.currentReceipt = result.receipt;

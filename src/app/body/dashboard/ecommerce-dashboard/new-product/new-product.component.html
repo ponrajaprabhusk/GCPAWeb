@@ -1,0 +1,27 @@
+<div class="row text-center pt-3">
+    <div class="col-3">
+    </div>
+    <form class="content-padding text-center col-6">
+        <div class="text-center pt-3">
+            <button class="btn btn-outline-dar" (click)="showNewImage()">Add new Image</button>
+            <ng-container *ngFor="let n of numberNewImage">
+                <app-new-image ></app-new-image>
+            </ng-container>
+        </div>
+        <div class="form-group mb-2 text-center">
+            <input type="text" name="name" class="form-control bg-light" placeholder="Product Name" required [(ngModel)]="product.ProductName">
+        </div>
+        <div class="form-group mb-2 text-center">
+            <input type="text" name="disc" class="form-control bg-light" placeholder="Product Discription" required [(ngModel)]="product.Disc">
+        </div>
+        <div class="form-group mb-2 text-center">
+            <input type="number" name="price" class="form-control bg-light" placeholder="Product Price" required [(ngModel)]="product.Price">
+        </div>
+
+
+        <div class="form-group pt-3">
+            <button class="btn " name="send " type="submit " (click)="submit() ">Add Product</button>
+        </div>
+    </form>
+    <div class="col-3"></div>
+</div>

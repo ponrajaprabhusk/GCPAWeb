@@ -13,7 +13,6 @@ export class RegistrationDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.uid = this.route.snapshot.params[ 'uid' ]
-    console.log(this.uid)
     this.registerService.getRegistrationById(this.uid)
   }
 
