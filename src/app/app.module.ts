@@ -97,6 +97,7 @@ import { NewImageComponent } from './body/dashboard/ecommerce-dashboard/new-prod
 import { ProductDataTableComponent } from './body/common-tools/product-data-table/product-data-table.component';
 import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
+import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
 
 
 @NgModule({
@@ -172,7 +173,8 @@ import { ProductsComponent } from './body/e-commerce/products/products.component
     NewImageComponent,
     ProductDataTableComponent,
     ECommerceComponent,
-    ProductsComponent,  
+    ProductsComponent,
+    EcommercePaymentStatusComponent,
   ],
   imports: [
     MatDialogModule,

@@ -30,6 +30,7 @@ import { UsersDashboardComponent } from './body/dashboard/users-dashboard/users-
 import { EcommerceDashboardComponent } from './body/dashboard/ecommerce-dashboard/ecommerce-dashboard.component';
 import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
+import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -46,6 +47,7 @@ const routes: Routes = [
   {path:'yourRegistrations', component: NumberOfRegistrationsComponent},
   {path:'payment/:registrationId', component: PaymentComponent},
   {path:'paymentStatus/:orderId/:paymentId/:signature/:id', component: PaymentStatusComponent},
+  {path:'OrderStatus/:orderId/:paymentId/:signature/:id', component: EcommercePaymentStatusComponent},
   {path:'supportPage', component: SupportComponent},
   {path:'supportDetails/:ticketId', component: SupportDetailsComponent,canActivate: [AngularFireAuthGuard]},
   {path:'dashboard', component:DashboardComponent},

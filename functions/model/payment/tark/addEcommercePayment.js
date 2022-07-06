@@ -6,17 +6,16 @@
 
 const RazorPay = require("razorpay");
 
-const { getApplicant } = require("../../applicant-register/lib");
-const { setRazorDetails, generateBase62Constant } = require("../lib");
+const { gerOrderData } = require("../../ecommerce/lib");
+const { setEcommerceRazorDetails, generateBase62Constant } = require("../lib");
 
-exports.addPayment = function(request, response) {
-        const Uid = request.body.data.RegistrationId;
-        const amount = request.body.data.Amount;
-        console.log("UID :::", Uid);
-        console.log("Amount :::", amount);
-        getApplicant(Uid).then((doc) => {
+exports.addEcommercePayment = function(request, response) {
+        const id = request.body.data.OrderId;
+        let amount;
+        gerOrderData(id).then((doc) => {
             console.log(doc);
             if (doc != undefined) {
+                amount = doc.TotalPrice;
                 // Test Credentials
                 const razorpay = new RazorPay({
                     key_id: "rzp_test_jWOofTDBbQGPFa",
@@ -49,7 +48,7 @@ exports.addPayment = function(request, response) {
                     //     RazorPayOrderDetails: order,
                     // });
 
-                    setRazorDetails(Uid, order);
+                    setEcommerceRazorDetails(id, order);
                     // Test credentials
                     order.key = "rzp_test_jWOofTDBbQGPFa";
 

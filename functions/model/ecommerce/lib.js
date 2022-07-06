@@ -89,3 +89,11 @@ exports.getOrders = function() {
 
     return Promise.resolve(promise);
 };
+
+exports.gerOrderData = function(Id) {
+    const promise = db.collection("Orders").doc(Id).get().then((doc)=>{
+        if (doc.exists) return doc.data();
+        else return;
+    });
+   return Promise.resolve(promise);
+};
