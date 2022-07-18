@@ -97,7 +97,7 @@ import { NewImageComponent } from './body/dashboard/ecommerce-dashboard/new-prod
 import { ProductDataTableComponent } from './body/common-tools/product-data-table/product-data-table.component';
 import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
-
+import * as $ from 'jquery';
 
 @NgModule({
   declarations: [

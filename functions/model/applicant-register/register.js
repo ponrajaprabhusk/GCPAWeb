@@ -4,6 +4,9 @@ const {getRegistrationById} = require("./tark/getRegistrationById");
 const {fastify, functions, cors, requestHandler} =require("../application/lib");
 const {getAllRegistrations} = require("./tark/getAllRegistrations");
 const {updateRegistrationById} = require("./tark/updateRegistrationById");
+const {addExtraFiles}= require("./tark/addExtraFiles");
+const {getExtraFiles}= require("./tark/getExtraFiles");
+
 
 fastify.post("/registerNewUser", (req, res) => {
   registerNewUser(req, res);
@@ -21,6 +24,16 @@ fastify.post("/getRegistrationById", (req, res) => {
 fastify.post("/getAllRegistrations", (req, res) => {
   console.log("getting Registrations");
   getAllRegistrations(req, res);
+});
+
+fastify.post("/addExtraFile", (req, res) => {
+  console.log("adding files");
+  addExtraFiles(req, res);
+});
+
+fastify.post("/getExtraFile", (req, res) => {
+  console.log("geting files");
+  getExtraFiles(req, res);
 });
 
 fastify.post("/updateRegistrationById", (req, res) => {

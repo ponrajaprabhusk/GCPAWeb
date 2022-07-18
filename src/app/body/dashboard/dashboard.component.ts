@@ -25,6 +25,14 @@ export class DashboardComponent implements OnInit {
   showRegistrationData=false;
   constructor(public dataTableService: DataTableServiceService, private router: Router,public authService:AuthServiceService, public popupService: PopupHandlerService) { }
 
+userDataComponent=false;
+registrationDataComponent=false;
+partnersDataComponent=false;
+newsroomDataComponent=false;
+testimonialsDataComponent=false;
+galleryDataComponent=false;
+ecommerceDataComponent=false;
+
   ngOnInit(): void {
     if (this.authService.user) {
       if (this.authService.loggedInUser.Admin===false) {
@@ -55,26 +63,76 @@ export class DashboardComponent implements OnInit {
     this.showRawData=true;
   }
   displayUserData(){
-   this.router.navigate(['usersDashboard'])
+  //  this.router.navigate(['usersDashboard'])
+  this.userDataComponent=true;
+  this.registrationDataComponent=false;
+  this.partnersDataComponent=false;
+  this.newsroomDataComponent=false;
+  this.testimonialsDataComponent=false;
+  this.galleryDataComponent=false;
+  this.ecommerceDataComponent=false;
+   
   }
   displayRegistrationData(){
-    this.router.navigate(['registrationDashboard'])
+    // this.router.navigate(['registrationDashboard'])
+    this.userDataComponent=false;
+  this.registrationDataComponent=true;
+  this.partnersDataComponent=false;
+  this.newsroomDataComponent=false;
+  this.testimonialsDataComponent=false;
+  this.galleryDataComponent=false;
+  this.ecommerceDataComponent=false;
   }
 
   partnersSponsors(){
-    this.router.navigate(['sponsorspartners']);
+    // this.router.navigate(['sponsorspartners']);
+    this.userDataComponent=false;
+  this.registrationDataComponent=false;
+  this.partnersDataComponent=true;
+  this.newsroomDataComponent=false;
+  this.testimonialsDataComponent=false;
+  this.galleryDataComponent=false;
+  this.ecommerceDataComponent=false;
   }
   testimonials(){
-    this.router.navigate(['testimonialsDashboard']);
+    // this.router.navigate(['testimonialsDashboard']);
+    this.userDataComponent=false;
+  this.registrationDataComponent=false;
+  this.partnersDataComponent=false;
+  this.newsroomDataComponent=false;
+  this.testimonialsDataComponent=true;
+  this.galleryDataComponent=false;
+  this.ecommerceDataComponent=false;
   }
   newsroom(){
-    this.router.navigate(['newsroomDashboard']);
+    // this.router.navigate(['newsroomDashboard']);
+    this.userDataComponent=false;
+  this.registrationDataComponent=false;
+  this.partnersDataComponent=false;
+  this.newsroomDataComponent=true;
+  this.testimonialsDataComponent=false;
+  this.galleryDataComponent=false;
+  this.ecommerceDataComponent=false;
   }
   gallery(){
-    this.router.navigate(['galleryDashboard']);
+    // this.router.navigate(['galleryDashboard']);
+    this.userDataComponent=false;
+  this.registrationDataComponent=false;
+  this.partnersDataComponent=false;
+  this.newsroomDataComponent=false;
+  this.testimonialsDataComponent=false;
+  this.galleryDataComponent=true;
+  this.ecommerceDataComponent=false;
   }
   ecommerce(){
-    this.router.navigate(['ecommerceDashboard']);
+    // this.router.navigate(['ecommerceDashboard']);
+    this.userDataComponent=false;
+  this.registrationDataComponent=false;
+  this.partnersDataComponent=false;
+  this.newsroomDataComponent=false;
+  this.testimonialsDataComponent=false;
+  this.galleryDataComponent=false;
+  this.ecommerceDataComponent=true;
   }
 }
 

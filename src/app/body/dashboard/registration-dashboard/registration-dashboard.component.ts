@@ -35,7 +35,7 @@ export class RegistrationDashboardComponent implements OnInit {
     this.dataTableService.getRegistrationsData().subscribe((data) => {
       if(data.length) {
         this.registrationData = data;
-        this.displayColoumnsRegistration = ['Uid', 'FirstName', 'LastName','Dob', 'PaymentStatus'];
+        this.displayColoumnsRegistration = ['Uid', 'Name','Dob', 'PaymentStatus', 'Category'];
         this.showRegistrations=true;
       } 
     }); 

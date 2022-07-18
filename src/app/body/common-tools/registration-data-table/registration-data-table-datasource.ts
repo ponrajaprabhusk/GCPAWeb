@@ -78,6 +78,8 @@ export class RegistrationDataTableDataSource extends DataSource<Register> {
         case 'LastName': return this.compare(a.LastName, b.LastName, isAsc);
         case 'Dob': return this.compare(a.Dob, b.Dob, isAsc);
         case 'PaymentStatus': return this.compare(a.PaymentStatus, b.PaymentStatus, isAsc);
+        case 'Category': return this.compare(a.Category, b.Category, isAsc);
+
         default: return 0;
       }
     });

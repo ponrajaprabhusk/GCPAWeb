@@ -77,3 +77,17 @@ exports.getAllRegistrations = function() {
     });
     return Promise.resolve(promise);
   };
+
+  exports.getExtraFiles = function(Uid) {
+    const query = db.collection("Registrations").doc(Uid).collection("FilesUploaded");
+    const promise = query.get().then((doc) => {
+      const data = [];
+      doc.forEach((element) => {
+        if (element.exists) {
+          data.push(element.data());
+        }
+      });
+      return data;
+    });
+    return Promise.resolve(promise);
+  };

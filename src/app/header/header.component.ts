@@ -16,14 +16,14 @@ export class HeaderComponent implements OnInit {
   loggedIn:boolean=false;
   admin:boolean=false;
   useEmulator=false;
-
+  
   constructor(private router: Router, public authService:AuthServiceService, private popup:PopupHandlerService, public functions: AngularFireFunctions) { }
-
+  
   ngOnInit(): void {
     this.useEmulator=environment.useEmulators;
     console.log(this.authService.afauth.user)
     this.authService.afauth.user.subscribe({
-      next:(user)=>{
+      next:(user:any)=>{
         this.authService.setCurrentUser(user as User);
         if (user) {
           this.authService.getUser(user.uid)
@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
         }
         // this.popup.popupEnable()
       },
-      error:(error)=>{
+      error:(error:any)=>{
         console.error(error);
       },
       complete:()=>{
@@ -39,12 +39,12 @@ export class HeaderComponent implements OnInit {
       }
     })
   }
-
+  
   loadLoginPage() {
-    // this.router.navigate(['/LoginPage']);
     this.popup.loginPopup=true
+    // this.router.navigate(['/LoginPage']);
   }
-
+  
   loadRegistration(){
     this.router.navigate(['/Registration']);
   }
@@ -64,10 +64,10 @@ export class HeaderComponent implements OnInit {
     const callable = this.functions.httpsCallable('rawDatas/createRawData');
         console.log("create raw Data");
         callable({ numberOfUsers:numberOfUsers,numberOfRegistrations:numberOfRegistrations, numberOfSupport:numberOfSupport}).subscribe({
-          next: (data) => {
+          next: (data:any) => {
             console.log("Raw Data created");
           },
-          error: (error) => {
+          error: (error:any) => {
             console.error("Error", error);
           },
         complete: () => console.info('Successful ')
