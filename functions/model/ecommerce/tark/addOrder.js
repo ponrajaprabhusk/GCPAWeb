@@ -31,7 +31,7 @@ exports.addOrder = function(request, response) {
         const orderId = "O" + (doc[0].NumberOfOrders + 1);
 
         addOrder(orderId, quantity, address, city, country, mobileNum, name, pincode, productId, productName, state, totalPrice, userUid).then(() => {
-            const result = { data: "Order Addded Successfully" };
+            const result = { data: orderId };
             console.log("Order Addded Successfully");
             updateData("order").then(() => console.log("Order Raw Data Updated"));
             return response.status(status).send(result);

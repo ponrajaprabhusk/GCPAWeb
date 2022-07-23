@@ -1,17 +1,61 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EcommerceDashboardService } from 'src/app/services/ecommerce/ecommerce-dashboard.service';
 import {SlidesOutputData, OwlOptions } from 'ngx-owl-carousel-o';
 import { Order } from 'src/app/Interfaces/Order';
 import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 import { OrderServiceService } from 'src/app/services/order/order-service.service';
+import { NativeWindowsService } from 'src/app/services/nativeWindow/native-windows-service.service';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
+
 export class ProductsComponent implements OnInit {
+
+  paymentStatus: string
+  public rzp: any;
+  orderId: any;
+
+  public options: any = {
+    key: '',
+    name: 'Global Child Prodigy Awards',
+    description: 'Buy our Products',
+    image: "",
+    order_id: "",
+    amount: 0,
+    prefill: {
+      name: '',
+      contact: '',
+      email: '', // add your email id
+    },
+    // callback_url: "",
+    notes: {},
+    theme: {
+      color: '#5194CF'
+    },
+    handler: (res: any) => {
+      const paymentId = res.razorpay_payment_id;
+      const rzpOrderId = res.razorpay_order_id;
+      const signature = res.razorpay_signature;
+      this.zone.run(() => {
+        this.router.navigate(["OrderStatus", rzpOrderId, paymentId, signature, this.orderId ]);
+      })
+    },
+    modal: {
+      ondismiss: (() => {
+        this.zone.run(() => {
+          // add current page routing if payment fails
+          console.log("sign");
+          this.router.navigate(["OrderStatus", "f", "f", "f", this.orderId ]);
+        })
+      }),
+
+    }
+  };
   activeSlides?: SlidesOutputData;
   getPassedData(data: SlidesOutputData) {
     this.activeSlides = data;
@@ -21,7 +65,7 @@ export class ProductsComponent implements OnInit {
   productName="";
   productId="";
   quantity=1;
-  order:Order={ 
+  order:Order={
     OrderId:"",
     Quantity:0,
     Name:"",
@@ -37,7 +81,7 @@ export class ProductsComponent implements OnInit {
     TotalPrice:0
   }
 
-  constructor(public route:ActivatedRoute,public ecommerceService:EcommerceDashboardService, public authService:AuthServiceService, public orderService:OrderServiceService) { }
+  constructor(public route:ActivatedRoute,private winRef: NativeWindowsService,  private functions: AngularFireFunctions, public ecommerceService:EcommerceDashboardService, public authService:AuthServiceService, public orderService:OrderServiceService, private zone: NgZone,private router: Router) { }
 
   ngOnInit(): void {
     this.productName = this.route.snapshot.params[ 'productName' ]
@@ -50,7 +94,7 @@ export class ProductsComponent implements OnInit {
   }
   minus(){
     if (this.quantity!=1) {
-      
+
       this.quantity-=1;
     }
   }
@@ -66,7 +110,19 @@ this.checkout=true;
     this.order.TotalPrice=this.quantity*this.ecommerceService.product.Price;
     this.order.UserUid=this.authService.loggedInUser.Uid;
     console.log(this.order);
-    this.orderService.addOrder(this.order);
+    this.orderService.addOrder(this.order)
+    if(this.orderService.orderId){
+      this.orderId = this.orderService.orderId;
+      this.setOrderWithRazor()
+    }else{
+      this.orderService.orderDataStateObservable.subscribe((data)=>{
+        if(data){
+          this.orderId = this.orderService.orderId;
+          this.setOrderWithRazor();
+        }
+      })
+    }
+
     }
 
   customOptions: OwlOptions = {
@@ -96,5 +152,31 @@ this.checkout=true;
     nav: false,
   }
 
+  initPay(): void {
+    this.rzp = new this.winRef.nativeWindow.Razorpay(this.options);
+    this.rzp.open();
+  }
+  setOrderWithRazor() {
+    const callable = this.functions.httpsCallable('payment/addEcommercePayment');
+    callable({OrderId: this.orderId}).subscribe({
+      next:(result)=>{
+        console.log(result);
+      this.authService.currentReceipt = result.receipt;
+      console.log(this.authService.currentReceipt);
+      this.options.order_id = result.id;
+      this.options.amount = result.amount;
+      this.options.key = result.key;
+      this.options.prefill.name = this.order.Name
+      this.options.prefill.contact = this.order.MobileNum
+      this.options.prefill.email = this.authService.user.email;
+      },
+      error:(error)=>{
+        console.log(error);
+      },
+      complete:()=>{
+        this.initPay()
+      }
+    })
+  }
 
 }

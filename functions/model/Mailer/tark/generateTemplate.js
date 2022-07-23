@@ -31,10 +31,14 @@
      if (templateName == "registration.html") {
         mailSubject="Registration Successful - GCPA";
         data = data.replace("$Name$", applicantName);
-        data = data.replace("$applicationLink$", "https://www.gcpawards.com/"); // applicationId
+        data = data.replace("$Name1$", applicantName);
+        data = data.replace("$Applicationid$", applicationId);
+        data = data.replace("$applicationLink$", "https://www.gcpawards.com/payment/" + applicationId); // applicationId
      } else if (templateName == "payment.html") {
         data = data.replace("$Name$", applicantName);
-        data = data.replace("$applicationLink$", "https://www.gcpawards.com/"); // applicationId
+        data = data.replace("$Name1$", applicantName);
+        data = data.replace("$ApplicationId$", applicationId);
+        data = data.replace("$ApplicationLink$", "https://www.gcpawards.com/payment/"+ applicationId); // applicationId
         mailSubject="Payment Successful - GCPA";
      } else if (templateName == "selected.html") {
         data = data.replace("$Name$", applicantName);

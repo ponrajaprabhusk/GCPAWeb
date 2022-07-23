@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "gcpaweb"
+    "default": "gcpa1203"
   },
   "targets": {
     "gcpaweb": {
