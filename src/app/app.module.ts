@@ -97,6 +97,8 @@ import { NewImageComponent } from './body/dashboard/ecommerce-dashboard/new-prod
 import { ProductDataTableComponent } from './body/common-tools/product-data-table/product-data-table.component';
 import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
+import { BlogComponent } from './body/blog/blog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -172,7 +174,8 @@ import { ProductsComponent } from './body/e-commerce/products/products.component
     NewImageComponent,
     ProductDataTableComponent,
     ECommerceComponent,
-    ProductsComponent,  
+    ProductsComponent,
+    BlogComponent,  
   ],
   imports: [
     MatDialogModule,
@@ -194,6 +197,7 @@ import { ProductsComponent } from './body/e-commerce/products/products.component
     AngularFireStorageModule,
     ReactiveFormsModule,
     NgxCaptchaModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
