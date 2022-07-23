@@ -8,6 +8,7 @@ const { fastify, functions, cors, requestHandler } = require("../application/lib
 // eslint-disable linebreak-style
 const { addPayment } = require("./tark/addPayment");
 const { paymentVerification } = require("./tark/paymentVerification");
+const { addEcommercePayment } = require("./tark/addEcommercePayment");
 
 fastify.post("/paymentVerification", (req, res) => {
     paymentVerification(req, res);
@@ -15,6 +16,10 @@ fastify.post("/paymentVerification", (req, res) => {
 
 fastify.post("/addPayment", (req, res) => {
     addPayment(req, res);
+});
+
+fastify.post("/addEcommercePayment", (req, res) => {
+    addEcommercePayment(req, res);
 });
 
 exports.payment = functions.https.onRequest((req, res) => {
