@@ -97,12 +97,9 @@ import { NewImageComponent } from './body/dashboard/ecommerce-dashboard/new-prod
 import { ProductDataTableComponent } from './body/common-tools/product-data-table/product-data-table.component';
 import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
-<<<<<<< HEAD
 import { BlogComponent } from './body/blog/blog.component';
 import { HttpClientModule } from '@angular/common/http';
-=======
 import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
->>>>>>> 33876a3db132678ac7f5ad6b36b5a31c3d0d5f60
 
 
 @NgModule({
@@ -179,11 +176,8 @@ import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status
     ProductDataTableComponent,
     ECommerceComponent,
     ProductsComponent,
-<<<<<<< HEAD
     BlogComponent,  
-=======
     EcommercePaymentStatusComponent,
->>>>>>> 33876a3db132678ac7f5ad6b36b5a31c3d0d5f60
   ],
   imports: [
     MatDialogModule,

@@ -30,11 +30,8 @@ import { UsersDashboardComponent } from './body/dashboard/users-dashboard/users-
 import { EcommerceDashboardComponent } from './body/dashboard/ecommerce-dashboard/ecommerce-dashboard.component';
 import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
-<<<<<<< HEAD
 import { BlogComponent } from './body/blog/blog.component';
-=======
 import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
->>>>>>> 33876a3db132678ac7f5ad6b36b5a31c3d0d5f60
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
