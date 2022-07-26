@@ -13,19 +13,36 @@ export class BlogComponent implements OnInit {
   slug: String;
   post:any;
   allPosts: any;
+  content:any;
+  postReady: boolean;
   constructor(private route: ActivatedRoute, public functions: AngularFireFunctions, public wpService: WpServiceService) { }
 
   ngOnInit(): void {
+    this.postReady = false;
   this.slug = this.route.snapshot.params['slug'];
   this.getPost();
+  this.getAllPosts();
   }
 
   getPost(){
-    this.post = this.wpService.getPost(this.slug);
+    this.wpService.getPost(this.slug);
+    this.wpService.postObservable.subscribe(data=>{
+    this.post = data;
+    console.log(data);
+    this.post = this.post[0];
+    console.log(this.post);
+    this.postReady = true;
+    console.log(this.post.title.rendered);
+    })
+    
   }
 
   getAllPosts(){
-    this.allPosts = this.wpService.getAllPosts();
+    this.wpService.getAllPosts();
+    this.wpService.allPostObservable.subscribe(data=>{
+      this.allPosts = data;
+      console.log(data);
+    })
   }
 
 }

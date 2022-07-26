@@ -1,38 +1,36 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WpServiceService {
-
+  array = [];
+  public postObservable: Observable<Array<Object>>;
+  public allPostObservable: Observable<Array<Object>>;
   constructor(private http: HttpClient) { }
   endpoint = 'https://gcpawards.com/blog/wp-json/wp/v2/posts/';
 
 getPost(slug: String){
-  let result = this.http.get(this.endpoint + '?slug=' + slug).subscribe({
-    next: (data) => {
-      console.log(data.toString());
-      if(data.toString() == ""){
-        console.log("error");
-        return null;
-      }else{
-        return data;
-      }
-    },
-    error: (e) => console.error(e),
-    complete: () => console.info('complete') 
-});
-  return result;
+  this.postObservable = this.http.get(this.endpoint + '?slug=' + slug).pipe(map(res=>{
+    const data = res as Array<Object>;
+    console.log(data);
+    return data;
+  }));
+  return this.postObservable;
 }
 
 getAllPosts(){
   //Please limit the per page number to how many you need for
-  let result = this.http.get(this.endpoint + '?per_page=100').subscribe({
-    next: (data) => console.log(data),
-    error: (e) => console.error(e),
-    complete: () => console.info('complete') 
-});
-  return result;
+  this.allPostObservable = this.http.get(this.endpoint + '?per_page=50').pipe(map(res=>{
+    const data = res as Array<Object>;
+    console.log(data);
+    data.forEach(element => {
+      console.log(element);
+    });
+    return data;
+  }));
+  return this.allPostObservable;
 }
 }

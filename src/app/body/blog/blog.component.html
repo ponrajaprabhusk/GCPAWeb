@@ -1,7 +1,11 @@
-<br><br><br><br><br>
-<p>blog works! {{slug}}</p>{{post}}
-<ng-template >
-<div *ngFor="let p of post">{{p}}
-    {{post}}
+<br><br><br><br><br><br><br>
+<p>blog works!  </p>
+<div *ngIf="postReady">
+    {{post.title.rendered}}
 </div>
-</ng-template>
+<hr>
+<div *ngFor="let post of allPosts">
+   <p> {{post.title.rendered}}</p>
+   <p>{{post.id}}</p>
+    <p>sanjay</p>
+</div>
