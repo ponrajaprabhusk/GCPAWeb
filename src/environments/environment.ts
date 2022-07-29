@@ -4,14 +4,20 @@
 
 export const environment = {
   production: false,
-  firebase: { 
-    apiKey: "AIzaSyD-QS1h-zl67_scAtDuQz2LYsPdBEK1YHM",
-    authDomain: "gcpa1203.firebaseapp.com",
-    projectId: "gcpa1203",
-    storageBucket: "gcpa1203.appspot.com",
-    messagingSenderId: "710753657613",
-    appId: "1:710753657613:web:d5a5dc4e97291218188644",
-    measurementId: "G-0ZE5XHJ9P2"
+  firebase: {
+    apiKey: "AIzaSyArJwOw-uXdCnEA-kvJpV1tmcPQU9mSB6g",
+
+  authDomain: "gcpaweb.firebaseapp.com",
+
+  projectId: "gcpaweb",
+
+  storageBucket: "gcpaweb.appspot.com",
+
+  messagingSenderId: "899563581116",
+
+  appId: "1:899563581116:web:cd9e50532c2a142e772ab9"
+    
+
   },
   useEmulators: true,
   recaptcha: {
