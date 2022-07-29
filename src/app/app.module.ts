@@ -98,6 +98,8 @@ import { ProductDataTableComponent } from './body/common-tools/product-data-tabl
 import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
 import * as $ from 'jquery';
+import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
+
 
 @NgModule({
   declarations: [
@@ -172,7 +174,8 @@ import * as $ from 'jquery';
     NewImageComponent,
     ProductDataTableComponent,
     ECommerceComponent,
-    ProductsComponent,  
+    ProductsComponent,
+    EcommercePaymentStatusComponent,
   ],
   imports: [
     MatDialogModule,
