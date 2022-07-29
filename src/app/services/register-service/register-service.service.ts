@@ -92,7 +92,10 @@ let registrationId: any;
       error: (error) => {
         console.error("Error", error);
       },
-    complete: () => console.info('Successful')
+    complete: () => {
+      console.info('Successful')
+      alert("form updated")
+    }
 });
   }
 

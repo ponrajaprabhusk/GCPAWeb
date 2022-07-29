@@ -4,35 +4,42 @@
 
 <app-support-popup></app-support-popup>
 
-<div class="back mt-5 pt-5 pb-5">
+<div class="back mt-5 pt-5 pb-5" style="min-height: 85%;">
     <h1 class="text-center pt-3">Admin Dashboard</h1>
-    <div class="container">
-        <div class="row text-center pt-5">
+    <div class="text-center mx-5">
+        <div class="row text-center pt-3 px-5 mx-5" style="min-width:fit-content;">
             <!-- <div class="col-4">
                 <button class="btn btn-outline-dar" (click)="displayrawData()">Raw Data</button>
             </div> -->
-            <div class="col-4">
+            <div class="col text-center" >
                 <button class="btn btn-outline-dar" (click)="displayUserData()">Users</button>
             </div>
-            <div class=" col-4 ">
+            <div class=" col text-center " >
                 <button class="btn btn-outline-dar " (click)="displayRegistrationData()">Registrations</button>
             </div>
-            <div class=" col-4 pt-4">
+            <div class=" col text-center " >
                 <button class="btn btn-outline-dar " (click)="partnersSponsors()">Partners And Sponsers</button>
             </div>
-            <div class=" col-4 pt-4">
+            <div class=" col text-center " >
                 <button class="btn btn-outline-dar " (click)="testimonials()">Testimonials</button>
             </div>
-            <div class=" col-4 pt-4">
+            <div class=" col text-center " >
                 <button class="btn btn-outline-dar " (click)="newsroom()">Media Coverage</button>
             </div>
-            <div class=" col-4 pt-4">
+            <div class=" col text-center " >
                 <button class="btn btn-outline-dar " (click)="gallery()">Gallery</button>
             </div>
-            <div class=" col-4 pt-4">
+            <div class=" col text-center" >
                 <button class="btn btn-outline-dar " (click)="ecommerce()">E-commerce</button>
             </div>
         </div>
-        
+        <hr>
     </div>
+    <app-users-dashboard *ngIf="userDataComponent"></app-users-dashboard>
+    <app-registration-dashboard *ngIf="registrationDataComponent"></app-registration-dashboard>
+    <app-sponsors-partners *ngIf="partnersDataComponent"></app-sponsors-partners>
+    <app-newsroom-dashboard *ngIf="newsroomDataComponent"></app-newsroom-dashboard>
+    <app-ecommerce-dashboard *ngIf="ecommerceDataComponent"></app-ecommerce-dashboard>
+    <app-gallery-dashboard *ngIf="galleryDataComponent"></app-gallery-dashboard>
+    <app-testimonials-dashboard *ngIf="testimonialsDataComponent"></app-testimonials-dashboard>
 </div>

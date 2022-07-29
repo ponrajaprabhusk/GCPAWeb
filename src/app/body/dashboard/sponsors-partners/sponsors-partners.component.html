@@ -4,12 +4,46 @@
 
 <app-support-popup></app-support-popup>
 
-<div class="back mt-5 pt-5 pb-5">
+<div class="back pt-3 pb-5">
     <h1 class="text-center pt-3">Partners And Sponsors</h1>
     <div class="container">
         <div class="text-center">
-            <button class="btn btn-outline-dar" (click)="showNewPartner()">Add new Partner Or Sponsor</button>
-            <app-new-partner *ngIf="newPartner"></app-new-partner>
+            
+            <!--  -->
+            <button type="button" class="btn btn-primary gcpabutton mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Add new Partner Or Sponsor</button>
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Add new Partner Or Sponsor</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<form class="text center">
+                                            <div class="form-group mb-2 text-center">
+                                                <input type="text" name="name" class="form-control bg-light" placeholder="Name" required [(ngModel)]="partner.Name">
+                                            </div>
+                                            <div class="form-group mb-2 ">
+                                                <input type="text " name="text " class="form-control bg-light " placeholder="Type" required [(ngModel)]="partner.Type">
+                                            </div>
+                                            <input type="file" class="form-control bg-light" (change)="photoUpload($event)">
+                                            <ng-container *ngIf="uploadService.fileUploadStatus && photoStatus">
+                                                <div class="progress" style="height: 10px; margin-top: 10px;">
+                                                    <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': progressPhoto + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                Uploading {{fileName}} ...
+                                            </ng-container>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary gcpabutton" (click)="submit()">Save changes</button>
+									</div>
+								</div>
+							</div>
+						</div>
+            <!--  -->
         </div>
         <div class="container mt-3 py-3 px-2">
             <div class="row text-center">

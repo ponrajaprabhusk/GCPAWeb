@@ -4,6 +4,10 @@ h1 {
     font-weight: 700!important;
     font-family: 'Amaranth', sans-serif!important;
 }
+h4 {
+    color: #ef3789!important;
+    font-family: 'Amaranth', sans-serif!important;
+}
 
 @media (min-width: 576px) {
     .container {
@@ -41,5 +45,14 @@ h1 {
         background-size: cover;
         background-attachment: fixed;
     }
+}
+
+.gcpabutton{
+    background-color: #5095cf!important;
+}
+
+a{
+    text-decoration: none;
+    color: #5095cf;
 }
 

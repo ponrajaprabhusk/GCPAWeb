@@ -99,6 +99,7 @@ import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
 import { BlogComponent } from './body/blog/blog.component';
 import { HttpClientModule } from '@angular/common/http';
+import * as $ from 'jquery';
 import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
 
 
