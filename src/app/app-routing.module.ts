@@ -30,6 +30,7 @@ import { UsersDashboardComponent } from './body/dashboard/users-dashboard/users-
 import { EcommerceDashboardComponent } from './body/dashboard/ecommerce-dashboard/ecommerce-dashboard.component';
 import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
+import { BlogComponent } from './body/blog/blog.component';
 import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
 
 const routes: Routes = [
@@ -63,6 +64,7 @@ const routes: Routes = [
   {path:'ecommerceDashboard', component:EcommerceDashboardComponent },
   {path:'ecommerce', component:ECommerceComponent },
   {path:'products/:productId/:productName', component:ProductsComponent, canActivate: [AngularFireAuthGuard] },
+  {path:'blog/:slug', component:BlogComponent}
 ];
 
 @NgModule({
