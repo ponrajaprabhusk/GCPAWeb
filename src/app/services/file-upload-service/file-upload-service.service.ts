@@ -25,6 +25,22 @@ export class FileUploadService {
   profileTime:string="";
   profileLastModified:number;
 
+  uploadedPhotoUrl:string="";
+  uploadedPhotoDate:string="";
+  uploadedPhotoTime:string="";
+  uploadedPhotoLastModified:number;
+
+  uploadedVideoUrl:string="";
+  uploadedVideoDate:string="";
+  uploadedVideoTime:string="";
+  uploadedVideoLastModified:number;
+
+  uploadedDocUrl:string="";
+  uploadedDocDate:string="";
+  uploadedDocTime:string="";
+  uploadedDocLastModified:number;
+
+
   partnerUrl:string="";
   testimonialUrl:string="";
   newsUrl:string="";
@@ -74,6 +90,26 @@ export class FileUploadService {
      this.profileDate=todayDate
      this.profileTime=time
      this.profileLastModified=lastModified
+     
+    }else if (folderName == "UploadedDoc") {
+      this.uploadedDocUrl=fileUpload.url
+     this.uploadedDocDate=todayDate
+     this.uploadedDocTime=time
+     this.uploadedDocLastModified=lastModified
+     console.log(this.uploadedDocUrl)
+     
+    }else if (folderName == "UploadedPhoto") {
+      this.uploadedPhotoUrl=fileUpload.url
+     this.uploadedPhotoDate=todayDate
+     this.uploadedPhotoTime=time
+     this.uploadedPhotoLastModified=lastModified
+     
+    }else if (folderName == "UploadedVideo") {
+      this.uploadedVideoUrl=fileUpload.url
+     this.uploadedVideoDate=todayDate
+     this.uploadedVideoTime=time
+     this.uploadedVideoLastModified=lastModified
+     
     } else if(folderName=="Partners"){
       this.partnerUrl=fileUpload.url
       
@@ -88,7 +124,6 @@ export class FileUploadService {
       
     }else if(folderName=="Ecommerce"){
       this.ecommerceUrl.push(fileUpload.url)
-      console.log(this.ecommerceUrl)
     }
     
     this.fileUploadStatus = false;
