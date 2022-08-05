@@ -101,6 +101,21 @@ import { BlogComponent } from './body/blog/blog.component';
 import { HttpClientModule } from '@angular/common/http';
 import * as $ from 'jquery';
 import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
+import { BlogHomeComponent } from './body/blog-home/blog-home.component';
+import { BlogHeaderComponent } from './body/blog-header/blog-header.component';
+import { BlogFooterComponent } from './body/blog-footer/blog-footer.component';
+import { GcpaBookComponent } from './body/blog-home/gcpa-book/gcpa-book.component';
+import { ParentingComponent } from './body/blog-home/parenting/parenting.component';
+import { PodcastComponent } from './body/blog-home/podcast/podcast.component';
+import { PopularComponent } from './body/blog-home/popular/popular.component';
+import { ProdigyHistoryComponent } from './body/blog-home/prodigy-history/prodigy-history.component';
+import { ProdigyTalksComponent } from './body/blog-home/prodigy-talks/prodigy-talks.component';
+import { TopCategoriesComponent } from './body/blog-home/top-categories/top-categories.component';
+import { VideoBlogsComponent } from './body/blog-home/video-blogs/video-blogs.component';
+import { ParentingPageComponent } from './body/parenting-page/parenting-page.component';
+import { ProdigyHistoryPageComponent } from './body/prodigy-history-page/prodigy-history-page.component';
+import { PopularPageComponent } from './body/popular-page/popular-page.component';
+import { AllStoriesPageComponent } from './body/all-stories-page/all-stories-page.component';
 
 
 @NgModule({
@@ -178,7 +193,7 @@ import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status
     ECommerceComponent,
     ProductsComponent,
     BlogComponent,  
-    EcommercePaymentStatusComponent,
+    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent,
   ],
   imports: [
     MatDialogModule,

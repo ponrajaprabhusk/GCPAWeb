@@ -28,13 +28,13 @@
 									<div class="form-body">
 										<form class="row g-3">
 											<div class="col-12">
-												<label for="inputEmailAddress" class="form-label">Email Address</label>
-												<input type="email" class="form-control" id="inputEmailAddress" placeholder="Email Address">
+												<label for="inputEmailAddress" class="form-label" >Email Address</label>
+												<input type="email" class="form-control" id="inputEmailAddress" placeholder="Email Address"[(ngModel)]="emailLogin" name="elogin">
 											</div>
 											<div class="col-12">
-												<label for="inputChoosePassword" class="form-label">Enter Password</label>
+												<label for="inputChoosePassword" class="form-label" >Enter Password</label>
 												<div class="input-group" id="show_hide_password">
-													<input type="password" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Enter Password"> 
+													<input type="password" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Enter Password" [(ngModel)]="passwordLogin" name="plogin"> 
 												</div>
 											</div>
 											<div class="col-md-6">
@@ -47,7 +47,7 @@
 											</div>
 											<div class="col-12">
 												<div class="d-grid">
-													<button type="submit" class="btn btn-primary gcpabutton"><i class="bx bxs-lock-open"></i>Sign in</button>
+													<button type="submit" class="btn btn-primary gcpabutton"><i class="bx bxs-lock-open" (click)="signIn()"></i>Sign in</button>
 												</div>
 											</div>
 										</form>
@@ -80,18 +80,18 @@
 												<form class="row g-3">
 													<div class="col-12">
 														<label for="inputEmailAddress" class="form-label">Email Address</label>
-														<input type="email" class="form-control" id="inputEmailAddress" placeholder="Email Address">
+														<input type="email" class="form-control" id="inputEmailAddress" placeholder="Email Address" [(ngModel)]="emailSignup" name="emailsignup">
 													</div>
 													<div class="col-12">
 														<label for="inputChoosePassword" class="form-label">Enter Password</label>
 														<div class="input-group" id="show_hide_password">
-															<input type="password" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Enter Password"> 
+															<input type="password" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Enter Password" [(ngModel)]="passwordSignup" name="psignup" > 
 														</div>
 													</div>
 													<div class="col-12">
 														<label for="inputConfirmPassword" class="form-label">Confirm Password</label>
 														<div class="input-group" id="show_hide_password">
-															<input type="password" class="form-control border-end-0" id="inputConfirmPassword"  placeholder="Enter Password"> 
+															<input type="password" class="form-control border-end-0" id="inputConfirmPassword"  placeholder="Enter Password" [(ngModel)]="confirm" name="pcon"> 
 														</div>
 													</div>
 													<div class="col-md-6">
@@ -103,7 +103,7 @@
 													
 													<div class="col-12">
 														<div class="d-grid">
-															<button type="submit" class="btn btn-primary gcpabutton"><i class="bx bxs-lock-open"></i>Sign in</button>
+															<button type="submit" class="btn btn-primary gcpabutton"(click)="signUp()"><i class="bx bxs-lock-open" ></i>Sign up</button>
 														</div>
 													</div>
 												</form>

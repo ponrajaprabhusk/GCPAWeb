@@ -5,6 +5,7 @@ import { User, UserFetched } from 'src/app/Interfaces/UserInterface';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { PopupHandlerService } from '../popup-handler-service/popup-handler.service';
 import { CookieService } from 'ngx-cookie-service';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,23 @@ export class AuthServiceService {
     this.userReady=true;
     return this.createUserData(this.user);
   }
+
+  async emailSignup(email:string,password:string) {
+    const credential = await this.afauth.createUserWithEmailAndPassword(email,password)
+    console.log(credential)
+    this.user = credential.user as User;
+    this.userReady=true;
+    return this.createUserData(this.user);
+  }
+
+  async emailSignin(email:string,password:string) {
+    const credential = await this.afauth.signInWithEmailAndPassword(email,password)
+    console.log(credential)
+    this.user = credential.user as User;
+    this.userReady=true;
+    this.popupService.loginPopup=false
+  }
+
 
   // async createUser(email: string, password: string, username: string) {
   //   await this.afauth.createUserWithEmailAndPassword(email, password);

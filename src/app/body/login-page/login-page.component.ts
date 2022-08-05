@@ -9,7 +9,12 @@ import { SupportServiceService } from 'src/app/services/support/support-service.
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
+emailLogin="";
+passwordLogin="";
+emailSignup="";
+passwordSignup="";
 
+confirm="";
   constructor(public authService: AuthServiceService, public popupService:PopupHandlerService) { }
 
   ngOnInit(): void {
@@ -35,5 +40,18 @@ showLoginPopup=true;
 
   closePopup(){
     this.popupService.loginPopup=false;
+  }
+
+  signIn(){
+    this.authService.emailSignin(this.emailLogin,this.passwordLogin);
+  }
+
+  signUp(){
+    console.log(this.emailSignup)
+    if(this.passwordSignup==this.confirm){
+      this.authService.emailSignup(this.emailSignup,this.passwordSignup);
+     }
+     else
+     alert("Passwords do not match");
   }
 }

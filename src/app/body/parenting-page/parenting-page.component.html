@@ -1,0 +1,26 @@
+<div class="container pt-3">
+
+    <div class="section-title listpostsbycats">
+        <h3>
+        <span><b>Parenting</b> &nbsp;</span>
+        
+        <div class="clearfix"></div> 
+        </h3>
+    </div>
+
+   <div class="row pt-4">
+    <ng-container *ngFor="let post of allPosts">
+        <div class="col-lg-4 col-md-4 col-sm-4" [id]="post">
+    
+            <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog/post', post.slug]"[ngStyle]="{'background-image': 'url(' + post.yoast_head_json.og_image[0].url + ')'}"></a>
+            <div class="card-block">
+            <h2 class="card-title text"><a [routerLink]="['/blog', post.slug]">{{post.yoast_head_json.title}}</a></h2>
+            <span class="card-text d-block text" [innerHtml]="post.excerpt.rendered"></span>
+          
+            </div>
+            </div>
+        </div>
+
+    </ng-container>
+   </div>
+</div>
