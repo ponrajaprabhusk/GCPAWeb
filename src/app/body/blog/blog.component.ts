@@ -6,7 +6,7 @@ import { WpServiceService } from 'src/app/services/wp-service/wp-service.service
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.css']
+  styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
 
@@ -30,9 +30,8 @@ export class BlogComponent implements OnInit {
     this.post = data;
     console.log(data);
     this.post = this.post[0];
-    console.log(this.post);
     this.postReady = true;
-    console.log(this.post.title.rendered);
+    
     })
     
   }
@@ -41,7 +40,6 @@ export class BlogComponent implements OnInit {
     this.wpService.getAllPosts();
     this.wpService.allPostObservable.subscribe(data=>{
       this.allPosts = data;
-      console.log(data);
     })
   }
 

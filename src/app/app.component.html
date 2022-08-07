@@ -1,3 +1,8 @@
-<app-header></app-header>
-<app-body></app-body>
-<app-footer></app-footer>
+<ng-container >
+    <app-header *ngIf="!(this.router.url.includes(blog))"></app-header>
+    <app-blog-header *ngIf="(this.router.url.includes(blog))"></app-blog-header>
+    <app-body></app-body>
+    <app-footer *ngIf="!(this.router.url.includes(blog))"></app-footer>
+    <app-blog-footer *ngIf="(this.router.url.includes(blog))"></app-blog-footer>
+
+</ng-container>

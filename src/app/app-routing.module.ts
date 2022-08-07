@@ -32,6 +32,13 @@ import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
 import { BlogComponent } from './body/blog/blog.component';
 import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
+import { BlogHomeComponent } from './body/blog-home/blog-home.component';
+import { ParentingComponent } from './body/blog-home/parenting/parenting.component';
+import { ParentingPageComponent } from './body/parenting-page/parenting-page.component';
+import { ProdigyHistoryComponent } from './body/blog-home/prodigy-history/prodigy-history.component';
+import { ProdigyHistoryPageComponent } from './body/prodigy-history-page/prodigy-history-page.component';
+import { PopularPageComponent } from './body/popular-page/popular-page.component';
+import { AllStoriesPageComponent } from './body/all-stories-page/all-stories-page.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -64,7 +71,16 @@ const routes: Routes = [
   {path:'ecommerceDashboard', component:EcommerceDashboardComponent },
   {path:'ecommerce', component:ECommerceComponent },
   {path:'products/:productId/:productName', component:ProductsComponent, canActivate: [AngularFireAuthGuard] },
-  {path:'blog/:slug', component:BlogComponent}
+  {path:'blog', component:BlogHomeComponent},
+  {path:'blog/parenting', component:ParentingPageComponent},
+  {path:'blog/prodigy-history', component:ProdigyHistoryPageComponent},
+  {path:'blog/popular', component:PopularPageComponent},
+  {path:'blog/all-stories', component:AllStoriesPageComponent},
+  {path:'blog/:slug', component:BlogComponent},
+
+
+
+
 ];
 
 @NgModule({

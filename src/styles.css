@@ -16,6 +16,10 @@ h1 {
     font-size: 18px;
     font-weight: 400;
 }
+.wp-block-image img {
+    height: auto;
+    max-width: 100% !important;
+    vertical-align: bottom;
+  }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
