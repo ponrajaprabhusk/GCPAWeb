@@ -18,12 +18,6 @@ exports.paymentVerification = function(request, response) {
         const id = request.body.data.Id;
         const type = request.body.data.PaymentType;
 
-        console.log("orderId: " + orderId);
-        console.log("paymentId: " + paymentId);
-        console.log("signature: " + signature);
-        console.log("Id: " + id);
-        console.log("type", type);
-
         // Test Credentials
         const keySecret = "N9fWEfNEVnIrmubuMyDhxP4i";
 

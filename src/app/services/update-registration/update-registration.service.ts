@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
-import { map } from 'rxjs';
 import { Register } from 'src/app/Interfaces/RegistrationInterface';
 
 @Injectable({

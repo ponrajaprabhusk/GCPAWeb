@@ -10,7 +10,7 @@
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
-                    "style": "scss"
+                    "style": "css"
                   },
                 "@schematics/angular:application": {
                     "strict": true
@@ -23,57 +23,32 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "allowedCommonJsDependencies": [
-                            "chart.js"
-                         ],
                         "outputPath": "dist/GCPAweb",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
-                        "inlineStyleLanguage": "scss",
+                        "inlineStyleLanguage": "css",
                         "assets": [
                             "src/favicon.ico",
                             "src/assets"
                         ],
                         "styles": [
-                            "src/assets/css/icons.css",
-                            "src/assets/plugins/datatable/css/dataTables.bootstrap5.min.css",
-                            "src/assets/sass/app.scss",
-                            "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
-                            "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/styles.css"
                         ],
                         "scripts": [
                             "./node_modules/jquery/dist/jquery.min.js",
-                            "./node_modules/popper.js/dist/popper.js",       
-                            "./node_modules/chart.js/dist/chart.min.js",                            
-                            "./node_modules/@popperjs/core/dist/umd/popper.js",
-                            "./node_modules/apexcharts/dist/apexcharts.min.js",
-                            "./node_modules/bootstrap/dist/js/bootstrap.min.js",
-                            "./src/assets/plugins/jvector-map/jquery-jvectormap-2.0.2.min.js",
-                            "./src/assets/plugins/datatable/js/jquery.dataTables.min.js",
-                            "./src/assets/plugins/jvector-map/jquery-jvectormap-world-mill-en.js",
-                            "./src/assets/plugins/sparkline-charts/jquery.sparkline.min.js",
-                            "./src/assets/plugins/datatable/js/dataTables.bootstrap5.min.js",
-                            "./src/assets/plugins/raphael/raphael-min.js",
-                            "./src/assets/plugins/morris/js/morris.js",
-                            "./src/assets/vendor/pace/pace.min.js",
-                            "./src/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js",
-                            "./src/assets/plugins/sparkline-charts/jquery.sparkline.min.js",
-                            "./src/assets/plugins/jquery-knob/excanvas.js",
-                            "./src/assets/plugins/jquery-knob/jquery.knob.js",
-                            "./src/assets/plugins/chartjs/js/Chart.extension.js",
-                            "./src/assets/plugins/datatable/js/jquery.dataTables.min.js"
+                            "./node_modules/popper.js/dist/popper.min.js",
+                            "./node_modules/bootstrap/dist/js/bootstrap.min.js"
                         ]
                     },
                     "configurations": {
                         "production": {
                             "budgets": [{
                                     "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
+                                    "maximumWarning": "1mb",
+                                    "maximumError": "2mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",

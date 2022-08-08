@@ -40,6 +40,7 @@ export class PopularComponent implements OnInit {
     this.wpService.getAllPosts();
     this.wpService.allPostObservable.subscribe(data=>{
       this.allPosts = data;
+      console.log(this.allPosts);
       this.allPosts=this.allPosts.filter((obj:any)=>{
         return (obj.categories.includes(52)&&obj.id!=235153)
       })

@@ -1,17 +1,11 @@
 export const environment = {
   firebase: {
-    apiKey: "AIzaSyArJwOw-uXdCnEA-kvJpV1tmcPQU9mSB6g",
-
-    authDomain: "gcpaweb.firebaseapp.com",
-  
-    projectId: "gcpaweb",
-  
-    storageBucket: "gcpaweb.appspot.com",
-  
-    messagingSenderId: "899563581116",
-  
-    appId: "1:899563581116:web:cd9e50532c2a142e772ab9"
-
+    apiKey: "AIzaSyCp1dbFGmC8VX3gLE7kt7lrpLPEP67WvpA",
+    authDomain: "gcpaweb-f1689.firebaseapp.com",
+    projectId: "gcpaweb-f1689",
+    storageBucket: "gcpaweb-f1689.appspot.com",
+    messagingSenderId: "822070559802",
+    appId: "1:822070559802:web:26d78613af9da755076103"
   },
   useEmulators: false,
   production: true,
