@@ -6,7 +6,7 @@ import { WpServiceService } from 'src/app/services/wp-service/wp-service.service
 @Component({
   selector: 'app-parenting-page',
   templateUrl: './parenting-page.component.html',
-  styleUrls: ['./parenting-page.component.scss']
+  styleUrls: ['./parenting-page.component.css']
 })
 export class ParentingPageComponent implements OnInit {
 

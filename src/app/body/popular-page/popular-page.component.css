@@ -1,0 +1,109 @@
+@media (min-width: 576px){
+
+  .container {
+      max-width: 540px;
+  }
+}
+@media (min-width: 768px){
+
+  .container {
+      max-width: 720px;
+  }
+}
+
+@media (min-width: 992px){
+
+  .container {
+      max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px){
+
+  .container {
+      max-width: 1140px;
+  }
+}
+
+.section-title span {
+  border-bottom: 1px solid rgba(0,0,0,.44);
+  display: inline-block;
+  padding-bottom: 20px;
+  margin-bottom: -1px;
+  text-transform: capitalize;
+  font-weight: 300;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #111111;
+}
+
+morefromcategory:hover {
+  text-decoration: none;
+}
+
+a:focus, a:hover {
+  color: #014c8c;
+  text-decoration: underline;
+}
+a:active, a:hover {
+  outline-width: 0;
+}
+.morefromcategory {
+  font-weight: 400;
+  font-size: 15px;
+  text-decoration: none;
+  margin-top: 10px;
+  color: #999;
+}
+.pull-right {
+  float: right;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+.card.post.highlighted .thumbimage {
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 260px;
+}
+
+.card-block {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  color: #888;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+h2.card-title {
+  font-size: 1.21rem;
+  line-height: 1.1;
+  font-family: 'ABeeZee';
+  font-weight: 400;
+  color: #111111;
+}
+a{
+  text-decoration: none;
+  color: rgba(0,0,0,.8);
+  font-size: 1.21rem;
+  line-height: 1.1;
+  font-family: 'ABeeZee', ;
+  font-weight: 400;
+  background-color: transparent;
+}
+span{
+  max-height: 172.8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+h2{
+  max-height: 42.6px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

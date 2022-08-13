@@ -6,7 +6,7 @@ import { WpServiceService } from 'src/app/services/wp-service/wp-service.service
 @Component({
   selector: 'app-prodigy-history',
   templateUrl: './prodigy-history.component.html',
-  styleUrls: ['./prodigy-history.component.scss']
+  styleUrls: ['./prodigy-history.component.css']
 })
 export class ProdigyHistoryComponent implements OnInit {
   slug: String;

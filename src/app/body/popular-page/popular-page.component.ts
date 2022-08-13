@@ -6,7 +6,7 @@ import { WpServiceService } from 'src/app/services/wp-service/wp-service.service
 @Component({
   selector: 'app-popular-page',
   templateUrl: './popular-page.component.html',
-  styleUrls: ['./popular-page.component.scss']
+  styleUrls: ['./popular-page.component.css']
 })
 export class PopularPageComponent implements OnInit {
 
