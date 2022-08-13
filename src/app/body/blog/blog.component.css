@@ -1,0 +1,66 @@
+@media (min-width: 576px){
+  .container {
+      max-width: 540px;
+  }
+}
+@media (min-width: 768px){
+  .container {
+      max-width: 720px;
+  }
+}
+@media (min-width: 992px){
+  .container {
+      max-width: 960px;
+  }
+}
+@media (min-width: 1200px){
+  .container {
+      max-width: 1140px;
+  }
+}
+.mainheading h1.posttitle, h1.entry-title {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.h1, h1 {
+  font-family: 'ABeeZee';
+  color: #111111 !important ;
+}
+span.post-date, span.post-read, span.readingtime {
+  color: rgba(0,0,0,.54);
+}
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+.article-post {
+  font-family: 'Merriweather';
+  font-weight: 400;
+  line-height: 1.8;
+  color: #222222;
+  font-size: 1.2rem;
+}
+.figcaption, .figure, .main {
+  display: block;
+}
+.wp-block-image img {
+  height: auto;
+  max-width: 100% !important;
+  vertical-align: bottom;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+}
+.text-right {
+  text-align: right !important;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: 'ABeeZee';
+  font-weight: 400;
+  color: #111111;
+}
+img {
+  max-width: 100% !important;
+  height: auto;
+}
