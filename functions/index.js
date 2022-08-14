@@ -13,9 +13,12 @@
 //   response.send("Hello from Firebase!");
 // });
 const admin = require("firebase-admin");
-admin.initializeApp();
+if (admin.apps.length === 0) {
+    admin.initializeApp();
+}
 
-const { users } = require("./model/user/user");
+
+const { users } = require("./model/user/user.js");
 const { registrations } = require("./model/applicant-register/register");
 const { readData } = require("./model/read-user-data/read-user-data");
 const { rawDatas } = require("./model/raw-data/raw-data");

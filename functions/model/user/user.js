@@ -3,10 +3,10 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
+const { functions, fastify, cors, requestHandler } = require("../application/lib");
 const { createNewUser } = require("./tark/createNewUser");
 const { getUsers } = require("./tark/getUsers");
 const { getUser } = require("./tark/getUser");
-const { fastify, functions, cors, requestHandler } = require("../application/lib");
 
 fastify.post("/createNewUser", (req, res) => {
     createNewUser(req, res);
@@ -21,7 +21,6 @@ fastify.post("/getUser", (req, res) => {
     console.log("oierg");
     getUser(req, res);
 });
-
 
 exports.users = functions.https.onRequest((req, res) => {
     cors(req, res, () => {

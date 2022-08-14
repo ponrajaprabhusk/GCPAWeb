@@ -37,16 +37,15 @@ export class AuthServiceService {
   getUser(uid:string) {
     
     const callable = this.functions.httpsCallable('users/getUser');
-        console.log("create new user from ui");
-        callable({ uid: uid}).subscribe({
-          next: (data) => {
-            this.loggedInUser=data.data;
-            console.log("Successful");
-          },
-          error: (error) => {
-            console.error("Error", error);
-          },
-        complete: () => console.info('Successful ')
+    callable({ uid: uid}).subscribe({
+      next: (data) => {
+        this.loggedInUser=data.data;
+        console.log("Successful");
+      },
+      error: (error) => {
+        console.error("Error", error);
+      },
+      complete: () => console.info('Successful ')
     });
   }
 
