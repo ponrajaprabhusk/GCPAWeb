@@ -57,7 +57,7 @@ export class AuthServiceService {
     this.user = credential.user as User;
     this.userReady=true;
     this.popupService.loginPopup=false
-    return this.createUserData(this.user);
+    if(credential.additionalUserInfo?.isNewUser) return this.createUserData(this.user);
   }
 
   async emailSignup(email:string,password:string) {
