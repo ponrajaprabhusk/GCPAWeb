@@ -13,12 +13,10 @@ fastify.post("/createNewUser", (req, res) => {
 });
 
 fastify.post("/getUsers", (req, res) => {
-    console.log("oierg");
     getUsers(req, res);
 });
 
 fastify.post("/getUser", (req, res) => {
-    console.log("oierg");
     getUser(req, res);
 });
 

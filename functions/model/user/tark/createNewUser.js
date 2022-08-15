@@ -3,7 +3,7 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { setUser } = require("../lib");
+const { setUser, getUser } = require("../lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
 
 exports.createNewUser = function(request, response) {
@@ -18,14 +18,23 @@ exports.createNewUser = function(request, response) {
 
     let status = 200;
     let result;
-    setUser(Uid, PhotoURL, DisplayName, Email, PhoneNumber, ProviderId, NumberOfRegistrations).then(() => {
-        result = { data: "User Signned In Successfully" };
-        console.log("User Signned In Successfully");
-        updateData("user").then(() => {
-            console.log("User Raw Data Updated.");
-        });
+    const promise = getUser(Uid, "").then((data)=>{
+            if (data == undefined) {
+                setUser(Uid, PhotoURL, DisplayName, Email, PhoneNumber, ProviderId, NumberOfRegistrations).then((data)=>{
+                    if (data) {
+                        result = { data: "New user Data created Successfully" };
+                        updateData("user");
+                    }
+                });
+            }
+    }).catch((err)=>{
+        status = 500;
+        console.error("Error : " + err);
+    });
+    Promise.resolve(promise).then(()=>{
         return response.status(status).send(result);
-    }).catch((error) => {
+    })
+   .catch((error) => {
         status = 500;
         result = { data: error };
         console.error("Error LogIn/SignUp User", error);
