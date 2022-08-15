@@ -24,7 +24,6 @@ export class AuthServiceService {
         console.log("create new user from ui");
         callable({ uid: user.uid, photoURL: user.photoURL, displayName: user.displayName, email: user.email, phoneNumber: user.phoneNumber, providerId: user.providerId, numberOfRegistrations:0 }).subscribe({
           next: (data) => {
-            this.popupService.loginPopup=false
             console.log("Successful ");
           },
           error: (error) => {
@@ -57,7 +56,8 @@ export class AuthServiceService {
     console.log(credential)
     this.user = credential.user as User;
     this.userReady=true;
-    return this.createUserData(this.user);
+    this.popupService.loginPopup=false
+    if(credential.additionalUserInfo?.isNewUser) return this.createUserData(this.user);
   }
 
   async emailSignup(email:string,password:string) {
@@ -65,6 +65,7 @@ export class AuthServiceService {
     console.log(credential)
     this.user = credential.user as User;
     this.userReady=true;
+    this.popupService.loginPopup=false
     return this.createUserData(this.user);
   }
 
@@ -96,5 +97,6 @@ export class AuthServiceService {
   async logout() {
     this.cookieService.deleteAll();
     await this.afauth.signOut();
+    window.location.reload();
   }
 }
