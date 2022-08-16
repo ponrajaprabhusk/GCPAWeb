@@ -47,7 +47,6 @@ showLoginPopup=true;
   }
 
   signUp(){
-    console.log(this.emailSignup)
     if(this.passwordSignup==this.confirm){
       this.authService.emailSignup(this.emailSignup,this.passwordSignup);
      }

@@ -11,11 +11,9 @@ const { updateData } = require("../../raw-data/tark/updateRawData");
 
 exports.addNews = function(request, response) {
     const news = request.body.data;
-
     const link = news.link;
     const imageUrl = news.imageUrl;
     const name = news.name;
-
 
     let status = 200;
 
@@ -24,7 +22,6 @@ exports.addNews = function(request, response) {
         addNews(uid, name, link, imageUrl).then(() => {
            const result = { data: "News Addded Successfully" };
             console.log("News Addded Successfully");
-
             updateData("newsroom").then(() => console.log("News Raw Data Updated"));
             return response.status(status).send(result);
         }).catch((error) => {

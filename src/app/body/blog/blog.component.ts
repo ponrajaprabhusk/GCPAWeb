@@ -28,7 +28,6 @@ export class BlogComponent implements OnInit {
     this.wpService.getPost(this.slug);
     this.wpService.postObservable.subscribe(data=>{
     this.post = data;
-    console.log(data);
     this.post = this.post[0];
     this.postReady = true;
     

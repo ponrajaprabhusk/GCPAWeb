@@ -16,7 +16,6 @@ export class MyOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.userUid =this.authService.user.uid;
-    console.log(this.userUid);
     this.getOrdersData();
   }
 
@@ -26,7 +25,6 @@ export class MyOrdersComponent implements OnInit {
     this.orderService.getOrdersByUid(this.userUid).subscribe((data)=>{
       this.orders = data;
       this.dataReady = true;
-      console.log(this.orders);
     });
   }
 }

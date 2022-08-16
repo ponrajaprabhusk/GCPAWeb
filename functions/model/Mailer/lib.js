@@ -17,9 +17,6 @@ const { generateTemplate } = require("./tark/generateTemplate");
   */
   exports.mailer = function(uid, mailType, applicationId) {
     const promise = getUser(uid, "").then((data) => {
-        console.log(data);
-        console.log(data.Email);
-        console.log(data.DisplayName);
         const p1 = generateTemplate(mailType, data.DisplayName, applicationId).then((message)=>{
             sendMail(data.Email, message[0], message[1]);
         }).catch((error)=>{

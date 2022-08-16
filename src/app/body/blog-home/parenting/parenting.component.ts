@@ -28,7 +28,6 @@ export class ParentingComponent implements OnInit {
     this.wpService.getPost(this.slug);
     this.wpService.postObservable.subscribe(data=>{
     this.post = data;
-    console.log(data);
     this.post = this.post[0];
     this.postReady = true;
     
@@ -37,14 +36,12 @@ export class ParentingComponent implements OnInit {
   }
 
   getAllPosts(){
-    console.log("kokj")
-    this.wpService.getAllPosts();
-    this.wpService.allPostObservable.subscribe(data=>{
+    this.wpService.getPostsByCategory("708");
+    this.wpService.categoryPostsObservable.subscribe(data=>{
       this.allPosts = data;
-      this.allPosts=this.allPosts.filter((obj:any)=>{
-        return obj.categories.includes(708)
-      })
-      // console.log(this.allPosts);
+      // this.allPosts=this.allPosts.filter((obj:any)=>{
+      //   return obj.categories.includes(708)
+      // })
     })
   }
 

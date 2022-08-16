@@ -18,7 +18,6 @@ export class SupportServiceService {
 
   createNewSupport(support:Support){
     const callable = this.functions.httpsCallable('support/createNewSupport');
-    console.log("create new suppport");
     support.UserUid = this.authService.user.uid;
     callable({ userUid:support.UserUid, name:support.Name, supportType:support.SupportType, message: support.Message, contactEmail:support.ContactEmail , date:support.Date, time:support.Time}).subscribe({
       next: (data) => {

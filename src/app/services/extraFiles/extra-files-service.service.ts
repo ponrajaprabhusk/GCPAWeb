@@ -50,7 +50,6 @@ export class ExtraFilesServiceService {
           },
           complete: () => {
             console.info('Getting extra files successful')
-            // console.log(this.extraFiles);
           }
         });
       }

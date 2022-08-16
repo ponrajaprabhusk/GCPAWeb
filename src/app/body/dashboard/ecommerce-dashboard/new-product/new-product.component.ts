@@ -20,7 +20,6 @@ export class NewProductComponent implements OnInit {
     constructor(private router: Router,public authService:AuthServiceService, public uploadService:FileUploadService, public ecommerceService:EcommerceDashboardService) { }
   product:Ecommerce={ProductName:"",Disc:"",Status:false,Images:[],NumberOfImages:0, ProductId:"", Price:0};
     ngOnInit(): void {
-      console.log(this.product);
       if (this.authService.user) {
         if (this.authService.loggedInUser.Admin===false) {
           this.router.navigate([''])

@@ -12,8 +12,6 @@ const { setRazorDetails, generateBase62Constant } = require("../lib");
 exports.addPayment = function(request, response) {
         const Uid = request.body.data.RegistrationId;
         const amount = request.body.data.Amount;
-        console.log("UID :::", Uid);
-        console.log("Amount :::", amount);
         getApplicant(Uid).then((doc) => {
             console.log(doc);
             if (doc != undefined) {
@@ -37,7 +35,6 @@ exports.addPayment = function(request, response) {
                     receipt: generatedReceipt,
                 };
 
-                console.log(options);
                 razorpay.orders.create(options, function(err, order) {
                     if (err) {
                         const result = { data: err };
