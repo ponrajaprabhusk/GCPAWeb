@@ -56,8 +56,6 @@ exports.setRazorDetails = function(Uid, order) {
 };
 
 exports.setPaymentStatus = function(orderId, id) {
-    console.log("orderid", orderId);
-    console.log("reg id", id);
     let data;
 
     const p1 = db.collection("Registrations").doc(id).get().then((doc)=>{
@@ -77,7 +75,6 @@ exports.setPaymentStatus = function(orderId, id) {
 };
 
 exports.setEcommercePaymentStatus = function(id) {
-    console.log("reg id", id);
     let data;
 
     const p1 = db.collection("Orders").doc(id).get().then((doc)=>{

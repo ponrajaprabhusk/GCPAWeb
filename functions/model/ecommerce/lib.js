@@ -101,8 +101,6 @@ exports.getOrdersByUid = function(uid) {
                 data.push(element.data());
             }
         });
-        console.log(data);
-        console.log(uid);
         return data;
     });
 

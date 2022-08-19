@@ -36,14 +36,12 @@ export class EcommerceDashboardComponent implements OnInit {
   }
 
   getProductsData() {
-    console.log("this is hit");
     this.dataTableService.getProductData().subscribe((data) => {
       if(data.length) {
         this.productData = data;
         this.displayColoumnsProduct = ['ProductId', 'ProductName', 'Price','Status'];
         this.showProducts=true;
         console.log("Get Product Data complete")
-        console.log(this.productData);
       } 
     }); 
   }

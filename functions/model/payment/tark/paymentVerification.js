@@ -26,7 +26,6 @@ exports.paymentVerification = function(request, response) {
         let generatedSignature = "";
 
         generatedSignature = crypto.createHmac("sha256", keySecret).update((orderId + "|" + paymentId).toString()).digest("hex");
-        console.log(generatedSignature);
 
         if (generatedSignature === signature) {
             const result = { data: "Payment verified successfully", status: 200 };

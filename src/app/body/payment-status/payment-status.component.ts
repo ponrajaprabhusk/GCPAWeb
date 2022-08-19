@@ -35,12 +35,10 @@ export class PaymentStatusComponent implements OnInit {
     callable({OrderId: this.orderId, PaymentId: this.paymentId, Signature: this.signature, Id: this.registrationId}).subscribe({ 
       next:(data)=>{
         this.paymentStatus = "Complete";
-        console.log("PaymentStatus ", this.paymentStatus);
       },
       error:(error)=>{
         this.paymentStatus = "Failed";
         console.log(error);
-        console.log("PaymentStatus ", this.paymentStatus);
       },
       complete:()=>{
         console.log("PaymentSuccess")

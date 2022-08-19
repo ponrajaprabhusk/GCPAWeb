@@ -27,7 +27,6 @@ export class ProdigyHistoryPageComponent implements OnInit {
     this.wpService.getPost(this.slug);
     this.wpService.postObservable.subscribe(data=>{
     this.post = data;
-    console.log(data);
     this.post = this.post[0];
     this.postReady = true;
     
@@ -36,7 +35,6 @@ export class ProdigyHistoryPageComponent implements OnInit {
   }
 
   getAllPosts(){
-    console.log("kokj")
     this.wpService.getAllPosts();
     this.wpService.allPostObservable.subscribe(data=>{
       this.allPosts = data;

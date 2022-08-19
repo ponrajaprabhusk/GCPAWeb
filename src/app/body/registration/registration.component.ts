@@ -56,7 +56,6 @@ export class RegistrationComponent implements OnInit {
   
   
   onSubmit(event: Event){
-    console.log(this.authService.user)
     if (!this.authService.user) {
       this.popupService.loginPopup=true;
     }

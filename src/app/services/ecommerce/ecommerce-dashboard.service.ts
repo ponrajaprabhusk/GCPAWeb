@@ -18,7 +18,6 @@ export class EcommerceDashboardService {
   addProduct(product:Ecommerce)  {
     this.productDataState.next(false);
     const callable = this.functions.httpsCallable('ecommerce/addProduct');
-        console.log("add product");
         callable({ productId:product.ProductId, productName:product.ProductName, disc:product.Disc, numberOfImages:product.NumberOfImages, images:product.Images, status:product.Status, price:product.Price}).subscribe({
           next: (data) => {
             console.log("Product Added");
@@ -59,7 +58,6 @@ export class EcommerceDashboardService {
   })).subscribe({
     next: (data) => {
       this.product = data;
-      console.log(this.product);
     },
     error: (error) => {
       console.error(error);

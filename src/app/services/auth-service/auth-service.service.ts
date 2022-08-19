@@ -21,7 +21,6 @@ export class AuthServiceService {
   
   createUserData(user: User) {
     const callable = this.functions.httpsCallable('users/createNewUser');
-        console.log("create new user from ui");
         callable({ uid: user.uid, photoURL: user.photoURL, displayName: user.displayName, email: user.email, phoneNumber: user.phoneNumber, providerId: user.providerId, numberOfRegistrations:0 }).subscribe({
           next: (data) => {
             console.log("Successful ");
@@ -53,7 +52,6 @@ export class AuthServiceService {
   async googleSignIn() {
     const provider = new firebase.auth.GoogleAuthProvider();
     const credential = await this.afauth.signInWithPopup(provider);
-    console.log(credential)
     this.user = credential.user as User;
     this.userReady=true;
     this.popupService.loginPopup=false
@@ -62,7 +60,6 @@ export class AuthServiceService {
 
   async emailSignup(email:string,password:string) {
     const credential = await this.afauth.createUserWithEmailAndPassword(email,password)
-    console.log(credential)
     this.user = credential.user as User;
     this.userReady=true;
     this.popupService.loginPopup=false
@@ -71,7 +68,6 @@ export class AuthServiceService {
 
   async emailSignin(email:string,password:string) {
     const credential = await this.afauth.signInWithEmailAndPassword(email,password)
-    console.log(credential)
     this.user = credential.user as User;
     this.userReady=true;
     this.popupService.loginPopup=false

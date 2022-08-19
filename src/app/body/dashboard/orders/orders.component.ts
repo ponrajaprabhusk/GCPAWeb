@@ -17,7 +17,6 @@ export class OrdersComponent implements OnInit {
     this.orderService.getorders().subscribe({
       next: (data) => {
         this.orders = data;
-        console.log(this.orders);
         this.displayColoumnsOrder = ["OrderId","ProductId", "ProductName", "Price","Status", "Name", "MobileNum","Address"]
 
       },

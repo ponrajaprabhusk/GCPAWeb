@@ -52,7 +52,6 @@ export class FileUploadService {
   constructor(private storage: AngularFireStorage, private functions: AngularFireFunctions,  private authService: AuthServiceService, private toolsService: ToolsService) { }
 
   pushFileToTaskStorage(fileUpload: FileUpload, basePath: string, folderName: string){
-    console.log("service triggered")
     this.fileUploadStatus = true;
     const filePath = `${basePath}/${fileUpload.file.name}`;
     const storageRef = this.storage.ref(filePath);
@@ -73,7 +72,6 @@ export class FileUploadService {
 
    saveFileData(fileUpload: FileUpload, basePath: string, folderName: string) {
 
-    console.log("save file triggerd")
     const todayDate = this.toolsService.date();
     const time = this.toolsService.time();
     const fileName = fileUpload.name;
@@ -96,7 +94,6 @@ export class FileUploadService {
      this.uploadedDocDate=todayDate
      this.uploadedDocTime=time
      this.uploadedDocLastModified=lastModified
-     console.log(this.uploadedDocUrl)
      
     }else if (folderName == "UploadedPhoto") {
       this.uploadedPhotoUrl=fileUpload.url
