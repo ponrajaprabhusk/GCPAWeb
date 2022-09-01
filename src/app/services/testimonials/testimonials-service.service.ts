@@ -11,6 +11,7 @@ import { UpdateRegistrationService } from '../update-registration/update-registr
 })
 export class TestimonialsServiceService {
   testimonials:Testimonial[]=[]
+  loader=true;
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService) { }
   addTestimonial(testimonial:Testimonial)  {
@@ -24,7 +25,11 @@ export class TestimonialsServiceService {
           error: (error) => {
             console.error("Error", error);
           },
-        complete: () => console.info('Successful ')
+          complete: (() =>{ 
+            console.info('Successful')
+            alert("file addition Success");
+           
+        })
     });
   }
   
@@ -42,6 +47,7 @@ export class TestimonialsServiceService {
     },
     complete: () => {
       console.info('Getting Testimonial successful')
+      this.loader=false;
     }
   });
 }

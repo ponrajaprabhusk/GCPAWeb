@@ -70,8 +70,13 @@ this.partnerService.getPartners();
   }
 
 submit(){
+  if(this,this.uploadService.partnerUrl){
  this.partner.ImageUrl=this.uploadService.partnerUrl;
  this.partnerService.addPartner(this.partner);
+  }
+  else{
+    alert("No file Uploaded")
+  }
 }
 
 }

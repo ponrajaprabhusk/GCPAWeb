@@ -7,6 +7,7 @@ const { registerUser, getApplicant, updateApplicant, addFile } = require("../lib
 const { getRawData } = require("../../raw-data/lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
 const { mailer } = require("../../Mailer/lib");
+const ShortUniqueId = require("short-unique-id");
 
 const addFiles = function(uid, file) {
     const promise = getApplicant(uid).then((doc) => {
@@ -54,7 +55,8 @@ exports.registerNewUser = function(request, response) {
     const status = 200;
 
     getRawData().then((doc) => {
-        const uid = "R" + (doc[0].NumberOfRegistrations + 1);
+        const uidGenerator = new ShortUniqueId({ length: 10 });
+        const uid=uidGenerator();
         registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles).then(() => {
             result = { data: uid };
             console.log("Applicant Registered Successfully");

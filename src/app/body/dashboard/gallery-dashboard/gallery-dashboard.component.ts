@@ -71,9 +71,14 @@ this.galleryService.getphoto();
     }
   
   submit(){
+    if(this.uploadService.galleryUrl){
    this.photo.ImageUrl=this.uploadService.galleryUrl;
    this.photo.Date=this.tools.date();
    this.galleryService.addPhoto(this.photo);
+    }
+    else{
+      alert("No file Uploaded")
+    }
   }
 
 }

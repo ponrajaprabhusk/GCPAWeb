@@ -70,7 +70,12 @@ export class NewsroomDashboardComponent implements OnInit {
     }
   
   submit(){
+    if(this.uploadService.newsUrl){
    this.news.ImageUrl=this.uploadService.newsUrl;
    this.newsService.addNews(this.news);
+    }
+    else{
+      alert("No file Uploaded")
+    }
   }
 }

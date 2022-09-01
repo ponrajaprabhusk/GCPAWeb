@@ -10,6 +10,7 @@ import { UpdateRegistrationService } from '../update-registration/update-registr
 })
 export class NewsServiceService {
   newsroom:Newsroom[]=[]
+  loader=true;
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService) { }
   addNews(news:Newsroom)  {
@@ -23,7 +24,11 @@ export class NewsServiceService {
           error: (error) => {
             console.error("Error", error);
           },
-        complete: () => console.info('Successful ')
+          complete: (() =>{ 
+            console.info('Successful')
+            alert("file addition Success");
+           
+        })
     });
   }
   
@@ -41,6 +46,7 @@ export class NewsServiceService {
     },
     complete: () => {
       console.info('Getting News successful')
+      this.loader=false;
     }
   });
 }
