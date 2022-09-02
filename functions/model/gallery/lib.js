@@ -25,7 +25,11 @@ exports.getPhotoes = function() {
         const data = [];
         doc.forEach((element) => {
             if (element.exists) {
-                data.push(element.data());
+                let uid = element.data().Uid;
+                uid = uid.slice(1);
+                if (uid > start && uid <= end) {
+                    data.push(element.data());
+                }
             }
         });
         return data;

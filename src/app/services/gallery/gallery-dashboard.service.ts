@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
-import { map } from 'rxjs';
+import { map, Subject } from 'rxjs';
 import { Photo } from 'src/app/Interfaces/Gallery';
 import { Newsroom } from 'src/app/Interfaces/Newsroom';
 import { AuthServiceService } from '../auth-service/auth-service.service';
@@ -11,6 +11,8 @@ import { UpdateRegistrationService } from '../update-registration/update-registr
 })
 export class GalleryDashboardService {
   gallery:Photo[]=[]
+  private galleryDataState: Subject<boolean> = new Subject<boolean>();
+public galleryDataStateObservable = this.galleryDataState.asObservable();
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService) { }
   addPhoto(photo:Photo)  {
@@ -28,21 +30,13 @@ export class GalleryDashboardService {
     });
   }
   
-  getphoto(){
+  getphoto(start: number, end: number){
+    this.galleryDataState.next(false);
     const callable = this.functions.httpsCallable("gallery/getPhotoes");
-  callable({ }).pipe(map(res=>{
+    const GalleryData = callable({Start: start, End: end }).pipe(map(res=>{
     const data = res.data as Photo[];
     return data;
-  })).subscribe({
-    next: (data) => {
-      this.gallery = data;
-    },
-    error: (error) => {
-      console.error(error);
-    },
-    complete: () => {
-      console.info('Getting Photoes successful')
-    }
-  });
+  }));
+  return GalleryData;
 }
 }

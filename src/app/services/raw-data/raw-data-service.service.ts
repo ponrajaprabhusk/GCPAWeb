@@ -11,7 +11,7 @@ import { UpdateRegistrationService } from '../update-registration/update-registr
 })
 export class RawDataServiceService {
 
-  rawData:RawData
+  rawData:RawData[]
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService) { }
 
@@ -19,7 +19,7 @@ export class RawDataServiceService {
     
     const callable = this.functions.httpsCallable("rawDatas/getRawData");
     callable({}).pipe(map(res=>{
-      const data = res.data as RawData;
+      const data = res.data as RawData[];
       return data;
     })).subscribe({
       next: (data) => {
