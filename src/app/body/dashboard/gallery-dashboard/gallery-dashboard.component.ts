@@ -35,7 +35,7 @@ export class GalleryDashboardComponent implements OnInit {
     // this.popupService.loginPopup=true
     this.router.navigate([''])
     }
-this.galleryService.getphoto();
+  this.galleryService.getphoto(0,1000);
   }
 
   showNewPhoto(){

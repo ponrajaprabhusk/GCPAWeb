@@ -17,14 +17,17 @@ exports.addPhoto = function(uid, date, imageurl) {
     return Promise.resolve(galleryData);
 };
 
-exports.getPhotoes = function() {
+exports.getPhotoes = function(start, end) {
     const query = db.collection("Gallery");
-
     const promise = query.get().then((doc) => {
         const data = [];
         doc.forEach((element) => {
             if (element.exists) {
-                data.push(element.data());
+                let uid = element.data().Uid;
+                uid = uid.slice(1);
+                if (uid > start && uid <= end) {
+                    data.push(element.data());
+                }
             }
         });
         return data;

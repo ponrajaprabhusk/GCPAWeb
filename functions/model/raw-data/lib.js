@@ -25,6 +25,8 @@ exports.updateRawData = function(inputJson) {
   return Promise.resolve(editRawDataPromise);
 };
 
+
+// This should not be returning a list
 exports.getRawData = function() {
   const query = db.collection("RawData");
 
