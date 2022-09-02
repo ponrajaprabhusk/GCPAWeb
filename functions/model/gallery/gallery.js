@@ -7,6 +7,7 @@
 const { fastify, functions, cors, requestHandler } = require("../application/lib");
 const { addPhoto } = require("./tark/addPhoto");
 const { getPhotoes } = require("./tark/getPhotoes");
+const { deletePhoto } = require("./tark/deletePhoto");
 
 fastify.post("/addPhoto", (req, res) => {
     console.log("Adding Photo");
@@ -16,6 +17,11 @@ fastify.post("/addPhoto", (req, res) => {
 fastify.post("/getPhotoes", (req, res) => {
     console.log("getting Photoes");
     getPhotoes(req, res);
+});
+
+fastify.post("/deletePhoto", (req, res) =>{
+    console.log("Image deleted");
+    deletePhoto(req, res);
 });
 
 exports.gallery = functions.https.onRequest((req, res) => {
