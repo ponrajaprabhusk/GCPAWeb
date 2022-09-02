@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
   
   ngOnInit(): void {
     this.useEmulator=environment.useEmulators;
-    console.log(this.authService.afauth.user)
     this.authService.afauth.user.subscribe({
       next:(user:any)=>{
         this.authService.setCurrentUser(user as User);

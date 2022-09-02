@@ -26,11 +26,9 @@ export class RegisterServiceService {
   register(uid:string ,prefix:string,dob:string,firstName:string,lastName:string,gaurdFirst:string,gaurdLast:string, address:string, zip:string, number:string, email:string, school:string,  country:string,  category:string,  achievement:string,  photo:FileData,  profile:FileData, social:string, userUid:string)  {
 let registrationId: any;
     const callable = this.functions.httpsCallable('registrations/registerNewUser');
-        console.log("register new user from ui");
         callable({ Uid: uid,Prefix:prefix,Dob:dob,FirstName:firstName,LastName:lastName,GaurdFirst:gaurdFirst,GaurdLast:gaurdLast, Address:address, Zip:zip, Number:number, Email:email, School:school,  Country:country,  Category:category,  Achievement:achievement,  Photo:photo,  Profile:profile, Social:social,UserUid:userUid }).subscribe({
           next: (data) => {
             registrationId = data;
-            console.log("Registration Part 1 Successful.");
             this.updateRegistration.updateregister(userUid);
           },
           error: (error) => {
@@ -67,12 +65,10 @@ let registrationId: any;
 
   getRegistrationById(uid:string){
     const callable = this.functions.httpsCallable('registrations/getRegistrationById');
-    console.log("get registration using uid");
     callable({ uid: uid}).subscribe({
       next: (data) => {
         console.log("Registration fetched");
         this.registration=data.data;
-        // console.log(data.data.FirstName)
       },
       error: (error) => {
         console.error("Error", error);
@@ -87,7 +83,6 @@ let registrationId: any;
       next: () => {
         console.log("Registration updated");
         
-        // console.log(data.data.FirstName)
       },
       error: (error) => {
         console.error("Error", error);

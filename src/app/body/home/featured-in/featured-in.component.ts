@@ -10,7 +10,6 @@ export class FeaturedInComponent {
   activeSlides?: SlidesOutputData;
   getPassedData(data: SlidesOutputData) {
     this.activeSlides = data;
-    console.log(this.activeSlides);
   }
 
   dynamicSlides = [

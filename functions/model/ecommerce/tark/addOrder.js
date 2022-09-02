@@ -10,7 +10,6 @@ const { updateData } = require("../../raw-data/tark/updateRawData");
 
 exports.addOrder = function(request, response) {
     const order = request.body.data;
-
     const quantity=order.quantity;
     const address=order.address;
     const city=order.city;
@@ -23,8 +22,6 @@ exports.addOrder = function(request, response) {
     const totalPrice=order.totalPrice;
     const userUid=order.userUid;
     const productId=order.productId;
-
-
     let status = 200;
 
     getRawData().then((doc) => {

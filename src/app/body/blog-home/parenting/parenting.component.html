@@ -24,7 +24,8 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4" [id]="allPosts[1]">
     
-        <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog', allPosts[1].slug]"[ngStyle]="{'background-image': 'url(' + allPosts[1].yoast_head_json.og_image[0].url + ')'}"></a>
+        <div class="card post highlighted">
+            <a class="thumbimage" [routerLink]="['/blog', allPosts[1].slug]"[ngStyle]="{'background-image': 'url(' + allPosts[1].yoast_head_json.og_image[0].url + ')'}"></a>
         <div class="card-block">
         <h2 class="card-title text"><a [routerLink]="['/blog', allPosts[1].slug]">{{allPosts[1].yoast_head_json.title}}</a></h2>
         <span class="card-text d-block text" [innerHtml]="allPosts[1].excerpt.rendered"></span>

@@ -13,7 +13,6 @@ export class UserCardComponent implements OnInit {
   constructor(public authService: AuthServiceService, public router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.authService.user);
   }
 
   onLogout() {

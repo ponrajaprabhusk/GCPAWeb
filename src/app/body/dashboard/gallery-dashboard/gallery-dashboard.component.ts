@@ -6,6 +6,7 @@ import { AuthServiceService } from 'src/app/services/auth-service/auth-service.s
 import { FileUploadService } from 'src/app/services/file-upload-service/file-upload-service.service';
 import { GalleryDashboardService } from 'src/app/services/gallery/gallery-dashboard.service';
 import { ToolsService } from 'src/app/services/tool/tools.service';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
 @Component({
   selector: 'app-gallery-dashboard',
@@ -23,7 +24,7 @@ export class GalleryDashboardComponent implements OnInit {
   fileName: string;
   progressPhoto:number;
   photo:Photo={Uid:'',ImageUrl:"",Date:"",Status:"",Hovering:false}
-  constructor(public galleryService:GalleryDashboardService,private router: Router,public authService:AuthServiceService,public uploadService:FileUploadService,  public tools:ToolsService) { }
+  constructor(public galleryService:GalleryDashboardService,private router: Router,public authService:AuthServiceService,private functions: AngularFireFunctions,public uploadService:FileUploadService,  public tools:ToolsService) { }
 
   ngOnInit(): void {
     if (this.authService.user) {
@@ -69,6 +70,21 @@ export class GalleryDashboardComponent implements OnInit {
           }
         );
     }
+
+    deletePhoto(Uid: any){
+      const callable = this.functions.httpsCallable('gallery/deletePhoto');
+  
+      callable({Uid:Uid}).subscribe({
+        next: (data) => {
+          console.log("Image deleted successfully");
+        },
+        error: (error) => {
+          console.error(error);
+        },
+        complete: () => { 
+          console.info('Successful updated image')}
+      });
+  }
   
   submit(){
    this.photo.ImageUrl=this.uploadService.galleryUrl;

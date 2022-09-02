@@ -37,7 +37,6 @@ export class OrderDataTableComponent implements OnInit, AfterViewInit {
       this.dataSource.data = this.dataForTable;
       this.displayedColumns = this.displayColoumns;
     }
-    console.log(this.dataForTable);
   }
 
   ngAfterViewInit(): void {

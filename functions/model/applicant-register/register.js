@@ -1,7 +1,13 @@
+
+/* eslint-disable linebreak-style */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable eol-last */
+/* eslint-disable indent */
+/* eslint-disable max-len */
+const {fastify, functions, cors, requestHandler} = require("../application/lib");
 const {registerNewUser} = require("./tark/applicant-register");
 const {getApplicant} = require("./tark/getApplicant");
 const {getRegistrationById} = require("./tark/getRegistrationById");
-const {fastify, functions, cors, requestHandler} =require("../application/lib");
 const {getAllRegistrations} = require("./tark/getAllRegistrations");
 const {updateRegistrationById} = require("./tark/updateRegistrationById");
 const {addExtraFiles}= require("./tark/addExtraFiles");

@@ -17,8 +17,10 @@ exports.addPhoto = function(uid, date, imageurl) {
     return Promise.resolve(galleryData);
 };
 
-exports.getPhotoes = function(start, end) {
-    const query = db.collection("Gallery");
+exports.getPhotoes = function() {
+    let query = db.collection("Gallery");
+    query = query.where("Status", "==", "Ok");
+
     const promise = query.get().then((doc) => {
         const data = [];
         doc.forEach((element) => {
@@ -34,4 +36,10 @@ exports.getPhotoes = function(start, end) {
     });
 
     return Promise.resolve(promise);
+};
+exports.deletePhoto = function(uid) {
+    const query = db.collection("Gallery").doc(uid).update({
+        Status: "Deleted",
+    });
+    return Promise.resolve(query);
 };

@@ -10,6 +10,7 @@ export class WpServiceService {
   array = [];
   public postObservable: Observable<Array<Object>>;
   public allPostObservable: Observable<Array<Object>>;
+  public categoryPostsObservable: Observable<Array<Object>>;
   endpoint:string;
   constructor(private http: HttpClient) { 
     this.endpoint=environment.endpoint;
@@ -19,7 +20,6 @@ export class WpServiceService {
 getPost(slug: String){
   this.postObservable = this.http.get(this.endpoint + '?slug=' + slug).pipe(map(res=>{
     const data = res as Array<Object>;
-    console.log(data);
     return data;
   }));
   return this.postObservable;
@@ -29,9 +29,16 @@ getAllPosts(){
   //Please limit the per page number to how many you need for
   this.allPostObservable = this.http.get(this.endpoint + '?per_page=100').pipe(map(res=>{
     const data = res as Array<Object>;
-    console.log(data);
     return data;
   }));
   return this.allPostObservable;
+}
+
+getPostsByCategory(category: string){
+  this.categoryPostsObservable = this.http.get(this.endpoint + '?categories=' + category).pipe(map(res=>{
+    const data = res as Array<Object>;
+    return data;
+  }));
+  return this.categoryPostsObservable;
 }
 }

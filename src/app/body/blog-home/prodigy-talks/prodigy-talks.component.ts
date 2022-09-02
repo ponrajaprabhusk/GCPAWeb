@@ -6,7 +6,7 @@ import { WpServiceService } from 'src/app/services/wp-service/wp-service.service
 @Component({
   selector: 'app-prodigy-talks',
   templateUrl: './prodigy-talks.component.html',
-  styleUrls: ['./prodigy-talks.component.scss']
+  styleUrls: ['./prodigy-talks.component.css']
 })
 export class ProdigyTalksComponent implements OnInit {
 
@@ -28,7 +28,6 @@ export class ProdigyTalksComponent implements OnInit {
     this.wpService.getPost(this.slug);
     this.wpService.postObservable.subscribe(data=>{
     this.post = data;
-    console.log(data);
     this.post = this.post[0];
     this.postReady = true;
     
@@ -37,14 +36,12 @@ export class ProdigyTalksComponent implements OnInit {
   }
 
   getAllPosts(){
-    console.log("kokj")
     this.wpService.getAllPosts();
     this.wpService.allPostObservable.subscribe(data=>{
       this.allPosts = data;
       this.allPosts=this.allPosts.filter((obj:any)=>{
         return obj.categories.includes(709)
       })
-      console.log(this.allPosts);
     })
   }
 
