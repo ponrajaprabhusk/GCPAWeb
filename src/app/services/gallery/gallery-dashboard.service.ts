@@ -35,6 +35,7 @@ public galleryDataStateObservable = this.galleryDataState.asObservable();
     const callable = this.functions.httpsCallable("gallery/getPhotoes");
     const GalleryData = callable({Start: start, End: end }).pipe(map(res=>{
     const data = res.data as Photo[];
+    this.gallery = data;
     return data;
   }));
   return GalleryData;
