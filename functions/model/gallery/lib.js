@@ -17,7 +17,7 @@ exports.addPhoto = function(uid, date, imageurl) {
     return Promise.resolve(galleryData);
 };
 
-exports.getPhotoes = function() {
+exports.getPhotoes = function(start, end) {
     let query = db.collection("Gallery");
     query = query.where("Status", "==", "Ok");
 
