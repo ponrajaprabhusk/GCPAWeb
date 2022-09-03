@@ -11,6 +11,7 @@ import { UpdateRegistrationService } from '../update-registration/update-registr
 })
 export class GalleryDashboardService {
   gallery:Photo[]=[]
+  loader=true;
   private galleryDataState: Subject<boolean> = new Subject<boolean>();
 public galleryDataStateObservable = this.galleryDataState.asObservable();
 
@@ -26,7 +27,12 @@ public galleryDataStateObservable = this.galleryDataState.asObservable();
           error: (error) => {
             console.error("Error", error);
           },
-        complete: () => console.info('Successful ')
+          complete: (() =>{ 
+            console.info('Successful')
+            alert("file addition Success");
+           
+        })
+        
     });
   }
   
@@ -35,6 +41,7 @@ public galleryDataStateObservable = this.galleryDataState.asObservable();
     const callable = this.functions.httpsCallable("gallery/getPhotoes");
     const GalleryData = callable({Start: start, End: end }).pipe(map(res=>{
     const data = res.data as Photo[];
+    this.loader=false;
     this.gallery = data;
     return data;
   }));

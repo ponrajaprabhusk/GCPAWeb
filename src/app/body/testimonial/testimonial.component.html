@@ -1,10 +1,10 @@
-<div class="container-fluid back my-0">
+<div class="container-fluid back my-0" style="min-height: 85vh;">
     <div class="container mt-5 pt-3 px-1 text-center">
         <h1 class="mt-5">Testimonials</h1>
         <a>
             <p class="mainp">Who said what about GCPA</p>
         </a>
-        <div class="row mt-5 pt-3">
+        <div class="row mt-5 pt-3" *ngIf="!testimonialService.loader; else loader">
             <ng-container *ngFor="let testimonial of testimonialService.testimonials">
                 <div class="col-md-4 pb-5 mb-5 ">
                     <div class="position-relative testimonial_info_m mx-3 bg-white pt-1 ">
@@ -24,4 +24,8 @@
             </ng-container>
         </div>
     </div>
+
+    <ng-template #loader>
+        <app-loader></app-loader>
+    </ng-template>
 </div>

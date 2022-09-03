@@ -71,8 +71,13 @@ export class TestimonialsDashboardComponent implements OnInit {
   }
 
 submit(){
+  if(this.uploadService.testimonialUrl){
  this.testimonial.ImageUrl=this.uploadService.testimonialUrl;
  this.testimonialService.addTestimonial(this.testimonial);
+  }
+  else{
+    alert("No file Uploaded")
+  }
 }
 
 }

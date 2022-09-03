@@ -1,9 +1,10 @@
-<div class="container mt-5 pt-3 px-1 text-center">
+<div class="container mt-5 pt-3 px-1 text-center" style="min-height: 85vh;">
     <h1 class="mt-5">Gallery</h1>
     <a>
         <p class="mainp">The journey so far in pictures</p>
     </a>
-    <div class="container mt-3 py-3 px-2 back">
+    <div class="container mt-3 py-3 px-2 back" *ngIf="!galleryService.loader; else loader">
+
         <div class="row text-center">
             <ng-container *ngFor="let photo of gallery">
                 <a [ngClass]="{'col-md-3 px-3 py-3 my-auto':true}" [href]="photo.ImageUrl" (mouseenter)="photo.Hovering=true" (mouseleave)="photo.Hovering=false">
@@ -15,4 +16,9 @@
             </div>
         </div>
     </div>
+
+    <ng-template #loader>
+        <app-loader></app-loader>
+    </ng-template>
+    
 </div>
