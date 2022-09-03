@@ -18,9 +18,7 @@
     "fastify": "^3.25.0",
     "firebase-admin": "^10.0.2",
     "firebase-functions": "^3.18.0",
-    "razorpay": "^2.8.3",
-    "short-unique-id": "^4.4.4",
-    "uniqid": "^5.4.0"
+    "razorpay": "^2.8.3"
   },
   "devDependencies": {
     "eslint": "^8.9.0",
