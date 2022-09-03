@@ -9,7 +9,7 @@ export const environment = {
   },
   useEmulators: true,
   recaptcha: {
-    siteKey: '6LdY5L0hAAAAAIDsSEE8b3_PkuGkS3IHYpYET2QX',
+    siteKey: '', // Enter recaptcha key here;
   },
   endpoint : "https://childprodigy.in/wp-json/wp/v2/posts/",
 };
