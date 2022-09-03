@@ -17,18 +17,29 @@ exports.addPhoto = function(uid, date, imageurl) {
     return Promise.resolve(galleryData);
 };
 
-exports.getPhotoes = function() {
-    const query = db.collection("Gallery");
+exports.getPhotoes = function(start, end) {
+    let query = db.collection("Gallery");
+    query = query.where("Status", "==", "Ok");
 
     const promise = query.get().then((doc) => {
         const data = [];
         doc.forEach((element) => {
             if (element.exists) {
-                data.push(element.data());
+                let uid = element.data().Uid;
+                uid = uid.slice(1);
+                if (uid > start && uid <= end) {
+                    data.push(element.data());
+                }
             }
         });
         return data;
     });
 
     return Promise.resolve(promise);
+};
+exports.deletePhoto = function(uid) {
+    const query = db.collection("Gallery").doc(uid).update({
+        Status: "Deleted",
+    });
+    return Promise.resolve(query);
 };

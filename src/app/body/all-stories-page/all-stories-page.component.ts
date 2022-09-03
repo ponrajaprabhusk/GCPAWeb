@@ -28,7 +28,6 @@ export class AllStoriesPageComponent implements OnInit {
     this.wpService.getPost(this.slug);
     this.wpService.postObservable.subscribe(data=>{
     this.post = data;
-    console.log(data);
     this.post = this.post[0];
     this.postReady = true;
     
@@ -43,7 +42,6 @@ export class AllStoriesPageComponent implements OnInit {
       this.allPosts=this.allPosts.filter((obj:any)=>{
         return obj.id!=235153
       })
-      console.log(this.allPosts);
     })
   }
 
