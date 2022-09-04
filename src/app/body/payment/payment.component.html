@@ -1,5 +1,5 @@
-<div class="p-5"></div>
-<div class="center pb-5">
+<div class="p-5 mt-5" style="min-height:85vh ;">
+<div class="center pb-5 mt-5">
     <div class="row pt-2 px-0 border bg-light text-center">
         <div>
             <h1>Payment Details</h1> 
@@ -29,7 +29,7 @@
       
         <div class="row p-2" *ngIf="!paymentComplete" style="text-align: center;">
             <div class="col">
-                <button class="btn btn-success" (click)="setOrderWithRazor()">Pay Now</button>
+                <button class="btn btn-success" [disabled]="disablePayNow" (click)="setOrderWithRazor()">Pay Now</button>
             </div>
         </div>
     </div>
@@ -47,3 +47,4 @@
         </div>
       </div>
 </ng-template>
+</div>

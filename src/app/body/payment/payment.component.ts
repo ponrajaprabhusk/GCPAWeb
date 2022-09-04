@@ -24,6 +24,7 @@ export class PaymentComponent implements OnInit {
   formData: any
 
   loader: boolean = false
+  disablePayNow=false;
 
   paymentStatus: string
   public rzp: any;
@@ -106,6 +107,7 @@ initPay(): void {
   this.rzp.open();
 }
 setOrderWithRazor() {
+  this.disablePayNow=true;
   this.loader = true;
   const callable = this.functions.httpsCallable('payment/addPayment');
   callable({RegistrationId: this.applicant.Uid, Amount: "799"}).subscribe({ 
@@ -122,6 +124,7 @@ setOrderWithRazor() {
       console.log(error);
     },
     complete:()=>{
+      this.disablePayNow=false
       this.initPay()
     }
   })

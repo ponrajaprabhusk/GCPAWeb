@@ -19,12 +19,14 @@ export class RegisterServiceService {
   registrations:Register[]=[];
   applicant: Register;
   registration:Register;
+  disableSubmit=false;
 
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService, public router: Router) { }
   
   register(uid:string ,prefix:string,dob:string,firstName:string,lastName:string,gaurdFirst:string,gaurdLast:string, address:string, zip:string, number:string, email:string, school:string,  country:string,  category:string,  achievement:string,  photo:FileData,  profile:FileData, social:string, userUid:string)  {
 let registrationId: any;
+this.disableSubmit=true;
     const callable = this.functions.httpsCallable('registrations/registerNewUser');
         callable({ Uid: uid,Prefix:prefix,Dob:dob,FirstName:firstName,LastName:lastName,GaurdFirst:gaurdFirst,GaurdLast:gaurdLast, Address:address, Zip:zip, Number:number, Email:email, School:school,  Country:country,  Category:category,  Achievement:achievement,  Photo:photo,  Profile:profile, Social:social,UserUid:userUid }).subscribe({
           next: (data) => {
@@ -33,10 +35,12 @@ let registrationId: any;
           },
           error: (error) => {
             console.error("Error", error);
+            this.disableSubmit=false;
           },
         complete: (() =>{ 
           console.info('Successful')
           alert("Registration Success");
+          this.disableSubmit=false;
           console.log(registrationId)
           this.router.navigate(['payment/', registrationId]);
       })
