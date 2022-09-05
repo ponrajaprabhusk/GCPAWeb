@@ -35,7 +35,7 @@ export class ProdigyHistoryComponent implements OnInit {
   }
 
   getAllPosts(){
-    this.wpService.getPostsByCategory("709");
+    this.wpService.getPostsByCategory(709);
     this.wpService.categoryPostsObservable.subscribe(data=>{
       this.allPosts = data;
       // this.allPosts=this.allPosts.filter((obj:any)=>{

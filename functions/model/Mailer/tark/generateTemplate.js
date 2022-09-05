@@ -26,6 +26,8 @@
     templateName = "selected.html";
    } else if (mailType == "Rejected_Email") {
     templateName = "rejected.html";
+   } else if (mailType == "Contact_Email") {
+    templateName = "contact.html";
    }
    const promise = getTemplate(templateName).then((data) => {
      if (templateName == "registration.html") {
@@ -47,6 +49,13 @@
     } else if (templateName == "rejected.html") {
         data = data.replace("$Name$", applicantName);
         mailSubject="Application Status - GCPA";
+    } else if (templateName == "contact.html") {
+      console.log(applicationId);
+      data = data.replace("$$name$$", applicationId.Name);
+      data = data.replace("$$uid$$", applicationId.Uid);
+      data = data.replace("$$email$$", applicationId.Email);
+      data = data.replace("$$message$$", applicationId.Message);
+      mailSubject = "New Contact Request";
     }
      subjectMessage = mailSubject;
      message.push(subjectMessage);

@@ -35,7 +35,7 @@ export class PopularComponent implements OnInit {
   }
 
   getAllPosts(){
-    this.wpService.getPostsByCategory("52");
+    this.wpService.getPostsByCategory(52);
     this.wpService.categoryPostsObservable.subscribe(data=>{
       this.allPosts = data;
       // this.allPosts=this.allPosts.filter((obj:any)=>{

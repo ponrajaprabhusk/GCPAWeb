@@ -29,13 +29,15 @@ getAllPosts(){
   //Please limit the per page number to how many you need for
   this.allPostObservable = this.http.get(this.endpoint + '?per_page=100').pipe(map(res=>{
     const data = res as Array<Object>;
+    console.log(data);
     return data;
   }));
   return this.allPostObservable;
 }
 
-getPostsByCategory(category: string){
-  this.categoryPostsObservable = this.http.get(this.endpoint + '?categories=' + category).pipe(map(res=>{
+// not working
+getPostsByCategory(category: number){
+  this.categoryPostsObservable = this.http.get(this.endpoint + '?categories=' + category + '&per_page=100').pipe(map(res=>{
     const data = res as Array<Object>;
     return data;
   }));
