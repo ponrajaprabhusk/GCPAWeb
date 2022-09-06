@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { data } from 'jquery';
-import { nextTick } from 'process';
 import { map } from 'rxjs';
 import { WpServiceService } from 'src/app/services/wp-service/wp-service.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-category-component',
@@ -16,8 +15,10 @@ export class CategoryComponentComponent implements OnInit {
   categoryId:number;
   categoryData:any;
   category:string;
-  endpoint:string ="https://blogs.gcpawards.com/wp-json/wp/v2/categories"
-  constructor(private wpService:WpServiceService, private http:HttpClient) { }
+  endpoint:string;
+  constructor(private wpService:WpServiceService, private http:HttpClient) { 
+    this.endpoint=environment.endpoint + "/categories?per_page=100";
+  }
 
   ngOnInit(): void {
     let url = window.location.pathname;
@@ -33,7 +34,6 @@ export class CategoryComponentComponent implements OnInit {
   }
 
   getCategories(){
-    console.log("skjfndjsnfl");
     const categoriesObservable = this.http.get(this.endpoint).pipe(map(res=>{
      let data = res as Array<Object>;
       return data;
@@ -48,10 +48,6 @@ export class CategoryComponentComponent implements OnInit {
      this.categoryId = this.categoryData[0].id;
      this.getAllPosts();
     });
-  // this.http.get(this.endpoint).subscribe((catdata)=>{
-  //   console.log(catdata);
-
-  // });
   }
 
   getAllPosts(){
