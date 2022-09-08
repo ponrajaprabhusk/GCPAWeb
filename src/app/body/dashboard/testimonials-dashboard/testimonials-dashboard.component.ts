@@ -5,6 +5,7 @@ import { Testimonial } from 'src/app/Interfaces/Testimonials';
 import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 import { FileUploadService } from 'src/app/services/file-upload-service/file-upload-service.service';
 import { TestimonialsServiceService } from 'src/app/services/testimonials/testimonials-service.service';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
 @Component({
   selector: 'app-testimonials-dashboard',
@@ -21,7 +22,7 @@ export class TestimonialsDashboardComponent implements OnInit {
   fileName: string;
   progressPhoto:number;
 
-  constructor(public uploadService:FileUploadService, public testimonialService:TestimonialsServiceService,private router: Router,public authService:AuthServiceService) { }
+  constructor(public uploadService:FileUploadService, public testimonialService:TestimonialsServiceService,private functions: AngularFireFunctions,private router: Router,public authService:AuthServiceService) { }
 
   testimonial:Testimonial={Uid:"",Name:"",Testimonial:"",ImageUrl:"",Achievement:""}
 
@@ -80,4 +81,38 @@ submit(){
   }
 }
 
+editTestimonial(Uid: any, Achievement: any , ImageUrl:any , Name:any , Testimonial:any){
+  if(this.uploadService.testimonialUrl){
+    this.testimonial.ImageUrl=this.uploadService.testimonialUrl;
+     }
+     else{
+       alert("No file Uploaded")
+     }
+  console.log('Edit testimonial is working: '+ Uid + Achievement + ImageUrl + Name + Testimonial)
+  const callable = this.functions.httpsCallable('testimonials/editTestimonial');
+    callable({Uid:Uid, Achievement: Achievement, ImageUrl: this.testimonial.ImageUrl, Name: Name, Testimonial: Testimonial}).subscribe({
+      next: (data) => {
+        console.log("testimonial edited successfully");
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => console.info('Successful')
+    });
+}
+
+  deleteTestimonial(Uid: any){
+    const callable = this.functions.httpsCallable('testimonials/deleteTestimonial');
+      callable({Uid:Uid}).subscribe({
+        next: (data) => {
+          console.log("testimonial deleted successfully");
+        },
+        error: (error) => {
+          console.log('This statement is httiing erreeeor')
+          console.error(error);
+        },
+        complete: () => { 
+          console.info('Successful updated testimonial')}
+      });
+  }
 }

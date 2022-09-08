@@ -6,6 +6,8 @@
 const { fastify, functions, cors, requestHandler } = require("../application/lib");
 const { addTestimonial } = require("./tark/addTestimonial");
 const { getTestimonials } = require("./tark/getTestimonials");
+const { deleteTestimonial } = require("./tark/deleteTestimonial");
+const { editTestimonial } = require("./tark/editTestimonial");
 
 fastify.post("/addTestimonial", (req, res) => {
     console.log("Adding Testimonial");
@@ -15,6 +17,18 @@ fastify.post("/addTestimonial", (req, res) => {
 fastify.post("/getTestimonials", (req, res) => {
     console.log("getting Testimonial");
     getTestimonials(req, res);
+});
+
+fastify.post("/editTestimonial", (req, res) => {
+    console.log("Updating Testimonial");
+    console.log("Firebase is hitting req is: " + req.body.data.Achievement);
+    console.log("Firebase is hitting req is: " + req.body.data.ImageUrl);
+    editTestimonial(req, res);
+});
+
+fastify.post("/deleteTestimonial", (req, res) => {
+    console.log("Deleting Testimonial");
+    deleteTestimonial(req, res);
 });
 
 exports.testimonials = functions.https.onRequest((req, res) => {
