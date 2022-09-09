@@ -20,6 +20,7 @@ export class RegisterServiceService {
   applicant: Register;
   registration:Register;
   disableSubmit=false;
+  amountPaid:number=0;
 
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService, public router: Router) { }
@@ -73,6 +74,8 @@ this.disableSubmit=true;
       next: (data) => {
         console.log("Registration fetched");
         this.registration=data.data;
+        if(data.data.RazorPayOrderDetails.amount)
+        this.amountPaid=data.data.RazorPayOrderDetails.amount;
       },
       error: (error) => {
         console.error("Error", error);
