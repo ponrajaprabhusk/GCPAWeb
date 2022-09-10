@@ -21,8 +21,6 @@ fastify.post("/getTestimonials", (req, res) => {
 
 fastify.post("/editTestimonial", (req, res) => {
     console.log("Updating Testimonial");
-    console.log("Firebase is hitting req is: " + req.body.data.Achievement);
-    console.log("Firebase is hitting req is: " + req.body.data.ImageUrl);
     editTestimonial(req, res);
 });
 

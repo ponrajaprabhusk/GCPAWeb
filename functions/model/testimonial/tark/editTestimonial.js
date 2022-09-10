@@ -14,7 +14,6 @@ exports.editTestimonial = function(request, response) {
     const name = request.body.data.Name;
     const testimonial = request.body.data.Testimonial;
 
-    console.log("UID: " + uid, "ACHIEVEMENT: " + achievement, "imageUrl: "+ imageUrl, "name: " + name, "testimonial: "+ testimonial );
     let result;
     editTestimonial(uid, achievement, imageUrl, name, testimonial).then(() => {
         result = { data: "Testimonial Updated successfully" };

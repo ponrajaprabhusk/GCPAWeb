@@ -35,15 +35,6 @@ exports.getTestimonials = function() {
     return Promise.resolve(promise);
 };
 
- exports.getTestimonialById = function(docId) {
-    console.log(docId);
-    const getTestimonailById = db.collection("Testimonials").doc(docId).get().then((doc) => {
-      const data = doc.data();
-      return data;
-    });
-    return Promise.resolve(getTestimonailById);
-  };
-
 exports.editTestimonial = function(uid, achievement, imageUrl, name, testimonial) {
     const query = db.collection("Testimonials").doc(uid).update({
         Achievement: achievement,

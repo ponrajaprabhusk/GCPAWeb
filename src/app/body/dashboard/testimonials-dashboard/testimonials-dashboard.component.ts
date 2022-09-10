@@ -88,7 +88,6 @@ editTestimonial(Uid: any, Achievement: any , ImageUrl:any , Name:any , Testimoni
      else{
        alert("No file Uploaded")
      }
-  console.log('Edit testimonial is working: '+ Uid + Achievement + ImageUrl + Name + Testimonial)
   const callable = this.functions.httpsCallable('testimonials/editTestimonial');
     callable({Uid:Uid, Achievement: Achievement, ImageUrl: this.testimonial.ImageUrl, Name: Name, Testimonial: Testimonial}).subscribe({
       next: (data) => {
@@ -108,7 +107,6 @@ editTestimonial(Uid: any, Achievement: any , ImageUrl:any , Name:any , Testimoni
           console.log("testimonial deleted successfully");
         },
         error: (error) => {
-          console.log('This statement is httiing erreeeor')
           console.error(error);
         },
         complete: () => { 
