@@ -86,12 +86,12 @@ editTestimonial(Uid: any, Achievement: any , ImageUrl:any , Name:any , Testimoni
     this.testimonial.ImageUrl=this.uploadService.testimonialUrl;
      }
      else{
-       alert("No file Uploaded")
+       this.testimonial.ImageUrl = this.testimonial.ImageUrl
      }
   const callable = this.functions.httpsCallable('testimonials/editTestimonial');
     callable({Uid:Uid, Achievement: Achievement, ImageUrl: this.testimonial.ImageUrl, Name: Name, Testimonial: Testimonial}).subscribe({
       next: (data) => {
-        console.log("testimonial edited successfully");
+        alert("testimonial edited successfully");
       },
       error: (error) => {
         console.error(error);
@@ -104,13 +104,13 @@ editTestimonial(Uid: any, Achievement: any , ImageUrl:any , Name:any , Testimoni
     const callable = this.functions.httpsCallable('testimonials/deleteTestimonial');
       callable({Uid:Uid}).subscribe({
         next: (data) => {
-          console.log("testimonial deleted successfully");
+          alert("testimonial deleted successfully");
         },
         error: (error) => {
           console.error(error);
         },
         complete: () => { 
-          console.info('Successful updated testimonial')}
+          console.info('Successful deleted testimonial')}
       });
   }
 }
