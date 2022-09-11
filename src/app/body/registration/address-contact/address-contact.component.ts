@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
+import { RegisterServiceService } from 'src/app/services/register-service/register-service.service';
 import { CountryComponent } from './country/country.component';
 
 @Component({
@@ -22,10 +24,10 @@ export class AddressContactComponent implements OnInit {
   }
   
   
-  constructor() { }
+  constructor(public registerService:RegisterServiceService, public authService:AuthServiceService) { }
   
   ngOnInit(): void {
-    
+    this.email=this.authService.loggedInUser.Email
   }
 
 }

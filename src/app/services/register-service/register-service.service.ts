@@ -21,6 +21,9 @@ export class RegisterServiceService {
   registration:Register;
   disableSubmit=false;
   amountPaid:number=0;
+  invalidEmail=false;
+  invalidNumber=false;
+  fillAll=false;
 
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService, public router: Router) { }
@@ -40,7 +43,6 @@ this.disableSubmit=true;
           },
         complete: (() =>{ 
           console.info('Successful')
-          alert("Registration Success");
           this.disableSubmit=false;
           console.log(registrationId)
           this.router.navigate(['payment/', registrationId]);
