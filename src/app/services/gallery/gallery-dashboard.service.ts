@@ -42,6 +42,7 @@ public galleryDataStateObservable = this.galleryDataState.asObservable();
     const GalleryData = callable({Start: start, End: end }).pipe(map(res=>{
     const data = res.data as Photo[];
     this.loader=false;
+    this.gallery = data;
     return data;
   }));
   return GalleryData;
