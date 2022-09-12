@@ -1,5 +1,5 @@
 <app-login-page></app-login-page>
-<div *ngIf="authService.loggedInUser.Admin" class="back mt-5 pt-5 pb-5" >
+<div class="back mt-5 pt-5 pb-3">
     <h1 class="text-center mb-5">Registration Form</h1>
     <div class="row container mx-auto">
         <div class="container col-md-6 px-5">
@@ -9,7 +9,7 @@
                 <app-category-upload></app-category-upload>
 
                 <div class="my-5">
-                    <input type="radio" required (onclick)="accepted()"> <span> I agree to the <a routerLink="terms_condi">Terms & Conditions</a> of Global Child Prodigy Awards.</span>
+                    <input type="checkbox" required (change)="accepted()"> <span> I agree to the <a routerLink="/terms_condi">Terms & Conditions</a> of Global Child Prodigy Awards.</span>
                 </div>
 
                 <!--  -->
@@ -20,6 +20,15 @@
                 <!--  -->
                 <button type="submit" class="btn btn-primary mt-3 " [disabled]="registerService.disableSubmit" (click)="send(form,$event)">Submit</button>
             </form>
+            <small  class="text-danger" *ngIf="registerService.fillAll">
+                Please fill all required fields
+            </small> 
+
+            <div class="pt-5">
+                <p>
+                    If you are facing any issue while registration please email us at info@gcpawards.com
+                </p>
+            </div>
         </div>
         <div class="col-md-6 container-fluid">
             <img class="img-fluid" src="../../../assets/happy.png " alt=" ">

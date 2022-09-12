@@ -16,6 +16,7 @@ export class AuthServiceService {
   userReady:boolean=false;
   currentReceipt:string = ""
   loggedInUser:UserFetched={Admin:false,DisplayName:"",PhoneNumber:"",ProviderId:"",PhotoURL:"",Email:"",NumberOfRegistrations:0,Uid:""};
+  invalidSignin=false;
 
   constructor(private cookieService: CookieService,public afauth: AngularFireAuth,public functions: AngularFireFunctions, private popupService:PopupHandlerService) { }
   
@@ -59,18 +60,24 @@ export class AuthServiceService {
   }
 
   async emailSignup(email:string,password:string) {
-    const credential = await this.afauth.createUserWithEmailAndPassword(email,password)
+    const credential = await this.afauth.createUserWithEmailAndPassword(email,password).catch(()=>{
+      alert("email already in use");
+    })
+    if(credential){
     this.user = credential.user as User;
     this.userReady=true;
     this.popupService.loginPopup=false
     return this.createUserData(this.user);
+    }
   }
 
   async emailSignin(email:string,password:string) {
-    const credential = await this.afauth.signInWithEmailAndPassword(email,password)
+    const credential = await this.afauth.signInWithEmailAndPassword(email,password).catch(()=>{this.invalidSignin=true})
+    if(credential){
     this.user = credential.user as User;
     this.userReady=true;
     this.popupService.loginPopup=false
+    }
   }
 
 
