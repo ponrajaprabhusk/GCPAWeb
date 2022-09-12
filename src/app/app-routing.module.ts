@@ -40,6 +40,10 @@ import { ProdigyHistoryPageComponent } from './body/prodigy-history-page/prodigy
 import { PopularPageComponent } from './body/popular-page/popular-page.component';
 import { AllStoriesPageComponent } from './body/all-stories-page/all-stories-page.component';
 import { MyOrdersComponent } from './body/my-orders/my-orders.component';
+import { CategoriesComponent } from './body/how-it-works/categories/categories.component';
+import { CategoryComponentComponent } from './body/category-component/category-component.component';
+import { AmpRedirectComponent } from './body/amp-redirect/amp-redirect.component';
+import { TagComponent } from './body/tag/tag.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -77,6 +81,23 @@ const routes: Routes = [
   {path:'blog/prodigy-history', component:ProdigyHistoryPageComponent},
   {path:'blog/popular', component:PopularPageComponent},
   {path:'blog/all-stories', component:AllStoriesPageComponent},
+  {path:'blog/entertainment', component:CategoryComponentComponent},
+  {path:'blog/entertainment/acting', component:CategoryComponentComponent},
+  {path:'blog/entertainment/painting', component:CategoryComponentComponent},
+  {path:'blog/entertainment/youtuber', component:CategoryComponentComponent},
+  {path:'blog/entertainment/singer', component:CategoryComponentComponent},
+  {path:'blog/entertainment/dance', component:CategoryComponentComponent},
+  {path:'blog/entertainment/music', component:CategoryComponentComponent},
+  {path:'blog/education', component:CategoryComponentComponent},
+  {path:'blog/education/science', component:CategoryComponentComponent},
+  {path:'blog/education/language', component:CategoryComponentComponent},
+  {path:'blog/education/innovation', component:CategoryComponentComponent},
+  {path:'blog/amazing-facts', component:CategoryComponentComponent},
+  {path:'blog/tag/:tag/amp', component:TagComponent},
+  {path:'blog/tag/:tag/feed', component:TagComponent},
+  {path:'blog/tag/:tag', component:TagComponent},
+  {path:'blog/:slug/amp', component:AmpRedirectComponent},
+  {path:'blog/:slug/feed', component:AmpRedirectComponent},
   {path:'blog/:slug', component:BlogComponent},
   {path:'myOrders', component:MyOrdersComponent},
 

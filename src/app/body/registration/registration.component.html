@@ -1,5 +1,5 @@
 <app-login-page></app-login-page>
-<div class="back mt-5 pt-5 pb-3">
+<div *ngIf="authService.loggedInUser.Admin" class="back mt-5 pt-5 pb-5" >
     <h1 class="text-center mb-5">Registration Form</h1>
     <div class="row container mx-auto">
         <div class="container col-md-6 px-5">
@@ -37,4 +37,9 @@
         </div>
 
     </div>
+</div>
+
+<div class="text-center p-5 mt-5">
+    <h1>Currently we are not accepting the profiles. 
+        For any queries please reach out to info@gcpawards.com</h1>
 </div>

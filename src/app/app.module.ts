@@ -120,6 +120,9 @@ import { AllStoriesPageComponent } from './body/all-stories-page/all-stories-pag
 import { OrdersComponent } from './body/dashboard/orders/orders.component';
 import { OrderDataTableComponent } from './body/common-tools/order-data-table/order-data-table.component';
 import { MyOrdersComponent } from './body/my-orders/my-orders.component';
+import { CategoryComponentComponent } from './body/category-component/category-component.component';
+import { AmpRedirectComponent } from './body/amp-redirect/amp-redirect.component';
+import { TagComponent } from './body/tag/tag.component';
 
 
 @NgModule({
@@ -197,7 +200,7 @@ import { MyOrdersComponent } from './body/my-orders/my-orders.component';
     ECommerceComponent,
     ProductsComponent,
     BlogComponent,  
-    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent,
+    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent,
   ],
   imports: [
     NgSelectModule,

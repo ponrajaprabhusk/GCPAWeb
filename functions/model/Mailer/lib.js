@@ -18,7 +18,7 @@ const { generateTemplate } = require("./tark/generateTemplate");
   exports.mailer = function(uid, mailType, applicationId) {
     const promise = getUser(uid, "").then((data) => {
         const p1 = generateTemplate(mailType, data.DisplayName, applicationId).then((message)=>{
-            sendMail(data.Email, message[0], message[1]);
+            exports.sendMail(data.Email, message[0], message[1]);
         }).catch((error)=>{
             console.error(error);
         return error;
@@ -38,7 +38,7 @@ const { generateTemplate } = require("./tark/generateTemplate");
   * @param {any} htmlMessage
   * @return {any}
   */
-const sendMail = function(userEmail, subjectMessage, htmlMessage) {
+ exports.sendMail = function(userEmail, subjectMessage, htmlMessage) {
      const sendEmailPromise = db.collection("mail").add({
          to: userEmail,
          message: {
