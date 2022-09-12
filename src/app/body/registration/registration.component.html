@@ -9,10 +9,12 @@
                 <app-category-upload></app-category-upload>
 
                 <div class="my-5">
+
                     <input type="checkbox" required (change)="accepted()"> <span> I agree to the <a routerLink="/terms_condi">Terms & Conditions</a> of Global Child Prodigy Awards.<span class="text-danger">*</span></span>
                 </div>
                 <div class="mb-5">
                     <input type="checkbox" required (change)="emailUpdates()"> <span> Recieve regular updates and notifications via email.</span>
+
                 </div>
                 <!--  -->
                 <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
@@ -37,4 +39,9 @@
         </div>
 
     </div>
+</div>
+
+<div class="text-center p-5 mt-5">
+    <h1>Currently we are not accepting the profiles. 
+        For any queries please reach out to info@gcpawards.com</h1>
 </div>

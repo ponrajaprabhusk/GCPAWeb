@@ -36,7 +36,7 @@ export class ParentingComponent implements OnInit {
   }
 
   getAllPosts(){
-    this.wpService.getPostsByCategory("708");
+    this.wpService.getPostsByCategory(708);
     this.wpService.categoryPostsObservable.subscribe(data=>{
       this.allPosts = data;
       // this.allPosts=this.allPosts.filter((obj:any)=>{
