@@ -49,7 +49,6 @@ export class ProductsComponent implements OnInit {
       ondismiss: (() => {
         this.zone.run(() => {
           // add current page routing if payment fails
-          console.log("sign");
           this.router.navigate(["OrderStatus", "f", "f", "f", this.orderId ]);
         })
       }),
@@ -78,7 +77,9 @@ export class ProductsComponent implements OnInit {
     UserUid:"",
     ProductId:"",
     ProductName:"",
-    TotalPrice:0
+    TotalPrice:0,
+    OrderStatus:"NotCreated",
+    Email: ""
   }
 
   constructor(public route:ActivatedRoute,private winRef: NativeWindowsService,  private functions: AngularFireFunctions, public ecommerceService:EcommerceDashboardService, public authService:AuthServiceService, public orderService:OrderServiceService, private zone: NgZone,private router: Router) { }
@@ -109,7 +110,6 @@ this.checkout=true;
     this.order.ProductName=this.productName;
     this.order.TotalPrice=this.quantity*this.ecommerceService.product.Price;
     this.order.UserUid=this.authService.loggedInUser.Uid;
-    console.log(this.order);
     this.orderService.addOrder(this.order)
     if(this.orderService.orderId){
       this.orderId = this.orderService.orderId;
@@ -160,9 +160,7 @@ this.checkout=true;
     const callable = this.functions.httpsCallable('payment/addEcommercePayment');
     callable({OrderId: this.orderId}).subscribe({
       next:(result)=>{
-        console.log(result);
       this.authService.currentReceipt = result.receipt;
-      console.log(this.authService.currentReceipt);
       this.options.order_id = result.id;
       this.options.amount = result.amount;
       this.options.key = result.key;
@@ -171,7 +169,6 @@ this.checkout=true;
       this.options.prefill.email = this.authService.user.email;
       },
       error:(error)=>{
-        console.log(error);
       },
       complete:()=>{
         this.initPay()

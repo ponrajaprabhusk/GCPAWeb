@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { Router } from '@angular/router';
-import { user } from 'rxfire/auth';
 import { User } from '../Interfaces/UserInterface';
 import { AuthServiceService } from '../services/auth-service/auth-service.service';
 import { PopupHandlerService } from '../services/popup-handler-service/popup-handler.service';
@@ -21,7 +20,6 @@ export class HeaderComponent implements OnInit {
   
   ngOnInit(): void {
     this.useEmulator=environment.useEmulators;
-    console.log(this.authService.afauth.user)
     this.authService.afauth.user.subscribe({
       next:(user:any)=>{
         this.authService.setCurrentUser(user as User);

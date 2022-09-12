@@ -6,7 +6,7 @@ import { WpServiceService } from 'src/app/services/wp-service/wp-service.service
 @Component({
   selector: 'app-prodigy-history',
   templateUrl: './prodigy-history.component.html',
-  styleUrls: ['./prodigy-history.component.scss']
+  styleUrls: ['./prodigy-history.component.css']
 })
 export class ProdigyHistoryComponent implements OnInit {
   slug: String;
@@ -27,7 +27,6 @@ export class ProdigyHistoryComponent implements OnInit {
     this.wpService.getPost(this.slug);
     this.wpService.postObservable.subscribe(data=>{
     this.post = data;
-    console.log(data);
     this.post = this.post[0];
     this.postReady = true;
     
@@ -36,14 +35,12 @@ export class ProdigyHistoryComponent implements OnInit {
   }
 
   getAllPosts(){
-    console.log("kokj")
-    this.wpService.getAllPosts();
-    this.wpService.allPostObservable.subscribe(data=>{
+    this.wpService.getPostsByCategory(709);
+    this.wpService.categoryPostsObservable.subscribe(data=>{
       this.allPosts = data;
-      this.allPosts=this.allPosts.filter((obj:any)=>{
-        return obj.categories.includes(709)
-      })
-      console.log(this.allPosts);
+      // this.allPosts=this.allPosts.filter((obj:any)=>{
+      //   return obj.categories.includes(709)
+      // })
     })
   }
 

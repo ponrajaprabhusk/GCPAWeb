@@ -3,12 +3,15 @@ import { getStorage, ref, getDownloadURL, uploadBytesResumable} from "firebase/s
 import { FileUploadService } from 'src/app/services/file-upload-service/file-upload-service.service';
 import { FileData, FileUpload } from 'src/app/Interfaces/FileInterface';
 
+
 @Component({
   selector: 'app-category-upload',
   templateUrl: './category-upload.component.html',
   styleUrls: ['./category-upload.component.css']
 })
 export class CategoryUploadComponent implements OnInit {
+
+  categories_list=['Acting & Directing',"Art & Drawing","Cooking",'Comedian','Dance','Education','Fashion','Fitness','Innovation','Intelligence','Music','Mathematics','Magician','Photography','Singing','Sports','Social','Science','Technology','Writing & Poetry','Others']
 
   category=''
   achievement=''

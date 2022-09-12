@@ -13,6 +13,9 @@ emailLogin="";
 passwordLogin="";
 emailSignup="";
 passwordSignup="";
+passwordsDoNotMatch=false;
+passwordInValid=false;
+invalidEmail=false;
 
 confirm="";
   constructor(public authService: AuthServiceService, public popupService:PopupHandlerService) { }
@@ -47,11 +50,26 @@ showLoginPopup=true;
   }
 
   signUp(){
-    console.log(this.emailSignup)
-    if(this.passwordSignup==this.confirm){
-      this.authService.emailSignup(this.emailSignup,this.passwordSignup);
-     }
-     else
-     alert("Passwords do not match");
+    this.passwordsDoNotMatch=false;
+    this.passwordInValid=false;
+    this.invalidEmail=false;
+
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.emailSignup)){
+      if(this.passwordSignup.length<6){
+        this.passwordInValid=true;
+      }
+      else
+      {
+         if(this.passwordSignup==this.confirm){
+        this.authService.emailSignup(this.emailSignup,this.passwordSignup);
+      }
+      else
+       this.passwordsDoNotMatch=true;
+    }
+    }
+    else{
+      this.invalidEmail=true;
+    }
+    
   }
 }

@@ -10,11 +10,8 @@ const { updateData } = require("../../raw-data/tark/updateRawData");
 
 exports.addPhoto = function(request, response) {
     const photo = request.body.data;
-
-
     const imageUrl = photo.imageUrl;
     const date = photo.date;
-
 
     let status = 200;
 

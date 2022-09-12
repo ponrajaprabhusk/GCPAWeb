@@ -12,6 +12,7 @@ import { UpdateRegistrationService } from '../update-registration/update-registr
 export class PartnerServiceService {
 
   partners:Partners[]=[]
+  loader=true;
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService) { }
   addPartner(partner:Partners)  {
@@ -25,7 +26,11 @@ export class PartnerServiceService {
           error: (error) => {
             console.error("Error", error);
           },
-        complete: () => console.info('Successful ')
+          complete: (() =>{ 
+            console.info('Successful')
+            alert("file addition Success");
+           
+        })
     });
   }
   
@@ -43,6 +48,7 @@ export class PartnerServiceService {
     },
     complete: () => {
       console.info('Getting Partners successful')
+      this.loader=false;
     }
   });
 }

@@ -9,30 +9,30 @@ const { fastify, functions, cors, requestHandler } = require("../application/lib
 const { createActivity } = require("./tark/createActivity");
 const { getActivityList } = require("./tark/getActivity");
 const { getSupportById } = require("./tark/getSupportById");
+const { contactMail } = require("./tark/contactUs");
 
 fastify.post("/createNewSupport", (req, res) => {
-    console.log("creating New Support");
     createNewSupport(req, res);
 });
 
 fastify.post("/getSupportList", (req, res) => {
-    console.log("Getting Support List");
     getSupportList(req, res);
 });
 
 fastify.post("/createActivity", (req, res) => {
-    console.log("Creating Support List");
     createActivity(req, res);
 });
 
 fastify.post("/getActivity", (req, res) => {
-    console.log("Getting Support List");
     getActivityList(req, res);
 });
 
 fastify.post("/getSupportById", (req, res) => {
-    console.log("Getting Support List");
     getSupportById(req, res);
+});
+
+fastify.post("/sendMail", (req, res) => {
+    contactMail(req, res);
 });
 
 

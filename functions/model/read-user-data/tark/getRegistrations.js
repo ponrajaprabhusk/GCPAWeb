@@ -7,7 +7,6 @@ const { getUsersRegistrations } = require("../lib");
 
 exports.getRegistrations = function(request, response) {
     const useruid = request.body.data.UserUid;
-
     let status = 200;
 
     getUsersRegistrations(useruid).then((registerData) => {

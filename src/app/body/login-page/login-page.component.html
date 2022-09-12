@@ -36,6 +36,9 @@
 												<div class="input-group" id="show_hide_password">
 													<input type="password" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Enter Password" [(ngModel)]="passwordLogin" name="plogin"> 
 												</div>
+												<small *ngIf="authService.invalidSignin" class="text-danger">
+													Incorrect Email or Password. Please try again.
+												</small> 
 											</div>
 											<div class="col-md-6">
 												<div class="form-check form-switch">
@@ -47,7 +50,7 @@
 											</div>
 											<div class="col-12">
 												<div class="d-grid">
-													<button type="submit" class="btn btn-primary gcpabutton"><i class="bx bxs-lock-open" (click)="signIn()"></i>Sign in</button>
+													<button type="submit" class="btn btn-primary gcpabutton" (click)="signIn()"><i class="bx bxs-lock-open" ></i>Sign in</button>
 												</div>
 											</div>
 										</form>
@@ -81,18 +84,27 @@
 													<div class="col-12">
 														<label for="inputEmailAddress" class="form-label">Email Address</label>
 														<input type="email" class="form-control" id="inputEmailAddress" placeholder="Email Address" [(ngModel)]="emailSignup" name="emailsignup">
+														<small *ngIf="invalidEmail" class="text-danger">
+															Invalid Email
+														</small> 
 													</div>
 													<div class="col-12">
 														<label for="inputChoosePassword" class="form-label">Enter Password</label>
 														<div class="input-group" id="show_hide_password">
 															<input type="password" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Enter Password" [(ngModel)]="passwordSignup" name="psignup" > 
 														</div>
+														<small *ngIf="passwordInValid" class="text-danger">
+															Must be atleast 6 characters long.
+														</small> 
 													</div>
 													<div class="col-12">
 														<label for="inputConfirmPassword" class="form-label">Confirm Password</label>
 														<div class="input-group" id="show_hide_password">
 															<input type="password" class="form-control border-end-0" id="inputConfirmPassword"  placeholder="Enter Password" [(ngModel)]="confirm" name="pcon"> 
 														</div>
+														<small *ngIf="passwordsDoNotMatch" class="text-danger">
+															Passwords do not match.
+														</small> 
 													</div>
 													<div class="col-md-6">
 														<div class="form-check form-switch">

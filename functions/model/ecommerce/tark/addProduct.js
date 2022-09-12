@@ -10,15 +10,12 @@ const { updateData } = require("../../raw-data/tark/updateRawData");
 
 exports.addProduct = function(request, response) {
     const product = request.body.data;
-
     const images=product.images;
     const productStatus=product.status;
     const productName=product.productName;
     const numberOfImages=product.numberOfImages;
     const disc=product.disc;
     const price=product.price;
-
-
     let status = 200;
 
     getRawData().then((doc) => {

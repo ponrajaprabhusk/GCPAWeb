@@ -10,7 +10,6 @@ const { updateData } = require("../../raw-data/tark/updateRawData");
 
 exports.addTestimonial = function(request, response) {
     const testimonialdata = request.body.data;
-
     const testimonial = testimonialdata.testimonial;
     const imageUrl = testimonialdata.imageUrl;
     const name = testimonialdata.name;

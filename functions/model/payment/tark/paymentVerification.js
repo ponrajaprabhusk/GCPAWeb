@@ -18,21 +18,14 @@ exports.paymentVerification = function(request, response) {
         const id = request.body.data.Id;
         const type = request.body.data.PaymentType;
 
-        console.log("orderId: " + orderId);
-        console.log("paymentId: " + paymentId);
-        console.log("signature: " + signature);
-        console.log("Id: " + id);
-        console.log("type", type);
-
         // Test Credentials
-        const keySecret = "N9fWEfNEVnIrmubuMyDhxP4i";
+        const keySecret = "EjWL1pPedHeT4Z1C4laM3u1b";
 
         // Production Credentials
         // const keySecret = "UnY8Vp9ty5c9wL1TWNUlBsci";
         let generatedSignature = "";
 
         generatedSignature = crypto.createHmac("sha256", keySecret).update((orderId + "|" + paymentId).toString()).digest("hex");
-        console.log(generatedSignature);
 
         if (generatedSignature === signature) {
             const result = { data: "Payment verified successfully", status: 200 };

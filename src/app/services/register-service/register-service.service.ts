@@ -19,26 +19,32 @@ export class RegisterServiceService {
   registrations:Register[]=[];
   applicant: Register;
   registration:Register;
+  disableSubmit=false;
+  amountPaid:number=0;
+  invalidEmail=false;
+  invalidNumber=false;
+  fillAll=false;
+
 
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService, public router: Router) { }
   
-  register(uid:string ,prefix:string,dob:string,firstName:string,lastName:string,gaurdFirst:string,gaurdLast:string, address:string, zip:string, number:string, email:string, school:string,  country:string,  category:string,  achievement:string,  photo:FileData,  profile:FileData, social:string, userUid:string)  {
+  register(uid:string ,prefix:string,dob:string,firstName:string,lastName:string,gaurdFirst:string,gaurdLast:string, address:string, zip:string, number:string, email:string, school:string,  country:string,  category:string,  achievement:string,  photo:FileData,  profile:FileData, social:string, userUid:string, emailupdate:boolean)  {
 let registrationId: any;
+this.disableSubmit=true;
     const callable = this.functions.httpsCallable('registrations/registerNewUser');
-        console.log("register new user from ui");
-        callable({ Uid: uid,Prefix:prefix,Dob:dob,FirstName:firstName,LastName:lastName,GaurdFirst:gaurdFirst,GaurdLast:gaurdLast, Address:address, Zip:zip, Number:number, Email:email, School:school,  Country:country,  Category:category,  Achievement:achievement,  Photo:photo,  Profile:profile, Social:social,UserUid:userUid }).subscribe({
+        callable({ Uid: uid,Prefix:prefix,Dob:dob,FirstName:firstName,LastName:lastName,GaurdFirst:gaurdFirst,GaurdLast:gaurdLast, Address:address, Zip:zip, Number:number, Email:email, School:school,  Country:country,  Category:category,  Achievement:achievement,  Photo:photo,  Profile:profile, Social:social,UserUid:userUid, EmailUpdates:emailupdate }).subscribe({
           next: (data) => {
             registrationId = data;
-            console.log("Registration Part 1 Successful.");
             this.updateRegistration.updateregister(userUid);
           },
           error: (error) => {
             console.error("Error", error);
+            this.disableSubmit=false;
           },
         complete: (() =>{ 
           console.info('Successful')
-          alert("Registration Success");
+          this.disableSubmit=false;
           console.log(registrationId)
           this.router.navigate(['payment/', registrationId]);
       })
@@ -67,12 +73,12 @@ let registrationId: any;
 
   getRegistrationById(uid:string){
     const callable = this.functions.httpsCallable('registrations/getRegistrationById');
-    console.log("get registration using uid");
     callable({ uid: uid}).subscribe({
       next: (data) => {
         console.log("Registration fetched");
         this.registration=data.data;
-        // console.log(data.data.FirstName)
+        if(data.data.RazorPayOrderDetails.amount)
+        this.amountPaid=data.data.RazorPayOrderDetails.amount;
       },
       error: (error) => {
         console.error("Error", error);
@@ -87,7 +93,6 @@ let registrationId: any;
       next: () => {
         console.log("Registration updated");
         
-        // console.log(data.data.FirstName)
       },
       error: (error) => {
         console.error("Error", error);

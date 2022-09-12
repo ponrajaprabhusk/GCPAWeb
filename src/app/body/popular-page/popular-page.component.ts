@@ -6,7 +6,7 @@ import { WpServiceService } from 'src/app/services/wp-service/wp-service.service
 @Component({
   selector: 'app-popular-page',
   templateUrl: './popular-page.component.html',
-  styleUrls: ['./popular-page.component.scss']
+  styleUrls: ['./popular-page.component.css']
 })
 export class PopularPageComponent implements OnInit {
 
@@ -28,7 +28,6 @@ export class PopularPageComponent implements OnInit {
     this.wpService.getPost(this.slug);
     this.wpService.postObservable.subscribe(data=>{
     this.post = data;
-    console.log(data);
     this.post = this.post[0];
     this.postReady = true;
     
@@ -37,14 +36,12 @@ export class PopularPageComponent implements OnInit {
   }
 
   getAllPosts(){
-    console.log("kokj")
     this.wpService.getAllPosts();
     this.wpService.allPostObservable.subscribe(data=>{
       this.allPosts = data;
       this.allPosts=this.allPosts.filter((obj:any)=>{
         return (obj.categories.includes(52)&&obj.id!=235153)
       })
-      console.log(this.allPosts);
     })
   }
 

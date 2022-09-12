@@ -12,15 +12,13 @@ const { setRazorDetails, generateBase62Constant } = require("../lib");
 exports.addPayment = function(request, response) {
         const Uid = request.body.data.RegistrationId;
         const amount = request.body.data.Amount;
-        console.log("UID :::", Uid);
-        console.log("Amount :::", amount);
         getApplicant(Uid).then((doc) => {
             console.log(doc);
             if (doc != undefined) {
                 // Test Credentials
                 const razorpay = new RazorPay({
-                    key_id: "rzp_test_jWOofTDBbQGPFa",
-                    key_secret: "N9fWEfNEVnIrmubuMyDhxP4i",
+                    key_id: "rzp_test_nfhDfN6X5cgp42",
+                    key_secret: "EjWL1pPedHeT4Z1C4laM3u1b",
                 });
 
                 // Production Credentials
@@ -37,7 +35,6 @@ exports.addPayment = function(request, response) {
                     receipt: generatedReceipt,
                 };
 
-                console.log(options);
                 razorpay.orders.create(options, function(err, order) {
                     if (err) {
                         const result = { data: err };
@@ -51,7 +48,7 @@ exports.addPayment = function(request, response) {
 
                     setRazorDetails(Uid, order);
                     // Test credentials
-                    order.key = "rzp_test_jWOofTDBbQGPFa";
+                    order.key = "rzp_test_nfhDfN6X5cgp42";
 
                     // Production Credentials
                     // order.key = "rzp_live_xoOwFekmzVS4do";

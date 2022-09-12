@@ -43,6 +43,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -116,6 +117,12 @@ import { ParentingPageComponent } from './body/parenting-page/parenting-page.com
 import { ProdigyHistoryPageComponent } from './body/prodigy-history-page/prodigy-history-page.component';
 import { PopularPageComponent } from './body/popular-page/popular-page.component';
 import { AllStoriesPageComponent } from './body/all-stories-page/all-stories-page.component';
+import { OrdersComponent } from './body/dashboard/orders/orders.component';
+import { OrderDataTableComponent } from './body/common-tools/order-data-table/order-data-table.component';
+import { MyOrdersComponent } from './body/my-orders/my-orders.component';
+import { CategoryComponentComponent } from './body/category-component/category-component.component';
+import { AmpRedirectComponent } from './body/amp-redirect/amp-redirect.component';
+import { TagComponent } from './body/tag/tag.component';
 
 
 @NgModule({
@@ -193,9 +200,10 @@ import { AllStoriesPageComponent } from './body/all-stories-page/all-stories-pag
     ECommerceComponent,
     ProductsComponent,
     BlogComponent,  
-    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent,
+    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent,
   ],
   imports: [
+    NgSelectModule,
     MatDialogModule,
     FormsModule,
     BrowserModule,

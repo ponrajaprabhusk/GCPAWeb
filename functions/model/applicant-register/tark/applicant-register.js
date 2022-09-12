@@ -31,7 +31,7 @@ const addFiles = function(uid, file) {
 exports.registerNewUser = function(request, response) {
     const user = request.body.data;
 
-    const prefix=user.Prefix;
+    const prefix = user.Prefix;
     const dob = user.Dob;
     const firstName = user.FirstName;
     const lastName = user.LastName;
@@ -49,21 +49,25 @@ exports.registerNewUser = function(request, response) {
     const profile = user.Profile;
     const social = user.Social;
     const userUid = user.UserUid;
+    const emailUpdates = user.EmailUpdates;
     const numberOfFiles = 0;
     let result;
     const status = 200;
 
     getRawData().then((doc) => {
-        const uid = "R" + (doc[0].NumberOfRegistrations + 1);
-        registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles).then(() => {
+        const ms = new Date().getUTCMilliseconds();
+        const timestamp = ms.toString();
+        const key = firstName + lastName + timestamp;
+        const uid = Buffer.from(key).toString("base64");
+        registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles, emailUpdates).then(() => {
             result = { data: uid };
             console.log("Applicant Registered Successfully");
             // adding file code
             if (photo.FileUrl) {
                 addFiles(uid, photo).then(() => {
                     if (profile.FileUrl) {
-             addFiles(uid, profile);
-                      }
+                        addFiles(uid, profile);
+                    }
                 });
             }
 

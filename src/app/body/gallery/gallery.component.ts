@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { data } from 'jquery';
+import { Photo } from 'src/app/Interfaces/Gallery';
 import { GalleryDashboardService } from 'src/app/services/gallery/gallery-dashboard.service';
+import { RawDataServiceService } from 'src/app/services/raw-data/raw-data-service.service';
 
 @Component({
   selector: 'app-gallery',
@@ -8,94 +11,53 @@ import { GalleryDashboardService } from 'src/app/services/gallery/gallery-dashbo
 })
 export class GalleryComponent implements OnInit {
 
-  content=[
-    {
-      src:'../../../assets/gallery/2020 Event Pic_20.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_44.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_48.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_20.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_44.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_48.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_20.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_44.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_48.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_20.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_44.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_48.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_20.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_44.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_48.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_20.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_44.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_48.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_20.png',
-      hovering:false
-    },
-    {
-      src:'../../../assets/gallery/2020 Event Pic_44.png',
-      hovering:false
-    },
-    
-  ]
+  gallery:Photo[] = [];
+  prevLimit:number = 0;
+  dataReady:boolean = false;
 
-  constructor(public galleryService:GalleryDashboardService) { }
+  constructor(public galleryService:GalleryDashboardService, public rawDataService: RawDataServiceService) { }
 
   ngOnInit(): void {
-this.galleryService.getphoto();
+  this.rawDataService.getRawData();
+  this.prevLimit = 20;
+  this.galleryService.getphoto(0,20).subscribe({
+  next: (data) => {
+    this.gallery = data;
+  },
+  error: (error) => {
+    console.error(error);
+  },
+  complete: () => {
+    this.dataReady = true;
+    console.info('Getting Photos successful')
+  }
+  });
+}
+
+  showMore(){
+    this.dataReady = false;
+    const noOfPics = this.rawDataService.rawData[0].NumberOfGalleryPics;
+    let newLimit;
+    if(this.prevLimit + 20 > noOfPics){
+      newLimit = noOfPics;
+    }else{
+      newLimit = this.prevLimit + 20;
+    }
+    this.galleryService.getphoto(this.prevLimit, newLimit).subscribe({
+      next: (data) => {
+        data.forEach(element => {
+          this.gallery.push(element);
+        });
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        this.dataReady = true;
+        this.prevLimit +=20;
+        console.info('Getting Photos successful')
+      }
+      });
   }
   
 }

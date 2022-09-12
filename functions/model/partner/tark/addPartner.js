@@ -10,11 +10,9 @@ const { updateData } = require("../../raw-data/tark/updateRawData");
 
 exports.addPartner = function(request, response) {
     const partner = request.body.data;
-
     const type = partner.type;
     const imageUrl = partner.imageUrl;
     const name = partner.name;
-
     let status = 200;
 
     getRawData().then((doc) => {

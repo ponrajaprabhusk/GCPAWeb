@@ -10,7 +10,8 @@ import { NgForm } from '@angular/forms';
 import { FileData} from 'src/app/Interfaces/FileInterface';
 import { FileUploadService } from 'src/app/services/file-upload-service/file-upload-service.service';
 import { UpdateRegistrationService } from 'src/app/services/update-registration/update-registration.service';
-
+import { countryToAlpha3 } from "country-to-iso";
+import {phone} from 'phone';
 
 @Component({
   selector: 'app-registration',
@@ -28,6 +29,10 @@ export class RegistrationComponent implements OnInit {
   profileUpload:FileData={FileUrl:'',ApplicantName:'',Date:'',Time:'',Uid:'',File:'Profile'};
   userUid='';
   termsAndCond=false;
+  validNumber=false;
+  number:any;
+  emailupdate=false;
+
   
   constructor( public registerService:RegisterServiceService, public router:Router, public authService:AuthServiceService, public popupService:PopupHandlerService, public fileUploadService:FileUploadService, public updateRegistration:UpdateRegistrationService) { 
     this.token = undefined;
@@ -56,7 +61,7 @@ export class RegistrationComponent implements OnInit {
   
   
   onSubmit(event: Event){
-    console.log(this.authService.user)
+    
     if (!this.authService.user) {
       this.popupService.loginPopup=true;
     }
@@ -72,13 +77,31 @@ export class RegistrationComponent implements OnInit {
        this.profileUpload.Date=this.fileUploadService.profileDate
        this.profileUpload.Time=this.fileUploadService.profileTime
        this.userUid=this.authService.user.uid
-       this.registerService.register(this.uid,this.personalDetails.prefix,this.personalDetails.dob,this.personalDetails.firstName,this.personalDetails.lastName,this.personalDetails.gaurdFirst,this.personalDetails.gaurdLast,this.adressComponent.address,this.adressComponent.zip,this.adressComponent.number,this.adressComponent.email,this.adressComponent.school, this.adressComponent.country, this.categoryComponent.category, this.categoryComponent.achievement, this.photoUpload, this.profileUpload, this.categoryComponent.social, this.userUid)
+       this.registerService.register(this.uid,this.personalDetails.prefix,this.personalDetails.dob,this.personalDetails.firstName,this.personalDetails.lastName,this.personalDetails.gaurdFirst,this.personalDetails.gaurdLast,this.adressComponent.address,this.adressComponent.zip,this.number,this.adressComponent.email,this.adressComponent.school, this.adressComponent.country, this.categoryComponent.category, this.categoryComponent.achievement, this.photoUpload, this.profileUpload, this.categoryComponent.social, this.userUid, this.emailupdate)
       }
   }
 
   public send(form: NgForm,event: Event): void {
+    this.registerService.invalidEmail=false;
+    this.registerService.invalidNumber=false;
+    this.registerService.fillAll=false;
+    const alpha3=countryToAlpha3(this.adressComponent.country);
+
+    if(alpha3){
+    this.validNumber=phone(this.adressComponent.number,{country:alpha3}).isValid
+    this.number=phone(this.adressComponent.number,{country:alpha3}).phoneNumber
+    }
+
     if ((this.personalDetails.prefix==''||this.personalDetails.dob==''||this.personalDetails.firstName==''||this.personalDetails.lastName==''||this.adressComponent.address==''||this.adressComponent.zip==''||this.adressComponent.number==''||this.adressComponent.email==''||this.adressComponent.school==''||this.adressComponent.country==''||this.categoryComponent.category=='')&&!this.termsAndCond) {
-      alert('Please fill all the Required Fields');
+      this.registerService.fillAll=true;
+    }
+    else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.adressComponent.email))){
+      this.registerService.invalidEmail=true;
+      this.registerService.fillAll=true;
+    }
+    else if(!this.validNumber){
+      this.registerService.invalidNumber=true;
+      this.registerService.fillAll=true;
     }
     else{
     if (form.invalid) {
@@ -94,6 +117,11 @@ export class RegistrationComponent implements OnInit {
   
   accepted(){
 this.termsAndCond=!this.termsAndCond;
+console.log(this.termsAndCond)
   }
+
+  emailUpdates(){
+    this.emailupdate=!this.emailupdate;
+      }
   
 }

@@ -24,6 +24,7 @@ export class PaymentComponent implements OnInit {
   formData: any
 
   loader: boolean = false
+  disablePayNow=false;
 
   paymentStatus: string
   public rzp: any;
@@ -50,9 +51,6 @@ export class PaymentComponent implements OnInit {
       const orderId = res.razorpay_order_id;
       const signature = res.razorpay_signature;
       this.zone.run(() => {
-        console.log(orderId);
-        console.log(paymentId);
-        console.log(signature)
         this.router.navigate(["paymentStatus", orderId, paymentId, signature, this.registrationId ]);
       })
     },
@@ -60,7 +58,6 @@ export class PaymentComponent implements OnInit {
       ondismiss: (() => {
         this.zone.run(() => {
           // add current page routing if payment fails
-          console.log("sign");
           this.router.navigate(["paymentStatus", "f", "f", "f", this.registrationId ]);
         })
       }),
@@ -86,13 +83,11 @@ this.getRegistrationDetails(this.registrationId);
 getRegistrationDetails(registrationId: string){
   const callable = this.functions.httpsCallable("registrations/getApplicant");
   callable({RegistrationId: registrationId}).pipe(map (res=>{
-    console.log(res);
     const data = res as Register;
     return data;
   })).subscribe({ 
     next:(data)=>{
       this.applicant = data
-      console.log(this.applicant.PaymentStatus);
       if(this.applicant.PaymentStatus == "Complete"){
           this.paymentComplete = true;
       }
@@ -102,7 +97,6 @@ getRegistrationDetails(registrationId: string){
     },
     complete:()=>{
       console.log("Fetched Applicant Data Successfully")
-      console.log(this.paymentComplete);
       this.showLoader = false;
     }
   })
@@ -113,18 +107,16 @@ initPay(): void {
   this.rzp.open();
 }
 setOrderWithRazor() {
+  this.disablePayNow=true;
   this.loader = true;
   const callable = this.functions.httpsCallable('payment/addPayment');
   callable({RegistrationId: this.applicant.Uid, Amount: "799"}).subscribe({ 
     next:(result)=>{
-      console.log(result);
     this.authService.currentReceipt = result.receipt;
-    console.log(this.authService.currentReceipt);
     this.options.order_id = result.id;
     this.options.amount = result.amount;
     this.options.key = result.key;
     this.options.prefill.name = this.applicant.FirstName;
-    console.log(this.applicant);
     this.options.prefill.contact = this.applicant.Number;
     this.options.prefill.email = this.authService.user.email;
     },
@@ -132,6 +124,7 @@ setOrderWithRazor() {
       console.log(error);
     },
     complete:()=>{
+      this.disablePayNow=false
       this.initPay()
     }
   })

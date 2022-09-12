@@ -6,7 +6,7 @@ import { WpServiceService } from 'src/app/services/wp-service/wp-service.service
 @Component({
   selector: 'app-popular',
   templateUrl: './popular.component.html',
-  styleUrls: ['./popular.component.scss']
+  styleUrls: ['./popular.component.css']
 })
 export class PopularComponent implements OnInit {
   slug: String;
@@ -27,7 +27,6 @@ export class PopularComponent implements OnInit {
     this.wpService.getPost(this.slug);
     this.wpService.postObservable.subscribe(data=>{
     this.post = data;
-    console.log(data);
     this.post = this.post[0];
     this.postReady = true;
     
@@ -36,14 +35,12 @@ export class PopularComponent implements OnInit {
   }
 
   getAllPosts(){
-    console.log("kokj")
-    this.wpService.getAllPosts();
-    this.wpService.allPostObservable.subscribe(data=>{
+    this.wpService.getPostsByCategory(52);
+    this.wpService.categoryPostsObservable.subscribe(data=>{
       this.allPosts = data;
-      this.allPosts=this.allPosts.filter((obj:any)=>{
-        return (obj.categories.includes(52)&&obj.id!=235153)
-      })
-      console.log(this.allPosts);
+      // this.allPosts=this.allPosts.filter((obj:any)=>{
+      //   return (obj.categories.includes(52)&&obj.id!=235153)
+      // })
     })
   }
 

@@ -41,6 +41,7 @@ export class EcommerceDashboardComponent implements OnInit {
         this.productData = data;
         this.displayColoumnsProduct = ['ProductId', 'ProductName', 'Price','Status'];
         this.showProducts=true;
+        console.log("Get Product Data complete")
       } 
     }); 
   }
