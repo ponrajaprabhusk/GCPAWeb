@@ -30,6 +30,9 @@ export class RegistrationComponent implements OnInit {
   userUid='';
   termsAndCond=false;
   validNumber=false;
+  number:any;
+  emailupdate=false;
+
   
   constructor( public registerService:RegisterServiceService, public router:Router, public authService:AuthServiceService, public popupService:PopupHandlerService, public fileUploadService:FileUploadService, public updateRegistration:UpdateRegistrationService) { 
     this.token = undefined;
@@ -74,7 +77,7 @@ export class RegistrationComponent implements OnInit {
        this.profileUpload.Date=this.fileUploadService.profileDate
        this.profileUpload.Time=this.fileUploadService.profileTime
        this.userUid=this.authService.user.uid
-       this.registerService.register(this.uid,this.personalDetails.prefix,this.personalDetails.dob,this.personalDetails.firstName,this.personalDetails.lastName,this.personalDetails.gaurdFirst,this.personalDetails.gaurdLast,this.adressComponent.address,this.adressComponent.zip,this.adressComponent.number,this.adressComponent.email,this.adressComponent.school, this.adressComponent.country, this.categoryComponent.category, this.categoryComponent.achievement, this.photoUpload, this.profileUpload, this.categoryComponent.social, this.userUid)
+       this.registerService.register(this.uid,this.personalDetails.prefix,this.personalDetails.dob,this.personalDetails.firstName,this.personalDetails.lastName,this.personalDetails.gaurdFirst,this.personalDetails.gaurdLast,this.adressComponent.address,this.adressComponent.zip,this.number,this.adressComponent.email,this.adressComponent.school, this.adressComponent.country, this.categoryComponent.category, this.categoryComponent.achievement, this.photoUpload, this.profileUpload, this.categoryComponent.social, this.userUid, this.emailupdate)
       }
   }
 
@@ -83,8 +86,11 @@ export class RegistrationComponent implements OnInit {
     this.registerService.invalidNumber=false;
     this.registerService.fillAll=false;
     const alpha3=countryToAlpha3(this.adressComponent.country);
-    if(alpha3)
+
+    if(alpha3){
     this.validNumber=phone(this.adressComponent.number,{country:alpha3}).isValid
+    this.number=phone(this.adressComponent.number,{country:alpha3}).phoneNumber
+    }
 
     if ((this.personalDetails.prefix==''||this.personalDetails.dob==''||this.personalDetails.firstName==''||this.personalDetails.lastName==''||this.adressComponent.address==''||this.adressComponent.zip==''||this.adressComponent.number==''||this.adressComponent.email==''||this.adressComponent.school==''||this.adressComponent.country==''||this.categoryComponent.category=='')&&!this.termsAndCond) {
       this.registerService.fillAll=true;
@@ -113,5 +119,9 @@ export class RegistrationComponent implements OnInit {
 this.termsAndCond=!this.termsAndCond;
 console.log(this.termsAndCond)
   }
+
+  emailUpdates(){
+    this.emailupdate=!this.emailupdate;
+      }
   
 }

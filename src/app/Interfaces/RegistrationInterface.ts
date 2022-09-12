@@ -19,4 +19,5 @@ export interface Register {
     Social:string;
     UserUid:string;
     PaymentStatus:string;
+    EmailUpdates:boolean;
 }

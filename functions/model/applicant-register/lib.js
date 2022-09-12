@@ -6,7 +6,7 @@
 
 const { db } = require("../application/lib");
 
-exports.registerUser = function(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo, profile, social, userUid, numberOfFiles) {
+exports.registerUser = function(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo, profile, social, userUid, numberOfFiles, emailUpdates) {
     const registerData = db.collection("Registrations").doc(uid).set({
         Uid: uid,
         Prefix: prefix,
@@ -29,7 +29,7 @@ exports.registerUser = function(uid, prefix, dob, firstName, lastName, gaurdFirs
         UserUid: userUid,
         NumberOfFiles: numberOfFiles,
         PaymentStatus: "false",
-
+        EmailUpdates: emailUpdates,
     });
     return Promise.resolve(registerData);
 };

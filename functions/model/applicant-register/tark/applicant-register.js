@@ -49,6 +49,7 @@ exports.registerNewUser = function(request, response) {
     const profile = user.Profile;
     const social = user.Social;
     const userUid = user.UserUid;
+    const emailUpdates = user.EmailUpdates;
     const numberOfFiles = 0;
     let result;
     const status = 200;
@@ -58,7 +59,7 @@ exports.registerNewUser = function(request, response) {
         const timestamp = ms.toString();
         const key = firstName + lastName + timestamp;
         const uid = Buffer.from(key).toString("base64");
-        registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles).then(() => {
+        registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles, emailUpdates).then(() => {
             result = { data: uid };
             console.log("Applicant Registered Successfully");
             // adding file code
