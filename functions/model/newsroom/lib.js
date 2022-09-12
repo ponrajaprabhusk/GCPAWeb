@@ -6,7 +6,7 @@
 
 const { db } = require("../application/lib");
 
-exports.addNews = function(uid, name, link, imageurl) {
+exports.addNewNews = function(uid, name, link, imageurl) {
     const newsData = db.collection("News").doc(uid).set({
         Uid: uid,
         Name: name,
@@ -18,7 +18,7 @@ exports.addNews = function(uid, name, link, imageurl) {
     return Promise.resolve(newsData);
 };
 
-exports.getNews = function() {
+exports.getAllNews = function() {
     const query = db.collection("News");
 
     const promise = query.get().then((doc) => {

@@ -3,12 +3,12 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const {getRawData} = require("../lib");
+const {getRawDatas} = require("../lib");
 
 exports.getRawData = function(request, response) {
   let status = 200;
 
-  getRawData().then((data) => {
+  getRawDatas().then((data) => {
     if (data) {
       const result = {data: {status: "OK", data: data}};
       return response.status(status).send(result);

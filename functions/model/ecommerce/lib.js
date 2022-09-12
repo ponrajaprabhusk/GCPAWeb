@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 const { db } = require("../application/lib");
 
-exports.addProduct = function(productId, productName, disc, numberOfImages, images, productStatus, price) {
+exports.addNewProduct = function(productId, productName, disc, numberOfImages, images, productStatus, price) {
     const galleryData = db.collection("Products").doc(productId).set({
         ProductId: productId,
       ProductName: productName,
@@ -19,7 +19,7 @@ exports.addProduct = function(productId, productName, disc, numberOfImages, imag
     return Promise.resolve(galleryData);
 };
 
-exports.getProducts = function() {
+exports.getAllProducts = function() {
     const query = db.collection("Products");
 
     const promise = query.get().then((doc) => {
@@ -35,7 +35,7 @@ exports.getProducts = function() {
     return Promise.resolve(promise);
 };
 
-exports.getProductById = function(ProductId) {
+exports.getProductByProductId = function(ProductId) {
     let query = db.collection("Products");
 
     if (ProductId != "") {
@@ -55,7 +55,7 @@ exports.getProductById = function(ProductId) {
     return Promise.resolve(promise);
 };
 
-exports.addOrder = function(orderId, quantity, address, city, country, mobileNum, name, pincode, productId, productName, state, totalPrice, userUid) {
+exports.setOrder = function(orderId, quantity, address, city, country, mobileNum, name, pincode, productId, productName, state, totalPrice, userUid) {
     const galleryData = db.collection("Orders").doc(orderId).set({
         Quantity: quantity,
         Address: address,
@@ -75,7 +75,7 @@ exports.addOrder = function(orderId, quantity, address, city, country, mobileNum
     return Promise.resolve(galleryData);
 };
 
-exports.getOrders = function() {
+exports.getAllOrders = function() {
     const query = db.collection("Orders");
 
     const promise = query.get().then((doc) => {
@@ -92,7 +92,7 @@ exports.getOrders = function() {
 };
 
 
-exports.getOrdersByUid = function(uid) {
+exports.getOrdersByUserUid = function(uid) {
     const query = db.collection("Orders").where("UserUid", "==", uid);
     const promise = query.get().then((doc) => {
         const data = [];

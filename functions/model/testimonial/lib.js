@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 const { db } = require("../application/lib");
 
-exports.addTestimonial = function(uid, name, testimonial, imageurl, achievement) {
+exports.addNewTestimonial = function(uid, name, testimonial, imageurl, achievement) {
     const testimonialData = db.collection("Testimonials").doc(uid).set({
         Uid: uid,
         Name: name,
@@ -18,7 +18,7 @@ exports.addTestimonial = function(uid, name, testimonial, imageurl, achievement)
     return Promise.resolve(testimonialData);
 };
 
-exports.getTestimonials = function() {
+exports.getAllTestimonials = function() {
     const query = db.collection("Testimonials");
 
     const promise = query.get().then((doc) => {
