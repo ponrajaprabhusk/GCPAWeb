@@ -35,9 +35,9 @@ export class TestimonialsComponent implements OnInit {
         items: 1
       },
       740: {
-        items: 2
+        items: 1
       },
-      940: {
+      1200: {
         items: 2
       }
     },
