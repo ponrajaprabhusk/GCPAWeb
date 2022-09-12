@@ -19,7 +19,8 @@ exports.addTestimonial = function(uid, name, testimonial, imageurl, achievement)
 };
 
 exports.getTestimonials = function() {
-    const query = db.collection("Testimonials");
+    let query = db.collection("Testimonials");
+    query = query.where("Status", "==", "Ok");
 
     const promise = query.get().then((doc) => {
         const data = [];
@@ -32,4 +33,23 @@ exports.getTestimonials = function() {
     });
 
     return Promise.resolve(promise);
+};
+
+exports.editTestimonial = function(uid, achievement, imageUrl, name, testimonial) {
+    const query = db.collection("Testimonials").doc(uid).update({
+        Achievement: achievement,
+        ImageUrl: imageUrl,
+        Name: name,
+        Status: "Ok",
+        Testimonial: testimonial,
+});
+    return Promise.resolve(query);
+};
+
+exports.deleteTestimonial = function(uid) {
+    const query = db.collection("Testimonials").doc(uid).update({
+        Status: "Deleted",
+    });
+
+    return Promise.resolve(query);
 };
