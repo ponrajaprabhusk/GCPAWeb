@@ -27,7 +27,7 @@ exports.updateRawData = function(inputJson) {
 
 
 // This should not be returning a list
-exports.getRawDatas = function() {
+exports.getRawData = function() {
   const query = db.collection("RawData");
 
   const promise = query.get().then((doc) => {
