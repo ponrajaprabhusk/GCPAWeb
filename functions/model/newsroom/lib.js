@@ -33,3 +33,18 @@ exports.getNews = function() {
 
     return Promise.resolve(promise);
 };
+
+exports.editNewsById = function(uid, imageUrl, name, link) {
+    const query = db.collection("News").doc(uid).update({
+        ImageUrl: imageUrl,
+        Name: name,
+        Link: link,
+});
+    return Promise.resolve(query);
+};
+
+exports.deleteNewsById = function(uid) {
+    const query = db.collection("News").doc(uid).delete();
+
+    return Promise.resolve(query);
+};

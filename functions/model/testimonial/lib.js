@@ -47,9 +47,7 @@ exports.editTestimonial = function(uid, achievement, imageUrl, name, testimonial
 };
 
 exports.deleteTestimonial = function(uid) {
-    const query = db.collection("Testimonials").doc(uid).update({
-        Status: "Deleted",
-    });
+    const query = db.collection("Testimonials").doc(uid).delete();
 
     return Promise.resolve(query);
 };

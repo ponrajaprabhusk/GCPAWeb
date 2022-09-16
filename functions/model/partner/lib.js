@@ -31,3 +31,18 @@ exports.getPartners = function() {
 
     return Promise.resolve(promise);
 };
+
+exports.editPartners = function(uid, imageUrl, name, type) {
+    const query = db.collection("Partners").doc(uid).update({
+        ImageUrl: imageUrl,
+        Name: name,
+        Type: type,
+});
+    return Promise.resolve(query);
+};
+
+exports.deletePartners = function(uid) {
+    const query = db.collection("Partners").doc(uid).delete();
+
+    return Promise.resolve(query);
+};
