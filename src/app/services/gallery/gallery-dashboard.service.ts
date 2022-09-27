@@ -46,7 +46,6 @@ public galleryDataStateObservable = this.galleryDataState.asObservable();
       console.log(data);
       this.loader=false;
       this.gallery = data;
-      console.log("hit from gallery dashboard");
     return data;
   }));
   return GalleryData;
