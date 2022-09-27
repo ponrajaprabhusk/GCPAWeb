@@ -11,7 +11,7 @@
                     <img [src]="photo.ImageUrl" width="100" height="100" [ngClass]="{'img-fluid rounded':true,'darken shadow':photo.Hovering}" alt="">
                 </a>
             </ng-container>
-            <div *ngIf=" gallery.length != rawDataService.rawData[0].NumberOfGalleryPics">
+            <div *ngIf="gallery.length != rawDataService.rawData[0].NumberOfGalleryPics">
                 <button *ngIf="dataReady" class="btn btn-primary text-center" (click)="showMore()">Show More...</button>
             </div>
         </div>
