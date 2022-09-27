@@ -17,7 +17,7 @@ exports.addNewPartner = function(uid, name, type, imageurl) {
 };
 
 exports.getAllPartners = function() {
-    const query = db.collection("Partners");
+    const query = db.collection("Partners").orderBy("Uid");
 
     const promise = query.get().then((doc) => {
         const data = [];
@@ -26,7 +26,7 @@ exports.getAllPartners = function() {
                 data.push(element.data());
             }
         });
-        return data;
+        return data.reverse();
     });
 
     return Promise.resolve(promise);

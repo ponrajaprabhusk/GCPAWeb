@@ -19,7 +19,7 @@ exports.addNewNews = function(uid, name, link, imageurl) {
 };
 
 exports.getAllNews = function() {
-    const query = db.collection("News");
+    const query = db.collection("News").orderBy("Uid");
 
     const promise = query.get().then((doc) => {
         const data = [];
@@ -28,7 +28,7 @@ exports.getAllNews = function() {
                 data.push(element.data());
             }
         });
-        return data;
+        return data.reverse();
     });
 
     return Promise.resolve(promise);

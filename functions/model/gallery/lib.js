@@ -18,7 +18,7 @@ exports.addNewPhoto = function(uid, date, imageurl) {
 };
 
 exports.getAllPhotoes = function(start, end) {
-    let query = db.collection("Gallery");
+    let query = db.collection("Gallery").orderBy("Uid");
     query = query.where("Status", "==", "Ok");
 
     const promise = query.get().then((doc) => {
@@ -32,7 +32,7 @@ exports.getAllPhotoes = function(start, end) {
                 }
             }
         });
-        return data;
+        return data.reverse();
     });
 
     return Promise.resolve(promise);
