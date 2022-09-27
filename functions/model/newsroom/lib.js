@@ -18,8 +18,8 @@ exports.addNews = function(uid, name, link, imageurl) {
     return Promise.resolve(newsData);
 };
 
-exports.getNews = function() {
-    const query = db.collection("News");
+exports.getAllNews = function() {
+    const query = db.collection("News").orderBy("Uid");
 
     const promise = query.get().then((doc) => {
         const data = [];
@@ -28,7 +28,7 @@ exports.getNews = function() {
                 data.push(element.data());
             }
         });
-        return data;
+        return data.reverse();
     });
 
     return Promise.resolve(promise);
