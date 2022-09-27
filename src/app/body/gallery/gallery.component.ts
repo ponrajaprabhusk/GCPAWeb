@@ -20,18 +20,27 @@ export class GalleryComponent implements OnInit {
   ngOnInit(): void {
   this.rawDataService.getRawData();
   this.prevLimit = 20;
-  this.galleryService.getphoto(0,20).subscribe({
-  next: (data) => {
-    this.gallery = data;
-  },
-  error: (error) => {
-    console.error(error);
-  },
-  complete: () => {
+   if(this.galleryService.gallery.length == 0)
+   {
+    this.galleryService.getphoto(0,20).subscribe({
+      next: (data) => {
+        this.gallery = data;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        this.dataReady = true;
+        console.info('Getting Photos successful')
+      }
+      });
+   } else {
+    this.gallery = this.galleryService.gallery;
+    console.log("Data Available");
     this.dataReady = true;
-    console.info('Getting Photos successful')
-  }
-  });
+   }
+  
+  
 }
 
   showMore(){

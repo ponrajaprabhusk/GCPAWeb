@@ -37,13 +37,16 @@ public galleryDataStateObservable = this.galleryDataState.asObservable();
   }
   
   getphoto(start: number, end: number){
+    console.log(start, end);
+    
     this.galleryDataState.next(false);
     const callable = this.functions.httpsCallable("gallery/getPhotoes");
     const GalleryData = callable({Start: start, End: end }).pipe(map(res=>{
-    const data = res.data as Photo[];
-    console.log(data);
-    this.loader=false;
-    this.gallery = data;
+      const data = res.data as Photo[];
+      console.log(data);
+      this.loader=false;
+      this.gallery = data;
+      console.log("hit from gallery dashboard");
     return data;
   }));
   return GalleryData;
