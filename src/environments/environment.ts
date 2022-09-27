@@ -9,7 +9,7 @@ export const environment = {
   },
   useEmulators: false,
   recaptcha: {
-    siteKey: , // Enter recaptcha key here;
+    siteKey: '', // Enter recaptcha key here;
   },
   endpoint : "https://blogs.gcpawards.com/wp-json/wp/v2",
 };

@@ -4,7 +4,7 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 
- const { db } = require("../application/lib");
+const { sendMail } = require("../mail/mail");
 const { getUser } = require("../user/lib");
 const { generateTemplate } = require("./tark/generateTemplate");
 
@@ -18,7 +18,7 @@ const { generateTemplate } = require("./tark/generateTemplate");
   exports.mailer = function(uid, mailType, applicationId) {
     const promise = getUser(uid, "").then((data) => {
         const p1 = generateTemplate(mailType, data.DisplayName, applicationId).then((message)=>{
-            exports.sendMail(data.Email, message[0], message[1]);
+            sendMail(data.Email, message[0], message[1]);
         }).catch((error)=>{
             console.error(error);
         return error;
@@ -30,21 +30,3 @@ const { generateTemplate } = require("./tark/generateTemplate");
     });
     return Promise.resolve(promise);
 };
-
- /**
-  * Description
-  * @param {any} userEmail
-  * @param {any} subjectMessage
-  * @param {any} htmlMessage
-  * @return {any}
-  */
- exports.sendMail = function(userEmail, subjectMessage, htmlMessage) {
-     const sendEmailPromise = db.collection("mail").add({
-         to: userEmail,
-         message: {
-             subject: subjectMessage,
-             html: htmlMessage,
-         },
-     });
-     return Promise.resolve(sendEmailPromise);
- };

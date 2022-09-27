@@ -56,7 +56,6 @@ export class TestimonialComponent implements OnInit {
   constructor(public testimonialService:TestimonialsServiceService) { }
 
   ngOnInit(): void {
- this.testimonialService.getTestimonial()
   }
 
 }
