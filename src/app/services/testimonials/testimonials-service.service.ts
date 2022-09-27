@@ -35,21 +35,20 @@ export class TestimonialsServiceService {
   
   getTestimonial(){
     const callable = this.functions.httpsCallable("testimonials/getTestimonials");
-  callable({ }).pipe(map(res=>{
-    const data = res.data as Testimonial[];
-    return data;
-  })).subscribe({
-    next: (data) => {
-      this.testimonials = data;
-    },
-    error: (error) => {
-      console.error(error);
-    },
-    complete: () => {
-      console.info('Getting Testimonial successful')
-      this.loader=false;
-    }
-  });
-}
-
+    callable({ }).pipe(map(res=>{
+      const data = res.data as Testimonial[];
+      return data;
+    })).subscribe({
+      next: (data) => {
+        this.testimonials = data;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.info('Getting Testimonial successful')
+        this.loader=false;
+      }
+    });
+  }
 }

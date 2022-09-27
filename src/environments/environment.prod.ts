@@ -1,6 +1,6 @@
 export const environment = {
   firebase: {
-    
+    measurementId: ""
   },
   useEmulators: false,
   production: true,

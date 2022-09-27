@@ -33,7 +33,6 @@ export class DataTableServiceService {
   }
 
   getRawData(){
-    
     const callable = this.functions.httpsCallable("rawDatas/getRawData");
     this.rawDataObservable=callable({}).pipe(map(res=>{
       const data = res.data as RawData[];

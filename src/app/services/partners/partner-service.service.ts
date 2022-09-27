@@ -36,22 +36,20 @@ export class PartnerServiceService {
   
   getPartners(){
     const callable = this.functions.httpsCallable("partners/getPartners");
-  callable({ }).pipe(map(res=>{
-    const data = res.data as Partners[];
-    return data;
-  })).subscribe({
-    next: (data) => {
-      this.partners = data;
-    },
-    error: (error) => {
-      console.error(error);
-    },
-    complete: () => {
-      console.info('Getting Partners successful')
-      this.loader=false;
-    }
-  });
-}
-
-
+    callable({ }).pipe(map(res=>{
+      const data = res.data as Partners[];
+      return data;
+    })).subscribe({
+      next: (data) => {
+        this.partners = data;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.info('Getting Partners successful')
+        this.loader=false;
+      }
+    });
+  }
 }

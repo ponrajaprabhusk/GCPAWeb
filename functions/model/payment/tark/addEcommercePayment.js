@@ -22,12 +22,6 @@ exports.addEcommercePayment = function(request, response) {
                     key_secret: "EjWL1pPedHeT4Z1C4laM3u1b",
                 });
 
-                // Production Credentials
-                // const razorpay = new RazorPay({
-                //     key_id: "rzp_live_xoOwFekmzVS4do",
-                //     key_secret: "UnY8Vp9ty5c9wL1TWNUlBsci",
-                // });
-
                 const generatedReceipt = generateBase62Constant();
 
                 const options = {
@@ -44,16 +38,10 @@ exports.addEcommercePayment = function(request, response) {
                         return response.status(500).send(result);
                     }
 
-                    // db.collection("Registrations").doc(Uid).update({
-                    //     RazorPayOrderDetails: order,
-                    // });
-
                     setEcommerceRazorDetails(id, order);
                     // Test credentials
                     order.key = "rzp_test_nfhDfN6X5cgp42";
 
-                    // Production Credentials
-                    // order.key = "rzp_live_xoOwFekmzVS4do";
                     order.receipt = generatedReceipt;
                     const result = { data: order };
                     return response.status(200).send(result);
