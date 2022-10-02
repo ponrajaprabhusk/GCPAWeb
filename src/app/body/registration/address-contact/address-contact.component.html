@@ -22,7 +22,7 @@
                         <app-country (newItemEvent)="addCountry($event)"></app-country>
                     </div>
                     <div class=" col-md-6 ">
-                        <h5 class="fw-bold ">postal/zip code <span class="text-danger ">*</span></h5>
+                        <h5 class="fw-bold ">Postal/Zip code <span class="text-danger ">*</span></h5>
                         <input type="text " class="form-control bg-light " [(ngModel)]="zip ">
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                         </small>
                     </div>
                     <div class="col-md-6 ">
-                        <h5 class="fw-bold ">Email Adress<span class="text-danger ">*</span></h5>
+                        <h5 class="fw-bold ">Email Address<span class="text-danger ">*</span></h5>
                         <input type="email" class="form-control bg-light " [(ngModel)]="email" name="email">
                         <small  class="text-danger py-3" *ngIf="registerService.invalidEmail" >
                             Invalid Email
