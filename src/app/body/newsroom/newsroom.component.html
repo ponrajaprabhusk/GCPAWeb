@@ -4,7 +4,11 @@
         <div class="row text-center" *ngIf="!newsService.loader; else loader">
             <ng-container *ngFor="let news of newsService.newsroom">
                 <div class="col-md-3 px-3 py-3 my-auto">
-                    <a [href]="news.Link"><img [src]="news.ImageUrl" class="img-fluid rounded bg-white" alt=""></a>
+                    <a [href]="news.Link">
+                        <div class="bg-white d-flex align-items-center" style="height: 150px;">
+                            <img [src]="news.ImageUrl" width="100" height="100" class="img-fluid rounded bg-white mx-auto" alt="" >
+                        </div>
+                    </a>
                 </div>
             </ng-container>
         </div>

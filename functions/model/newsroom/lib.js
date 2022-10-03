@@ -6,7 +6,7 @@
 
 const { db } = require("../application/lib");
 
-exports.addNews = function(uid, name, link, imageurl) {
+exports.addNewNews = function(uid, name, link, imageurl) {
     const newsData = db.collection("News").doc(uid).set({
         Uid: uid,
         Name: name,
@@ -18,8 +18,8 @@ exports.addNews = function(uid, name, link, imageurl) {
     return Promise.resolve(newsData);
 };
 
-exports.getNews = function() {
-    const query = db.collection("News");
+exports.getAllNews = function() {
+    const query = db.collection("News").orderBy("Uid");
 
     const promise = query.get().then((doc) => {
         const data = [];
@@ -28,8 +28,23 @@ exports.getNews = function() {
                 data.push(element.data());
             }
         });
-        return data;
+        return data.reverse();
     });
 
     return Promise.resolve(promise);
+};
+
+exports.editNewsById = function(uid, imageUrl, name, link) {
+    const query = db.collection("News").doc(uid).update({
+        ImageUrl: imageUrl,
+        Name: name,
+        Link: link,
+});
+    return Promise.resolve(query);
+};
+
+exports.deleteNewsById = function(uid) {
+    const query = db.collection("News").doc(uid).delete();
+
+    return Promise.resolve(query);
 };

@@ -5,11 +5,8 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 // eslint-disable-next-line linebreak-style
-const functions = require("firebase-functions");
-const cors = require("cors")({ origin: true });
 const { setPaymentStatus, setEcommercePaymentStatus } = require("../lib");
 const crypto = require("crypto");
-const { mailer } = require("../../Mailer/lib");
 
 exports.paymentVerification = function(request, response) {
     const orderId = request.body.data.OrderId;
@@ -21,8 +18,6 @@ exports.paymentVerification = function(request, response) {
         // Test Credentials
         const keySecret = "EjWL1pPedHeT4Z1C4laM3u1b";
 
-        // Production Credentials
-        // const keySecret = "UnY8Vp9ty5c9wL1TWNUlBsci";
         let generatedSignature = "";
 
         generatedSignature = crypto.createHmac("sha256", keySecret).update((orderId + "|" + paymentId).toString()).digest("hex");

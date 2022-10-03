@@ -4,13 +4,17 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 
-const { deleteTestimonial } = require("../lib");
+const { editPartners } = require("../lib");
 
-exports.deleteTestimonial = function(request, response) {
+exports.editPartner = function(request, response) {
     const uid = request.body.data.Uid;
+    const name = request.body.data.Name;
+    const imageUrl = request.body.data.ImageUrl;
+    const type = request.body.data.Type;
+
     let result;
-    deleteTestimonial(uid).then(() => {
-        result = { data: "Testimonial Deleted successfully" };
+    editPartners(uid, imageUrl, name, type).then(() => {
+        result = { data: "Partners Updated successfully" };
         return response.status(200).send(result);
     }).catch((error) => {
         result = { data: error };
