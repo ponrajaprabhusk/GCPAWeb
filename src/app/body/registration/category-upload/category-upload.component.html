@@ -12,7 +12,8 @@
                         placeholder="Select Category"
                         appendTo="body"
                         [multiple]="true"
-                        [(ngModel)]="category" [maxSelectedItems]="2">
+                        [(ngModel)]="category" [maxSelectedItems]="2"
+                        [ngModelOptions]="{standalone: true}">
                     </ng-select>
                     </div>
                 </div>
