@@ -19,7 +19,7 @@
 };
 
 exports.getTemplate = function(templateFile) {
-  const dir = "model/Mailer/templates/";
+  const dir = "model/mailer/templates/";
   const fileAddress = dir + templateFile;
 
   const promise = fsReadFileHtml(fileAddress);
