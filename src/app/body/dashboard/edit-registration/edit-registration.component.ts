@@ -9,7 +9,7 @@ import { RegisterServiceService } from 'src/app/services/register-service/regist
   styleUrls: ['./edit-registration.component.css']
 })
 export class EditRegistrationComponent implements OnInit {
-
+  categories_list=['Acting & Directing',"Art & Drawing","Cooking",'Comedian','Dance','Education','Fashion','Fitness','Innovation','Intelligence','Music','Mathematics','Magician','Photography','Singing','Sports','Social','Science','Technology','Writing & Poetry','Others']
   uid:string;
   constructor(private route: ActivatedRoute,public registerService:RegisterServiceService, public router:Router,public authService:AuthServiceService) { }
 
