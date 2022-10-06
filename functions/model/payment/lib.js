@@ -4,7 +4,7 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 const { db } = require("../application/lib");
-const { mailer } = require("../Mailer/lib");
+const { mailer } = require("../mailer/lib");
 
 const base62 = {
     charset: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"

@@ -92,7 +92,7 @@ export class RegistrationComponent implements OnInit {
     this.number=phone(this.adressComponent.number,{country:alpha3}).phoneNumber
     }
 
-    if ((this.personalDetails.prefix==''||this.personalDetails.dob==''||this.personalDetails.firstName==''||this.personalDetails.lastName==''||this.adressComponent.address==''||this.adressComponent.zip==''||this.adressComponent.number==''||this.adressComponent.email==''||this.adressComponent.school==''||this.adressComponent.country==''||this.categoryComponent.category=='')&&!this.termsAndCond) {
+    if ((this.personalDetails.prefix==''||this.personalDetails.dob==''||this.personalDetails.firstName==''||this.personalDetails.lastName==''||this.adressComponent.address==''|| this.adressComponent.zip==''||this.adressComponent.number==''||this.adressComponent.email==''||this.adressComponent.school==''||this.adressComponent.country==''||this.categoryComponent.category=='')&&!this.termsAndCond) {
       this.registerService.fillAll=true;
     }
     else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.adressComponent.email))){

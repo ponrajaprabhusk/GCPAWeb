@@ -5,6 +5,7 @@ import { ExtraFilesServiceService } from 'src/app/services/extraFiles/extra-file
 import { FileUploadService } from 'src/app/services/file-upload-service/file-upload-service.service';
 import { RegisterServiceService } from 'src/app/services/register-service/register-service.service';
 
+
 @Component({
   selector: 'app-registration-detail',
   templateUrl: './registration-detail.component.html',
@@ -35,14 +36,15 @@ export class RegistrationDetailComponent implements OnInit {
    extraVideo:FileData={FileUrl:'',ApplicantName:'',Date:'',Time:'',Uid:'',File:'ExtraVideo'};
    extraDoc:FileData={FileUrl:'',ApplicantName:'',Date:'',Time:'',Uid:'',File:'ExtraDoc'};
   
-  
+   formModal:any; 
    constructor(private route: ActivatedRoute,public registerService:RegisterServiceService, public uploadService:FileUploadService, public extraFilesService:ExtraFilesServiceService) { }
 
+   showClose= false;
   ngOnInit(): void {
     this.uid = this.route.snapshot.params[ 'uid' ]
     this.registerService.getRegistrationById(this.uid)
     this.extraFilesService.getExtraFiles(this.uid);
-   
+  
   }
   photoUpload(event:any)
   {
@@ -132,6 +134,9 @@ export class RegistrationDetailComponent implements OnInit {
     this.extraPhoto.Date=this.uploadService.uploadedPhotoDate
     this.extraPhoto.Time=this.uploadService.uploadedPhotoTime
     this.extraFilesService.addFile(this.registerService.registration.Uid,this.extraPhoto);
+    if(this.extraFilesService.uploadStateObservable){
+      this.showClose = true;
+        }
     }
     else{
       alert("No file Uploaded")
@@ -163,5 +168,9 @@ export class RegistrationDetailComponent implements OnInit {
       else{
         alert("No file Uploaded")
       }
+  }
+
+  close(){
+    this.showClose = false;
   }
 }

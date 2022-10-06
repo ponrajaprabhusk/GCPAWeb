@@ -100,6 +100,7 @@ import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
 import { BlogComponent } from './body/blog/blog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 import * as $ from 'jquery';
 import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
 import { BlogHomeComponent } from './body/blog-home/blog-home.component';
@@ -224,6 +225,7 @@ import { TagComponent } from './body/tag/tag.component';
     ReactiveFormsModule,
     NgxCaptchaModule,
     HttpClientModule,
+    MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

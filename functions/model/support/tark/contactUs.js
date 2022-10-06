@@ -4,8 +4,8 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 
-const { generateTemplate } = require("../../Mailer/tark/generateTemplate");
-const { sendMail } = require("../../Mailer/lib");
+const { generateTemplate } = require("../../mailer/tark/generateTemplate");
+const { sendMail } = require("../../mail/mail");
 
 
 exports.contactMail = function(request, response) {
