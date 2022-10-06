@@ -6,7 +6,7 @@
 const { registerUser, getApplicant, updateApplicant, addFile } = require("../lib");
 const { getRawData } = require("../../raw-data/lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
-const { mailer } = require("../../Mailer/lib");
+const { mailer } = require("../../mailer/lib");
 
 const addFiles = function(uid, file) {
     const promise = getApplicant(uid).then((doc) => {
