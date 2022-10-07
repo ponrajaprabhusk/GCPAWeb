@@ -90,7 +90,7 @@ exports.registerNewUser = function(request, response) {
 
             // end
             updateData("registration").then(() => console.log("Registration Raw Data Updated"));
-            mailer(userUid, "Registration_Complete", uid);
+            mailer(userUid, "Payment_Pending", uid);
             return response.status(status).send(result);
         }).catch((error) => {
             result = { data: error };

@@ -12,12 +12,14 @@ export class GalleryComponent implements OnInit {
 
   gallery:Photo[] = [];
   prevLimit:number = 0;
+ modalImg:any;
 
   constructor(public galleryService:GalleryDashboardService, public rawDataService: RawDataServiceService) { }
 
   ngOnInit(): void {
     this.rawDataService.getRawData();
     this.prevLimit = 20;
+    
   }
 
   showMore() {
@@ -31,5 +33,13 @@ export class GalleryComponent implements OnInit {
     this.galleryService.getphoto(this.prevLimit, newLimit);
     this.prevLimit +=20;
   }
+open(url: any){
+this.modalImg = url;
+}
+
+// close() {
+//   this.modal = document.getElementById("myModal");
+//   this.modal.style.display = "none";
+// }
   
 }

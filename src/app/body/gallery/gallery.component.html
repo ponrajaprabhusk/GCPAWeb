@@ -6,10 +6,13 @@
     <div class="container mt-3 py-3 px-2 back" *ngIf="galleryService.gallery.length>0 ; else loader">
         <div class="row text-center">
             <ng-container *ngFor="let photo of galleryService.gallery">
-                <a [ngClass]="{'col-md-3 px-3 py-3 my-auto':true}" [href]="photo.ImageUrl" (mouseenter)="photo.Hovering=true" (mouseleave)="photo.Hovering=false">
-                    <img [src]="photo.ImageUrl" [ngClass]="{'img-fluid rounded':true,'darken shadow':photo.Hovering}" alt="">
-                </a>
+                <div [ngClass]="{'col-md-3 px-3 py-3 my-auto':true}" (mouseenter)="photo.Hovering=true" (mouseleave)="photo.Hovering=false">
+                    <img [src]="photo.ImageUrl" (click)="open(photo.ImageUrl)" data-bs-toggle="modal" data-bs-target="#exampleModal" [ngClass]="{'img-fluid rounded':true,'darken shadow':photo.Hovering}" alt="">
+                </div>
             </ng-container>
+
+         <app-carousel></app-carousel>
+            <app-img-popup [ImageUrl]="modalImg"></app-img-popup>
             <ng-container *ngIf="rawDataService.rawData != undefined">
                 <div *ngIf="gallery.length != rawDataService.rawData[0].NumberOfGalleryPics">
                     <button class="btn btn-primary text-center" (click)="showMore()">Show More...</button>
@@ -21,5 +24,4 @@
     <ng-template #loader>
         <app-loader></app-loader>
     </ng-template>
-    
 </div>
