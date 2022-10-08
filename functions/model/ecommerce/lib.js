@@ -19,8 +19,28 @@ exports.addNewProduct = function(productId, productName, disc, numberOfImages, i
     return Promise.resolve(galleryData);
 };
 
+exports.deleteProduct = function(ProductId){
+    const query  = db.collection("Products").doc(ProductId).update({
+        Status: false,
+    });
+    return Promise.resolve(query);       
+}
+
+exports.editProduct = function(ProductId, ImageUrl, ProductName, Price, Disc) {
+    const query = db.collection("Products").doc(ProductId).update({
+        ProductId: ProductId,
+        Images: ImageUrl,
+        ProductName: ProductName,
+        Price: Price,
+        Disc: Disc,
+        Status: true,
+});
+    return Promise.resolve(query);
+};
+
 exports.getAllProducts = function() {
-    const query = db.collection("Products");
+    let query = db.collection("Products");
+    query = query.where("Status", "==", true)
 
     const promise = query.get().then((doc) => {
         const data = [];

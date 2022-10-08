@@ -26,7 +26,7 @@ exports.getAllPartners = function() {
                 data.push(element.data());
             }
         });
-        return data.reverse();
+        return data;
     });
 
     return Promise.resolve(promise);

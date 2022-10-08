@@ -32,7 +32,7 @@ exports.getAllPhotoes = function(start, end) {
                 }
             }
         });
-        return data.reverse();
+        return data;
     });
 
     return Promise.resolve(promise);
