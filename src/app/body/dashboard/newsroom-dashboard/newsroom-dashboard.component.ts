@@ -21,6 +21,7 @@ export class NewsroomDashboardComponent implements OnInit {
   percentage: number = 0;
   fileName: string;
   progressPhoto:number;
+  showClose=true;
 
   constructor(public uploadService:FileUploadService, public newsService:NewsServiceService,private router: Router,public authService:AuthServiceService,  private functions: AngularFireFunctions) { }
   news:Newsroom={Uid:"",Name:"",Status:"",ImageUrl:"",Link:""}
@@ -107,10 +108,15 @@ export class NewsroomDashboardComponent implements OnInit {
     if(this.uploadService.newsUrl){
    this.news.ImageUrl=this.uploadService.newsUrl;
    this.newsService.addNews(this.news);
+   if(this.newsService.uploadStateObservable){
+    this.showClose = true;
+      }
     }
     else{
       alert("No file Uploaded")
     }
   }
-
+  close(){
+    this.showClose = false;
+  }
 }

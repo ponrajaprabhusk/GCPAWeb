@@ -126,6 +126,8 @@ import { AmpRedirectComponent } from './body/amp-redirect/amp-redirect.component
 import { TagComponent } from './body/tag/tag.component';
 import { ImgPopupComponent } from './body/gallery/img-popup/img-popup.component';
 import { CarouselComponent } from './body/gallery/carousel/carousel.component';
+import { PrivacyPolicyComponent } from './body/privacy-policy/privacy-policy.component';
+import { FaqComponent } from './body/faq/faq.component';
 
 
 @NgModule({
@@ -203,7 +205,7 @@ import { CarouselComponent } from './body/gallery/carousel/carousel.component';
     ECommerceComponent,
     ProductsComponent,
     BlogComponent,  
-    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent, ImgPopupComponent, CarouselComponent,
+    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent, ImgPopupComponent, CarouselComponent, PrivacyPolicyComponent, FaqComponent,
   ],
   imports: [
     NgSelectModule,

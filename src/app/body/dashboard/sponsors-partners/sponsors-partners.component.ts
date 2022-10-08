@@ -21,6 +21,7 @@ currentFileUpload: FileUpload;
 percentage: number = 0;
 fileName: string;
 progressPhoto:number;
+showClose=false;
 
   constructor(public partnerService:PartnerServiceService,private router: Router,public authService:AuthServiceService, public uploadService:FileUploadService, private functions: AngularFireFunctions) { }
   partner:Partners={Uid:"",Name:"",Type:"",ImageUrl:""}
@@ -74,6 +75,9 @@ submit(){
   if(this,this.uploadService.partnerUrl){
  this.partner.ImageUrl=this.uploadService.partnerUrl;
  this.partnerService.addPartner(this.partner);
+ if(this.partnerService.uploadStateObservable){
+  this.showClose = true;
+    }
   }
   else{
     alert("No file Uploaded")
@@ -111,6 +115,9 @@ editPartner(Uid: any, Name: any , ImageUrl:any , Type:any){
         complete: () => { 
           console.info('Successful deleted Partner')}
       });
+  }
+  close(){
+    this.showClose = false;
   }
 }
 
