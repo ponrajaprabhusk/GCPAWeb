@@ -30,7 +30,6 @@ const addFiles = function(uid, file) {
 
 exports.registerNewUser = function(request, response) {
     const user = request.body.data;
-
     const prefix = user.Prefix;
     const dob = user.Dob;
     const firstName = user.FirstName;
@@ -55,10 +54,28 @@ exports.registerNewUser = function(request, response) {
     const status = 200;
 
     getRawData().then((doc) => {
-        const ms = new Date().getUTCMilliseconds();
-        const timestamp = ms.toString();
-        const key = firstName + lastName + timestamp;
-        const uid = Buffer.from(key).toString("base64");
+        const date = new Date().getDate();
+        const time = new Date().getMilliseconds();
+        const keyName = firstName.slice(0, 3);
+        const key = keyName + date.toString() + time.toString();
+        let uid = Buffer.from(key).toString("base64");
+
+        // eslint-disable-next-line require-jsdoc
+        function removeCharRecursive(str, X) {
+            if (str.length == 0) {
+                return "";
+            }
+            if (str.charAt(0) == X) {
+                return removeCharRecursive(
+                    str.substring(1), X);
+            }
+            return str.charAt(0) +
+                removeCharRecursive(
+                    str.substring(1), X);
+        }
+        uid = removeCharRecursive(uid, "=");
+        console.log(uid);
+
         registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles, emailUpdates).then(() => {
             result = { data: uid };
             console.log("Applicant Registered Successfully");
@@ -73,7 +90,7 @@ exports.registerNewUser = function(request, response) {
 
             // end
             updateData("registration").then(() => console.log("Registration Raw Data Updated"));
-            mailer(userUid, "Registration_Complete", uid);
+            mailer(userUid, "Payment_Pending", uid);
             return response.status(status).send(result);
         }).catch((error) => {
             result = { data: error };

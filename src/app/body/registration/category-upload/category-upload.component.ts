@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { getStorage, ref, getDownloadURL, uploadBytesResumable} from "firebase/storage";
 import { FileUploadService } from 'src/app/services/file-upload-service/file-upload-service.service';
 import { FileData, FileUpload } from 'src/app/Interfaces/FileInterface';
+var $  = require( 'jquery' );
 
 
 @Component({
@@ -128,5 +129,6 @@ export class CategoryUploadComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

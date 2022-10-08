@@ -19,7 +19,11 @@ userUid="";
 constructor(public authService:AuthServiceService, public supportService:SupportServiceService, public functions: AngularFireFunctions) { }
 
 ngOnInit(): void {
-  this.userUid = this.authService.user.uid;
+  this.userUid = this.authService.user.uid;   
+  console.log(this.authService.userReady);
+  console.log("klnfgakjsenefkjanekjfnaekfnjlaerbf");
+  
+  
   }
 
 submit(){

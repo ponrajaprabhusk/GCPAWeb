@@ -70,6 +70,7 @@ exports.setPaymentStatus = function(orderId, id) {
             RazorPayOrderDetails: data.RazorPayOrderDetails,
         });
         mailer(data.UserUid, "Payment_Complete", id);
+        mailer(data.UserUid, "Registration_Complete", id);
         return Promise.resolve(promise);
     });
 };
@@ -88,7 +89,7 @@ exports.setEcommercePaymentStatus = function(id) {
             PaymentStatus: "Complete",
             RazorPayOrderDetails: data.RazorPayOrderDetails,
         });
-        mailer(data.UserUid, "Payment_Complete", id);
+        // mailer(data.UserUid, "Payment_Complete", id);
         return Promise.resolve(promise);
     });
 };

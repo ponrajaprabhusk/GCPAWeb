@@ -12,6 +12,7 @@ export class GalleryDashboardService {
   gallery:Photo[]=[]
 
   gallaryData: Observable<Photo[]>
+  imageUrls: string[] =[];
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService) { }
   addPhoto(photo:Photo)  {
@@ -43,7 +44,10 @@ export class GalleryDashboardService {
       next: (data) => {
         data.forEach(element => {
           this.gallery.push(element);
+          console.log(element.ImageUrl);
+          this.imageUrls.push(element.ImageUrl);   
         });
+        console.log(this.imageUrls);
       },
       error: (error) => {
         console.error(error);

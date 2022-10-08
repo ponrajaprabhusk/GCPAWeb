@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
       next:(user:any)=>{
         this.authService.setCurrentUser(user as User);
         if (user) {
-          this.authService.getUser(user.uid)
+          this.authService.getUser(user.uid);
           this.loggedIn=true;
         }
         // this.popup.popupEnable()

@@ -100,6 +100,7 @@ import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
 import { BlogComponent } from './body/blog/blog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 import * as $ from 'jquery';
 import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
 import { BlogHomeComponent } from './body/blog-home/blog-home.component';
@@ -123,6 +124,8 @@ import { MyOrdersComponent } from './body/my-orders/my-orders.component';
 import { CategoryComponentComponent } from './body/category-component/category-component.component';
 import { AmpRedirectComponent } from './body/amp-redirect/amp-redirect.component';
 import { TagComponent } from './body/tag/tag.component';
+import { ImgPopupComponent } from './body/gallery/img-popup/img-popup.component';
+import { CarouselComponent } from './body/gallery/carousel/carousel.component';
 
 
 @NgModule({
@@ -200,7 +203,7 @@ import { TagComponent } from './body/tag/tag.component';
     ECommerceComponent,
     ProductsComponent,
     BlogComponent,  
-    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent,
+    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent, ImgPopupComponent, CarouselComponent,
   ],
   imports: [
     NgSelectModule,
@@ -224,6 +227,7 @@ import { TagComponent } from './body/tag/tag.component';
     ReactiveFormsModule,
     NgxCaptchaModule,
     HttpClientModule,
+    MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
