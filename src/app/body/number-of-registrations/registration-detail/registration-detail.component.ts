@@ -151,7 +151,10 @@ export class RegistrationDetailComponent implements OnInit {
       this.extraVideo.Date=this.uploadService.uploadedVideoDate
       this.extraVideo.Time=this.uploadService.uploadedVideoTime
       this.extraFilesService.addFile(this.registerService.registration.Uid,this.extraVideo);
-      }
+      if(this.extraFilesService.uploadStateObservable){
+        this.showClose = true;
+          }
+    }
       else{
         alert("No file Uploaded")
       }
@@ -164,7 +167,10 @@ export class RegistrationDetailComponent implements OnInit {
       this.extraDoc.Date=this.uploadService.uploadedDocDate
       this.extraDoc.Time=this.uploadService.uploadedDocTime
       this.extraFilesService.addFile(this.registerService.registration.Uid,this.extraDoc);
-      }
+      if(this.extraFilesService.uploadStateObservable){
+        this.showClose = true;
+          }
+    }
       else{
         alert("No file Uploaded")
       }
