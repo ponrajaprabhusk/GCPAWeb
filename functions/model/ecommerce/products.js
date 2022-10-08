@@ -20,12 +20,12 @@ fastify.post("/addProduct", (req, res) => {
     addProduct(req, res);
 });
 
-fastify.post("/deleteProduct",  (req, res) => {
+fastify.post("/deleteProduct", (req, res) => {
     console.log("Deleting Product");
     deleteProduct(req, res);
 });
 
-fastify.post("/editProduct",  (req, res) => {
+fastify.post("/editProduct", (req, res) => {
     console.log("Product is edited");
     editProduct(req, res);
 });

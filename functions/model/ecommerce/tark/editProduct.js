@@ -4,7 +4,6 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 
-const { data } = require("jquery");
 const { editProduct } = require("../lib");
 
 exports.editProduct = function(request, response) {
@@ -17,7 +16,6 @@ exports.editProduct = function(request, response) {
     let result;
     editProduct(ProductId, ImageUrl, ProductName, Price, Disc).then(() => {
         result = { data: "Product Updated successfully" };
-        console.log(data);
         return response.status(200).send(result);
     }).catch((error) => {
         result = { data: error };

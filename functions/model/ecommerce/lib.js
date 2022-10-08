@@ -19,12 +19,12 @@ exports.addNewProduct = function(productId, productName, disc, numberOfImages, i
     return Promise.resolve(galleryData);
 };
 
-exports.deleteProduct = function(ProductId){
-    const query  = db.collection("Products").doc(ProductId).update({
+exports.deleteProduct = function(ProductId) {
+    const query = db.collection("Products").doc(ProductId).update({
         Status: false,
     });
-    return Promise.resolve(query);       
-}
+    return Promise.resolve(query);
+};
 
 exports.editProduct = function(ProductId, ImageUrl, ProductName, Price, Disc) {
     const query = db.collection("Products").doc(ProductId).update({
@@ -40,7 +40,7 @@ exports.editProduct = function(ProductId, ImageUrl, ProductName, Price, Disc) {
 
 exports.getAllProducts = function() {
     let query = db.collection("Products");
-    query = query.where("Status", "==", true)
+    query = query.where("Status", "==", true);
 
     const promise = query.get().then((doc) => {
         const data = [];
