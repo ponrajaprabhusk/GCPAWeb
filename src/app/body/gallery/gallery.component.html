@@ -3,12 +3,14 @@
     <a>
         <p class="mainp">The journey so far in pictures</p>
     </a>
-    <div class="container mt-3 py-3 px-2 back" *ngIf="galleryService.gallery.length>0 ; else loader">
+    <div class="container mt-6 py-6 px-4 back" *ngIf="galleryService.gallery.length>0 ; else loader">
         <div class="row text-center">
             <ng-container *ngFor="let photo of galleryService.gallery">
-                <a [ngClass]="{'col-md-3 px-3 py-3 my-auto':true}" [href]="photo.ImageUrl" (mouseenter)="photo.Hovering=true" (mouseleave)="photo.Hovering=false">
-                    <img [src]="photo.ImageUrl" [ngClass]="{'img-fluid rounded':true,'darken shadow':photo.Hovering}" alt="">
-                </a>
+                    <div id="gallery" data-bs-toggle="modal" [attr.data-bs-target]="'#'+photo.Uid" [ngClass]="{'col-md-3 px-3 py-3 my-auto':true}" (mouseenter)="photo.Hovering=true" (mouseleave)="photo.Hovering=false">
+                        <img [src]="photo.ImageUrl" [ngClass]="{'img-fluid rounded':true,'darken shadow':photo.Hovering}" alt="">
+                    </div>
+
+                    
             </ng-container>
             <ng-container *ngIf="rawDataService.rawData != undefined">
                 <div *ngIf="gallery.length != rawDataService.rawData[0].NumberOfGalleryPics">

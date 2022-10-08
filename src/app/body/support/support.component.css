@@ -5,6 +5,15 @@ h1 {
     font-family: 'Amaranth', sans-serif!important;
 }
 
+
+.back {
+    background-image: url("../../../assets/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+    height: 100vh;
+}
+
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -27,13 +36,6 @@ h1 {
     .container {
         max-width: 1140px;
     }
-}
-
-.back {
-    background-image: url("../../../assets/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
 }
 
 .btn {
