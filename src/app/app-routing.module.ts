@@ -44,6 +44,8 @@ import { CategoriesComponent } from './body/how-it-works/categories/categories.c
 import { CategoryComponentComponent } from './body/category-component/category-component.component';
 import { AmpRedirectComponent } from './body/amp-redirect/amp-redirect.component';
 import { TagComponent } from './body/tag/tag.component';
+import { PrivacyPolicyComponent } from './body/privacy-policy/privacy-policy.component';
+import { FaqComponent } from './body/faq/faq.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -100,10 +102,9 @@ const routes: Routes = [
   {path:'blog/:slug/feed', component:AmpRedirectComponent},
   {path:'blog/:slug', component:BlogComponent},
   {path:'myOrders', component:MyOrdersComponent},
-
-
-
-
+  {path:'privacy-policy', component:PrivacyPolicyComponent},
+  {path:'faq', component:FaqComponent},
+  
 ];
 
 @NgModule({
