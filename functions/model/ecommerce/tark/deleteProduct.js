@@ -4,7 +4,6 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 
-const { data } = require("jquery");
 const { deleteProduct } = require("../lib");
 
 exports.deleteProduct = function(request, response) {
@@ -14,7 +13,6 @@ exports.deleteProduct = function(request, response) {
 
     deleteProduct(ProductId).then(() => {
         result = { data: "Product Deleted successfully" };
-        console.log(data);
         return response.status(200).send(result);
     }).catch((error) => {
         result = { data: error };
