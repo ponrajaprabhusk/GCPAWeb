@@ -8,10 +8,6 @@ footer {
     width: 100%;
     z-index: 1;
 }
-.footer-padding {
-    margin-top: 50px;
-    
-}
 .social_links li {
     list-style: none;
     display: inline-block;
