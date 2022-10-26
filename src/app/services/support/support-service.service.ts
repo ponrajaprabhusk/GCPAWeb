@@ -79,4 +79,35 @@ export class SupportServiceService {
       }
     });
   }
+  getAllSupport(){
+    this.authService.afauth.user.subscribe({
+      next:(user)=>{
+        this.authService.setCurrentUser(user as User);
+    const callable = this.functions.httpsCallable("support/getAllSupport");
+    callable({}).pipe(map(res=>{
+      const data = res.data as Support[];
+      return data;
+    })).subscribe({
+      next: (data) => {
+        this.supports = data;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.info('Getting All Support List Successfull')
+      }
+    });
+      },
+      error:(error)=>{
+        console.error(error);
+      },
+      complete:()=>{
+        console.log('User fetched');
+       
+      }
+    })
+  }
 }
+
+

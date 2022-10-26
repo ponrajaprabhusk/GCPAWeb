@@ -46,6 +46,7 @@ import { AmpRedirectComponent } from './body/amp-redirect/amp-redirect.component
 import { TagComponent } from './body/tag/tag.component';
 import { PrivacyPolicyComponent } from './body/privacy-policy/privacy-policy.component';
 import { FaqComponent } from './body/faq/faq.component';
+import { SupportDetailsAdminComponent } from './body/dashboard/support-admin/support-details-admin/support-details-admin.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -66,6 +67,7 @@ const routes: Routes = [
   {path:'supportPage', component: SupportComponent},
   {path:'supportDetails/:ticketId', component: SupportDetailsComponent,canActivate: [AngularFireAuthGuard]},
   {path:'dashboard', component:DashboardComponent},
+  {path:'dashboard/supportAdmin/:ticketId', component:SupportDetailsAdminComponent,canActivate: [AngularFireAuthGuard]},
   {path:'registrationDetail/:uid', component:RegistrationDetailComponent, canActivate: [AngularFireAuthGuard]},
   {path:'registrationDetailAdmin/:uid', component:RegistrationDetailsAdminComponent, canActivate: [AngularFireAuthGuard]},
   {path:'editRegistration/:uid', component:EditRegistrationComponent, canActivate: [AngularFireAuthGuard]},

@@ -56,6 +56,21 @@ exports.getSupportData = function(ticketId) {
     return Promise.resolve(promise);
 };
 
+exports.getAllSupportData = function() {
+    const query = db.collection("Support");
+
+    const promise = query.get().then((doc) => {
+        const data = [];
+        doc.forEach((element) => {
+          if (element.exists) {
+            data.push(element.data());
+          }
+        });
+        return data;
+      });
+      return Promise.resolve(promise);
+};
+
 
 exports.updateSupportData = function(ticketId, inputJson) {
     const editSupportPromise = db.collection("Support").doc(ticketId).update(inputJson);
