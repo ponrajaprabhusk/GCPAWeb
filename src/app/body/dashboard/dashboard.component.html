@@ -31,6 +31,9 @@
                         <li (click)="orders()" [ngStyle]="{'background': ordersDataComponent ? '#ef3789' : '#4F94CF' }">
                             <a class="" >Orders</a>
                         </li>
+                        <li (click)="support()" [ngStyle]="{'background': supportComponent ? '#ef3789' : '#4F94CF' }">
+                            <a class="" >Support</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -46,6 +49,7 @@
             <app-gallery-dashboard *ngIf="galleryDataComponent"></app-gallery-dashboard>
             <app-testimonials-dashboard *ngIf="testimonialsDataComponent"></app-testimonials-dashboard>
             <app-orders *ngIf="ordersDataComponent"></app-orders>
+            <app-support-admin *ngIf="supportComponent"></app-support-admin>
         </div>
     </div>
 
