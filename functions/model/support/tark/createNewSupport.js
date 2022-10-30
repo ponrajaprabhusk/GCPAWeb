@@ -6,16 +6,16 @@
 const { createSupport } = require("../lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
 const { getRawData } = require("../../raw-data/lib");
+const { generateTemplate } = require("../../mailer/tark/generateTemplate");
+const { sendMail } = require("../../mail/mail");
 
 const { createActivityList, getSupportData, updateSupportData } = require("../lib");
 
 
 const createActivity = function(sendor, message, date, time, ticketId) {
-    let status = 200;
     getSupportData(ticketId).then((doc) => {
         const actId = "A" + (doc.NumberOfActivity + 1);
         createActivityList(actId, sendor, message, date, time, ticketId).then(() => {
-            const result = { data: "Activity created Successfully" };
             console.log("Activity created Successfully");
             const inputJson = {
                 NumberOfActivity: doc.NumberOfActivity + 1,
@@ -24,13 +24,11 @@ const createActivity = function(sendor, message, date, time, ticketId) {
                 console.log("Number Of Activity Updated.");
             });
             // eslint-disable-next-line no-undef
-            return response.status(status).send(result);
+            // return response.status(status).send(result);
         }).catch((error) => {
-            status=500;
-            const result = { data: error };
             console.error("Error Creating Activity", error);
             // eslint-disable-next-line no-undef
-            return response.status(status).send(result);
+            // return response.status(status).send(result);
         });
     });
 };
@@ -56,6 +54,12 @@ exports.createNewSupport = function(request, response) {
                 console.log("User Raw Data Updated.");
             });
             createActivity("user", Message, date, time, ticketId);
+            const data = {};
+            data.Id = ticketId;
+            data.Status = "Raised";
+            generateTemplate("Support_New", Name, data ).then((message)=>{
+                sendMail(ContactEmail, message[0], message[1]);
+            });
             return response.status(status).send(result);
         }).catch((error) => {
           const result = { data: error };

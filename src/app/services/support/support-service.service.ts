@@ -108,6 +108,24 @@ export class SupportServiceService {
       }
     })
   }
+
+  sendMail(id:string){
+    const callable = this.functions.httpsCallable("support/sendSupportMail");
+    callable({Name: this.support.Name, Email: this.support.ContactEmail, Id: id, Status: "Pending" }).pipe(map(res=>{// Status should be made dynamic
+      const data = res.data as Support;
+      return data;
+    })).subscribe({
+      next: (data) => {
+        this.support = data;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.info('Mail Sent Successfully')
+      }
+    });
+  }
 }
 
 
