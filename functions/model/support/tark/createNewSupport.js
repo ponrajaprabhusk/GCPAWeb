@@ -46,7 +46,22 @@ exports.createNewSupport = function(request, response) {
 
     const status = 200;
     getRawData().then((doc) => {
-        const ticketId = "T" + (doc[0].NumberOfSupport + 1);
+        const key = Name.slice(3) + time.toString();
+        let ticketId = Buffer.from(key).toString("base64");
+        // eslint-disable-next-line require-jsdoc
+        function removeCharRecursive(str, X) {
+            if (str.length == 0) {
+                return "";
+            }
+            if (str.charAt(0) == X) {
+                return removeCharRecursive(
+                    str.substring(1), X);
+            }
+            return str.charAt(0) +
+                removeCharRecursive(
+                    str.substring(1), X);
+        }
+        ticketId = removeCharRecursive(ticketId, "=");
         createSupport(UserUid, Name, SupportType, Message, ContactEmail, ticketId, date, time).then(() => {
            const result = { data: "Support created Successfully" };
             console.log("Support created Successfully");
