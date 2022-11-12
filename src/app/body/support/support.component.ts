@@ -4,6 +4,8 @@ import { Activity } from 'src/app/Interfaces/ActivityInterface';
 import { Support } from 'src/app/Interfaces/SupportInterfaces';
 import { ActivityServiceService } from 'src/app/services/activity/activity-service.service';
 import { SupportServiceService } from 'src/app/services/support/support-service.service';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
+import { PopupHandlerService } from 'src/app/services/popup-handler-service/popup-handler.service';
 import { ToolsService } from 'src/app/services/tool/tools.service';
 import { SupportPopupComponent } from './support-popup/support-popup.component';
 
@@ -25,16 +27,33 @@ export class SupportComponent implements OnInit {
 
 @ViewChild(SupportPopupComponent) supportPopup:any;
 
-  constructor(public supportService:SupportServiceService, public activityService:ActivityServiceService, public dateService:ToolsService,public router:Router) { }
+  constructor(public supportService:SupportServiceService,public authService:AuthServiceService, public popupService:PopupHandlerService, public activityService:ActivityServiceService, public dateService:ToolsService,public router:Router) { }
 
   ngOnInit(): void {
     this.supportService.getSupportList();
+    this.authService.afauth.user.subscribe({
+      next:(user)=>{
+        if (!user) {
+          this.popupService.loginPopup=true;
+        }
+      },
+      error:(error)=>{
+        console.error(error);
+      },
+      complete:()=>{
+        console.log('User fetched');
+      }
+    })
   
   }
 
   showNewSupport(){
-    this.supportPopup.showSupportPopup=true;
-    // console.log(this.supportPopup.showSupport)
+    if (!this.authService.user) {
+      this.popupService.loginPopup=true;
+      console.log("this is hitting")
+    }else{
+       this.supportPopup.showSupportPopup=true;
+    }
   }
 
   submit(){

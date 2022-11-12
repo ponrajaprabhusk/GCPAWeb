@@ -7,8 +7,7 @@
         <div class="row content-padding">
             <ng-container *ngFor="let con of content" >
                 <div [ngClass]="{'col-md-3 my-5 mx-auto':true}" (mouseenter)="con.hovering=true" (mouseleave)="con.hovering=false">
-                    <div [ngClass]="{'content text-center py-3 shadow':true,'bg-dark':con.hovering}">
-                        
+                    <div id="box" [ngClass]="{'content text-center py-3 shadow':true,'bg-dark':con.hovering}">
                         <div [ngClass]="{'show':!con.hovering, 'notshow':con.hovering,'initial container-fluid':true}" >
                             <img [src]="con.src" alt="acting" width="200">
                             <p class="catp" [innerText]="con.head"></p>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white  fixed-top">
+<nav class="navbar navbar-expand-lg bg-white  fixed-top">
     <div class="container px-auto">
         <a routerLink="" class="navbar-brand"><img src="../../assets/GCPA_WEBSITE_LOGO-111.jpg" width="200"></a>
 
@@ -46,6 +46,11 @@
                         <button type="button" class="btn btn-outline-dark" (click)="loadLoginPage()" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Login/Signup</button>
                     </a>
                 </li>
+                 <li class="nav-item">
+                    <div class="nav-item nav-link" *ngIf="loggedIn">
+                        <app-user-card></app-user-card>
+                    </div>  
+                </li>
                 <!-- <li>
                     <ng-container *ngIf="loggedIn">
                         <a class="nav-item nav-link " *ngIf="authService.loggedInUser.Admin">
@@ -58,9 +63,6 @@
          <!-- <a class="nav-item nav-link text-end" *ngIf="loggedIn">
                 <button class="btn  btn-outline-dark rounded-circle"><i class="fa-solid fa-user"></i></button>
             </a> -->
-        <div class="nav-item" *ngIf="loggedIn">
-            <app-user-card></app-user-card>
-        </div>
         
     </div>
 </nav>

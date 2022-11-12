@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Support } from 'src/app/Interfaces/SupportInterfaces';
 import { SupportServiceService } from 'src/app/services/support/support-service.service';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
+import { PopupHandlerService } from 'src/app/services/popup-handler-service/popup-handler.service';
 import { ToolsService } from 'src/app/services/tool/tools.service';
 
 @Component({
@@ -17,12 +19,23 @@ showSupportPopup=false;
   message=''
   support:Support={UserUid:"",Name:"",SupportType:"",Message:"",ContactEmail:"",TicketId:"", NumberOfActivity:0,Date:"", Time:"",Show:false}
   
-  constructor(public dateService:ToolsService, public supportService:SupportServiceService) { }
+  constructor(public dateService:ToolsService, public supportService:SupportServiceService, public authService:AuthServiceService,public popupService:PopupHandlerService) { }
 
   ngOnInit(): void {
     
   }
+
+  isFormEmpty(Name:any, contactEmail:any, message:any, supportType:any){
+    if(Name == "" || contactEmail == "" || message == ""){
+      alert("Kindly fill all the fields !!")
+    }
+    return false;
+}
   submit(){
+    if (!this.authService.user) {
+      this.popupService.loginPopup=true;
+    }
+    else if(!this.isFormEmpty(this.name, this.contactEmail, this.message, this.supportType)){
     this.showSupportPopup=false;
     this.support.ContactEmail=this.contactEmail
     this.support.Message=this.message
@@ -34,6 +47,7 @@ showSupportPopup=false;
     this.supportService.createNewSupport(this.support);
     
   }
+}
   closePopup(){
     this.showSupportPopup=false;
   }
