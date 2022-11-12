@@ -1,12 +1,12 @@
 <div>
-    <h5><span><div class="badge bg-primary text-wrap">2</div></span> Address and contact Detail </h5>
+    <h5 class="fw-bold"><span><div class="badge bg-primary text-wrap">2</div></span> Address and contact Detail </h5>
     <div class="pb-4">
-        <h5 class="fw-bold">Address <span class="text-danger">*</span></h5>
+        <h5 class="">Address <span class="text-danger">*</span></h5>
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12">
-                        <textarea class="form-control bg-light" rows="3" [(ngModel)]="address"></textarea>
+                        <textarea class="form-control " rows="3" [(ngModel)]="address"></textarea>
                     </div>
                 </div>
             </div>
@@ -18,12 +18,12 @@
                 <div class="row">
 
                     <div class="col-md-6">
-                        <h5 class="fw-bold">Country <span class="text-danger">*</span></h5>
+                        <h5 class="">Country <span class="text-danger">*</span></h5>
                         <app-country (newItemEvent)="addCountry($event)"></app-country>
                     </div>
                     <div class=" col-md-6 ">
-                        <h5 class="fw-bold ">Postal/Zip code <span class="text-danger ">*</span></h5>
-                        <input type="text " class="form-control bg-light " [(ngModel)]="zip">
+                        <h5 class="">Postal/Zip code <span class="text-danger ">*</span></h5>
+                        <input type="text " class="form-control  " [(ngModel)]="zip">
                     </div>
                 </div>
             </div>
@@ -34,15 +34,15 @@
             <div class="col-md-12 ">
                 <div class="row ">
                     <div class="col-md-6 ">
-                        <h5 class="fw-bold ">Phone Number<span class="text-danger ">*</span></h5>
-                        <input type="text " class="form-control bg-light " [(ngModel)]="number ">
+                        <h5 class=" ">Phone Number<span class="text-danger ">*</span></h5>
+                        <input type="text " class="form-control  " [(ngModel)]="number ">
                         <small  class="text-danger py-3" *ngIf="registerService.invalidNumber" >
                             Invalid Phone Number
                         </small>
                     </div>
                     <div class="col-md-6 ">
-                        <h5 class="fw-bold ">Email Address<span class="text-danger ">*</span></h5>
-                        <input type="email" class="form-control bg-light " [(ngModel)]="email" name="email">
+                        <h5 class=" ">Email Address<span class="text-danger ">*</span></h5>
+                        <input type="email" class="form-control  " [(ngModel)]="email" name="email">
                         <small  class="text-danger py-3" *ngIf="registerService.invalidEmail" >
                             Invalid Email
                         </small>
@@ -50,10 +50,10 @@
                 </div>
             </div>
         </div>
-        <h5 class="fw-bold ">School / Academy<span class="text-danger ">*</span></h5>
+        <h5 class="">School / Academy<span class="text-danger ">*</span></h5>
         <div class="row ">
             <div class="col-md-12 ">
-                <input type="text " class="form-control bg-light " [(ngModel)]="school ">
+                <input type="text " class="form-control  " [(ngModel)]="school ">
             </div>
         </div>
     </div>
