@@ -1,8 +1,8 @@
 footer {
     bottom: 0 !important ;
     left: 0;
-    padding: 8px;
-    height: 50px;
+    padding: 3px;
+    height: 40px;
     background-color: #fff;
     border-top: 1px solid #8a8686d9;
     width: 100%;
@@ -22,6 +22,13 @@ a{
     .container {
         max-width: 540px;
     }
+    footer{
+        width:100%;
+        padding:0;
+        clear:both;
+        bottom:0;
+        position: absolute;
+    }
 }
 @media (min-width: 768px)
 {
@@ -40,4 +47,7 @@ a{
     .container {
         max-width: 1140px;
 }
+    footer{
+        position: fixed;
+    }
 }

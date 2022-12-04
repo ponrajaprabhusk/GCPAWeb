@@ -4,10 +4,11 @@ h1 {
     font-weight: 700!important;
     font-family: 'Amaranth', sans-serif!important;
 }
-
+.list-group{
+    border-radius: 1.5rem;
+}
 
 .back {
-    background-image: url("../../../assets/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment:fixed;
