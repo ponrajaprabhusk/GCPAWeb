@@ -29,6 +29,10 @@
     templateName = "contact.html";
    } else if (mailType == "Payment_Pending") {
     templateName = "PaymentPending.html";
+   } else if (mailType == "Support_New") {
+    templateName = "supportTicket.html";
+   } else if (mailType == "Support_Update") {
+    templateName = "newMessage.html";
    }
    const promise = getTemplate(templateName).then((data) => {
      if (templateName == "PaymentPending.html") {
@@ -63,7 +67,20 @@
       data = data.replace("$ApplicationId$", applicationId);
       data = data.replace("$ApplicationLink$", "https://www.gcpawards.com/registrationDetail/"+ applicationId); // applicationId
       mailSubject="Registration Successful - GCPA";
+    } else if (templateName == "supportTicket.html") {
+      mailSubject = "Request Received - GCPA";
+      data = data.replace("$Name$", applicantName);
+      data = data.replace("$Status$", applicationId.Status);
+      data = data.replace("$RequestId$", applicationId.Id);
+      data = data.replace("$ApplicationLink$", "https://gcpawards.com/supportDetails/" + applicationId.Id);
+    } else if (templateName == "newMessage.html") {
+      mailSubject = "New Message on you request - GCPA";
+      data = data.replace("$Name$", applicantName);
+      data = data.replace("$Status$", applicationId.Status);
+      data = data.replace("$RequestId$", applicationId.Id);
+      data = data.replace("$ApplicationLink$", "https://gcpawards.com/supportDetails/" + applicationId.Id);
     }
+
      subjectMessage = mailSubject;
      message.push(subjectMessage);
      message.push(data);

@@ -11,6 +11,7 @@ const { getActivityList } = require("./tark/getActivity");
 const { getSupportById } = require("./tark/getSupportById");
 const { contactMail } = require("./tark/contactUs");
 const { getAllSupport } = require("./tark/getAllSupport");
+const { sendSupportMail } = require("./tark/sendSupportMail");
 
 
 fastify.post("/createNewSupport", (req, res) => {
@@ -23,6 +24,10 @@ fastify.post("/getSupportList", (req, res) => {
 
 fastify.post("/createActivity", (req, res) => {
     createActivity(req, res);
+});
+
+fastify.post("/sendSupportMail", (req, res) => {
+    sendSupportMail(req, res);
 });
 
 fastify.post("/getActivity", (req, res) => {
