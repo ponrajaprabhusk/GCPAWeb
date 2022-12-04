@@ -37,4 +37,8 @@ export class SupportDetailsAdminComponent implements OnInit {
     this.activityService.getActivityList(this.ticketId)
     this.messageSent="";
   }
+
+  sendMail(){
+    this.supportService.sendMail(this.ticketId)
+  }
 }

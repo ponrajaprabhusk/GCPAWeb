@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
 .item {
     border: 1px solid black;
+    border-radius: 20px !important;
     max-width: 555px;
     min-height: 199.267px;
 }

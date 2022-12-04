@@ -14,7 +14,6 @@
                 </div>
                 <div class="mb-4">
                     <input type="checkbox" required (change)="emailUpdates()"> <span> Recieve regular updates and notifications via email.</span>
-
                 </div>
                 <!--  -->
                 <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
