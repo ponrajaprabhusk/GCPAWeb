@@ -15,7 +15,7 @@ exports.addPayment = function(request, response) {
         getApplicant(Uid).then((doc) => {
             console.log(doc);
             if (doc != undefined) {
-                // Test Credentials
+                // Test Credentials for Registration
                 const razorpay = new RazorPay({
                     key_id: "rzp_test_nfhDfN6X5cgp42",
                     key_secret: "EjWL1pPedHeT4Z1C4laM3u1b",

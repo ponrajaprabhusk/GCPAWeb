@@ -16,7 +16,7 @@ exports.addEcommercePayment = function(request, response) {
             console.log(doc);
             if (doc != undefined) {
                 amount = doc.TotalPrice;
-                // Test Credentials
+                // Test Credentials for Ecommerce
                 const razorpay = new RazorPay({
                     key_id: "rzp_test_nfhDfN6X5cgp42",
                     key_secret: "EjWL1pPedHeT4Z1C4laM3u1b",
