@@ -49,10 +49,11 @@ exports.registerNewUser = function(request, response) {
     const social = user.Social;
     const userUid = user.UserUid;
     const emailUpdates = user.EmailUpdates;
+    const state = user.State;
     const numberOfFiles = 0;
     let result;
     const status = 200;
-
+console.log(state, "State1");
     getRawData().then((doc) => {
         const date = new Date().getDate();
         const time = new Date().getMilliseconds();
@@ -76,7 +77,7 @@ exports.registerNewUser = function(request, response) {
         uid = removeCharRecursive(uid, "=");
         console.log(uid);
 
-        registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles, emailUpdates).then(() => {
+        registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles, emailUpdates, state).then(() => {
             result = { data: uid };
             console.log("Applicant Registered Successfully");
             // adding file code

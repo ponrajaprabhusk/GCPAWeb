@@ -20,4 +20,5 @@ export interface Register {
     UserUid:string;
     PaymentStatus:string;
     EmailUpdates:boolean;
+    State:string;
 }

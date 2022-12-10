@@ -29,6 +29,14 @@
             </div>
         </div>
     </div>
+    <div class="pb-4" *ngIf="country == 'India'">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="">State <span class="text-danger">*</span></h5>
+                        <app-states (newItemEvent)="addState($event)"></app-states>
+            </div>
+        </div>
+    </div>
     <div>
         <div class="row pb-4 ">
             <div class="col-md-12 ">
