@@ -15,7 +15,7 @@ export class AuthServiceService {
   user!: User;
   userReady:boolean=false;
   currentReceipt:string = ""
-  loggedInUser:UserFetched={Admin:false,DisplayName:"",PhoneNumber:"",ProviderId:"",PhotoURL:"",Email:"",NumberOfRegistrations:0,Uid:""};
+  loggedInUser:UserFetched;
   invalidSignin=false;
 
   constructor(private cookieService: CookieService,public afauth: AngularFireAuth,public functions: AngularFireFunctions, private popupService:PopupHandlerService) { }

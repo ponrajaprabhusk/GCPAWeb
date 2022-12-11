@@ -7,7 +7,6 @@
 const { db } = require("../application/lib");
 
 exports.registerUser = function(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo, profile, social, userUid, numberOfFiles, emailUpdates, state) {
-  console.log(state, "State2");
     const registerData = db.collection("Registrations").doc(uid).set({
         Uid: uid,
         Prefix: prefix,

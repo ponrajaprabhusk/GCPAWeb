@@ -53,7 +53,6 @@ exports.registerNewUser = function(request, response) {
     const numberOfFiles = 0;
     let result;
     const status = 200;
-console.log(state, "State1");
     getRawData().then((doc) => {
         const date = new Date().getDate();
         const time = new Date().getMilliseconds();

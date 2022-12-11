@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   rawData:RawData[]=[]
   displayColoumns:string[];
-  userData:UserFetched[]=[]
+  userData:UserFetched;
   displayColoumnsUser:string[];
   registrationData:Register[];
   displayColoumnsRegistration:string[];
@@ -38,6 +38,8 @@ supportComponent=false;
 
   ngOnInit(): void {
     if (this.authService.user) {
+      this.userData = this.authService.loggedInUser;
+      
       if (this.authService.loggedInUser.Admin===false) {
         this.router.navigate([''])
       }
