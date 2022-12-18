@@ -29,11 +29,12 @@
             </div>
         </div>
     </div>
-    <div class="pb-4" *ngIf="country == 'India'">
+    <div class="pb-4" >
         <div class="row">
             <div class="col-md-12">
                 <h5 class="">State <span class="text-danger">*</span></h5>
-                        <app-states (newItemEvent)="addState($event)"></app-states>
+                        <app-states *ngIf="country == 'India'" (newItemEvent)="addState($event)"></app-states>
+                        <input *ngIf="country != 'India'" type="text " class="form-control  " [(ngModel)]="state">
             </div>
         </div>
     </div>
