@@ -4,6 +4,9 @@ h1 {
     font-weight: 700!important;
     font-family: 'Amaranth', sans-serif!important;
 }
+.container{
+    margin-right: 0%;
+}
 
 @media (min-width: 576px) {
     .container {

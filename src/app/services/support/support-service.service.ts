@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs';
 import { Support } from 'src/app/Interfaces/SupportInterfaces';
 import { User } from 'src/app/Interfaces/UserInterface';
@@ -19,7 +20,7 @@ export class SupportServiceService {
   createNewSupport(support:Support){
     const callable = this.functions.httpsCallable('support/createNewSupport');
     support.UserUid = this.authService.user.uid;
-    callable({ userUid:support.UserUid, name:support.Name, supportType:support.SupportType, message: support.Message, contactEmail:support.ContactEmail , date:support.Date, time:support.Time}).subscribe({
+    callable({ userUid:support.UserUid, name:support.Name, supportType:support.SupportType, message: support.Message, contactEmail:support.ContactEmail , date:support.Date, time:support.Time, state:support.State, assignedTo:support.AssignedTo}).subscribe({
       next: (data) => {
         console.log("Support added");
       },
@@ -111,7 +112,7 @@ export class SupportServiceService {
 
   sendMail(id:string){
     const callable = this.functions.httpsCallable("support/sendSupportMail");
-    callable({Name: this.support.Name, Email: this.support.ContactEmail, Id: id, Status: "Pending" }).pipe(map(res=>{// Status should be made dynamic
+    callable({Name: this.support.Name, Email: this.support.ContactEmail, Id: id, Status: this.support.State }).pipe(map(res=>{
       const data = res.data as Support;
       return data;
     })).subscribe({

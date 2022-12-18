@@ -15,27 +15,30 @@ export class SupportPopupComponent implements OnInit {
 showSupportPopup=false;
   name=''
   contactEmail=''
-  supportType='Support Type'
+  supportType='Select Request Type from below'
   message=''
-  support:Support={UserUid:"",Name:"",SupportType:"",Message:"",ContactEmail:"",TicketId:"", NumberOfActivity:0,Date:"", Time:"",Show:false}
+  support:Support={UserUid:"",Name:"",SupportType:"",Message:"",ContactEmail:"",TicketId:"", NumberOfActivity:0,Date:"", Time:"",Show:false, State:"", AssignedTo:""}
   
   constructor(public dateService:ToolsService, public supportService:SupportServiceService, public authService:AuthServiceService,public popupService:PopupHandlerService) { }
 
   ngOnInit(): void {
+    this.contactEmail=this.authService.loggedInUser.Email
     
   }
 
   isFormEmpty(Name:any, contactEmail:any, message:any, supportType:any){
     if(Name == "" || contactEmail == "" || message == ""){
       alert("Kindly fill all the fields !!")
+      return false;
+    }else{
+      return true;
     }
-    return false;
 }
   submit(){
     if (!this.authService.user) {
       this.popupService.loginPopup=true;
     }
-    else if(!this.isFormEmpty(this.name, this.contactEmail, this.message, this.supportType)){
+    else if(this.isFormEmpty(this.name, this.contactEmail, this.message, this.supportType)){
     this.showSupportPopup=false;
     this.support.ContactEmail=this.contactEmail
     this.support.Message=this.message
@@ -44,7 +47,10 @@ showSupportPopup=false;
     this.support.UserUid='';
     this.support.Date=this.dateService.date();
     this.support.Time=this.dateService.time();
+    this.support.State = 'New';
+    this.support.AssignedTo = '';
     this.supportService.createNewSupport(this.support);
+
     
   }
 }

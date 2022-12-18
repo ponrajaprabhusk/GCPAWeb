@@ -43,6 +43,8 @@ exports.createNewSupport = function(request, response) {
     const ContactEmail = support.contactEmail;
     const date = support.date;
     const time = support.time;
+    const state = support.state;
+    const assignedTo = support.assignedTo;
 
     const status = 200;
     getRawData().then((doc) => {
@@ -62,7 +64,7 @@ exports.createNewSupport = function(request, response) {
                     str.substring(1), X);
         }
         ticketId = removeCharRecursive(ticketId, "=");
-        createSupport(UserUid, Name, SupportType, Message, ContactEmail, ticketId, date, time).then(() => {
+        createSupport(UserUid, Name, SupportType, Message, ContactEmail, ticketId, date, time, state, assignedTo).then(() => {
            const result = { data: "Support created Successfully" };
             console.log("Support created Successfully");
             updateData("support").then(() => {

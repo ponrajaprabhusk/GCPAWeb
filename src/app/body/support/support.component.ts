@@ -20,7 +20,7 @@ export class SupportComponent implements OnInit {
   contactEmail=''
   supportType='Support Type'
   message=''
-  support:Support={UserUid:"",Name:"",SupportType:"",Message:"",ContactEmail:"",TicketId:"", NumberOfActivity:0,Date:"", Time:"",Show:false}
+  support:Support={UserUid:"",Name:"",SupportType:"",Message:"",ContactEmail:"",TicketId:"", NumberOfActivity:0,Date:"", Time:"",Show:false,State:"", AssignedTo:""}
   activity:Activity={Message:"",TicketId:"",Date:"",Time:"",Sendor:"",ActId:""}
   showSupport=false;
   messageSent='';
@@ -50,7 +50,6 @@ export class SupportComponent implements OnInit {
   showNewSupport(){
     if (!this.authService.user) {
       this.popupService.loginPopup=true;
-      console.log("this is hitting")
     }else{
        this.supportPopup.showSupportPopup=true;
     }
