@@ -8,6 +8,8 @@ import { AuthServiceService } from 'src/app/services/auth-service/auth-service.s
 import { PopupHandlerService } from 'src/app/services/popup-handler-service/popup-handler.service';
 import { ToolsService } from 'src/app/services/tool/tools.service';
 import { SupportPopupComponent } from './support-popup/support-popup.component';
+import { DataTableServiceService } from 'src/app/services/dataTable/data-table-service.service';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-support',
@@ -22,19 +24,22 @@ export class SupportComponent implements OnInit {
   message=''
   support:Support={UserUid:"",Name:"",SupportType:"",Message:"",ContactEmail:"",TicketId:"", NumberOfActivity:0,Date:"", Time:"",Show:false,State:"", AssignedTo:""}
   activity:Activity={Message:"",TicketId:"",Date:"",Time:"",Sendor:"",ActId:""}
-  showSupport=false;
+  showSupport: boolean=false;
+  displayColoumnsSupport:string[];
   messageSent='';
+  supportData: Support[];
 
 @ViewChild(SupportPopupComponent) supportPopup:any;
 
-  constructor(public supportService:SupportServiceService,public authService:AuthServiceService, public popupService:PopupHandlerService, public activityService:ActivityServiceService, public dateService:ToolsService,public router:Router) { }
+  constructor(public dataTableService: DataTableServiceService, public supportService:SupportServiceService,public authService:AuthServiceService, public popupService:PopupHandlerService, public activityService:ActivityServiceService, public dateService:ToolsService,public router:Router) { }
 
   ngOnInit(): void {
-    this.supportService.getSupportList();
     this.authService.afauth.user.subscribe({
       next:(user)=>{
         if (!user) {
           this.popupService.loginPopup=true;
+        }else{
+          this.getSupportTable(user.uid);
         }
       },
       error:(error)=>{
@@ -44,7 +49,17 @@ export class SupportComponent implements OnInit {
         console.log('User fetched');
       }
     })
-  
+    this.supportService.getSupportList();
+  }
+
+  getSupportTable(useruid : any){
+    this.dataTableService.getSupportData(useruid).subscribe((data) => {
+      if(data.length){
+        this.supportData = data;
+        this.displayColoumnsSupport = ['TicketId', 'State', 'SupportType'];
+        this.showSupport=true;
+      }
+    })
   }
 
   showNewSupport(){

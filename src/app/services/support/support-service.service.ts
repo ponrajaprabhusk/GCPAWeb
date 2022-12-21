@@ -27,7 +27,9 @@ export class SupportServiceService {
       error: (error) => {
         console.error("Error", error);
       },
-    complete: () => console.info('Successful ')
+    complete: () => {
+      this.getSupportList();
+    } 
 });
   }
 

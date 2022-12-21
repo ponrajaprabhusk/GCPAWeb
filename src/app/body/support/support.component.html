@@ -4,7 +4,7 @@
 <div class="back mt-5 pt-5 pb-5">
     <h1 class="text-center pt-3">Support</h1>
 
-    <div class="text-center pt-5">
+    <div class="text-center pt-5 mb-3">
         <button type="submit" class="btn btn-outline-dark " (click)="showNewSupport()">Raise New Issue</button>
     </div>
 
@@ -39,27 +39,17 @@
     </ng-container> -->
 
     <ng-container *ngIf="supportService.supports.length>0">
+        <ng-container>
+            <div class="row" id="table">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <app-support-data-table [dataForTable]="supportData " [displayColoumns]="displayColoumnsSupport " [pageSize]=" '5' "> </app-support-data-table>
+                </div>    
+                <div class="col-1"></div>
+            </div>
+        </ng-container>
         <ng-container *ngFor="let support of supportService.supports;let indexOfelement=index;">
             <div class="container">
-                <div class="row pt-3">
-                    <div class="col-2"></div>
-                    <div class="col-8 row">
-                        <div class="list-group">
-                            <a class="list-group-item list-group-item-action" (click)="loadSupportDetails(support)">
-                                <div class="row ">
-                                    <div class="col-4 fs-6">
-                                        <b>Support Type</b>: {{support.SupportType}}
-                                    </div>
-                                    <div class="col-1"></div>
-                                    <div class="col-7 fs-6 text-truncate">
-                                        <b>Description</b>: {{support.Message}}
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
                 <div class="row pt-3">
                     <div class="col-2"></div>
                     <div class="col-8 row">

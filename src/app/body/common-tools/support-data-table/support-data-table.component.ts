@@ -3,31 +3,29 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Register } from 'src/app/Interfaces/RegistrationInterface';
-import { RegistrationDataTableDataSource } from '../registration-data-table/registration-data-table-datasource';
+import { Support } from 'src/app/Interfaces/SupportInterfaces';
+import { SupportDataTableDataSource } from '../support-data-table/support-data-table-datasource'
 
 @Component({
-  selector: 'app-registration-data-table',
-  templateUrl: './registration-data-table.component.html',
-  styleUrls: ['./registration-data-table.component.css']
+  selector: 'app-support-data-table',
+  templateUrl: './support-data-table.component.html',
+  styleUrls: ['./support-data-table.component.css']
 })
-export class RegistrationDataTableComponent implements OnInit,AfterViewInit {
+export class SupportDataTableComponent implements OnInit, AfterViewInit {
 
-  @Input('dataForTable') dataForTable: Register[];  
+  @Input('dataForTable') dataForTable: Support[];
   @Input('displayColoumns') displayColoumns: string[];
   @Input('pageSize') pageSize: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<Register>;
-  dataSource: RegistrationDataTableDataSource;
+  @ViewChild(MatTable) table!: MatTable<Support>;
+  dataSource: SupportDataTableDataSource;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns:string[] = [];
-  
 
-  constructor(private router: Router) {
-    this.dataSource = new RegistrationDataTableDataSource();
+  constructor(private router: Router) { 
+    this.dataSource = new SupportDataTableDataSource();
   }
 
   ngOnInit(): void {
@@ -43,9 +41,8 @@ export class RegistrationDataTableComponent implements OnInit,AfterViewInit {
     this.table.dataSource = this.dataSource;
   }
 
-  openRegistrationDetail(Uid:string){
-    this.router.navigate(['/registrationDetailAdmin',Uid])
-      }
+  openSupportDetail(TicketId: string){
+    this.router.navigate(['/supportDetails',TicketId]);
+  }
+  
 }
-
-
