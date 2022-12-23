@@ -25,7 +25,7 @@ exports.addPayment = function(request, response) {
 
                 const options = {
                     amount: parseInt(amount * 100), // amount in the smallest currency unit
-                    currency: "INR",
+                    currency: "USD",
                     receipt: generatedReceipt,
                 };
 

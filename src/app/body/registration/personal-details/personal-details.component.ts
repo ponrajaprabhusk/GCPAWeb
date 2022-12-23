@@ -13,6 +13,8 @@ export class PersonalDetailsComponent implements OnInit {
   lastName="";
   gaurdFirst="";
   gaurdLast="";
+  gender="";
+  relationship = "";
 
   
   constructor() { }

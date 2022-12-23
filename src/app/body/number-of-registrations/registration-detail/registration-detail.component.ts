@@ -4,6 +4,7 @@ import { FileData, FileUpload } from 'src/app/Interfaces/FileInterface';
 import { ExtraFilesServiceService } from 'src/app/services/extraFiles/extra-files-service.service';
 import { FileUploadService } from 'src/app/services/file-upload-service/file-upload-service.service';
 import { RegisterServiceService } from 'src/app/services/register-service/register-service.service';
+import { ToolsService } from 'src/app/services/tool/tools.service';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class RegistrationDetailComponent implements OnInit {
   uploadPhoto:any
   progressPhoto=0
   photoStatus=false
+  videoUrl:string='';
 
   uploadVideo:any
   progressVideo=0
@@ -24,7 +26,6 @@ export class RegistrationDetailComponent implements OnInit {
   uploadDoc:any
   progressDoc=0
   docStatus=false
-
 
    basePath: string;
    selectedFile: FileList;
@@ -37,7 +38,7 @@ export class RegistrationDetailComponent implements OnInit {
    extraDoc:FileData={FileUrl:'',ApplicantName:'',Date:'',Time:'',Uid:'',File:'ExtraDoc'};
   
    formModal:any; 
-   constructor(private route: ActivatedRoute,public registerService:RegisterServiceService, public uploadService:FileUploadService, public extraFilesService:ExtraFilesServiceService) { }
+   constructor(private route: ActivatedRoute,public registerService:RegisterServiceService, public uploadService:FileUploadService, public extraFilesService:ExtraFilesServiceService, private toolService: ToolsService) { }
 
    showClose= false;
   ngOnInit(): void {
@@ -75,7 +76,7 @@ export class RegistrationDetailComponent implements OnInit {
 
   videoUpload(event:any)
   {
-    this.videoStatus=true;
+      this.videoStatus=true;
       const file = event.target.files.item(0);
       const folderName="UploadedVideo"
   
@@ -136,6 +137,7 @@ export class RegistrationDetailComponent implements OnInit {
     this.extraFilesService.addFile(this.registerService.registration.Uid,this.extraPhoto);
     if(this.extraFilesService.uploadStateObservable){
       this.showClose = true;
+      this.extraFilesService.getExtraFiles(this.uid);
         }
     }
     else{
@@ -145,14 +147,16 @@ export class RegistrationDetailComponent implements OnInit {
   }
 
   uploadFileVideo(){
-    if(this.uploadService.uploadedVideoUrl){
-      this.extraVideo.FileUrl=this.uploadService.uploadedVideoUrl
+    console.log(this.videoUrl)
+    if(this.videoUrl != ''){
+      this.extraVideo.FileUrl=this.videoUrl;
       this.extraVideo.ApplicantName=this.registerService.registration.FirstName+' '+this.registerService.registration.LastName
-      this.extraVideo.Date=this.uploadService.uploadedVideoDate
-      this.extraVideo.Time=this.uploadService.uploadedVideoTime
+      this.extraVideo.Date= this.toolService.date();
+      this.extraVideo.Time= this.toolService.time();
       this.extraFilesService.addFile(this.registerService.registration.Uid,this.extraVideo);
       if(this.extraFilesService.uploadStateObservable){
         this.showClose = true;
+        this.extraFilesService.getExtraFiles(this.uid);
           }
     }
       else{
@@ -169,11 +173,16 @@ export class RegistrationDetailComponent implements OnInit {
       this.extraFilesService.addFile(this.registerService.registration.Uid,this.extraDoc);
       if(this.extraFilesService.uploadStateObservable){
         this.showClose = true;
-          }
+        this.extraFilesService.getExtraFiles(this.uid);
+      }
     }
       else{
         alert("No file Uploaded")
       }
+  }
+
+  save(){
+    this.registerService.updateRegistrationById(this.uid);
   }
 
   close(){

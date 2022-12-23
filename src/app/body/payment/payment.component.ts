@@ -35,7 +35,7 @@ export class PaymentComponent implements OnInit {
     description: 'Apply for Global Child Prodigy Awards',
     image: "",
     order_id: "",
-    amount: 799,
+    amount: 15,
     prefill: {
       name: '',
       contact: '',
@@ -110,7 +110,7 @@ setOrderWithRazor() {
   this.disablePayNow=true;
   this.loader = true;
   const callable = this.functions.httpsCallable('payment/addPayment');
-  callable({RegistrationId: this.applicant.Uid, Amount: "799"}).subscribe({ 
+  callable({RegistrationId: this.applicant.Uid, Amount: "15"}).subscribe({ 
     next:(result)=>{
     this.authService.currentReceipt = result.receipt;
     this.options.order_id = result.id;

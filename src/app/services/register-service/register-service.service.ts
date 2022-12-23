@@ -24,16 +24,18 @@ export class RegisterServiceService {
   invalidEmail=false;
   invalidNumber=false;
   fillAll=false;
+  disableGaurdianFields: boolean = false;
+
 
 
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService, public router: Router) { }
   
-  register(uid:string ,prefix:string,dob:string,firstName:string,lastName:string,gaurdFirst:string,gaurdLast:string, address:string, zip:string, number:string, email:string, school:string,  country:string, state:string='' ,category:string,  achievement:string,  photo:FileData,  profile:FileData, social:string, userUid:string, emailupdate:boolean)  {
+  register(uid:string ,prefix:string,dob:string,firstName:string,lastName:string,gaurdFirst:string,gaurdLast:string, address:string, zip:string, number:string, email:string, school:string,  country:string, state:string='' ,category:string,  achievement:string,  photo:FileData,  profile:FileData, social:string, userUid:string, emailupdate:boolean, gender: string, relationship: string)  {
 let registrationId: any;
 this.disableSubmit=true;
     const callable = this.functions.httpsCallable('registrations/registerNewUser');
-        callable({ Uid: uid,Prefix:prefix,Dob:dob,FirstName:firstName,LastName:lastName,GaurdFirst:gaurdFirst,GaurdLast:gaurdLast, Address:address, Zip:zip, Number:number, Email:email, School:school,  Country:country,  Category:category,  Achievement:achievement,  Photo:photo,  Profile:profile, Social:social,UserUid:userUid, EmailUpdates:emailupdate, State:state }).subscribe({
+        callable({ Uid: uid,Prefix:prefix,Dob:dob,FirstName:firstName,LastName:lastName,GaurdFirst:gaurdFirst,GaurdLast:gaurdLast, Address:address, Zip:zip, Number:number, Email:email, School:school,  Country:country,  Category:category,  Achievement:achievement,  Photo:photo,  Profile:profile, Social:social,UserUid:userUid, EmailUpdates:emailupdate, State:state, Gender: gender, Relationship: relationship }).subscribe({
           next: (data) => {
             registrationId = data;
             this.updateRegistration.updateregister(userUid);
@@ -75,8 +77,10 @@ this.disableSubmit=true;
     const callable = this.functions.httpsCallable('registrations/getRegistrationById');
     callable({ uid: uid}).subscribe({
       next: (data) => {
-        console.log("Registration fetched");
         this.registration=data.data;
+        if(this.registration.GaurdianDesignation != '' || this.registration.GaurdianOrganization != '' || this.registration.GaurdianOrganizationType != ''){
+          this.disableGaurdianFields = true;
+        }
         if(data.data.RazorPayOrderDetails.amount)
         this.amountPaid=data.data.RazorPayOrderDetails.amount;
       },
@@ -86,20 +90,19 @@ this.disableSubmit=true;
     complete: () => console.info('Successful')
 });
   }
-  updateRegistrationById(){
+  updateRegistrationById(uid=""){
     const callable = this.functions.httpsCallable('registrations/updateRegistrationById');
     console.log("get registration using uid");
-    callable({ uid: this.registration.Uid,prefix:this.registration.Prefix,dob:this.registration.Dob,firstName:this.registration.FirstName,lastName:this.registration.LastName,gaurdFirst:this.registration.GaurdFirst,gaurdLast:this.registration.GaurdLast, address:this.registration.Address, zip:this.registration.Zip, number:this.registration.Number, email:this.registration.Email, school:this.registration.School,  country:this.registration.Country,  category:this.registration.Category,  achievement:this.registration.Achievement,  social:this.registration.Social,userUid:this.registration.UserUid }).subscribe({
+    callable({ uid: this.registration.Uid,prefix:this.registration.Prefix,dob:this.registration.Dob,firstName:this.registration.FirstName,lastName:this.registration.LastName,gaurdFirst:this.registration.GaurdFirst,gaurdLast:this.registration.GaurdLast, address:this.registration.Address, zip:this.registration.Zip, number:this.registration.Number, email:this.registration.Email, school:this.registration.School,  country:this.registration.Country,  category:this.registration.Category,  achievement:this.registration.Achievement,  social:this.registration.Social,userUid:this.registration.UserUid, Designation: this.registration.GaurdianDesignation, Organization: this.registration.GaurdianOrganization, OrgType: this.registration.GaurdianOrganizationType }).subscribe({
       next: () => {
         console.log("Registration updated");
-        
       },
       error: (error) => {
         console.error("Error", error);
       },
     complete: () => {
+      this.getRegistrationById(uid);
       console.info('Successful')
-      alert("form updated")
     }
 });
   }
