@@ -130,6 +130,7 @@ import { PrivacyPolicyComponent } from './body/privacy-policy/privacy-policy.com
 import { FaqComponent } from './body/faq/faq.component';
 import { SupportAdminComponent } from './body/dashboard/support-admin/support-admin.component';
 import { SupportDetailsAdminComponent } from './body/dashboard/support-admin/support-details-admin/support-details-admin.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -215,6 +216,7 @@ import { SupportDetailsAdminComponent } from './body/dashboard/support-admin/sup
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
