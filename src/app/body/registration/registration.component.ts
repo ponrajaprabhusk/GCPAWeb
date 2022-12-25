@@ -77,7 +77,7 @@ export class RegistrationComponent implements OnInit {
        this.profileUpload.Date=this.fileUploadService.profileDate
        this.profileUpload.Time=this.fileUploadService.profileTime
        this.userUid=this.authService.user.uid
-       this.registerService.register(this.uid,this.personalDetails.prefix,this.personalDetails.dob,this.personalDetails.firstName,this.personalDetails.lastName,this.personalDetails.gaurdFirst,this.personalDetails.gaurdLast,this.adressComponent.address,this.adressComponent.zip,this.number,this.adressComponent.email,this.adressComponent.school, this.adressComponent.country, this.categoryComponent.category, this.categoryComponent.achievement, this.photoUpload, this.profileUpload, this.categoryComponent.social, this.userUid, this.emailupdate)
+       this.registerService.register(this.uid,this.personalDetails.prefix,this.personalDetails.dob,this.personalDetails.firstName,this.personalDetails.lastName,this.personalDetails.gaurdFirst,this.personalDetails.gaurdLast,this.adressComponent.address,this.adressComponent.zip,this.number,this.adressComponent.email,this.adressComponent.school, this.adressComponent.country, this.adressComponent.state, this.categoryComponent.category, this.categoryComponent.achievement, this.photoUpload, this.profileUpload, this.categoryComponent.social, this.userUid, this.emailupdate, this.personalDetails.gender, this.personalDetails.relationship)
       }
   }
 
@@ -92,7 +92,12 @@ export class RegistrationComponent implements OnInit {
     this.number=phone(this.adressComponent.number,{country:alpha3}).phoneNumber
     }
 
-    if ((this.personalDetails.prefix==''||this.personalDetails.dob==''||this.personalDetails.firstName==''||this.personalDetails.lastName==''||this.adressComponent.address==''|| this.adressComponent.zip==''||this.adressComponent.number==''||this.adressComponent.email==''||this.adressComponent.school==''||this.adressComponent.country==''||this.categoryComponent.category=='')&&!this.termsAndCond) {
+    if(this.adressComponent.country != "India")
+    {
+      this.adressComponent.state = '';
+    }
+
+    if ((this.personalDetails.prefix==''||this.personalDetails.dob==''||this.personalDetails.firstName==''||this.personalDetails.lastName==''||this.adressComponent.address==''||this.categoryComponent.category=='')&&!this.termsAndCond) {
       this.registerService.fillAll=true;
     }
     else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.adressComponent.email))){
