@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 const { db } = require("../application/lib");
 
-exports.createSupport = function(userUid, name, supportType, message, contactEmail, ticketId, date, time) {
+exports.createSupport = function(userUid, name, supportType, message, contactEmail, ticketId, date, time, state, assignedTo) {
     const supportData = db.collection("Support").doc(ticketId).set({
         UserUid: userUid,
         Name: name,
@@ -17,8 +17,18 @@ exports.createSupport = function(userUid, name, supportType, message, contactEma
         Show: false,
         Date: date,
         Time: time,
+        State: state,
+        AssignedTo: assignedTo,
     });
     return Promise.resolve(supportData);
+};
+
+exports.updateSupport = function(ticketId, State, AssignedTo) {
+    const supporUpdatetData = db.collection("Support").doc(ticketId).update({
+        State: State,
+        AssignedTo: AssignedTo,
+    });
+    return Promise.resolve(supporUpdatetData);
 };
 
 exports.getUsersSupport = function(UserUid) {

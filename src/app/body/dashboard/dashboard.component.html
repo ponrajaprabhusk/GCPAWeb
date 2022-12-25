@@ -7,31 +7,31 @@
             <div class="wrapper d-flex">
                 <div class="sidebar">
                     <ul class="pr-2">
-                        <li (click)="displayUserData()" [ngStyle]="{'background': userDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="displayUserData()" [ngStyle]="{'background': userDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Users">
                             <a class="" >Users</a>
                         </li>
-                        <li (click)="displayRegistrationData()" [ngStyle]="{'background': registrationDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="displayRegistrationData()" [ngStyle]="{'background': registrationDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Registrations">
                             <a class="" >Registrations</a>
                         </li>
-                        <li (click)="partnersSponsors()" [ngStyle]="{'background': partnersDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="partnersSponsors()" [ngStyle]="{'background': partnersDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Partners">
                             <a class="" >Partners And Sponsers</a>
                         </li>
-                        <li (click)="testimonials()" [ngStyle]="{'background': testimonialsDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="testimonials()" [ngStyle]="{'background': testimonialsDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Testimonials">
                             <a class="" >Testimonials</a>
                         </li>
-                        <li (click)="newsroom()" [ngStyle]="{'background': newsroomDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="newsroom()" [ngStyle]="{'background': newsroomDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Media">
                             <a class="" >Media Coverage</a>
                         </li>
-                        <li (click)="gallery()" [ngStyle]="{'background': galleryDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="gallery()" [ngStyle]="{'background': galleryDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Gallery">
                             <a class="" >Gallery</a>
                         </li>
-                        <li (click)="ecommerce()" [ngStyle]="{'background': ecommerceDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="ecommerce()" [ngStyle]="{'background': ecommerceDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Ecommerce">
                             <a class="" >E-commerce</a>
                         </li>
-                        <li (click)="orders()" [ngStyle]="{'background': ordersDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="orders()" [ngStyle]="{'background': ordersDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Orders">
                             <a class="" >Orders</a>
                         </li>
-                        <li (click)="support()" [ngStyle]="{'background': supportComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="support()" [ngStyle]="{'background': supportComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Support">
                             <a class="" >Support</a>
                         </li>
                     </ul>

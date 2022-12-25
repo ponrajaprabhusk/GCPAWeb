@@ -15,9 +15,9 @@ name="";
 contactEmail="";
 message="";
 userUid="";
+token: string|undefined;
 
-
-constructor(public authService:AuthServiceService, public supportService:SupportServiceService, public popupService:PopupHandlerService, public functions: AngularFireFunctions) { }
+constructor(public authService:AuthServiceService, public supportService:SupportServiceService, public popupService:PopupHandlerService, public functions: AngularFireFunctions) { this.token = undefined; }
 
 ngOnInit(): void {
   this.authService.afauth.user.subscribe({
@@ -39,16 +39,19 @@ ngOnInit(): void {
   isFormEmpty(name:any, contactEmail:any, message:any){
       if(name == "" || contactEmail == "" || message == ""){
         alert("Kindly fill all the fields !!")
+        return false;
       }
-      return false;
-  }
+      else{
+        return true;
+      }
+}
 
 submit(){
 
   if (!this.authService.user) {
     this.popupService.loginPopup=true;
   }
-  else if(!this.isFormEmpty(this.name, this.contactEmail, this.message)){
+  else if(this.isFormEmpty(this.name, this.contactEmail, this.message)){
       const callable = this.functions.httpsCallable('support/sendMail');
       
       callable({Name : this.name, Email: this.contactEmail, Message: this.message, Uid: this.userUid}).subscribe({

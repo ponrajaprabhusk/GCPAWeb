@@ -16,13 +16,16 @@ export class AddressContactComponent implements OnInit {
   email=''
   school=''
   country=''
+  state =''
 
 
   
   addCountry(newCountry: string) {
     this.country=newCountry;
   }
-  
+  addState(newState: string) {
+    this.state=newState;
+  }
   
   constructor(public registerService:RegisterServiceService, public authService:AuthServiceService) { }
   

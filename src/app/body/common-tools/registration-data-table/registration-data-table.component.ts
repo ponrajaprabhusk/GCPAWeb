@@ -14,7 +14,7 @@ import { RegistrationDataTableDataSource } from '../registration-data-table/regi
 })
 export class RegistrationDataTableComponent implements OnInit,AfterViewInit {
 
-  @Input('dataForTable') dataForTable: Register[];
+  @Input('dataForTable') dataForTable: Register[];  
   @Input('displayColoumns') displayColoumns: string[];
   @Input('pageSize') pageSize: string;
 
