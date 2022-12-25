@@ -18,7 +18,6 @@
 										<p class="text-secondary mb-1"><b>ID:</b>
 											{{registerService.registration.Uid}}</p>	<p class="text-secondary mb-1"><b>Category:</b>
 										{{registerService.registration.Category}}</p>
-										
 									<p class="text-muted font-size-sm"><b>{{registerService.registration.Country}}</b></p>
 								</div>
 							</div>
@@ -105,19 +104,7 @@
 													aria-label="Close"></button>
 											</div>
 											<div class="modal-body" *ngIf="!showClose">
-												<form class="text center">
-													<input class="form-control bg-light" type="file" accept="video/*"
-														multiple (change)="videoUpload($event)">
-													<ng-container *ngIf="uploadService.fileUploadStatus && videoStatus">
-														<div class="progress" style="height: 10px; margin-top: 10px;">
-															<div class="progress-bar bg-success" role="progressbar"
-																[ngStyle]="{'width': progressVideo + '%'}"
-																aria-valuenow="75" aria-valuemin="0"
-																aria-valuemax="100"></div>
-														</div>
-														Uploading {{fileName}} ...
-													</ng-container>
-												</form>
+													<input class="form-control bg-light" type="text" [(ngModel)]="videoUrl" placeholder="Paste your Video Link here!">
 											</div>
 											<div class="modal-footer" *ngIf="!showClose">
 												<button type="button" class="btn btn-secondary"
@@ -258,11 +245,70 @@
 							</div>
 							<div class="row mb-3">
 								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Gaurdian's Occupation / Designation</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.GaurdianDesignation"
+										[disabled]="registerService.disableGaurdianFields" />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Organization</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.GaurdianOrganization"
+										[disabled]="registerService.disableGaurdianFields" />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Organization Type</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<select [disabled]="registerService.disableGaurdianFields" class="form-select" aria-label="Default select example" [(ngModel)]="registerService.registration.GaurdianOrganizationType">
+										<option value="Government">Government</option>
+										<option value="Private">Private</option>
+										<option value="NGO">NGO</option>
+										<option value="Others">Others</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="text-center" *ngIf="!registerService.disableGaurdianFields">
+							<button type="button" style="width: 100px;" class="btn btn-primary mb-2" (click)="save()">Update</button>
+						</div>
+					</div>
+					<div class="card mt-2">
+						<div class="card-body">
+							
+							<div class="row mb-3">
+								<div class="col-sm-3">
 									<h6 class="mb-0 pt-2">Date of Birth</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" class="form-control"
 										[(ngModel)]="this.registerService.registration.Dob" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Gaurdian's Relationship</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.Relationship" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Gender</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.Gender" disabled />
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -332,7 +378,7 @@
 							</div>
 						</div>
 					</div>
-					*For any updates in your profile, please email us at info@gcpawards.com
+					*For any updates in your profile, please raise a support ticket
 				</div>
 			</div>
 		</div>

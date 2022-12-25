@@ -16,7 +16,13 @@ exports.paymentVerification = function(request, response) {
         const type = request.body.data.PaymentType;
 
         // Test Credentials
-        const keySecret = "EjWL1pPedHeT4Z1C4laM3u1b";
+        let keySecret = "";
+        if (type == "Ecommerce") {
+            // Cred For Ecommerce;
+            keySecret = "EjWL1pPedHeT4Z1C4laM3u1b";
+        } else {
+            keySecret = "EjWL1pPedHeT4Z1C4laM3u1b";
+        }
 
         let generatedSignature = "";
 
