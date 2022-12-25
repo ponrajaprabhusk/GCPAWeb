@@ -12,10 +12,15 @@ const { getSupportById } = require("./tark/getSupportById");
 const { contactMail } = require("./tark/contactUs");
 const { getAllSupport } = require("./tark/getAllSupport");
 const { sendSupportMail } = require("./tark/sendSupportMail");
+const { updateSupport } = require("./tark/updateSupport");
 
 
 fastify.post("/createNewSupport", (req, res) => {
     createNewSupport(req, res);
+});
+
+fastify.post("/updateSupport", (req, res) => {
+    updateSupport(req, res);
 });
 
 fastify.post("/getSupportList", (req, res) => {

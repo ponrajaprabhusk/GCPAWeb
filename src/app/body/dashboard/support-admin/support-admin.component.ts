@@ -18,7 +18,7 @@ export class SupportAdminComponent implements OnInit {
   contactEmail=''
   supportType='Support Type'
   message=''
-  support:Support={UserUid:"",Name:"",SupportType:"",Message:"",ContactEmail:"",TicketId:"", NumberOfActivity:0,Date:"", Time:"",Show:false}
+  support:Support={UserUid:"",Name:"",SupportType:"",Message:"",ContactEmail:"",TicketId:"", NumberOfActivity:0,Date:"", Time:"",Show:false, State:"",AssignedTo:""}
   activity:Activity={Message:"",TicketId:"",Date:"",Time:"",Sendor:"",ActId:""}
   showSupport=false;
   messageSent='';

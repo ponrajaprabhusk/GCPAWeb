@@ -130,6 +130,7 @@ import { PrivacyPolicyComponent } from './body/privacy-policy/privacy-policy.com
 import { FaqComponent } from './body/faq/faq.component';
 import { SupportAdminComponent } from './body/dashboard/support-admin/support-admin.component';
 import { SupportDetailsAdminComponent } from './body/dashboard/support-admin/support-details-admin/support-details-admin.component';
+import { SupportDataTableComponent } from './body/common-tools/support-data-table/support-data-table.component';
 import { StatesComponent } from './body/registration/address-contact/states/states.component';
 
 
@@ -207,8 +208,9 @@ import { StatesComponent } from './body/registration/address-contact/states/stat
     ProductDataTableComponent,
     ECommerceComponent,
     ProductsComponent,
-    BlogComponent,  
-    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent, ImgPopupComponent, CarouselComponent, PrivacyPolicyComponent, FaqComponent, SupportAdminComponent, SupportDetailsAdminComponent, StatesComponent,
+    BlogComponent,
+    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent, ImgPopupComponent, CarouselComponent, PrivacyPolicyComponent, FaqComponent, SupportAdminComponent, SupportDetailsAdminComponent, 
+    SupportDataTableComponent, StatesComponent,
   ],
   imports: [
     NgSelectModule,
