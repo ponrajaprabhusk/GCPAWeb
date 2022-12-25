@@ -130,9 +130,9 @@ import { PrivacyPolicyComponent } from './body/privacy-policy/privacy-policy.com
 import { FaqComponent } from './body/faq/faq.component';
 import { SupportAdminComponent } from './body/dashboard/support-admin/support-admin.component';
 import { SupportDetailsAdminComponent } from './body/dashboard/support-admin/support-details-admin/support-details-admin.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { SupportDataTableComponent } from './body/common-tools/support-data-table/support-data-table.component';
 import { StatesComponent } from './body/registration/address-contact/states/states.component';
-
 
 @NgModule({
   declarations: [
@@ -218,6 +218,7 @@ import { StatesComponent } from './body/registration/address-contact/states/stat
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
