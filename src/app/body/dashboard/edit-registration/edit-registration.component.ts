@@ -31,5 +31,8 @@ export class EditRegistrationComponent implements OnInit {
   edit(){
     this.registerService.updateRegistrationById();
   }
+  addState(newState: string) {
+    this.registerService.registration.State=newState;
+  }
 
 }

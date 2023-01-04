@@ -104,7 +104,7 @@
 													aria-label="Close"></button>
 											</div>
 											<div class="modal-body" *ngIf="!showClose">
-													<input class="form-control bg-light" type="text" [(ngModel)]="videoUrl" placeholder="Paste your Video Link here!">
+													<input class="form-control bg-light" type="text" [(ngModel)]="videoUrl" placeholder="Paste your Video Link here!" name="videoURL">
 											</div>
 											<div class="modal-footer" *ngIf="!showClose">
 												<button type="button" class="btn btn-secondary"
@@ -221,7 +221,7 @@
 										<p *ngIf="file.File=='ExtraPhoto'"><a [href]="file.FileUrl" target="_blank"
 												[download]="file.File">Image </a> uploaded on {{file.Date}}</p>
 										<p *ngIf="file.File=='ExtraVideo'"><a [href]="file.FileUrl" target="_blank"
-												[download]="file.File">Video </a> uploaded on {{file.Date}}</p>
+												>Video Link</a> uploaded on {{file.Date}}</p>
 
 									</ng-container>
 
@@ -313,6 +313,15 @@
 							</div>
 							<div class="row mb-3">
 								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">State</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.State" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
 									<h6 class="mb-0 pt-2">Address</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
@@ -378,7 +387,7 @@
 							</div>
 						</div>
 					</div>
-					*For any updates in your profile, please raise a support ticket
+					*For any updates in your profile, please raise a <a routerLink="/supportPage"> support ticket</a>
 				</div>
 			</div>
 		</div>

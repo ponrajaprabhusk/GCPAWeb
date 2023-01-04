@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FileData, FileUpload } from 'src/app/Interfaces/FileInterface';
 import { ExtraFilesServiceService } from 'src/app/services/extraFiles/extra-files-service.service';
 import { FileUploadService } from 'src/app/services/file-upload-service/file-upload-service.service';
@@ -38,7 +38,7 @@ export class RegistrationDetailComponent implements OnInit {
    extraDoc:FileData={FileUrl:'',ApplicantName:'',Date:'',Time:'',Uid:'',File:'ExtraDoc'};
   
    formModal:any; 
-   constructor(private route: ActivatedRoute,public registerService:RegisterServiceService, public uploadService:FileUploadService, public extraFilesService:ExtraFilesServiceService, private toolService: ToolsService) { }
+   constructor(private route: ActivatedRoute,public registerService:RegisterServiceService,public router:Router, public uploadService:FileUploadService, public extraFilesService:ExtraFilesServiceService, private toolService: ToolsService) { }
 
    showClose= false;
   ngOnInit(): void {
