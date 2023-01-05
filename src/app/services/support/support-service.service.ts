@@ -113,7 +113,6 @@ export class SupportServiceService {
 
   sendMail(id:string){
     const callable = this.functions.httpsCallable("support/sendSupportMail");
-    console.log(" Goutam " + this.support.State);
     callable({Name: this.support.Name, Email: this.support.ContactEmail, Id: id, Status: this.support.State }).pipe(map(res=>{
       const data = res.data as Support;
       return data;
