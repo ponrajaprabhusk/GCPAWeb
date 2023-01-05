@@ -26,6 +26,8 @@ export class PaymentComponent implements OnInit {
   loader: boolean = false
   disablePayNow=false;
 
+  isIndian = false;
+
   paymentStatus: string
   public rzp: any;
 
@@ -35,7 +37,7 @@ export class PaymentComponent implements OnInit {
     description: 'Apply for Global Child Prodigy Awards',
     image: "",
     order_id: "",
-    amount: 15,
+    amount: 0,
     prefill: {
       name: '',
       contact: '',
@@ -88,6 +90,10 @@ getRegistrationDetails(registrationId: string){
   })).subscribe({ 
     next:(data)=>{
       this.applicant = data
+      if(this.applicant.Country == "India")
+      {
+        this.isIndian = true;
+      }
       if(this.applicant.PaymentStatus == "Complete"){
           this.paymentComplete = true;
       }
@@ -110,7 +116,7 @@ setOrderWithRazor() {
   this.disablePayNow=true;
   this.loader = true;
   const callable = this.functions.httpsCallable('payment/addPayment');
-  callable({RegistrationId: this.applicant.Uid, Amount: "15"}).subscribe({ 
+  callable({RegistrationId: this.applicant.Uid, IsIndian:this.isIndian}).subscribe({ 
     next:(result)=>{
     this.authService.currentReceipt = result.receipt;
     this.options.order_id = result.id;
