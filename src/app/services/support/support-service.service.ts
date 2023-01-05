@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs';
 import { Support } from 'src/app/Interfaces/SupportInterfaces';
 import { User } from 'src/app/Interfaces/UserInterface';
@@ -114,6 +113,7 @@ export class SupportServiceService {
 
   sendMail(id:string){
     const callable = this.functions.httpsCallable("support/sendSupportMail");
+    console.log(" Goutam " + this.support.State);
     callable({Name: this.support.Name, Email: this.support.ContactEmail, Id: id, Status: this.support.State }).pipe(map(res=>{
       const data = res.data as Support;
       return data;
