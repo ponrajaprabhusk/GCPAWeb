@@ -61,7 +61,7 @@ export class SupportServiceService {
        
       }
     })
-    
+
   }
 
   getSupportById(ticketId:string){
@@ -129,5 +129,3 @@ export class SupportServiceService {
     });
   }
 }
-
-
