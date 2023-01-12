@@ -21,7 +21,7 @@ export class NewsroomDashboardComponent implements OnInit {
   percentage: number = 0;
   fileName: string;
   progressPhoto:number;
-  showClose=true;
+  showClose=false;
 
   constructor(public uploadService:FileUploadService, public newsService:NewsServiceService,private router: Router,public authService:AuthServiceService,  private functions: AngularFireFunctions) { }
   news:Newsroom={Uid:"",Name:"",Status:"",ImageUrl:"",Link:""}
