@@ -29,6 +29,7 @@ export class SupportDataTableComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+
     if(this.dataForTable != undefined) {
       this.dataSource.data = this.dataForTable;
       this.displayedColumns = this.displayColoumns;

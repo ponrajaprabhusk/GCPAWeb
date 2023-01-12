@@ -133,6 +133,8 @@ import { SupportDetailsAdminComponent } from './body/dashboard/support-admin/sup
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SupportDataTableComponent } from './body/common-tools/support-data-table/support-data-table.component';
 import { StatesComponent } from './body/registration/address-contact/states/states.component';
+import { Section5Component } from './body/home/testimonials/section5/section5.component';
+import { Section6Component } from './body/home/testimonials/section6/section6.component';
 
 @NgModule({
   declarations: [
@@ -210,7 +212,7 @@ import { StatesComponent } from './body/registration/address-contact/states/stat
     ProductsComponent,
     BlogComponent,
     EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent, ImgPopupComponent, CarouselComponent, PrivacyPolicyComponent, FaqComponent, SupportAdminComponent, SupportDetailsAdminComponent, 
-    SupportDataTableComponent, StatesComponent,
+    SupportDataTableComponent, StatesComponent, Section5Component, Section6Component,
   ],
   imports: [
     NgSelectModule,

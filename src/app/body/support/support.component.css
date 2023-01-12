@@ -4,12 +4,9 @@ h1 {
     font-weight: 700!important;
     font-family: 'Amaranth', sans-serif!important;
 }
+
 .list-group{
     border-radius: 1.5rem;
-}
-
-#table{
-    display: flex;
 }
 
 .back {
@@ -23,14 +20,14 @@ h1 {
     .container {
         max-width: 540px;
     }
-    #table{
-        padding-left: 18%;
-    }
 }
 
 @media (min-width: 768px) {
     .container {
         max-width: 720px;
+    }
+    .table{
+        margin: 2% 20% 5% 20%;
     }
 }
 

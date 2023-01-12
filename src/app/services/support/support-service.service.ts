@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs';
 import { Support } from 'src/app/Interfaces/SupportInterfaces';
 import { User } from 'src/app/Interfaces/UserInterface';
@@ -62,7 +61,7 @@ export class SupportServiceService {
        
       }
     })
-    
+
   }
 
   getSupportById(ticketId:string){
@@ -130,5 +129,3 @@ export class SupportServiceService {
     });
   }
 }
-
-
