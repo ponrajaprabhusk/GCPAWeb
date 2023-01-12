@@ -16,10 +16,10 @@
                     <input type="checkbox" required (change)="emailUpdates()"> <span> Recieve regular updates and notifications via email.</span>
                 </div>
                 <!--  -->
-                <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+                <!-- <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
                 <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
                     <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
-                </div>
+                </div> -->
                 <!--  -->
                 <button type="submit" class="btn btn-primary mt-3 " [disabled]="registerService.disableSubmit" (click)="send(form,$event)">Submit</button>
             </form>

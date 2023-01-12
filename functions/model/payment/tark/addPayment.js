@@ -11,7 +11,8 @@ const { setRazorDetails, generateBase62Constant } = require("../lib");
 
 exports.addPayment = function(request, response) {
         const Uid = request.body.data.RegistrationId;
-        const amount = request.body.data.Amount;
+        // let amount = request.body.data.Amount;
+        const isIndian = request.body.data.IsIndian;
         getApplicant(Uid).then((doc) => {
             console.log(doc);
             if (doc != undefined) {
@@ -22,12 +23,23 @@ exports.addPayment = function(request, response) {
                 });
 
                 const generatedReceipt = generateBase62Constant();
+                let options;
 
-                const options = {
-                    amount: parseInt(amount * 100), // amount in the smallest currency unit
-                    currency: "USD",
-                    receipt: generatedReceipt,
-                };
+                if (isIndian) {
+                    const amount = 1300; // For India INR
+                    options = {
+                        amount: parseInt(amount * 100), // amount in the smallest currency unit
+                        currency: "INR",
+                        receipt: generatedReceipt,
+                    };
+                } else {
+                    const amount = 15; // For Outside India USD
+                    options = {
+                        amount: parseInt(amount * 100), // amount in the smallest currency unit
+                        currency: "USD",
+                        receipt: generatedReceipt,
+                    };
+                }
 
                 razorpay.orders.create(options, function(err, order) {
                     if (err) {

@@ -27,7 +27,10 @@
             </tr>
             <tr>
                 <td>  <p><b>Amount:</b></p></td>
-                <td><p>₹799</p></td>
+                <td>
+                    <p *ngIf="isIndian">₹1300</p>
+                    <p *ngIf="!isIndian">$15 USD</p>
+            </td>
             </tr>
         </table>
       
