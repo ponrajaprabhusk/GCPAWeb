@@ -24,8 +24,8 @@
 
 .btn {
     color: #fff;
-    background-color: #000093;
-    border-radius: 10%;
+    background-color: #1976D2;
+    border-radius: 5px;
     background-image: none;
     /* border-color: rgb(199, 23, 23)!important; */
     display: inline-block;
@@ -35,7 +35,7 @@
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 .btn:hover{
-    background-color: #2222B3;
+    background-color: #303F9F;
 }
 
 .container {

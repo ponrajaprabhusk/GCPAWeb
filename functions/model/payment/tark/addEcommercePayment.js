@@ -5,6 +5,7 @@
 /* eslint-disable max-len */
 
 const RazorPay = require("razorpay");
+const { razorpayKeys } = require("../../application/razorpayKeys");
 
 const { gerOrderData } = require("../../ecommerce/lib");
 const { setEcommerceRazorDetails, generateBase62Constant } = require("../lib");
@@ -18,8 +19,8 @@ exports.addEcommercePayment = function(request, response) {
                 amount = doc.TotalPrice;
                 // Test Credentials for Ecommerce
                 const razorpay = new RazorPay({
-                    key_id: "rzp_test_nfhDfN6X5cgp42",
-                    key_secret: "EjWL1pPedHeT4Z1C4laM3u1b",
+                    key_id: razorpayKeys.key_id,
+                    key_secret: razorpayKeys.key_secret,
                 });
 
                 const generatedReceipt = generateBase62Constant();
@@ -30,7 +31,7 @@ exports.addEcommercePayment = function(request, response) {
                     receipt: generatedReceipt,
                 };
 
-                console.log(options);
+                // console.log(options);
                 razorpay.orders.create(options, function(err, order) {
                     if (err) {
                         const result = { data: err };
@@ -40,7 +41,7 @@ exports.addEcommercePayment = function(request, response) {
 
                     setEcommerceRazorDetails(id, order);
                     // Test credentials
-                    order.key = "rzp_test_nfhDfN6X5cgp42";
+                    order.key = razorpayKeys.key_id;
 
                     order.receipt = generatedReceipt;
                     const result = { data: order };

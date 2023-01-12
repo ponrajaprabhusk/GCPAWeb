@@ -7,6 +7,7 @@
 const RazorPay = require("razorpay");
 
 const { getApplicant } = require("../../applicant-register/lib");
+const { razorpayKeys } = require("../../application/razorpayKeys");
 const { setRazorDetails, generateBase62Constant } = require("../lib");
 
 exports.addPayment = function(request, response) {
@@ -18,8 +19,8 @@ exports.addPayment = function(request, response) {
             if (doc != undefined) {
                 // Test Credentials for Registration
                 const razorpay = new RazorPay({
-                    key_id: "rzp_test_nfhDfN6X5cgp42",
-                    key_secret: "EjWL1pPedHeT4Z1C4laM3u1b",
+                    key_id: razorpayKeys.key_id,
+                    key_secret: razorpayKeys.key_secret,
                 });
 
                 const generatedReceipt = generateBase62Constant();
@@ -41,20 +42,20 @@ exports.addPayment = function(request, response) {
                     };
                 }
 
-                razorpay.orders.create(options, function(err, order) {
-                    if (err) {
-                        const result = { data: err };
-                        console.log(err);
-                        return response.status(500).send(result);
-                    }
+            razorpay.orders.create(options, function(err, order) {
+                if (err) {
+                    const result = { data: err };
+                    console.log(err);
+                    return response.status(500).send(result);
+                }
 
-                    setRazorDetails(Uid, order);
-                    // Test credentials
-                    order.key = "rzp_test_nfhDfN6X5cgp42";
-                    order.receipt = generatedReceipt;
-                    const result = { data: order };
-                    return response.status(200).send(result);
-                });
-            }
-        });
+                setRazorDetails(Uid, order);
+                // Test credentials
+                order.key = razorpayKeys.key_id;
+                order.receipt = generatedReceipt;
+                const result = { data: order };
+                return response.status(200).send(result);
+            });
+        }
+    });
 };

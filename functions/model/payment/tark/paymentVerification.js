@@ -7,6 +7,7 @@
 // eslint-disable-next-line linebreak-style
 const { setPaymentStatus, setEcommercePaymentStatus } = require("../lib");
 const crypto = require("crypto");
+const { razorpayKeys } = require("../../application/razorpayKeys");
 
 exports.paymentVerification = function(request, response) {
     const orderId = request.body.data.OrderId;
@@ -19,9 +20,9 @@ exports.paymentVerification = function(request, response) {
         let keySecret = "";
         if (type == "Ecommerce") {
             // Cred For Ecommerce;
-            keySecret = "EjWL1pPedHeT4Z1C4laM3u1b";
+            keySecret = razorpayKeys.key_secret;
         } else {
-            keySecret = "EjWL1pPedHeT4Z1C4laM3u1b";
+            keySecret = razorpayKeys.key_secret;
         }
 
         let generatedSignature = "";
