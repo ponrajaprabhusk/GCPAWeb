@@ -39,8 +39,7 @@
                 <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
                     <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
                 </div>
-
-                <button type="submit" class="btn btn-primary mt-3 " [disabled]="registerService.disableSubmit"
+                <button type="submit" class="btn btn-primary mt-3 " [disabled]="registerService.disableSubmit || emailupdate == false || termsAndCond == false"
                     (click)="send(form,$event)">Proceed to Apply
                 </button>
             </form>
