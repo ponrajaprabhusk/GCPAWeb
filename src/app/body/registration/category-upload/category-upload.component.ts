@@ -12,9 +12,10 @@ var $  = require( 'jquery' );
 })
 export class CategoryUploadComponent implements OnInit {
 
-  categories_list=['Acting & Directing',"Art & Drawing","Cooking",'Comedian','Dance','Education','Fashion','Fitness','Innovation','Intelligence','Music','Mathematics','Magician','Photography','Singing','Sports','Social','Science','Technology','Writing & Poetry','Others']
+  categories_list=['Acting & Directing',"Art & Drawing","Cooking",'Comedian','Dance','Education','Fashion','Fitness','Innovation','Intelligence','Music','Mathematics','Magician','Photography','Singing','Sports','Social','Science','Technology','Writing & Poetry', 'Entrepreneurship','Others']
 
   category=''
+  otherCategory=''
   achievement=''
   photo=''
   profile=''
@@ -25,7 +26,7 @@ export class CategoryUploadComponent implements OnInit {
   progressPhoto=0
   profileStatus=false
   photoStatus=false
-
+  
    basePath: string;
    selectedFile: FileList;
    currentFileUpload: FileUpload;

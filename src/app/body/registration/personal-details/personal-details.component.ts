@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PersonalDetailsComponent implements OnInit {
 
   dob="";
-  prefix="Prefix";
+  prefix="";
   firstName="";
   lastName="";
   gaurdFirst="";
