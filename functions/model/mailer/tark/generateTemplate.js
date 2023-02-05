@@ -66,7 +66,7 @@
       // data = data.replace("$Name1$", applicantName);
       data = data.replace("$ApplicationId$", applicationId);
       data = data.replace("$ApplicationLink$", "https://www.gcpawards.com/registrationDetail/"+ applicationId); // applicationId
-      mailSubject="Registration Successful - GCPA";
+      mailSubject="Application Confirmation || Global Child Prodigy Awards 2023";
     } else if (templateName == "supportTicket.html") {
       mailSubject = "Request Received - GCPA";
       data = data.replace("$Name$", applicantName);

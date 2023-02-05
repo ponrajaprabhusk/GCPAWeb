@@ -1,18 +1,21 @@
 .full-width-table {
     width: 100%;
-    background-color: transparent;
-    color: #1B1F23;
+    min-height: fit-content;
+    border-radius: 10px;
+    background-color: #f0f4f4;
+    color: var(--text);
+    font-family: var(--font);
 }
   
 mat-paginator {
     background-color: #FFFFFF;
     color: #1B1F23;
 }
-
   
 mat-paginator-page-size, mat-select-trigger{
     background-color: #f4f5f7;
 }
+
 td {
     background-color: transparent;
     color: #1B1F23;

@@ -38,14 +38,19 @@
         </div>
     </ng-container> -->
 
-    <ng-container *ngIf="supportService.supports.length>0">
-        <ng-container>
+    <ng-container >
+        <div *ngIf="supportService.supports.length>0 ; else loader">
             <div class="row">
                 <div class="col table table-responsive table-hover">
                     <app-support-data-table [dataForTable]="supportData " [displayColoumns]="displayColoumnsSupport " [pageSize]=" '5' "> </app-support-data-table>
                 </div>    
             </div>
-        </ng-container>
+        </div>
+        <ng-template #loader>
+            <app-loader></app-loader>
+        </ng-template>
+
+        
         <ng-container *ngFor="let support of supportService.supports;let indexOfelement=index;">
             <div class="container">
                 <div class="row pt-3">
