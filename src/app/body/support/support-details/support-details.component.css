@@ -4,6 +4,19 @@ h1 {
     font-weight: 700!important;
     font-family: 'Amaranth', sans-serif!important;
 }
+
+.text-start{
+    background-color: #fff;
+    margin-right: 50%;
+    margin-bottom: 1%;
+}
+
+.text-end{
+    margin-bottom: 1%;
+    margin-left: 38%;
+    background-color: #fff;
+}
+
 .container{
     margin-right: 0%;
 }

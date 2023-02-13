@@ -39,16 +39,17 @@
     </ng-container> -->
 
     <ng-container >
-        <div *ngIf="supportService.supports.length>0 ; else loader">
-            <div class="row">
+            <div *ngIf = "supportService.supports.length > 0" class="row">
                 <div class="col table table-responsive table-hover">
-                    <app-support-data-table [dataForTable]="supportData " [displayColoumns]="displayColoumnsSupport " [pageSize]=" '5' "> </app-support-data-table>
+                    <div *ngIf = "supportData.length > 0 else loader">
+                        <app-support-data-table [dataForTable]="supportData " [displayColoumns]="displayColoumnsSupport " [pageSize]=" '5' "> </app-support-data-table>
+                    </div>
+                    
+                    <ng-template #loader>
+                        <app-loader></app-loader>
+                    </ng-template>
                 </div>    
             </div>
-        </div>
-        <ng-template #loader>
-            <app-loader></app-loader>
-        </ng-template>
 
         
         <ng-container *ngFor="let support of supportService.supports;let indexOfelement=index;">
