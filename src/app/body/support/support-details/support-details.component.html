@@ -61,12 +61,12 @@
                     <div class="col-md-2"></div>
                     <div class="card col-md-8 border-3" style="border-color: #ef3789;">
                         <div class="card-title fs-6 pt-1">
-                            Support Chat
+                            <b>Support Chat</b> 
                         </div>
                         <div class="card-body">
                             <ng-container *ngFor="let activity of activityService.activities">
 
-                                <div [ngClass]="{'border rounded mt-1': true,'text-end sent':activity.Sendor==='user','text-start recieved':activity.Sendor==='admin'}">{{activity.Message}}</div>
+                                <div [ngClass]="{'border rounded col-8': true, 'text-end':activity.Sendor==='user','text-start':activity.Sendor==='admin'}">{{activity.Message}}</div>
 
                             </ng-container>
 

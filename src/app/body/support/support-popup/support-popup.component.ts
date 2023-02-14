@@ -50,8 +50,7 @@ showSupportPopup=false;
     this.support.State = 'New';
     this.support.AssignedTo = '';
     this.supportService.createNewSupport(this.support);
-
-    
+    location.reload();
   }
 }
   closePopup(){

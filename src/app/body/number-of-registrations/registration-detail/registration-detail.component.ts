@@ -182,7 +182,18 @@ export class RegistrationDetailComponent implements OnInit {
   }
 
   save(){
+    this.updateCheck();
     this.registerService.updateRegistrationById(this.uid);
+  }
+
+  updateCheck(){
+    if(this.registerService.registration.GaurdianDesignation == ""){
+      alert("Kindly fill Gaurdian's Occupation / Designation")
+    }else if(this.registerService.registration.GaurdianOrganization == ""){
+      alert("Kindly Gaurdian's Organization !")
+    }else if(this.registerService.registration.GaurdianOrganizationType == ""){
+      alert("Kindly Select a Organization Type !!")
+    }
   }
 
   close(){
