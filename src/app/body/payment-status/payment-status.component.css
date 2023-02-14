@@ -186,3 +186,41 @@ td {
   color: #0000ee;
   text-decoration: underline;
 }
+
+@media (min-width: 576px) {
+  .container {
+      max-width: 570px;
+  }
+  
+}
+
+@media (min-width: 768px) {
+  .container {
+      max-width: 760px;
+  }
+ 
+}
+
+@media (min-width: 992px) {
+  .container {
+      max-width: 990px;
+  }
+  .back {
+      background-image: url("../../../assets/background.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+      max-width: 1180px;
+  }
+  .back {
+      background-image: url("../../../assets/background.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+  }
+}
