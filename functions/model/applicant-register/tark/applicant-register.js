@@ -52,6 +52,7 @@ exports.registerNewUser = function(request, response) {
     const gender = user.Gender;
     const relationship = user.Relationship;
     const state = user.State;
+    const howHeard = user.HowHeard;
     const numberOfFiles = 0;
     let result;
     const status = 200;
@@ -78,7 +79,7 @@ exports.registerNewUser = function(request, response) {
         uid = removeCharRecursive(uid, "=");
         console.log(uid);
 
-        registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles, emailUpdates, state, gender, relationship).then(() => {
+        registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles, emailUpdates, state, gender, relationship, howHeard).then(() => {
             result = { data: uid };
             console.log("Applicant Registered Successfully");
             // adding file code

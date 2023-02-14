@@ -17,6 +17,7 @@ export class AddressContactComponent implements OnInit {
   school=''
   country=''
   state =''
+  telephoneCode=''
 
 
   

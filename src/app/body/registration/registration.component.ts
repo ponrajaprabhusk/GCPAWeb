@@ -32,6 +32,8 @@ export class RegistrationComponent implements OnInit {
   validNumber=false;
   number:any;
   emailupdate=false;
+  howHeard:string = ""
+  infoVisible:boolean = false;
 
   
   constructor( public registerService:RegisterServiceService, public router:Router, public authService:AuthServiceService, public popupService:PopupHandlerService, public fileUploadService:FileUploadService, public updateRegistration:UpdateRegistrationService) { 
@@ -77,7 +79,8 @@ export class RegistrationComponent implements OnInit {
        this.profileUpload.Date=this.fileUploadService.profileDate
        this.profileUpload.Time=this.fileUploadService.profileTime
        this.userUid=this.authService.user.uid
-       this.registerService.register(this.uid,this.personalDetails.prefix,this.personalDetails.dob,this.personalDetails.firstName,this.personalDetails.lastName,this.personalDetails.gaurdFirst,this.personalDetails.gaurdLast,this.adressComponent.address,this.adressComponent.zip,this.number,this.adressComponent.email,this.adressComponent.school, this.adressComponent.country, this.adressComponent.state, this.categoryComponent.category, this.categoryComponent.achievement, this.photoUpload, this.profileUpload, this.categoryComponent.social, this.userUid, this.emailupdate, this.personalDetails.gender, this.personalDetails.relationship)
+       if(this.categoryComponent.category == 'Others') this.categoryComponent.category = this.categoryComponent.otherCategory;
+       this.registerService.register(this.uid,this.personalDetails.prefix,this.personalDetails.dob,this.personalDetails.firstName,this.personalDetails.lastName,this.personalDetails.gaurdFirst,this.personalDetails.gaurdLast,this.adressComponent.address,this.adressComponent.zip,this.number,this.adressComponent.email,this.adressComponent.school, this.adressComponent.country, this.adressComponent.state, this.categoryComponent.category, this.categoryComponent.achievement, this.photoUpload, this.profileUpload, this.categoryComponent.social, this.userUid, this.emailupdate, this.personalDetails.gender, this.personalDetails.relationship, this.howHeard)
       }
   }
 
@@ -88,8 +91,8 @@ export class RegistrationComponent implements OnInit {
     const alpha3=countryToAlpha3(this.adressComponent.country);
 
     if(alpha3){
-    this.validNumber=phone(this.adressComponent.number,{country:alpha3}).isValid
-    this.number=phone(this.adressComponent.number,{country:alpha3}).phoneNumber
+    this.validNumber=phone(this.adressComponent.telephoneCode + this.adressComponent.number,{country:alpha3}).isValid
+    this.number=phone(this.adressComponent.telephoneCode + this.adressComponent.number,{country:alpha3}).phoneNumber
     }
 
     if(this.adressComponent.country != "India")
@@ -97,7 +100,7 @@ export class RegistrationComponent implements OnInit {
       this.adressComponent.state = '';
     }
 
-    if ((this.personalDetails.prefix==''||this.personalDetails.dob==''||this.personalDetails.firstName==''||this.personalDetails.lastName==''||this.adressComponent.address==''||this.categoryComponent.category=='')&&!this.termsAndCond) {
+    if ((this.personalDetails.prefix==''||this.personalDetails.dob==''||this.personalDetails.firstName==''||this.personalDetails.lastName==''|| this.personalDetails.gaurdFirst =='' ||this.adressComponent.country==''||this.adressComponent.zip==''||this.categoryComponent.category=='')&&!this.termsAndCond) {
       this.registerService.fillAll=true;
     }
     else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.adressComponent.email))){
@@ -128,5 +131,16 @@ console.log(this.termsAndCond)
   emailUpdates(){
     this.emailupdate=!this.emailupdate;
       }
+
+      showInfo(){
+        this.infoVisible = true;
+        console.log("vis");
+        
+       }
+       hideInfo(){
+        this.infoVisible = false;
+        console.log("hid");
+        
+       }
   
 }

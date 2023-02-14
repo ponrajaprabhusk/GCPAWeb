@@ -4,22 +4,25 @@
         <h5 class="">Category Selection<span class="text-danger">*</span></h5>
         <div class="row">
             <div class="col-md-12">
-                <ng-select [(ngModel)]="category">
-                    <ng-option *ngFor="let item of categories_list" [value]="item">{{item}}</ng-option>
-                 </ng-select>
+                <select [(ngModel)]="category" class="form-select">
+                    <option value="" selected>Select Category</option>
+                    <option *ngFor="let item of categories_list" [value]="item">{{item}}</option>
+                 </select>
+            </div>
+            <div class="col-md-12" *ngIf="category == 'Others'">
+                <input type="text" value="" class="form-control " [(ngModel)]="otherCategory">
             </div>
         </div>
     </div>
-    
     <div class="pb-4">
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12">
                         <h5 class="">
-                            Achievement Description
+                            Brief about the child 
                         </h5>
-                        <textarea class="form-control " rows="3" placeholder=" Please provide child's major achievements here and upload a detailed document in the child Profile Section (PDF/DOC/TXT) " [(ngModel)]="achievement"></textarea>
+                        <textarea class="form-control " rows="3" placeholder=" Give information about the child and his talents. (Provide more information in the profile or CV and upload it below" [(ngModel)]="achievement"></textarea>
                     </div>
                 </div>
             </div>
@@ -30,7 +33,7 @@
             <div class="col-md-12">
                 <div class="row pb-4">
                     <div class="col-md-6">
-                        <h5 class="">Child's Photograph (Optional)</h5>
+                        <h5 class="">Child's Photograph</h5>
                         <input type="file" class="form-control " (change)="photoUpload($event)">
                         <ng-container *ngIf="uploadService.fileUploadStatus && photoStatus">
                             <div class="progress" style="height: 10px; margin-top: 10px;">
@@ -40,7 +43,7 @@
                         </ng-container>
                     </div>
                     <div class="col-md-6">
-                        <h5 class="">Child's Profile (Optional)</h5>
+                        <h5 class=""> Child’s Profile / Resume                        </h5>
                         <input type="file" class="form-control " (change)="profileUpload($event)">
                         <ng-container *ngIf="uploadService.fileUploadStatus && profileStatus">
                             <div class="progress" style="height: 10px; margin-top: 10px;">
@@ -50,7 +53,7 @@
                         </ng-container>
                     </div>
                 </div>
-                <div class="row ">
+                <!-- <div class="row ">
                     <div class="col-md-12">
                         <h5 class="">
                             Social media (Optional)
@@ -58,7 +61,7 @@
                         </h5>
                         <textarea class="form-control " rows="3" [(ngModel)]="social"></textarea>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
