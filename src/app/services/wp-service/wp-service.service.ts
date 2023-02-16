@@ -13,6 +13,8 @@ export class WpServiceService {
   public categoryPostsObservable: Observable<Array<Object>>;
   public tagPostsObservable: Observable<Array<Object>>;
   endpoint:string;
+  popularPosts: any;
+  parentingPosts: any;
   constructor(private http: HttpClient) { 
     this.endpoint=environment.endpoint;
   }
@@ -26,9 +28,11 @@ getPost(slug: String){
   return this.postObservable;
 }
 
-getAllPosts(){
+  getAllPosts(){
   //Please limit the per page number to how many you need for
-  this.allPostObservable = this.http.get(this.endpoint + "/posts" + '?per_page=100').pipe(map(res=>{
+  console.log("get all Posts called");
+  
+  this.allPostObservable = this.http.get(this.endpoint + "/posts?per_page=100").pipe(map(res=>{
     const data = res as Array<Object>;
     console.log(data);
     return data;
@@ -36,9 +40,8 @@ getAllPosts(){
   return this.allPostObservable;
 }
 
-// not working
 getPostsByCategory(category: number){
-  this.categoryPostsObservable = this.http.get(this.endpoint + "/posts" + '?categories=' + category + '&per_page=100').pipe(map(res=>{
+  this.categoryPostsObservable = this.http.get(this.endpoint + "/posts" + '?categories=' + category + '&per_page=3').pipe(map(res=>{
     const data = res as Array<Object>;
     return data;
   }));
