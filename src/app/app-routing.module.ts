@@ -55,7 +55,7 @@ const routes: Routes = [
   {path:'partners',component:PartnersComponent},
   {path:'gallery',component:GalleryComponent},
   {path:'newsroom',component:NewsroomComponent},
-  {path:'terms_condi',component:TermsCondiComponent},
+  {path:'terms-conditions',component:TermsCondiComponent},
   {path:'testimonial',component:TestimonialComponent},
   {path:'contact',component:ContactComponent},
   // {path:'LoginPage', component: LoginPageComponent},
