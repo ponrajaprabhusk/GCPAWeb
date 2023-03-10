@@ -47,6 +47,8 @@ import { TagComponent } from './body/tag/tag.component';
 import { PrivacyPolicyComponent } from './body/privacy-policy/privacy-policy.component';
 import { FaqComponent } from './body/faq/faq.component';
 import { SupportDetailsAdminComponent } from './body/dashboard/support-admin/support-details-admin/support-details-admin.component';
+import { GCPA2022Component } from './body/gcpa2022/gcpa2022.component';
+import { GCPA2020Component } from './body/gcpa2020/gcpa2020.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -79,6 +81,8 @@ const routes: Routes = [
   {path:'usersDashboard', component:UsersDashboardComponent},
   {path:'ecommerceDashboard', component:EcommerceDashboardComponent },
   {path:'ecommerce', component:ECommerceComponent },
+  {path:'gcpa2022', component:GCPA2022Component},
+  {path:'gcpa2020', component:GCPA2020Component},
   {path:'products/:productId/:productName', component:ProductsComponent, canActivate: [AngularFireAuthGuard] },
   {path:'blog', component:BlogHomeComponent},
   {path:'blog/parenting', component:ParentingPageComponent},

@@ -135,6 +135,8 @@ import { SupportDataTableComponent } from './body/common-tools/support-data-tabl
 import { StatesComponent } from './body/registration/address-contact/states/states.component';
 import { Section5Component } from './body/home/testimonials/section5/section5.component';
 import { Section6Component } from './body/home/testimonials/section6/section6.component';
+import { GCPA2022Component } from './body/gcpa2022/gcpa2022.component';
+import { GCPA2020Component } from './body/gcpa2020/gcpa2020.component';
 
 @NgModule({
   declarations: [
@@ -212,7 +214,7 @@ import { Section6Component } from './body/home/testimonials/section6/section6.co
     ProductsComponent,
     BlogComponent,
     EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent, ImgPopupComponent, CarouselComponent, PrivacyPolicyComponent, FaqComponent, SupportAdminComponent, SupportDetailsAdminComponent, 
-    SupportDataTableComponent, StatesComponent, Section5Component, Section6Component,
+    SupportDataTableComponent, StatesComponent, Section5Component, Section6Component, GCPA2022Component, GCPA2020Component,
   ],
   imports: [
     NgSelectModule,
