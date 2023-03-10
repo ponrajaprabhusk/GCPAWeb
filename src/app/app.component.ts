@@ -16,7 +16,7 @@ export class AppComponent {
     this.addGAScript();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        gtag('config', environment.firebase.measurementId, { 'page_path': event.urlAfterRedirects });
+        // gtag('config', environment.firebase.measurementId, { 'page_path': event.urlAfterRedirects });
       }      
     });
   }
@@ -29,9 +29,9 @@ export class AppComponent {
   addGAScript() {
     let gtagScript: HTMLScriptElement = document.createElement('script');
     gtagScript.async = true;
-    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + environment.firebase.measurementId;
+    // gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + environment.firebase.measurementId;
     document.head.prepend(gtagScript);
     /** Disable automatic page view hit to fix duplicate page view count  **/
-    gtag('config', environment.firebase.measurementId, { send_page_view: false });
+    // gtag('config', environment.firebase.measurementId, { send_page_view: false });
   }
 }

@@ -1,10 +1,31 @@
 <app-login-page></app-login-page>
 
 <div class="back mt-5 pt-5 pb-3" *ngIf="authService.loggedInUser.Admin">
-        <h1 class="text-center mb-5 ">Application Form 
-        <mat-icon (mouseenter)="showInfo()" (mouseleave)="hideInfo()" style="color: black !important;"aria-hidden="false" id="info">info</mat-icon> </h1>
-   
-    <div class="row container mx-auto">
+    <div class="row container mx-auto"> 
+        <div class="container col-md-7 px-5">
+        <h1 class="text-left mb-3 ">APPLICATION FORM 
+            <!-- <mat-icon  style="color: black !important;"aria-hidden="false" id="info">info</mat-icon>  -->
+        </h1>
+            <div style="font-size: 12px;">
+                <p >
+                    <b>To be eligible for consideration by the selection committee of the GCPA for successful
+                        participation, the participant must fulfill the following conditions:
+                    </b>
+                </p>
+                <ol>
+                    <b> 1.</b> The participant must be under the <b>age of 15 </b> at the time of application. <br>
+                    <b> 2. </b> A one-time application fee of <b> USD $15 or INR 1300 (incl. government taxes) or Euro €17 </b> is
+                        applicable at the time of application to avoid spam entry. <br>
+                    <b> 3.</b>  One participant can apply for <b>one category </b> ; if you aren't sure, please choose the category
+                        <b>"Others"</b>.
+                </ol>
+            </div>
+        </div>
+        <div class="col-md-5">
+
+        </div>
+    </div>    
+    <div class="row container mx-auto pt-2">
         <div class="container col-md-7 px-5">
             <form #form="ngForm">
                 <app-personal-details></app-personal-details>
@@ -13,25 +34,25 @@
                 <div class="pb-4">
                     <div class="row">
                         <div class="col-md-12">
-                            <h5 class="">How did you hear about the Global Child Prodigy Awards</h5>
+                            <h5 class="">How did you hear about the Global Child Prodigy Awards ?</h5>
                             <select [(ngModel)]="howHeard" class="form-select">
                                 <option value="Social Media">Social Media</option>
                                 <option value="Friends/Relatives">Friends/Relatives</option>
                                 <option value="Google Search">Google Search</option>
+                                <option value="School/Academy">School / Academy</option>
                                 <option value="Others">Others</option>
-
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="my-3">
-                    <input type="checkbox" required (change)="accepted()"> <span>I am at least 13 years old and I agree
+                    <input type="checkbox" required (change)="accepted()"> <span> &nbsp;I am at least 13 years old and I agree
                         to the <a routerLink="/terms_condi">Terms & Conditions</a> and <a
                             routerLink="/privacy-policy">Privacy Policy</a> of Global Child Prodigy Awards.<span
                             class="text-danger">*</span></span>
                 </div>
                 <div class="mb-4">
-                    <input type="checkbox" required (change)="emailUpdates()"> <span>I would like to Recieve regular
+                    <input type="checkbox" required (change)="emailUpdates()"> <span> &nbsp;I would like to Recieve regular
                         updates and notifications via email.</span>
                 </div>
                 <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required
@@ -50,27 +71,11 @@
             <div class="pt-5">
 
                 <p>
-                    If you are facing any issue while registration please raise a support ticket
+                    If you are facing any issue while registration please raise a <a routerLink="/supportPage">support ticket</a> 
                 </p>
             </div>
         </div>
-        <div class="col-md-5 container-fluid">
-            <div class="p-5 m-3" *ngIf="infoVisible">
-                <p >
-                    <b>To be eligible for consideration by the selection committee of the GCPA for successful
-                        participation, the participant must fulfill the following conditions:
-                    </b>
-                </p>
-                <ol>
-                    <li> The participant must be under the age of 15 at the time of application.</li>
-                    <li> A one-time application fee of USD $15 or INR 1300 (incl. government taxes) or Euro €17 is
-                        applicable at the time of application to avoid spam entry.
-                    </li>
-                </ol>
-                <p> One participant can apply for one category; if you aren't sure, please choose the category
-                    "Others."
-                </p>
-            </div>
+        <div class="col-md-5">
             <img class="img-fluid" src="../../../assets/happy.png " alt=" ">
         </div>
 

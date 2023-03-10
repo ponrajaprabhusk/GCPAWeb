@@ -35,4 +35,8 @@
         border: 1px solid #000093;
     }
 
-   
+#recaptcha{
+    text-align: center;
+    justify-content: center;
+    margin-left: 15%;
+}

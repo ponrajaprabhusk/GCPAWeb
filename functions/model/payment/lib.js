@@ -3,6 +3,7 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
+const { user } = require("firebase-functions/v1/auth");
 const { db } = require("../application/lib");
 const { mailer } = require("../mailer/lib");
 

@@ -46,8 +46,10 @@
 													<label class="form-check-label " for="flexSwitchCheckChecked">Remember Me</label>
 												</div>
 											</div>
-											<div class="col-md-6 text-end">	<a href="JavaScript:;" >Forgot Password ?</a>
-											</div>
+
+
+											<!-- <div class="col-md-6 text-end">	<a href="JavaScript:;" >Forgot Password ?</a> -->
+											<!-- </div> -->
 											<div class="col-12">
 												<div class="d-grid">
 													<button type="submit" class="btn gcpabutton" style="background-color: #000093 !important; color: white" (click)="signIn()"><i class="bx bxs-lock-open" ></i>Log In</button>
@@ -115,6 +117,11 @@
 															<input class="form-check-input gcpabutton" type="checkbox" id="flexSwitchCheckChecked" checked>
 															<label class="form-check-label " for="flexSwitchCheckChecked">Remember Me</label>
 														</div>
+													</div>
+
+													<re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+													<div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
+														<div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
 													</div>
 													
 													<div class="col-12">

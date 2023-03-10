@@ -1,8 +1,12 @@
 .center{
     display: flex;
-justify-content: center;
-left: 40%;
-top: 40%;
+    justify-content: center;
+    left: 30%;
+    top: 30%;
+}
+
+.content{
+    padding-left: 9%;
 }
 
 .btn {
