@@ -6,5 +6,5 @@ export const environment = {
   recaptcha: {
     siteKey: '', // Enter recaptcha key here;
   },
-  endpoint : "",
+  endpoint : "https://blogs.gcpawards.com/wp-json/wp/v2",
 };

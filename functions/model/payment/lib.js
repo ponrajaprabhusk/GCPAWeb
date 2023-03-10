@@ -3,7 +3,6 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { user } = require("firebase-functions/v1/auth");
 const { db } = require("../application/lib");
 const { mailer } = require("../mailer/lib");
 
@@ -56,7 +55,7 @@ exports.setRazorDetails = function(Uid, order) {
    return Promise.resolve(p1);
 };
 
-exports.setPaymentStatus = function(orderId, id) {
+exports.setPaymentStatus = function(id) {
     let data;
 
     const p1 = db.collection("Registrations").doc(id).get().then((doc)=>{
