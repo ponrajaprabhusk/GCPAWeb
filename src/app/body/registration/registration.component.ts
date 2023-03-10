@@ -33,7 +33,7 @@ export class RegistrationComponent implements OnInit {
   number:any;
   emailupdate=false;
   howHeard:string = ""
-  infoVisible:boolean = false;
+  // infoVisible:boolean = false;
 
   
   constructor( public registerService:RegisterServiceService, public router:Router, public authService:AuthServiceService, public popupService:PopupHandlerService, public fileUploadService:FileUploadService, public updateRegistration:UpdateRegistrationService) { 
@@ -132,15 +132,11 @@ console.log(this.termsAndCond)
     this.emailupdate=!this.emailupdate;
       }
 
-      showInfo(){
-        this.infoVisible = true;
-        console.log("vis");
-        
-       }
-       hideInfo(){
-        this.infoVisible = false;
-        console.log("hid");
-        
-       }
+      // showInfo(){
+      //   this.infoVisible = true;
+      //  }
+      //  hideInfo(){
+      //   this.infoVisible = false;
+      //  }
   
 }
